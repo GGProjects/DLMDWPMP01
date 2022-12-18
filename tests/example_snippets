@@ -1,0 +1,300 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+"""
+# =============================================================================
+# Created on Fri Nov 18 08:45:16 2022
+# in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
+#
+# AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
+#
+# MODULE: DLMDWPM01
+#
+# DESCRIPTION: This is the main programm for mentioned MODULE.
+#
+# PURPOSE:
+#   Evaluate ideal functions for a set of training data (1) and assign
+#   values of a test-dataset to those ideal functions (2)
+#
+# DETAILS:
+#    Used criteria for evaluation:
+#     (1) to match training data and ideal functions:
+#         minimum MeanSquaredError (MSE)
+#     (2) to match ideal functions and test data:
+#         precalculated MSE (1) * SquareRoot(2)
+#
+# =============================================================================
+"""
+
+
+# mögliche UNIT-Tests
+# Run program up to line x
+# Benötigte Files vorhanden
+# Benötigte Packages installiert
+
+# Daten geladen
+# SQL geschrieben
+# Validate structure of given data according to Task
+# Richtige Dictionary Länge für Ideal Funktionen
+
+import unittest
+from pathlib import Path
+from data_functions import create_empty_sqlitedb
+from data_functions import csv2sql_directly
+import pandas as pd
+
+
+#### sqlite testset
+class test_sqlite(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.db = str('testdb')
+        my_dic = {"Name":['Bernd', 'Silke', 'Claudia'],
+                    "Alter":[54, 36, 23],
+                    "Lieblingszahl":[25,7,43]}
+        my_df = pd.DataFrame(my_dic,
+                index=['1001', '1002', '1003'])
+        my_df.to_csv('testdata.csv', encoding="utf-8")
+        cls.testcsv = str("testdata.csv")
+        cls.testtable = str("testtable")
+
+    def setUp(self):
+        pass
+
+    def test_creation(self):
+        create_empty_sqlitedb(self.db)
+        self.assertTrue(Path.is_file(Path(self.db)),
+                "no database was created")
+
+    def test_table_from_csv(self):
+        csv2sql_directly(self.db,self.testcsv,self.testtable)    
+        self.assertRaises
+
+    def tearDown(self):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        Path.unlink(Path(cls.db))
+        Path.unlink(Path(cls.testcsv))
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+
+import unittest
+
+
+# BeispielCode
+# eine Testklasse definieren, die die TestCases von
+# unittest erbt
+
+
+
+def div(a,b):
+    return a/b
+
+
+class TestMethods(unittest.TestCase):
+  def setUp(self): #Function that runs before each test to set any pre-requisites 
+    pass
+
+  def test_abs(self):
+    self.assertEqual( abs(-5), 5) #tests if the absolute value of -5 is 5
+
+  def test_pow(self):      #tests if 2 to the power of 5 is 32 
+    self.assertEqual(pow(2,5),32)
+
+  # Tests and returns TRUE if the boolean value is non empty or non 0
+  # or else returns False.
+  def test_bool(self):        
+    self.assertTrue(bool(5))
+    self.assertFalse(bool(''))
+
+  # Returns true if the string splits and matches
+  # the given output.
+  def test_div(self):        
+    s = 'hello world'
+    self.assertEqual(div(2,5),0.4)
+    with self.assertRaises(ZeroDivisionError):
+      div(2,0)
+        
+if __name__ == '__main__':
+    unittest.main()
+
+
+#!/usr/bin/env python
+# coding: utf-8
+
+"""
+# =============================================================================
+# Created on Fri Nov 18 08:45:16 2022
+# in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
+#
+# AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
+#
+# MODULE: DLMDWPM01
+#
+# DESCRIPTION: This is the main programm for mentioned MODULE.
+#
+# PURPOSE:
+#   Evaluate ideal functions for a set of training data (1) and assign
+#   values of a test-dataset to those ideal functions (2)
+#
+# DETAILS:
+#    Used criteria for evaluation:
+#     (1) to match training data and ideal functions:
+#         minimum MeanSquaredError (MSE)
+#     (2) to match ideal functions and test data:
+#         precalculated MSE (1) * SquareRoot(2)
+#
+# =============================================================================
+"""
+
+import unittest
+import sys
+
+
+#### sqlite testset
+class test_sqlite(unittest.TestCase):
+    def setUp(self):
+        self.db = str('testdb')
+
+    def test_creation(db)
+        import create_empty_sqlitedb from data_functions
+
+
+
+    def tearDown(self):
+        self.widget.dispose()
+
+
+
+#### datafunction testset
+class test_datafunctions(unittest.TestCase):
+    def setUp(self):
+        self.widget = Widget('The widget')
+
+
+
+
+
+    def tearDown(self):
+        self.widget.dispose()
+
+
+
+ 
+# Benötigte Files vorhanden
+# Benötigte Packages installiert
+
+# Daten geladen
+# SQL geschrieben
+# Validate structure of given data according to Task
+# Richtige Dictionary Länge für Ideal Funktionen
+
+#### SkipTests
+class MyTestCase(unittest.TestCase):
+
+    @unittest.skip("demonstrating skipping")
+    def test_nothing(self):
+        self.fail("shouldn't happen")
+
+    #@unittest.skipIf(mylib.__version__ < (1, 3),
+    #                 "not supported in this library version")
+    #def test_format(self):
+    #    # Tests that work for only a certain version of the library.
+    #    pass
+
+    @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
+    def test_windows_support(self):
+        # windows specific testing code
+        pass
+
+    def test_maybe_skipped(self):
+        if not external_resource_available():
+            self.skipTest("external resource not available")
+        # test code that depends on the external resource
+        pass
+
+#### TestSuite
+def suite():
+    suite = unittest.TestSuite()
+    suite.addTest(WidgetTestCase('test_default_widget_size'))
+    suite.addTest(WidgetTestCase('test_widget_resize'))
+    return suite
+
+if __name__ == '__main__':
+    runner = unittest.TextTestRunner()
+    runner.run(suite())
+# =============================================================================
+# class UnitTestMathOperations(unittest.TestCase):
+#
+#     # eine Testfunktion für math_addition definieren
+#     def test_math_addition(self):
+#         '''
+#         Mathematische Addition testen
+#         '''
+#         result = mf.math_addition(2, 2)
+#         self.assertEqual(result, 4, "Die Addition sollte 4 ergeben")
+#
+#     # eine Testfunktion für math_division definieren
+#     def test_math_division(self):
+#         '''
+#         Mathematische Division testen
+#         '''
+#         # einfache Division
+#         result = mf.math_division(6, 2)
+#         self.assertEqual(result, 3, "Die Division sollte 3 ergeben")
+#
+#     # einen exception-Test mit Kontext durchführen:
+#     # Wir erwarten einen ValueError, wenn wir
+#     # eine 0 als die Zahl übergeben, durch die
+#     # geteilt werden soll
+#     with self.assertRaises(ValueError):
+#         mf.math_division(10, 0)
+#
+#     # dieses Skript im unittest-Kontext ausführen
+#     if __name__ == '__main__':
+#         unittest.main()
+#
+# =============================================================================
+
+
+# =============================================================================
+# # Funktion definieren
+# def my_division(x, y):
+# # Division durch 0 abfangen
+# if y == 0:
+# # in diesem Fall einen ValueError hervorrufen
+# raise ValueError('you cannot divide by 0')
+# # in allen anderen Fällen die Berechnung durchführen
+# # und das Ergebnis zurückgeben
+# output = x/y
+# return(output)
+# Anschließend können wir mithilfe eines sogenannten „unittests“ überprüfen, ob unsere
+# Funktion tatsächlich die spezifizierte „exception“ ausgibt, wenn wir versuchen durch 0
+# zu teilen. Den folgenden Code platzieren wir in einem zweiten Skript, was wir
+# test_src_function.py nennen. Am Ende dieser Datei rufen wir die Test-Klasse, die
+# wir in diesem Skript definieren, im „unittest“-Kontext auf, damit wir direkt unser Tester-
+# gebnis sehen, wenn wir dieses Skript ausführen.
+# # unittest-Modul und eigenes Skript laden
+# import unittest
+# import src_function
+# # eine Testklasse definieren, die die TestCases von
+# # unittest erbt
+# class TestSrcFunction(unittest.TestCase):
+# # eine Testfunktion für my_division definieren
+# def test_my_division(self):
+# # einen exception-Test mit Kontext durchführen:
+# # Wir erwarten einen ValueError, wenn wir
+# # eine 0 als die Zahl übergeben, durch die
+# # geteilt werden soll
+# with self.assertRaises(ValueError):
+# src_function.my_division(10, 0)
+# # dieses Skript im unittest-Kontext ausführen
+# if __name__ == '__main__':
+# unittest.main()
+# =============================================================================
