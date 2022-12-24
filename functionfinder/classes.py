@@ -46,28 +46,24 @@ class projectdata():
         con.close()
 
     # Define drawing method
-    def drawplot(self):
-        # import seaborn as sns
+    def draw_train(self):
         import pandas as pd
         from matplotlib import pyplot as plt
         from matplotlib import style
         from pathlib import Path
 
         style.use(self._style)
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, trax = plt.subplots(figsize=(6, 4))
         for i in self.data.axes[1][1:]:
-            ax.plot(pd.to_numeric(self.data["x"]),
-                    pd.to_numeric(self.data[i]),
-                    label=i,
-                    linewidth=2)
-        #for i in self.data.axes[1][1:]:
-        #sns.lineplot(x="x", y="y1", data=self.data)
-        # ax.legend()
-        # ax.grid(True, color="k")
+            trax.plot(pd.to_numeric(self.data["x"]),
+                      pd.to_numeric(self.data[i]),
+                      label=i,
+                      linewidth=2)
         plt.ylabel(self.ylabel)
         plt.xlabel(self.xlabel)
         plt.title(self.title)
         plt.savefig(Path(self.fname))
+        plt.close()
 
 
 class idealdata(projectdata):
@@ -76,26 +72,26 @@ class idealdata(projectdata):
         self.matched = match_result
 
     # Define drawing method
-    def drawplot(self):
-        # import seaborn as sns
+    def draw_ideal(self):
         import pandas as pd
         from matplotlib import pyplot as plt
         from matplotlib import style
         from pathlib import Path
 
         style.use(self._style)
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, iax = plt.subplots(figsize=(6, 4))
         for i in self.matched.keys():
-            ax.plot(pd.to_numeric(self.data["x"]),
-                    pd.to_numeric(self.data[self.matched[i][0]]),
-                    label=i,
-                    linewidth=2)
+            iax.plot(pd.to_numeric(self.data["x"]),
+                     pd.to_numeric(self.data[self.matched[i][0]]),
+                     label=i,
+                     linewidth=2)
         # ax.legend()
         # ax.grid(True, color="k")
         plt.ylabel(self.ylabel)
         plt.xlabel(self.xlabel)
         plt.title(self.title)
         plt.savefig(Path(self.fname))
+        plt.close()
 
 
 class testdata(projectdata):
@@ -108,29 +104,28 @@ class testdata(projectdata):
         self.off = pd.read_sql_query(selstring, con)
         con.close()
 
-    def drawplot(self):
+    def draw_test(self):
         import seaborn as sns
         import pandas as pd
         from matplotlib import pyplot as plt
         from matplotlib import style
         from pathlib import Path
 
-# =============================================================================
-#         plot = self.data
-#         plot["x"] = pd.to_numeric(plot["x"])
-# =============================================================================
-
-# https://matplotlib.org/ (22-11-13)
+        # https://matplotlib.org/ (22-11-13)
         style.use(self._style)
-        # fig, ax = plt.subplots(figsize=(6, 4))
-        ax = sns.scatterplot(x=pd.to_numeric(self.data.x),
-                             y=pd.to_numeric(self.data.y),
-                             data=self.data,
-                             hue="Idealfunktion", style="Off_limit")
-        sns.move_legend(ax, bbox_to_anchor=(1.01, 1.02), loc='upper left')
+        #fig, tax = plt.subplots(figsize=(6, 4))
+        tax = sns.scatterplot(x=pd.to_numeric(self.data.x),
+                              y=pd.to_numeric(self.data.y),
+                              data=self.data,
+                              hue="Idealfunktion", style="Off_limit")
         # ax.legend()
-        # ax.grid(True, color="k")
+        lgd = sns.move_legend(tax,
+                              bbox_to_anchor=(1.01, 1.02),
+                              loc='upper left')
         plt.ylabel(self.ylabel)
         plt.xlabel(self.xlabel)
         plt.title(self.title)
-        plt.savefig(Path(self.fname))
+        plt.savefig(Path(self.fname),
+                    bbox_extra_artists=(lgd),
+                    bbox_inches='tight')
+        plt.close()

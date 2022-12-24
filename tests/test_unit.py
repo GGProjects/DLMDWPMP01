@@ -97,15 +97,17 @@ class test_sqlite(unittest.TestCase):
 # =============================================================================
 
 
-class test_df(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        pass
-
-    def setUp(self):
-        # self.plotname = "unittest_plot.png"
-        pass
-
+# =============================================================================
+# class test_df(unittest.TestCase):
+#     @classmethod
+#     def setUpClass(cls):
+#         pass
+# 
+#     def setUp(self):
+#         # self.plotname = "unittest_plot.png"
+#         pass
+# 
+# =============================================================================
 # =============================================================================
 #     def test_plot_frame(self):
 #         plotname = "output/figures/unittest_plot.pdf"
@@ -134,10 +136,12 @@ class test_df(unittest.TestCase):
 #         self.assertIsInstance(df, pd.DataFrame,
 #                               "Could not reimport table from Pandas-DB-entry"
 # =============================================================================
-    def tearDown(self):
-        #Path.unlink(Path(self.plotname))
-        pass
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+# =============================================================================
+#     def tearDown(self):
+#         # Path.unlink(Path(self.plotname))
+#         pass
+# 
+#     @classmethod
+#     def tearDownClass(cls):
+#         pass
+# =============================================================================

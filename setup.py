@@ -32,15 +32,18 @@ from unittest import TestLoader, TestResult
 from pathlib import Path
 
 try:
-    from functionfinder.log import logging
+    from functionfinder.setuplog import logging
     from functionfinder.config import datafiles, progfiles
 except ImportError:
     print("Initially required modules not found.")
     sys.exit("Please ensure complete download of this package")
 
+# Set logger for setup.py
+logger = logging.getLogger('ff-setup')
+
 # Log DocString and start of setup
-logging.info(__doc__)
-logging.info("Starting setup of functionfinder:")
+logger.info(__doc__)
+logger.info("Starting setup of functionfinder")
 
 
 # Define function to check required files
@@ -67,11 +70,11 @@ def check_required_files(files):
 
         if not len(missing) == 0:
             # Write Log
-            logging.critical("Missing File(s): %s", missing)
+            logger.critical("Missing File(s): %s", missing)
             # Stop execution
             sys.exit("Missing files! Please consult logfile.")
     else:
-        logging.info("All required files available")
+        logger.info("All required files available")
 
 
 # Define function to run unit-tests
@@ -84,36 +87,48 @@ def run_tests():
     before execution of setup-method.
 
     """
+    logger.info("Start UnitTests")
     test_loader = TestLoader()
     test_result = TestResult()
     test_directory = str('tests')
 
     test_suite = test_loader.discover(test_directory, pattern='test_*.py')
     test_suite.run(result=test_result)
-    test_result.unexpectedSuccesses
 
-    if test_result.wasSuccessful():
-        logging.info("UnitTests successful")
-        logging.debug(test_result)
-        if "test_table_from_csv" in str(test_result.unexpectedSuccesses):
-            logging.info("Direct import from csv to SQLite is possible.\n",
-                         "Host seems to be able to handle",
-                         "large csv files easily.")
+    # Evaluators
+    success = len(test_result.failures) == 0 & len(test_result.errors) == 0
+    csv_to_sql = "test_table_from_csv" in str(test_result.unexpectedSuccesses)
+
+    if success:
+        # if test_result.wasSuccessful():
+        logger.info("UnitTests successful")
+        print("UnitTests successful")
+        logger.debug(test_result)
+        if csv_to_sql:
+            # if "test_table_from_csv" in str(test_result.unexpectedSuccesses):
+            logtext = ("Direct import from csv to SQLite is possible. " +
+                       "Host seems to be able to handle" +
+                       "large csv files easily.")
+            logger.info(logtext)
     else:
-        logging.info("UnitTests not successful.\n",
-                     "Failed: ", test_result.failures,
-                     "Errors: ", test_result.errors)
-        #sys.exit("UnitTests not successful")
+        logger.critical("UnitTests not successful.")
+        logger.critical("Failed: %s", test_result.failures)
+        logger.critical("Errors: %s", test_result.errors)
+        sys.exit("UnitTests not successful")
 
 
 # Check required files
+logtext = "Check for required files"
+logger.info(logtext)
+print(logtext)
 check_required_files(datafiles)
 check_required_files(progfiles)
 
-# Execute UnitTests
-run_tests()
-
 # Setup package
+logtext = "Start installing required packages"
+logger.info(logtext)
+print(logtext)
+
 setup(
     name='functionfinder',
     version='1.0.0',
@@ -121,12 +136,22 @@ setup(
     author='Georg Grunsky',
     author_email='georg.grunsky@iu-study.org',
     packages=find_packages(include=['functionfinder']),
-    # install_requires=['pandas==0.23.3','numpy>=1.14.5'],
-    extras_require={'plotting': ['matplotlib>=2.2.0', 'jupyter']},
+    install_requires=['matplotlib==3.6.2',
+                      'pandas==1.5.2',
+                      'seaborn==0.12.1',
+                      'setuptools==65.5.0'],
     entry_points={
-        'console_scripts': ['ff = functionfinder.ffrunner:main']
-    }  # ,
-    # package_data={'exampleproject': ['data/schema.json']}
+        'console_scripts': ['ff = functionfinder.ffrunner:task']
+    }
 )
 
-logging.info("Setup of functionfinder successfull")
+# Execute UnitTests
+logtext = "Execute UnitTexts"
+logger.info(logtext)
+print(logtext)
+run_tests()
+
+logger.info("Setup of functionfinder successfull")
+print("Setup successfully finished")
+print("Please check setup-log in folder logs for further details.")
+print("You can now run \"ff\" to start programm!")

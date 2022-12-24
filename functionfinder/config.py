@@ -30,8 +30,9 @@ dbname = "DLMDWPMP01.db"
 
 #### Log_Config
 loglevel = "DEBUG"
+setuploglevel = "DEBUG"
 logpath = "output/logs"
-logfile_prefix = "testlog_"
+logfile_prefix = "ffrunnerlog_"
 setup_prefix = "setuplog_"
 
 #### Required files

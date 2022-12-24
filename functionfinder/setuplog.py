@@ -19,9 +19,9 @@
 
 import logging
 import time
-from .config import loglevel, logpath, logfile_prefix
+from .config import setuploglevel, logpath, setup_prefix
 
-logfile = logpath + "/" + logfile_prefix + time.strftime("%y%m%d_%H%M")
+logfile = logpath + "/" + setup_prefix + time.strftime("%y%m%d_%H%M")
 
 
 levels = {"DEBUG": logging.DEBUG,
@@ -36,4 +36,4 @@ logformat = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 # specify logging-config
 logging.basicConfig(filename=logfile, filemode="w",
                     format=logformat,
-                    level=levels[loglevel])
+                    level=levels[setuploglevel])

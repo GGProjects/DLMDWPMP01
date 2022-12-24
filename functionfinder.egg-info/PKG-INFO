@@ -1,8 +1,7 @@
 Metadata-Version: 2.1
 Name: functionfinder
-Version: 0.1.0
+Version: 1.0.0
 Summary: Solve task in DLMDWPMP01 python course of www.iu.de 
 Author: Georg Grunsky
 Author-email: georg.grunsky@iu-study.org
-Provides-Extra: plotting
 License-File: LICENSE

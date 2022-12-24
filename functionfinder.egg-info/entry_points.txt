@@ -1,2 +1,2 @@
 [console_scripts]
-ff = functionfinder.ffrunner:main
+ff = functionfinder.ffrunner:task

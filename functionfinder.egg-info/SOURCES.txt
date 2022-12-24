@@ -3,14 +3,11 @@ README.md
 setup.py
 functionfinder/__init__.py
 functionfinder/classes.py
-functionfinder/classes_example.py
 functionfinder/config.py
 functionfinder/datafunctions.py
-functionfinder/envfunctions.py
-functionfinder/exceptionhandling.py
 functionfinder/ffrunner.py
 functionfinder/log.py
-functionfinder/task.py
+functionfinder/setuplog.py
 functionfinder.egg-info/PKG-INFO
 functionfinder.egg-info/SOURCES.txt
 functionfinder.egg-info/dependency_links.txt

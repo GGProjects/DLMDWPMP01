@@ -97,8 +97,9 @@ def calculate_best_ideal(test_value, match_against, index,
         ideal_deviation = match_against[i][1]
         max_deviation = ideal_deviation*factor
 
-        ideal_value = float(idealdata.loc[idealdata["x"] == test_value[0],
-                                          ideal_col])
+        extract = idealdata.loc[idealdata["x"] == float(test_value[0]),
+                                ideal_col]
+        ideal_value = float(extract.values)
         deviation = abs(ideal_value - float(test_value[1]))
         too_much = deviation > max_deviation
 
