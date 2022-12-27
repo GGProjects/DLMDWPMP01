@@ -2,13 +2,117 @@
 
 \section{Die Aufgabenstellung}
 
- Im Rahmen dieser Ausarbeitung soll ein Python-Programm umgesetzt werden, welches "verwaschene" Trainingsdaten korrekt auf vier idealtypische Funktionen abbildet. Anschließend soll das gleiche Programm die Punkte eines Testdatensatzes anhand eines definierten, minimalen, statistischen Abstandswertes zu den gewählten idealtypischen Funktionen klassifizieren und jener Funktion zuordnen.
- 
- A good editor is essential. Sometimes combined editors and compilers (e.g. TeXShop) can be really productive. Make sure you learn the use of synchronized navigation then.
+Im Rahmen dieser Ausarbeitung soll ein Python-Programm umgesetzt werden, das "verwaschene" Trainingsdaten korrekt auf vier idealtypische Funktionen abbildet. Hierfür stehen 50 idealtypische Funktionen zur Auswahl. Maßgeblich für die Auswahl ist hierbei, gemäß Vorgabe, die kleinste Summe der quadratischen Abweichungen.
+Anschließend soll das gleiche Programm die Punkte eines Testdatensatzes, anhand eines definierten minimalen, statistischen Abstandswertes zu den gewählten idealtypischen Funktionen, klassifizieren und jeweils der entsprechenden Funktion zuordnen.
+Fokus der vorliegenden Aufgabenstellung, sowie dieser Arbeit war jedoch primär die Erlernung der Programmiersprache Python und nicht die ausschließliche Erfüllung der beschriebenen mathematischen Aspekte. Diese, isoliert betrachtet, hätte ebenso in Form eines einfachen Jupyter-Notebooks erarbeitet werden können.
 
-A vector graphic is one where strokes remain strokes even at the highest resolutions: e.g. the Figure~\ref{fig:spiral} or the Logo on the \hyperref[titlePage]{Titelblatt} (notice: you can click from here to there).
-Many tools generate vector-graphics for plots from any data-set. E.g. Plotly (with the use of the Browser-Print), MatPlotLib or even OpenOffice, LibreOffice or MS-Excel.
+\section{Installationshinweise}
 
+Das Programm wurde vom Autor mit dem Namen "functionfinder" betitelt und steht auf GitHub unter dem Link \begin{center}\url{https://github.com/GGProjects/DLMDWPMP01}\end{center} zum Download zur Verfügung.
+Für die Installation bietet es sich an, lokal eine virtuelle Pythonumgebung anzulegen. Anschließend kann nach Wechsel in das Modulverzeichnis, dieses mit dem Befehl
+\begin{center}"pip install -e ."\end{center}
+installiert werden.
+Mit der Installation wird die Verfügbarkeit der benötigten Dateien überprüft und UnitTests zur Sicherstellung der Funktionalität durchgeführt. Benötigte Pakete werden gegebenenfalls in der virtuellen Umgebung nachinstalliert. Im Rahmen der Installation wird außerdem ein Logfile mit der Bezeichnung "setuplog..." im Verzeichnis output/logs angelegt.
+Nach erfolgreicher Installation, kann das Programm aus der Konsole mit dem einfachen Aufruf "ff" ausgeführt werden.
+
+\section{Konfigurationshinweise}
+
+Über Änderungen in der Datei functionfinder/config.py können, falls benötigt, Verzeichnispfade, Log-Einstellungen, Bewertungsfunktionen, sowie auch die Pfade zu den vorliegenden Datendateien angepasst werden.
+
+Letzteres ermöglicht eine einfache Änderung der verwendeten Trainings-, Funktions- und Testdaten, um das Programm auch mit anderen als den, im Rahmen der Aufgabenstellung, bereitgestellten Daten auszuführen.
+
+Eine Anpassung der Bewertungsfunktionen bietet des weiteren die Möglichkeit, die zur Bewertung der Trainingsdaten herangezogene Funktion (der Standardwert ist hierfür die kleinste Summe der quadratischen Abweichungen) sowie den Faktor für den errechneten Fehlerwert, zur Klassifikation der Testdaten (der Standardwert ist, gemäß Aufgabenstellung, die Wurzel aus Zwei) zu verändern.
+
+\section{Struktur der Hausarbeit}
+
+Im Hauptteil der vorliegenden Hausarbeit wird zuerst auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
+Anschließend wird in einem weiteren Unterkapitel die Auswahl an idealtypischen Funktionen anhand der vorliegenden Trainingsdaten beschrieben und dargestellt.
+Das dritte Unterkapitel diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
+In der Zusammenfassung werden, anhand der dargestellten Ergebnisse, mögliche Anpassungen des Programms zur Verarbeitung größerer Datenmengen angesprochen und als potentielles Thema für eine weitere Hausarbeit zur Diskussion gestellt.
+
+\chapter{Hauptteil}
+
+\section{Bereitgestellte Datensätze}
+
+Im Zuge der Aufgabenstellung wurden, zur Bearbeitung dieser, drei Datensätze angefertigt und in Form unten aufgelisteter CSV-Dateien bereitgestellt.
+
+\begin{itemize}
+ \itemsep0pt
+ \item train.csv
+ \item ideal.csv
+ \item test.csv
+\end{itemize}
+
+Erstere beinhaltet eine Tabelle von vier "verwaschenen" Funktionen in den Spalten "y1" bis "y4" mit jeweils 400 Datenpunkten. Die folgende Tabelle zeigt die exemplarische Struktur des Trainingsdatensatzes.
+
+\begin{table}[H]
+\small
+\centering
+\csvautotabular[range={+5}]{../data/train.csv}
+\caption{Exemplarischer Auszug der Datei train.csv}
+\label{tab:Exemplarischer Auszug aus train.csv}
+\end{table} 
+
+
+Eine Visualisierung der Trainingsdaten lässt bereits optische Rückschlüsse auf passende idealtypische Funktionen zu.
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{../output/figures/train.png}
+\caption{Darstellung der bereitgestellten Trainingsdatensätze \cite{Gage:18}}\label{fig:train}
+\end{figure}
+
+Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen in den Spalten "y1" bis "y50". Wie, im Detail im folgenden Unterkapitel beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. Auf die Darstellung eines exemplarischen Auszuges wird daher an dieser Stelle verzichtet.
+
+%\begin{table}[H]
+%\small
+%\centering
+%\csvreader[
+%	tabular = |c|c|c|,
+%	range={+5},
+%	head to column names
+%]{../data/ideal.csv}{}
+%{}{\x & \y1 & \y50}
+%\csvautotabular[range={+5}]{../data/ideal.csv}
+%\caption{Exemplarischer Auszug der Datei ideal.csv}
+%\label{tab:Exemplarischer Auszug aus ideal.csv}
+%\end{table} 
+
+Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatensatz nur aus 100 einzelnen Datenpunkten. Diese werden in einer Spalte "y" der Datei test.csv zusammengefasst und sind nicht als zusammengehörige Funktion zu verstehen. 
+
+\begin{table}[H]
+\small
+\centering
+\csvautotabular[range={+5}]{../data/test.csv}
+\caption{Exemplarischer Auszug der Datei test.csv}
+\label{tab:Exemplarischer Auszug aus test.csv}
+\end{table} 
+
+In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener mit der geringsten Abweichung zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als Klassifikation der Testdaten bezeichnet. Diese wird im Unterkapitel "Klassifikation der Testdaten" im Detail behandelt.
+
+\section{Auswahl idealtypischer Funktionen}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{../output/figures/ideal.png}
+\caption{Darstellung der ausgewählten idealtypischen Funktionen \cite{Gage:18}}\label{fig:ideal}
+\end{figure}
+
+\section{Klassifikation der Testdaten}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{../output/figures/test.png}
+\caption{Klassifikation der Testdatensätze \cite{Gage:18}}\label{fig:test}
+\end{figure}
+
+
+\chapter{Zusammenfassung}
+
+
+
+
+
+% =========================================================
 \section{Literature References}
 Here is an example of a reference with a page-number: \cite[S. 6]{DueckKo:2016}
 

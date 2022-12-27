@@ -40,12 +40,13 @@ datafiles = {"ideal": "data/ideal.csv",
              "test": "data/test.csv",
              "train": "data/train.csv"}
 
-progfiles = ["functionfinder/envfunctions.py",
+progfiles = ["functionfinder/ffrunner.py",
+             "functionfinder/config.py",
              "functionfinder/datafunctions.py",
              "functionfinder/classes.py",
-             "functionfinder/exceptionhandling.py",
+             "functionfinder/setuplog.py",
              "functionfinder/log.py",
-             "tests/test_unittest.py"]
+             "tests/test_unit.py"]
 
 #### Calculations
 
@@ -56,5 +57,6 @@ def error_calculation(trainvalue, idealvalue):
     return(calcerror)
 
 
-# Factor for test data evaluation
+# Factor for test data evaluation w/ regards to calculated
+# error of training data
 factor = sqrt(2)
