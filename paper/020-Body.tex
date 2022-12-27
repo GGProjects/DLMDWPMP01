@@ -63,19 +63,20 @@ Eine Visualisierung der Trainingsdaten lässt bereits optische Rückschlüsse au
 
 Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen in den Spalten "y1" bis "y50". Wie, im Detail im folgenden Unterkapitel beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. Auf die Darstellung eines exemplarischen Auszuges wird daher an dieser Stelle verzichtet.
 
-%\begin{table}[H]
-%\small
-%\centering
-%\csvreader[
-%	tabular = |c|c|c|,
-%	range={+5},
-%	head to column names
-%]{../data/ideal.csv}{}
-%{}{\x & \y1 & \y50}
-%\csvautotabular[range={+5}]{../data/ideal.csv}
-%\caption{Exemplarischer Auszug der Datei ideal.csv}
-%\label{tab:Exemplarischer Auszug aus ideal.csv}
-%\end{table} 
+\begin{table}[H]
+\small
+\centering
+\csvreader[
+	tabular = ccccc,
+	range={+5},
+	late after line = \\\hline,
+	no head]%
+  {../data/ideal.csv}{}{%
+  \csvcoli & \csvcolii & \csvcoliii & \csvcoll & \csvcolli}
+%\csvautotabular[range={+5}]{../data/ideal.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoll & %\csvcolli}
+\caption{Exemplarischer Auszug der Datei ideal.csv}
+\label{tab:Exemplarischer Auszug aus ideal.csv}
+\end{table} 
 
 Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatensatz nur aus 100 einzelnen Datenpunkten. Diese werden in einer Spalte "y" der Datei test.csv zusammengefasst und sind nicht als zusammengehörige Funktion zu verstehen. 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  27 DEC 2022 15:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  27 DEC 2022 16:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -921,7 +921,7 @@ LaTeX Font Info:    Trying to load font information for TS1+txr on input line 4
 (C:\Program Files\MiKTeX\tex/latex/txfonts\ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
 )
-<../output/figures/train.png, id=91, 433.62pt x 289.08pt>
+<../output/figures/train.png, id=93, 433.62pt x 289.08pt>
 File: ../output/figures/train.png Graphic file (type png)
 <use ../output/figures/train.png>
 Package pdftex.def Info: ../output/figures/train.png  used on input line 60.
@@ -937,47 +937,41 @@ Package natbib Warning: Citation `Gage:18' on page 4 undefined on input line 61
 
 [4
 
- <../output/figures/train.png>]
-<../output/figures/ideal.png, id=100, 433.62pt x 289.08pt>
+ <../output/figures/train.png>] [5]
+<../output/figures/ideal.png, id=106, 433.62pt x 289.08pt>
 File: ../output/figures/ideal.png Graphic file (type png)
 <use ../output/figures/ideal.png>
 Package pdftex.def Info: ../output/figures/ideal.png  used on input line 109.
 (pdftex.def)             Requested size: 341.43306pt x 227.63405pt.
 
 
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 11
+Package natbib Warning: Citation `Gage:18' on page 6 undefined on input line 11
 0.
 
 
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 11
+Package natbib Warning: Citation `Gage:18' on page 6 undefined on input line 11
 0.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../output/figures/test.png, id=101, 528.2937pt x 332.442pt>
+<../output/figures/test.png, id=107, 528.2937pt x 332.442pt>
 File: ../output/figures/test.png Graphic file (type png)
 <use ../output/figures/test.png>
 Package pdftex.def Info: ../output/figures/test.png  used on input line 117.
 (pdftex.def)             Requested size: 341.43306pt x 214.85715pt.
 
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 11
+Package natbib Warning: Citation `Gage:18' on page 6 undefined on input line 11
 8.
 
 
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 11
+Package natbib Warning: Citation `Gage:18' on page 6 undefined on input line 11
 8.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5] [6 <../output/figures/ideal.png> <../output/figures/test.png>]
+[6 <../output/figures/ideal.png> <../output/figures/test.png>]
 chapter 3.
 
 Package natbib Warning: Citation `DueckKo:2016' on page 7 undefined on input li
 ne 130.
 
-<pics/spiral.pdf, id=112, 88.59094pt x 80.27197pt>
+<pics/spiral.pdf, id=114, 88.59094pt x 80.27197pt>
 File: pics/spiral.pdf Graphic file (type pdf)
 <use pics/spiral.pdf>
 Package pdftex.def Info: pics/spiral.pdf  used on input line 137.
@@ -1045,10 +1039,10 @@ Package rerunfilecheck Info: File `00-Main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20324 strings out of 476406
- 359866 string characters out of 2799372
- 1859787 words of memory out of 3000000
- 39988 multiletter control sequences out of 15000+600000
+ 20373 strings out of 476406
+ 360402 string characters out of 2799372
+ 1861787 words of memory out of 3000000
+ 40036 multiletter control sequences out of 15000+600000
  582856 words of font info for 321 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,10n,106p,10604b,595s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1061,9 +1055,9 @@ pe1/public/txfonts/txsy.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/u
 hvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on 00-Main.pdf (12 pages, 193472 bytes).
+Output written on 00-Main.pdf (12 pages, 194118 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 251 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  98994 words of extra memory for PDF output out of 106986 (max. 10000000)
 
