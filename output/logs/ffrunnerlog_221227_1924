@@ -1,0 +1,5 @@
+2022-12-27 19:24:35,234 - functionfinder - INFO - Start functionfinder main task
+2022-12-27 19:24:35,236 - functionfinder - INFO - Read CSV training data and ideal functions to SQLite-DB
+2022-12-27 19:24:35,244 - functionfinder - DEBUG - Direct sql-import worked.
+2022-12-27 19:24:35,251 - functionfinder - DEBUG - Direct sql-import worked.
+2022-12-27 19:24:35,251 - functionfinder - INFO - loading training data to class "projectdata" data
