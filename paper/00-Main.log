@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  29 DEC 2022 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  29 DEC 2022 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -301,7 +301,7 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
-Package scrhack Info: loading listings hack on input line 38.
+Package scrhack Info: loading listings hack on input line 40.
 
 (C:\Program Files\MiKTeX\tex/latex/koma-script\listings.hak
 File: listings.hak 2022/10/12 v3.38 KOMA-Script scrhack part (hacking package l
@@ -355,7 +355,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks19
 \@floatcapt=\box57
 )
-Package scrhack Info: loading float hack on input line 42.
+Package scrhack Info: loading float hack on input line 44.
 
 (C:\Program Files\MiKTeX\tex/latex/koma-script\float.hak
 File: float.hak 2022/10/12 v3.38 KOMA-Script scrhack part (hacking package floa
@@ -390,7 +390,7 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 (C:\Program Files\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 )
-Package scrhack Info: loading setspace hack on input line 52.
+Package scrhack Info: loading setspace hack on input line 54.
 
 (C:\Program Files\MiKTeX\tex/latex/koma-script\setspace.hak
 File: setspace.hak 2022/10/12 v3.38 KOMA-Script scrhack part (hacking package s
@@ -511,7 +511,7 @@ Package: xstring 2021/07/21 v1.84 String manipulations (CT)
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 71.
+(scrhack)             need that hack, on input line 73.
 
 (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
@@ -648,61 +648,61 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (00-Main.aux (001-Titlepage.aux) (020-Body.aux) (070-Pledge.aux))
 \openout1 = `00-Main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 72.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 74.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
-72.
+74.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 74.
 LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 
-72.
+74.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 74.
 LaTeX Font Info:    Trying to load font information for OMX+txex on input line 
-72.
+74.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 74.
 LaTeX Font Info:    Trying to load font information for U+txexa on input line 7
-2.
+4.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-Package scrbase Info: activating english \abstractname on input line 72.
-Package scrbase Info: activating english \partname on input line 72.
-Package scrbase Info: activating english \chaptername on input line 72.
-Package scrbase Info: activating english \appendixname on input line 72.
-Package scrbase Info: activating english \figurename on input line 72.
-Package scrbase Info: activating english \tablename on input line 72.
-Package scrbase Info: activating english \contentsname on input line 72.
-Package scrbase Info: activating english \listfigurename on input line 72.
-Package scrbase Info: activating english \listtablename on input line 72.
-Package scrbase Info: activating english \bibname on input line 72.
-Package scrbase Info: activating english \indexname on input line 72.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+Package scrbase Info: activating english \abstractname on input line 74.
+Package scrbase Info: activating english \partname on input line 74.
+Package scrbase Info: activating english \chaptername on input line 74.
+Package scrbase Info: activating english \appendixname on input line 74.
+Package scrbase Info: activating english \figurename on input line 74.
+Package scrbase Info: activating english \tablename on input line 74.
+Package scrbase Info: activating english \contentsname on input line 74.
+Package scrbase Info: activating english \listfigurename on input line 74.
+Package scrbase Info: activating english \listtablename on input line 74.
+Package scrbase Info: activating english \bibname on input line 74.
+Package scrbase Info: activating english \indexname on input line 74.
 \c@lstlisting=\count304
-Package scrhack Info: undefining \float@addtolists on input line 72.
+Package scrhack Info: undefining \float@addtolists on input line 74.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -764,25 +764,25 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 72.
-Package microtype Info: Applying patch `item' on input line 72.
-Package microtype Info: Applying patch `toc' on input line 72.
-Package microtype Info: Applying patch `eqnum' on input line 72.
-Package microtype Info: Applying patch `footnote' on input line 72.
+LaTeX Info: Redefining \microtypecontext on input line 74.
+Package microtype Info: Applying patch `item' on input line 74.
+Package microtype Info: Applying patch `toc' on input line 74.
+Package microtype Info: Applying patch `eqnum' on input line 74.
+Package microtype Info: Applying patch `footnote' on input line 74.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 72.
+LaTeX Info: Redefining \showhyphens on input line 74.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 (C:\Program Files\MiKTeX\tex/latex/microtype\mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 72.
+Package hyperref Info: Link coloring OFF on input line 74.
  (00-Main.out)
 (00-Main.out)
 \@outlinefile=\write3
@@ -795,7 +795,7 @@ Class scrreprt Info: loading recommended package `bookmark'.
 (scrreprt)           `bookmarkpackage=false' before \begin{document} and
 (scrreprt)           you can avoid this message adding:
 (scrreprt)             \usepackage{bookmark}
-(scrreprt)           before \begin{document} on input line 72.
+(scrreprt)           before \begin{document} on input line 74.
  (C:\Program Files\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 
@@ -846,27 +846,27 @@ File: utxsyc.fd 2000/12/15 v3.1
 
 {C:/Users/ChSnsMgt/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./pics/lo
 go.pdf>]
-LaTeX Font Info:    Trying to load font information for T1+txss on input line 8
-8.
+LaTeX Font Info:    Trying to load font information for T1+txss on input line 9
+0.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\t1txss.fd
 File: t1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 88.
+(Font)              scaled to size 10.40245pt on input line 90.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `txss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/txss/b/n' in size <10.95> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 88.
+(Font)              Font shape `T1/txss/bx/n' tried instead on input line 90.
 LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 10.40245pt on input line 88.
+(Font)              scaled to size 10.40245pt on input line 90.
 LaTeX Font Info:    Font shape `T1/txss/b/n' in size <14.4> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 88.
+(Font)              Font shape `T1/txss/bx/n' tried instead on input line 90.
 LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 13.67995pt on input line 88.
-Package tocbasic Info: character protrusion at toc deactivated on input line 88
+(Font)              scaled to size 13.67995pt on input line 90.
+Package tocbasic Info: character protrusion at toc deactivated on input line 90
 .
  (00-Main.toc)
 \tf@toc=\write4
@@ -878,7 +878,7 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 88
 
 ]
 chapter I.
-Package tocbasic Info: character protrusion at lof deactivated on input line 89
+Package tocbasic Info: character protrusion at lof deactivated on input line 91
 .
 (00-Main.lof
 LaTeX Font Info:    Font shape `T1/txr/b/n' in size <10.95> not available
@@ -908,28 +908,28 @@ Package natbib Warning: Citation `Gage:18' on page III undefined on input line
 
 ]
 chapter II.
-Package tocbasic Info: character protrusion at lot deactivated on input line 90
+Package tocbasic Info: character protrusion at lol deactivated on input line 92
 .
-(00-Main.lot)
-\tf@lot=\write6
-\openout6 = `00-Main.lot'.
+(00-Main.lol)
+\tf@lol=\write6
+\openout6 = `00-Main.lol'.
 
  [4
 
 ]
 chapter III.
-Package tocbasic Info: character protrusion at lol deactivated on input line 91
+Package tocbasic Info: character protrusion at lot deactivated on input line 93
 .
-(00-Main.lol)
-\tf@lol=\write7
-\openout7 = `00-Main.lol'.
+(00-Main.lot)
+\tf@lot=\write7
+\openout7 = `00-Main.lot'.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.100 \include{020-Body}
+l.103 \include{020-Body}
                          [1
 
 ]
@@ -1109,9 +1109,6 @@ Package pdftex.def Info: pics/logo.pdf  used on input line 5.
 Package natbib Warning: There were undefined citations.
 
 (00-Main.aux (001-Titlepage.aux) (020-Body.aux) (070-Pledge.aux))
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `00-Main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
@@ -1133,7 +1130,7 @@ pe1/public/txfonts/txex.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts
 ram Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/font
 s/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on 00-Main.pdf (17 pages, 232590 bytes).
+Output written on 00-Main.pdf (17 pages, 232591 bytes).
 PDF statistics:
  345 PDF objects out of 1000 (max. 8388607)
  100 named destinations out of 1000 (max. 500000)
