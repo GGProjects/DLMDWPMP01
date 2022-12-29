@@ -1,4 +1,4 @@
-2022-12-27 19:24:26,876 - ff-setup - INFO - 
+2022-12-29 10:02:02,603 - ff-setup - INFO - 
 # =========================================================================
 # Created on Fri Nov 18 08:45:16 2022
 # in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
@@ -22,11 +22,11 @@
 #
 # =========================================================================
 
-2022-12-27 19:24:26,876 - ff-setup - INFO - Starting setup of functionfinder
-2022-12-27 19:24:26,877 - ff-setup - INFO - Check for required files
-2022-12-27 19:24:26,877 - ff-setup - INFO - All required files available
-2022-12-27 19:24:26,877 - ff-setup - INFO - Start installing required packages
-2022-12-27 19:24:27,151 - ff-setup - INFO - Execute UnitTexts
-2022-12-27 19:24:27,151 - ff-setup - INFO - Start UnitTests
-2022-12-27 19:24:27,160 - ff-setup - INFO - UnitTests successful
-2022-12-27 19:24:27,160 - ff-setup - INFO - Setup of functionfinder successfull
+2022-12-29 10:02:02,603 - ff-setup - INFO - Starting setup of functionfinder
+2022-12-29 10:02:02,604 - ff-setup - INFO - Check for required files
+2022-12-29 10:02:02,604 - ff-setup - INFO - All required files available
+2022-12-29 10:02:02,604 - ff-setup - INFO - Start installing required packages
+2022-12-29 10:02:02,815 - ff-setup - INFO - Execute UnitTexts
+2022-12-29 10:02:02,815 - ff-setup - INFO - Start UnitTests
+2022-12-29 10:02:03,167 - ff-setup - INFO - UnitTests successful
+2022-12-29 10:02:03,167 - ff-setup - INFO - Setup of functionfinder successfull

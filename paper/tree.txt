@@ -1,0 +1,26 @@
+DMLDWPMP01.
+|   requirements.txt
+|   setup.py
+|   
++---data
+|   |   ideal.csv
+|   |   test.csv
+|   \   train.csv
+|       
++---functionfinder
+|   |   __init__.py
+|   |   config.py
+|   |   datafunctions.py
+|   |   log.py
+|   |   setuplog.py
+|   |   ffrunner.py
+|   \   classes.py
+|       
++---output
+|   +---logs
+|   +---figures
+|   +---data
+|           
+\---tests
+    |   __init__.py
+    \   test_unit.py
