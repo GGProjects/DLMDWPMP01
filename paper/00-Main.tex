@@ -30,8 +30,8 @@ numbers=noendperiod, % Don't add a period at the end of a chapter number
 \usepackage{txfonts} % Use a Times-new-roman open-source clone
 
 % if you insist on Arial... then uncomment the following
-%\usepackage{helvet}
-%\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{csvsimple-l3}
 \usepackage{booktabs}
@@ -52,17 +52,18 @@ numbers=noendperiod, % Don't add a period at the end of a chapter number
 
 \usepackage[onehalfspacing]{setspace} % line space 1,5
 
-\setlength{\parindent}{6pt} % Indent at start of paragraphs  6pt
+\setlength{\parindent}{0pt} % Indent at start of paragraphs 0pt %originally 6pt
+\setlength{\parskip}{6pt}
 
 \usepackage[utf8]{inputenc} %UTF-8 to encode many characters => for many characters, you can just input the character and avoid a macro
 
-\usepackage[english]{babel} % english hyphenations
-%\usepackage[german]{babel} % german hyphenations
+%\usepackage[english]{babel} % english hyphenations
+\usepackage[ngerman]{babel} % german hyphenations
 \usepackage[T1]{fontenc} %wichtig für Trennung von Wörtern mit Umlauten
 \usepackage{microtype} % align margins
 
 \usepackage{graphicx} % import graphics
-\usepackage{placeins}% places the graphics within text
+\usepackage{placeins} % places the graphics within text
 
 % Abbreviation's directory
 % printonlyused - only if used
@@ -89,7 +90,7 @@ numbers=noendperiod, % Don't add a period at the end of a chapter number
 
 \tableofcontents %table of contents
 \listoffigures %List of figures
-\lstlistoflistings %list of listings
+%\lstlistoflistings %list of listings
 \listoftables %list of tables
 
 

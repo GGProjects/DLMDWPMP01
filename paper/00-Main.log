@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  29 DEC 2022 15:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  30 DEC 2022 13:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -250,6 +250,9 @@ LaTeX Font Info:    Redeclaring math symbol \mathsterling on input line 164.
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 591.
 LaTeX Info: Redefining \not on input line 1043.
 )
+(C:\Program Files\MiKTeX\tex/latex/psnfss\helvet.sty
+Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
 (C:\Program Files\MiKTeX\tex/latex/csvsimple\csvsimple-l3.sty
 Package: csvsimple-l3 2022/09/20 v2.3.2 LaTeX3 CSV file processing
 \g__csvsim_col_int=\count198
@@ -428,26 +431,26 @@ Package: babel 2022/11/30 3.83 The Babel package
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(C:\Program Files\MiKTeX\tex/latex/babel-english\english.ldf
-Language: english 2017/06/06 v3.3r English support from the babel system
-Package babel Info: Hyphen rules for 'canadian' set to \l@english
-(babel)             (\language0). Reported on input line 102.
-Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language73). Reported on input line 105.
-Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language73). Reported on input line 108.
-))
-(C:\Program Files\MiKTeX\tex/generic/babel/locale/en\babel-english.tex
-Package babel Info: Importing font and identification data for english
-(babel)             from babel-en.ini. Reported on input line 11.
+(C:\Program Files\MiKTeX\tex/latex/babel-german\ngerman.ldf
+Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthogra
+phy)
+
+(C:\Program Files\MiKTeX\tex/latex/babel-german\ngermanb.ldf
+Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthogr
+aphy)
+Package babel Info: Making " an active character on input line 122.
+)))
+(C:\Program Files\MiKTeX\tex/generic/babel/locale/de\babel-ngerman.tex
+Package babel Info: Importing font and identification data for ngerman
+(babel)             from babel-de.ini. Reported on input line 11.
 )
 (C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+txr on input line 11
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 11
 2.
 
-(C:\Program Files\MiKTeX\tex/latex/txfonts\t1txr.fd
-File: t1txr.fd 2000/12/15 v3.1
+(C:\Program Files\MiKTeX\tex/latex/psnfss\t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 ))
 (C:\Program Files\MiKTeX\tex/latex/microtype\microtype.sty
 Package: microtype 2022/06/23 v3.0f Micro-typographical refinements (RS)
@@ -511,7 +514,7 @@ Package: xstring 2021/07/21 v1.84 String manipulations (CT)
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 73.
+(scrhack)             need that hack, on input line 74.
 
 (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
@@ -648,61 +651,50 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (00-Main.aux (001-Titlepage.aux) (020-Body.aux) (070-Pledge.aux))
 \openout1 = `00-Main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 74.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 75.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
-74.
+75.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 75.
 LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 
-74.
+75.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 75.
 LaTeX Font Info:    Trying to load font information for OMX+txex on input line 
-74.
+75.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 75.
 LaTeX Font Info:    Trying to load font information for U+txexa on input line 7
-4.
+5.
 
 (C:\Program Files\MiKTeX\tex/latex/txfonts\utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-Package scrbase Info: activating english \abstractname on input line 74.
-Package scrbase Info: activating english \partname on input line 74.
-Package scrbase Info: activating english \chaptername on input line 74.
-Package scrbase Info: activating english \appendixname on input line 74.
-Package scrbase Info: activating english \figurename on input line 74.
-Package scrbase Info: activating english \tablename on input line 74.
-Package scrbase Info: activating english \contentsname on input line 74.
-Package scrbase Info: activating english \listfigurename on input line 74.
-Package scrbase Info: activating english \listtablename on input line 74.
-Package scrbase Info: activating english \bibname on input line 74.
-Package scrbase Info: activating english \indexname on input line 74.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
 \c@lstlisting=\count304
-Package scrhack Info: undefining \float@addtolists on input line 74.
+Package scrhack Info: undefining \float@addtolists on input line 75.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -764,27 +756,27 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 74.
-Package microtype Info: Applying patch `item' on input line 74.
-Package microtype Info: Applying patch `toc' on input line 74.
-Package microtype Info: Applying patch `eqnum' on input line 74.
-Package microtype Info: Applying patch `footnote' on input line 74.
+LaTeX Info: Redefining \microtypecontext on input line 75.
+Package microtype Info: Applying patch `item' on input line 75.
+Package microtype Info: Applying patch `toc' on input line 75.
+Package microtype Info: Applying patch `eqnum' on input line 75.
+Package microtype Info: Applying patch `footnote' on input line 75.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 74.
+LaTeX Info: Redefining \showhyphens on input line 75.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
-(C:\Program Files\MiKTeX\tex/latex/microtype\mt-ptm.cfg
-File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
-)
-Package hyperref Info: Link coloring OFF on input line 74.
- (00-Main.out)
-(00-Main.out)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `phv' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package hyperref Info: Link coloring OFF on input line 75.
+(00-Main.out) (00-Main.out)
 \@outlinefile=\write3
 \openout3 = `00-Main.out'.
 
@@ -795,8 +787,9 @@ Class scrreprt Info: loading recommended package `bookmark'.
 (scrreprt)           `bookmarkpackage=false' before \begin{document} and
 (scrreprt)           you can avoid this message adding:
 (scrreprt)             \usepackage{bookmark}
-(scrreprt)           before \begin{document} on input line 74.
- (C:\Program Files\MiKTeX\tex/latex/bookmark\bookmark.sty
+(scrreprt)           before \begin{document} on input line 75.
+
+(C:\Program Files\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 
 (C:\Program Files\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
@@ -811,12 +804,13 @@ File: pics/logo.pdf Graphic file (type pdf)
 <use pics/logo.pdf>
 Package pdftex.def Info: pics/logo.pdf  used on input line 7.
 (pdftex.def)             Requested size: 241.84846pt x 80.4761pt.
-LaTeX Font Info:    Font shape `T1/txr/b/n' in size <14.4> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 35.
 LaTeX Font Info:    Trying to load font information for OT1+txr on input line 8
 1.
 (C:\Program Files\MiKTeX\tex/latex/txfonts\ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
+)
+(C:\Program Files\MiKTeX\tex/latex/microtype\mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+txmia on input line 8
 1.
@@ -846,43 +840,24 @@ File: utxsyc.fd 2000/12/15 v3.1
 
 {C:/Users/ChSnsMgt/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./pics/lo
 go.pdf>]
-LaTeX Font Info:    Trying to load font information for T1+txss on input line 9
-0.
-
-(C:\Program Files\MiKTeX\tex/latex/txfonts\t1txss.fd
-File: t1txss.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 90.
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `txss' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T1/txss/b/n' in size <10.95> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 90.
-LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 10.40245pt on input line 90.
-LaTeX Font Info:    Font shape `T1/txss/b/n' in size <14.4> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 90.
-LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 13.67995pt on input line 90.
-Package tocbasic Info: character protrusion at toc deactivated on input line 90
+Package tocbasic Info: character protrusion at toc deactivated on input line 91
 .
  (00-Main.toc)
 \tf@toc=\write4
 \openout4 = `00-Main.toc'.
 
- [2
+[2
 
 
 
 ]
 chapter I.
-Package tocbasic Info: character protrusion at lof deactivated on input line 91
+Package tocbasic Info: character protrusion at lof deactivated on input line 92
 .
 (00-Main.lof
-LaTeX Font Info:    Font shape `T1/txr/b/n' in size <10.95> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 7.
+
+Package natbib Warning: Citation `Gage:18' on page III undefined on input line 
+6.
 
 
 Package natbib Warning: Citation `Gage:18' on page III undefined on input line 
@@ -894,11 +869,7 @@ Package natbib Warning: Citation `Gage:18' on page III undefined on input line
 
 
 Package natbib Warning: Citation `Gage:18' on page III undefined on input line 
-9.
-
-
-Package natbib Warning: Citation `Gage:18' on page III undefined on input line 
-11.
+10.
 
 )
 \tf@lof=\write5
@@ -908,28 +879,18 @@ Package natbib Warning: Citation `Gage:18' on page III undefined on input line
 
 ]
 chapter II.
-Package tocbasic Info: character protrusion at lol deactivated on input line 92
-.
-(00-Main.lol)
-\tf@lol=\write6
-\openout6 = `00-Main.lol'.
-
- [4
-
-]
-chapter III.
-Package tocbasic Info: character protrusion at lot deactivated on input line 93
+Package tocbasic Info: character protrusion at lot deactivated on input line 94
 .
 (00-Main.lot)
-\tf@lot=\write7
-\openout7 = `00-Main.lot'.
+\tf@lot=\write6
+\openout6 = `00-Main.lot'.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.103 \include{020-Body}
+l.104 \include{020-Body}
                          [1
 
 ]
@@ -943,10 +904,8 @@ as been already used, duplicate ignored
 l.1 \chapter{Einleitung}
                         
 chapter 1.
-LaTeX Font Info:    Font shape `T1/txss/b/n' in size <12> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 3.
-LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 11.39996pt on input line 3.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
 2.
 (C:\Program Files\MiKTeX\tex/latex/txfonts\t1txtt.fd
@@ -959,22 +918,20 @@ Package microtype Info: Loading generic protrusion settings for font family
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 30.
  (tree.txt
-LaTeX Font Info:    Trying to load font information for TS1+txr on input line 5
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 5
 .
 
-(C:\Program Files\MiKTeX\tex/latex/txfonts\ts1txr.fd
-File: ts1txr.fd 2000/12/15 v3.1
-)) [2
+(C:\Program Files\MiKTeX\tex/latex/psnfss\ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `phv' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+) [2
 
 
-]
-Overfull \hbox (6.46216pt too wide) in paragraph at lines 43--44
-\T1/txr/m/n/10.95 (-20) Über Än-derun-gen in der Datei \T1/txr/m/it/10.95 (-20)
- func-tion-find-er/-con-fig.py \T1/txr/m/n/10.95 (-20) kön-nen, falls benötigt,
- Verze-ich-nisp-fade, Log-Einstellungen,
- []
-
-[3] [4]
+] [3] [4]
 pdfTeX warning (ext4): destination with the same identifier (name{chapter.2}) h
 as been already used, duplicate ignored
 <to be read again> 
@@ -982,11 +939,11 @@ as been already used, duplicate ignored
 l.56 \chapter{Hauptteil}
                         
 chapter 2.
-<../output/figures/train.png, id=137, 433.62pt x 289.08pt>
+<../output/figures/train.png, id=127, 433.62pt x 289.08pt>
 File: ../output/figures/train.png Graphic file (type png)
 <use ../output/figures/train.png>
 Package pdftex.def Info: ../output/figures/train.png  used on input line 83.
-(pdftex.def)             Requested size: 341.43306pt x 227.63405pt.
+(pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
 
 Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 84
 .
@@ -994,103 +951,109 @@ Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 84
 
 Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 84
 .
-
-[5
-
- <../output/figures/train.png>] [6]
-(C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [7]
-<../output/figures/ideal.png, id=162, 433.62pt x 289.08pt>
-File: ../output/figures/ideal.png Graphic file (type png)
-<use ../output/figures/ideal.png>
-Package pdftex.def Info: ../output/figures/ideal.png  used on input line 168.
-(pdftex.def)             Requested size: 341.43306pt x 227.63405pt.
-
-
-Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 16
-9.
-
-
-Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 16
-9.
-
-[8 <../output/figures/ideal.png>]
-<../output/figures/test.png, id=168, 528.2937pt x 332.442pt>
-File: ../output/figures/test.png Graphic file (type png)
-<use ../output/figures/test.png>
-Package pdftex.def Info: ../output/figures/test.png  used on input line 221.
-(pdftex.def)             Requested size: 341.43306pt x 214.85715pt.
-
-
-Package natbib Warning: Citation `Gage:18' on page 9 undefined on input line 22
-2.
-
-
-Package natbib Warning: Citation `Gage:18' on page 9 undefined on input line 22
-2.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9] [10 <../output/figures/test.png>]
-pdfTeX warning (ext4): destination with the same identifier (name{chapter.3}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.226 \chapter{Zusammenfassung}
-                               
+[5
+
+] [6 <../output/figures/train.png>] [7]
+(C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+<../output/figures/ideal.png, id=148, 433.62pt x 289.08pt>
+File: ../output/figures/ideal.png Graphic file (type png)
+<use ../output/figures/ideal.png>
+Package pdftex.def Info: ../output/figures/ideal.png  used on input line 168.
+(pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
+
+
+Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 16
+9.
+
+
+Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 16
+9.
+
+[8 <../output/figures/ideal.png>] [9]
+Overfull \hbox (72.46432pt too wide) in paragraph at lines 222--226
+[]\T1/phv/m/n/10.95 (-20) Berechnung in Be-rück-sich-ti-gung auf $\OML/txmi/m/i
+t/10.95 a$ \T1/phv/m/n/10.95 (-20) y33 57.424227/31.75243110139478 = 1.80849859
+39069573268419895590189
+ []
+
+<../output/figures/test.png, id=163, 528.2937pt x 332.442pt>
+File: ../output/figures/test.png Graphic file (type png)
+<use ../output/figures/test.png>
+Package pdftex.def Info: ../output/figures/test.png  used on input line 232.
+(pdftex.def)             Requested size: 369.88582pt x 232.7636pt.
+
+Package natbib Warning: Citation `Gage:18' on page 10 undefined on input line 2
+33.
+
+
+Package natbib Warning: Citation `Gage:18' on page 10 undefined on input line 2
+33.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10] [11 <../output/figures/test.png>]
 chapter 3.
 
-Package natbib Warning: Citation `DueckKo:2016' on page 11 undefined on input l
-ine 235.
+Package natbib Warning: Citation `DueckKo:2016' on page 12 undefined on input l
+ine 256.
 
-<pics/spiral.pdf, id=192, 88.59094pt x 80.27197pt>
+<pics/spiral.pdf, id=188, 88.59094pt x 80.27197pt>
 File: pics/spiral.pdf Graphic file (type pdf)
 <use pics/spiral.pdf>
-Package pdftex.def Info: pics/spiral.pdf  used on input line 242.
+Package pdftex.def Info: pics/spiral.pdf  used on input line 263.
 (pdftex.def)             Requested size: 227.62204pt x 206.27573pt.
 
-Package natbib Warning: Citation `Gage:18' on page 11 undefined on input line 2
-43.
+Package natbib Warning: Citation `Gage:18' on page 12 undefined on input line 2
+64.
 
 
-Package natbib Warning: Citation `Gage:18' on page 11 undefined on input line 2
-43.
+Package natbib Warning: Citation `Gage:18' on page 12 undefined on input line 2
+64.
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 254--255
-[]\T1/txr/m/n/10 (+20) mecatronics spe-cial-
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12
+
+]
+
+Package natbib Warning: Citation `DueckKo:2016' on page 13 undefined on input l
+ine 285.
+
+
+Package natbib Warning: Citation `DueckKo:2016' on page 13 undefined on input l
+ine 285.
+
+[13 <./pics/spiral.pdf>]
+Overfull \hbox (0.76733pt too wide) in paragraph at lines 314--315
+[]\T1/phv/m/n/10.95 (-20) Formulæ can be gi-ven a num-ber and a la-bel. Num-be-
+ring hap-pens au-to-ma-ti-cal-ly with [][]\T1/txtt/m/n/10.95 \begin{equation}
  []
 
 
-Package natbib Warning: Citation `DueckKo:2016' on page 11 undefined on input l
-ine 264.
+Package natbib Warning: Citation `Wolfram_alpha' on page 14 undefined on input 
+line 333.
 
 
-Package natbib Warning: Citation `DueckKo:2016' on page 11 undefined on input l
-ine 264.
-
-[11
-
- <./pics/spiral.pdf>]
-
-Package natbib Warning: Citation `Wolfram_alpha' on page 12 undefined on input 
-line 312.
+Package natbib Warning: Citation `con:infra' on page 14 undefined on input line
+ 341.
 
 
-Package natbib Warning: Citation `con:infra' on page 12 undefined on input line
- 320.
+Package natbib Warning: Citation `sammelband' on page 14 undefined on input lin
+e 343.
 
 
-Package natbib Warning: Citation `sammelband' on page 12 undefined on input lin
-e 322.
+Package natbib Warning: Citation `article1' on page 14 undefined on input line 
+345.
 
-
-Package natbib Warning: Citation `article1' on page 12 undefined on input line 
-324.
-
-) [12]
+) [14]
 No file 00-Main.bbl.
 \openout2 = `070-Pledge.aux'.
 
@@ -1099,7 +1062,7 @@ File: pics/logo.pdf Graphic file (type pdf)
 <use pics/logo.pdf>
 Package pdftex.def Info: pics/logo.pdf  used on input line 5.
 (pdftex.def)             Requested size: 96.19437pt x 32.00908pt.
-) [13
+) [15
 
 
 
@@ -1113,26 +1076,24 @@ Package rerunfilecheck Info: File `00-Main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22449 strings out of 476406
- 388126 string characters out of 2799372
- 1899787 words of memory out of 3000000
- 41942 multiletter control sequences out of 15000+600000
- 590020 words of font info for 383 fonts, out of 8000000 for 9000
+ 22433 strings out of 476406
+ 388762 string characters out of 2799372
+ 1897787 words of memory out of 3000000
+ 42009 multiletter control sequences out of 15000+600000
+ 581710 words of font info for 313 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,14n,106p,10604b,1455s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 108i,14n,106p,10604b,1457s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
-/fonts/type1/public/txfonts/rtcxr.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
-ic/txfonts/rtxb.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/rtxi.pf
-b><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/rtxr.pfb><C:/Program File
-s/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/Program Files/MiKTeX/fonts/ty
-pe1/public/txfonts/txex.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts
-/txsy.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Prog
-ram Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/font
-s/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utm
-ri8a.pfb>
-Output written on 00-Main.pdf (17 pages, 232591 bytes).
+/fonts/type1/public/txfonts/rtxr.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
+c/txfonts/t1xtt.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txex.pf
+b><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Program File
+s/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uh
+vro8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program
+ Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 00-Main.pdf (18 pages, 223901 bytes).
 PDF statistics:
- 345 PDF objects out of 1000 (max. 8388607)
- 100 named destinations out of 1000 (max. 500000)
- 109242 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
+ 82610 words of extra memory for PDF output out of 89155 (max. 10000000)
 

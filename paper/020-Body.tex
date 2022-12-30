@@ -2,7 +2,7 @@
 
 \section{Die Aufgabenstellung}
 
-Im Rahmen der Aufgabenstellung zum Kurs "DLMDWPMP01 – Programmieren mit Python" soll ein Python-Programm umgesetzt werden, das "verwaschene" Trainingsdaten korrekt auf vier idealtypische Funktionen abbildet. Hierfür stehen 50 idealtypische Funktionen zur Auswahl. Maßgeblich für die Auswahl ist hierbei, gemäß Vorgabe, die kleinste Summe der quadratischen Abweichungen (Least-Square).
+Im Rahmen der Aufgabenstellung zum Kurs DLMDWPMP01 – Programmieren mit Python soll ein Python-Programm umgesetzt werden, das verwaschene Trainingsdaten korrekt auf vier idealtypische Funktionen abbildet. Hierfür stehen 50 idealtypische Funktionen zur Auswahl. Maßgeblich für die Auswahl ist hierbei, gemäß Vorgabe, die kleinste Summe der quadratischen Abweichungen (Least-Square).
 Anschließend soll das gleiche Programm die Punkte eines Testdatensatzes, anhand eines definierten minimalen, statistischen Abstandswertes zu den gewählten idealtypischen Funktionen, klassifizieren und jeweils der entsprechenden Funktion zuordnen.
 Fokus der vorliegenden Aufgabenstellung, sowie dieser Arbeit war jedoch primär die Erlernung der Programmiersprache Python und nicht die ausschließliche Erfüllung der beschriebenen mathematischen Aspekte. Diese, isoliert betrachtet, hätte ebenso in Form eines einfachen Jupyter-Notebooks erarbeitet werden können.
 
@@ -49,9 +49,9 @@ Eine Anpassung der Bewertungsfunktionen bietet des weiteren die Möglichkeit, di
 \section{Struktur der Hausarbeit}
 
 Im Hauptteil der vorliegenden Hausarbeit wird zuerst auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
-Anschließend wird in einem weiteren Unterkapitel die Auswahl an idealtypischen Funktionen anhand der vorliegenden Trainingsdaten beschrieben und dargestellt.
-Das dritte Unterkapitel diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
-In der Zusammenfassung werden, anhand der dargestellten Ergebnisse, mögliche Anpassungen des Programms zur Verarbeitung größerer Datenmengen angesprochen und als potentielles Thema für eine weitere Hausarbeit zur Diskussion gestellt.
+Anschließend wird in einem weiteren Abschnitt die Auswahl an idealtypischen Funktionen anhand der vorliegenden Trainingsdaten beschrieben und dargestellt.
+Der dritte Abschnitt diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
+In der Zusammenfassung werden, anhand der dargestellten Ergebnisse, Ansätze für mögliche Anpassungen des Programms zur Verarbeitung größerer Datenmengen erneut aufgegriffen und als potentielles Thema für eine weitere Hausarbeit zur Diskussion gestellt.
 
 \chapter{Hauptteil}
 
@@ -73,18 +73,18 @@ Erstere beinhaltet eine Tabelle von vier "verwaschenen" Funktionen in den Spalte
 \centering
 \csvautotabular[range={+5}]{../data/train.csv}
 \caption{Exemplarischer Auszug der Datei train.csv}
-\label{tab:Exemplarischer Auszug aus train.csv}
+\label{tab:train.csv}
 \end{table} 
 
 
 Eine Visualisierung der Trainingsdaten lässt bereits optische Rückschlüsse auf passende idealtypische Funktionen zu.
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{../output/figures/train.png}
+\includegraphics[width=13cm]{../output/figures/train.png}
 \caption{Darstellung der bereitgestellten Trainingsdatensätze \cite{Gage:18}}\label{fig:train}
 \end{figure}
 
-Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen in den Spalten \emph{y1} bis \emph{y50}. Wie im Detail im folgenden Unterkapitel beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. Auf die Darstellung eines exemplarischen Auszuges wird daher an dieser Stelle verzichtet.
+Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen in den Spalten \emph{y1} bis \emph{y50}. Wie im Detail im folgenden Abschnitt beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. Auf die Darstellung eines exemplarischen Auszuges wird daher an dieser Stelle verzichtet.
 
 \begin{table}[H]
 \small
@@ -98,7 +98,7 @@ Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen
   \csvcoli & \csvcolii & \csvcoliii & \csvcoll & \csvcolli}
 %\csvautotabular[range={+5}]{../data/ideal.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoll & %\csvcolli}
 \caption{Exemplarischer Auszug der Datei ideal.csv}
-\label{tab:Exemplarischer Auszug aus ideal.csv}
+\label{tab:ideal.csv}
 \end{table} 
 
 Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatensatz nur aus 100 einzelnen Datenpunkten. Diese werden in einer Spalte \emph{y} der Datei \emph{test.csv} zusammengefasst und sind nicht als zusammengehörige Funktion zu verstehen. 
@@ -108,10 +108,10 @@ Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatens
 \centering
 \csvautotabular[range={+5}]{../data/test.csv}
 \caption{Exemplarischer Auszug der Datei test.csv}
-\label{tab:Exemplarischer Auszug aus test.csv}
+\label{tab:test.csv}
 \end{table} 
 
-In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener mit der geringsten Abweichung zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als Klassifikation der Testdaten bezeichnet. Diese wird im Unterkapitel "Klassifikation der Testdaten" im Detail behandelt.
+In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener mit der geringsten Abweichung zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als Klassifikation der Testdaten bezeichnet. Diese wird im Abschnitt "Klassifikation der Testdaten" im Detail behandelt.
 
 Gemäß der Vorgabe der Aufgabenstellung sollen sowohl die Trainings- (\emph{train.csv}) als auch die Funktionsdaten (\emph{ideal.csv}) in eine SQLite Datenbank eingelesen werden. Diese wird im Verzeichnis \emph{output/data} bereitgestellt. Der Autor entschied sich hierbei für das Python-Modul \emph{sqlite3} anstelle des, in der Vorgabe vorgeschlagenen, Moduls \emph{sqlalchemy}. Dieses bietet für die gegebene Anwendung eine vereinfachte Möglichkeit Daten mit einer SQLite Datenbank zu verarbeiten.
 
@@ -127,7 +127,7 @@ Für die interne Verarbeitung der Daten wurde, im Rahmen des Programms, eine eig
 
 \section{Auswahl idealtypischer Funktionen}
 
-Wie bereits im vorangegangenen Unterkapitel angeführt, steht zur Bearbeitung der Aufgabenstellung eine Auswahl an 50 idealtypischen Funktionen in einer CSV-Datei zur Verfügung. Aus diesen sollen für jede der vier Datenspalten der Trainingsdaten jeweils die passendste Funktion durch das Programm gewählt werden. Das Kriterium zur Selektion ist, gemäß Aufgabenstellung, die Minimierung der Summe aller quadratischen y-Abweichungen (Least-Square).
+Wie bereits im vorangegangenen Abschnitt angeführt, steht zur Bearbeitung der Aufgabenstellung eine Auswahl an 50 idealtypischen Funktionen in einer CSV-Datei zur Verfügung. Aus diesen sollen für jede der vier Datenspalten der Trainingsdaten jeweils die passendste Funktion durch das Programm gewählt werden. Das Kriterium zur Selektion ist, gemäß Aufgabenstellung, die Minimierung der Summe aller quadratischen y-Abweichungen (Least-Square).
 
 Mathematisch wird daher der kleinste Wert der Formel
 \begin{equation}  
@@ -165,14 +165,14 @@ Die oben angeführte Darstellung des Rückgabewertes macht ersichtlich, welche i
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{../output/figures/ideal.png}
+\includegraphics[width=13cm]{../output/figures/ideal.png}
 \caption{Darstellung der ausgewählten idealtypischen Funktionen \cite{Gage:18}}
 \label{fig:ideal}
 \end{figure}
 
 \section{Klassifikation der Testdaten}
 
-In diesem Unterkapitel wird die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen sowie den jeweiligen berechneten Abweichungen (siehe vorangegangenes Unterkapitel) diskutiert.
+In diesem Abschnitt wird die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen sowie den jeweiligen berechneten Abweichungen (siehe vorangegangener Abschnitt) diskutiert.
 
 Entsprechend der Vorgabe zur vorliegenden Aufgabenstellung sollen die, in der Datei \emph{test.csv}, abgebildeten Datenpunkte, Zeile für Zeile eingelesen und mit dem maximalen Abstand von $ a*\sqrt{2}$ einer der vier gewählten Funktionen zuordnet. Wobei $a$ den berechneten Fehlerwert des Trainingsdatensatzes der jeweiligen Funktion repräsentiert.
 
@@ -184,9 +184,15 @@ Letzterer ist für die Berechnung der passenden idealtypischen Funktion auf \emp
 
 Die Aufgabenstellung sieht vor, dass die Testdaten um die Werte der Abweichung (DeltaY), sowie die Nummer der gewählten Funktion (Idealfunktion) erweitert werden und in eine eigene Tabelle der SQLite Datenbank geschrieben werden. Der Autor entschied sich an dieser Stelle, noch einen Wert (Off\_limit) hinzuzufügen. Dieser Wert, vom Datentyp \emph{Boolean}, zeigt an, wenn dieser Datenpunkt den gesetzten Maximalabstand ($a*\sqrt{2}$) zu keiner der gewählten Funktionen einhalten konnte und wird in diesem Fall auf \emph{True} gesetzt. Dem Datenpunkt wird aber dennoch die Funktion mit dem geringsten Abstand zugewiesen.
 
-Exemplarischer Auszug der Ergebnisse aus der SQLite Datenbank:
+Der nachfolgende exemplarische Auszug der Ergebnisse aus der Tabelle \emph{test} der SQLite Datenbank zeigt die angesprochene Struktur der ausgegebenen Daten. In der letzten Datenreihe wird auch ersichtlich, dass dieser Datenpunkt den angeführten Maximalabstand bei keiner, der gewählten idealtypischen Funktionen, einhalten konnte. Die Zuweisung ist daher so zu verstehen, dass in diesem Fall die Funktion \emph{y36} den geringsten Abstand zu diesem Datenpunkt aufwies.
 
-
+\begin{table}[H]
+\small
+\centering
+\csvautotabular[range={+5}]{sqlitetest.csv}
+\caption{Exemplarischer Auszug der Ergebnisse aus der SQLite Datenbank}
+\label{tab:sqlitetest.csv}
+\end{table} 
 
 Für eine Evaluierung der Ergebnisse wurde in der Objektklasse \emph{testdata} die Methode \emph{off\_limit} definiert, die aus der SQLite Datenbank jene Werte abfragt, bei denen dieser Wert auf \emph{True} gesetzt ist. Diese Datenpunkte werden nochmals an die Methode \emph{calculate\_best\_ideal} übergeben, wobei diesmal der Funktionsparameter für die Filterung auf \emph{raw} gesetzt wird. Dadurch werden die Ergebnisse des Vergleichs zu jeder der vier gewählten idealtypischen Funktionen ausgegeben und können über das Logfile manuell evaluiert werden.
 
@@ -211,23 +217,38 @@ Bei der Bearbeitung der zur Aufgabe übergebenen Datensätze waren hierbei zwei 
 
 In den oben angeführten Tabellen wird die Distanz der beiden betroffenen Datenpunkte zu den vier gewählten Funktionen ersichtlich. In der Zuweisung wurden dennoch jene Funktionen mit dem geringsten Abstand gewählt (grafisch hervorgehoben).
 
-In der grafischen Repräsentation der Ergebnisse ist die Annäherung der einzelnen Datenpunkte des Testdatensatzes an die gewählten idealtypischen Funktionen gut erkennbar. Jene beiden Datenpunkte, die im Vergleich den definierten Maximalabstand überschritten haben werden durch das Symbol $x$ dargestellt. Wobei hier die optische Beurteilung des zweiten Punktes eher eine Tendenz zur Funktion \emph{y36} vermuten ließe, als zur Funktion \emph{y33}. In der oben angeführten Tabelle zu diesem Datenpunkt wird aber auch deutlich, dass die Berechneten Abstände tatsächlich sehr nahe beieinander liegen.
+In der grafischen Repräsentation der Ergebnisse ist die Annäherung der einzelnen Datenpunkte des Testdatensatzes an die gewählten idealtypischen Funktionen gut erkennbar. Jene beiden Datenpunkte, die im Vergleich den definierten Maximalabstand überschritten haben werden durch das Symbol $x$ dargestellt. Wobei hier die optische Beurteilung des zweiten Punktes eher eine Tendenz zur Funktion \emph{y36} vermuten ließe, als zur Funktion \emph{y33}. In der oben angeführten Darstellung zu diesem Datenpunkt wird aber auch deutlich, dass die Berechneten Abstände tatsächlich sehr nahe beieinander liegen.
+
+Berechnung in Berücksichtigung auf $a$
+y33 57.424227/31.75243110139478 = 1.8084985939069573268419895590189
+y36  58.180330/33.71178854422821 = 1.725815582987246908432865150776
+Angestrebter Faktor 1,4142135623730950488016887242097 (=Wurzel(2))
 
 Zusätzlich kann in der Visualisierung beobachtet werden, dass auch an den Schnittpunkten der Funktionen die Zuordnung der Datenpunkte ausreichend gut zu funktionieren scheint und der Verlauf der idealtypischen Funktionen optisch erkennbar nachverfolgt wird.
 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{../output/figures/test.png}
+\includegraphics[width=13cm]{../output/figures/test.png}
 \caption{Klassifikation der Testdatensätze \cite{Gage:18}}\label{fig:test}
 \end{figure}
 
 
-\chapter{Zusammenfassung}
+\chapter{Schlussteil}
 
-Zeitersparnis: Tabellenweise verarbeitung der Testdaten
-Zuweisung nicht aufgrund des kleinsten Abstandes sondern aufgrund des kleinsten Abstandes in Bezug auf $a$ (den berechneten Fehlerwert der Trainingsdaten)
+Zusammenfassend wird an dieser Stelle, wie Eingangs erwähnt, noch einmal betont, dass bei der Bearbeitung der gegenständlichen Aufgabenstellung in erster Linie die Erlernung des Umgangs mit der Programmiersprache Python im Vordergrund stand. Für den Autor war hierbei der exemplarische Aufbau und die Struktur eines selbst erstellten Pythonmoduls, sowie das Zusammenspiel und die Anpassungsfähigkeit der einzelnen Skripte von besonderer Bedeutung.
 
+Es wurde hierbei versucht, die Vorgaben der Aufgabenstellung weitestgehend zu erfüllen. Wie jedoch bereits in den vorangegangenen Abschnitten erläutert, waren aus Sicht des Autors, Erweiterungen in Bezug auf einen automatischen Versuch des direkten Imports der Daten in die SQLite Datenbank, sowie hinsichtlich der verfügbaren Datenspalten des, an die SQLite Datenbank, übergebenen Ergebnisses der klassifizierten Testdaten sinnvoll. Letztere Anpassung begünstigt hierbei in erster Linie die Möglichkeit der Ausgabe jener Ergebnisse, die den vorgegebenen Maximalabstand zu keiner der ausgewählten idealtypischen Funktionen einhalten konnten.
+
+Des Weiteren wurden in den vorangegangenen Abschnitten zwei Themenbereiche angesprochen, die einen Ansatz für eine Weiterentwicklung des Programmes darstellen:
+
+\begin{enumerate}
+ \itemsep0pt
+ \item Zeitersparnis: Tabellenweise Verarbeitung der Testdaten
+ \item Zuweisung nicht aufgrund des kleinsten Abstandes sondern aufgrund des kleinsten Abstandes in Bezug auf $a$ (den berechneten Fehlerwert der Trainingsdaten)
+\end{enumerate}
+
+Durch diese beiden Anpassungen könnte voraussichtlich die Effizienz des Programmes in der Verarbeitung größerer Datensätze, sowie die Genauigkeit der Klassifikation der Testdaten gesteigert werden. Die Validierung dieser Vermutung wäre, aus Sicht des Autors, eine mögliche Fragestellung für eine weiterführende Arbeit. 
 
 
 % =========================================================
