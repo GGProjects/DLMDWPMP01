@@ -1,36 +1,31 @@
 #!/usr/bin/env python
 # coding: utf-8
+"""Docstring for package-setup.
 
-"""
-# =========================================================================
-# Created on Fri Nov 18 08:45:16 2022
-# in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
-#
-# AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
-#
-# MODULE: DLMDWPM01
-#
-# DESCRIPTION: This is the main programm for mentioned MODULE.
-#
-# PURPOSE:
-#   Evaluate ideal functions for a set of training data (1) and assign
-#   values of a test-dataset to those ideal functions (2)
-#
-# DETAILS:
-#    Used criteria for evaluation:
-#     (1) to match training data and ideal functions:
-#         minimum MeanSquaredError (MSE)
-#     (2) to match ideal functions and test data:
-#         precalculated MSE (1) * SquareRoot(2)
-#
-# =========================================================================
-"""
+This script installs the functionfinder package and can be called using
+'pip install -e .' from within the package root directory.
+The main effort of this package is to gain basic python programming skills
+and therefore solve a simple classification task. This package is designed to
+fulfill the given task and complete the IU Python Module 'DLMDWPMP01'.
 
+Methods
+-------
+check_required_files(files)
+    Check for specifically required files to run program.
+run_tests()
+    Run UnitTests specified in tests-directory.
+"""
+# =============================================================================
+# Import modules
+# =============================================================================
 import sys
 from setuptools import setup, find_packages
 from unittest import TestLoader, TestResult
 from pathlib import Path
 
+# =============================================================================
+# Try importing own modules, if availaible
+# =============================================================================
 try:
     from functionfinder.setuplog import logging
     from functionfinder.config import datafiles, progfiles
@@ -38,24 +33,30 @@ except ImportError:
     print("Initially required modules not found.")
     sys.exit("Please ensure complete download of this package")
 
-# Set logger for setup.py
+# =============================================================================
+# Define logger for setup process and start logging
+# =============================================================================
 logger = logging.getLogger('ff-setup')
 
-# Log DocString and start of setup
+# Log DocString and start of setup process
 logger.info(__doc__)
 logger.info("Starting setup of functionfinder")
 
+# =============================================================================
+# Define additional functions
+# =============================================================================
 
-# Define function to check required files
+
 def check_required_files(files):
-    """
-    Check for specifically required files to run program.
+    """Check for specifically required files to run program.
 
-    Arguments_
-        Input is a string, a list or a dictonary with filepaths to check.
+    Parameters
+    ----------
+    files : string, list or dictionary
+        This parameter contains filepaths to check for existance.
         In case of a dictionary, the filepaths have to be stored in the
         values.
-        The filepath in the given argument hast to be relative
+        The filepath in the given argument has to be relative
         to the current working directory.
     """
     if isinstance(files, dict):
@@ -77,13 +78,11 @@ def check_required_files(files):
         logger.info("All required files available")
 
 
-# Define function to run unit-tests
 def run_tests():
-    """
-    Run UnitTests specified in tests-directory.
+    """Run UnitTests specified in tests-directory.
 
     This is done to ensure functionality of this package before installation.
-    Test from tests-directory will be loaded as a test suite and run
+    Tests from tests-directory will be loaded as a test suite and run
     before execution of setup-method.
 
     """
@@ -98,18 +97,20 @@ def run_tests():
     # Evaluators
     success = len(test_result.failures) == 0 & len(test_result.errors) == 0
     csv_to_sql = "test_table_from_csv" in str(test_result.unexpectedSuccesses)
+    print(csv_to_sql)
+
+    if csv_to_sql:
+        logtext = ("Direct import from csv to SQLite is possible. " +
+                   "Host seems to be able to handle" +
+                   "large csv files easily.")
+        logger.info(logtext)
+        print(logtext)
 
     if success:
-        # if test_result.wasSuccessful():
         logger.info("UnitTests successful")
         print("UnitTests successful")
         logger.debug(test_result)
-        if csv_to_sql:
-            # if "test_table_from_csv" in str(test_result.unexpectedSuccesses):
-            logtext = ("Direct import from csv to SQLite is possible. " +
-                       "Host seems to be able to handle" +
-                       "large csv files easily.")
-            logger.info(logtext)
+
     else:
         logger.critical("UnitTests not successful.")
         logger.critical("Failed: %s", test_result.failures)
@@ -117,14 +118,18 @@ def run_tests():
         sys.exit("UnitTests not successful")
 
 
+# =============================================================================
 # Check required files
+# =============================================================================
 logtext = "Check for required files"
 logger.info(logtext)
 print(logtext)
 check_required_files(datafiles)
 check_required_files(progfiles)
 
+# =============================================================================
 # Setup package
+# =============================================================================
 logtext = "Start installing required packages"
 logger.info(logtext)
 print(logtext)
@@ -145,12 +150,17 @@ setup(
     }
 )
 
+# =============================================================================
 # Execute UnitTests
+# =============================================================================
 logtext = "Execute UnitTexts"
 logger.info(logtext)
 print(logtext)
 run_tests()
 
+# =============================================================================
+# Finish setup
+# =============================================================================
 logger.info("Setup of functionfinder successfull")
 print("Setup successfully finished")
 print("Please check setup-log in folder logs for further details.")

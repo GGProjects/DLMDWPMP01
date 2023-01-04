@@ -98,7 +98,7 @@ def task():
     train.getdata()
 
     # render and save plot to specified file
-    train.draw_train()
+    train.draw()
 
 # =============================================================================
 # Load ideal-data in defined class and plot to png
@@ -128,7 +128,7 @@ def task():
         ideal.matched[j] = df.min_error(match_set, ideal.data)
 
     # plot results to png
-    ideal.draw_ideal()
+    ideal.draw()
 
     # log results for manual evaluation
     logger.info("See below the numbers of the matched ideal functions " +
@@ -209,7 +209,7 @@ def task():
             printandlog(test_row)
 
     # plot to png, hue per ideal function, different symbol if off_limit
-    test.draw_test()
+    test.draw()
 
 # =============================================================================
 # End of program

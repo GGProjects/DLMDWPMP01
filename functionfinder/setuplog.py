@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
+"""Docstring for module setuplog.py.
 
+This script defines the basic logging configuration for the setup process of
+this program. User configurable variables are read from 'config' module.
+"""
 
 import logging
 import time

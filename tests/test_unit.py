@@ -1,6 +1,20 @@
 #!/usr/bin/env python
 # coding: utf-8
+"""Docstring for package-setup.
 
+This script installs the functionfinder package and can be called using
+'pip install -e .' from within the package root directory.
+The main effort of this package is to gain basic python programming skills
+and therefore solve a simple classification task. This package is designed to
+fulfill the given task and complete the IU Python Module 'DLMDWPMP01'.
+
+Methods
+-------
+check_required_files(files)
+    Check for specifically required files to run program.
+run_tests()
+    Run UnitTests specified in tests-directory.
+"""
 
 import unittest
 from pathlib import Path
@@ -18,6 +32,19 @@ from functionfinder.config import out_data
 class test_sqlite(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        """
+        
+
+        Parameters
+        ----------
+        cls : TYPE
+            DESCRIPTION.
+
+        Returns
+        -------
+        None.
+
+        """
         cls.db = str('testdb')
         cls.testcsv = str(out_data + "testdata.csv")
         my_dic = {"Name": ['Bernd', 'Silke', 'Claudia'],
@@ -29,15 +56,39 @@ class test_sqlite(unittest.TestCase):
         cls.testtable = str("testtable")
 
     def setUp(self):
+        """
+        
+
+        Returns
+        -------
+        None.
+
+        """
         pass
 
     def test_creation(self):
+        """
+        
+
+        Returns
+        -------
+        None.
+
+        """
         create_empty_sqlitedb(self.db)
         self.assertTrue(Path.is_file(Path(out_data + self.db)),
                         "no database was created")
 
     @unittest.expectedFailure
     def test_table_from_csv(self):
+        """
+        
+
+        Returns
+        -------
+        None.
+
+        """
         import sqlite3
         import pandas as pd
         csv2sql_directly(self.db, self.testcsv, self.testtable)
@@ -48,6 +99,14 @@ class test_sqlite(unittest.TestCase):
                               "Could not reimport table from direct DB-entry")
 
     def test_table_from_pandas(self):
+        """
+        
+
+        Returns
+        -------
+        None.
+
+        """
         import sqlite3
         import pandas as pd
         csv2sql_pandas(self.db, self.testcsv, self.testtable)
@@ -58,10 +117,31 @@ class test_sqlite(unittest.TestCase):
                               "Could not reimport table from Pandas-DB-entry")
 
     def tearDown(self):
+        """
+        
+
+        Returns
+        -------
+        None.
+
+        """
         pass
 
     @classmethod
     def tearDownClass(cls):
+        """
+        
+
+        Parameters
+        ----------
+        cls : TYPE
+            DESCRIPTION.
+
+        Returns
+        -------
+        None.
+
+        """
         try:
             Path.unlink(Path(out_data + cls.db))
             Path.unlink(Path(cls.testcsv))

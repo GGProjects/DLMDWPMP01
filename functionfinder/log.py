@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
+"""Docstring for module log.py.
 
+This script defines the basic logging configuration for the main program.
+User configurable variables are read from 'config' module.
+"""
 
 
 import logging
