@@ -1,76 +1,73 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""
-Run the main calculations to solve given task.
+"""Docstring for module ffrunner.py.
 
-PURPOSE:
-Evaluate ideal functions for a set of training data (1) and assign
-values of a test-dataset to those ideal functions (2)
-DETAILS:
-  Used criteria for evaluation:
-  (1) to match training data and ideal functions:
-      minimum MeanSquaredError (MSE)
-  (2) to match ideal functions and test data:
-  precalculated MSE (1) * SquareRoot(2)
+This script contains the main part of the programm which orchestrates
+calculations and can be called, after installation, by the CLI-command ff.
 
-  Created on Fri Nov 18 08:45:16 2022
-  in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
-  AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
+Methods
+-------
+task()
+    Run the calculations to solve the given task.
 """
+
 
 def task():
-    """
-    Run the main calculations to solve given task.
+    """Run the calculations to solve the given task.
 
-    PURPOSE:
-        Evaluate ideal functions for a set of training data (1) and assign
-        values of a test-dataset to those ideal functions (2)
-    DETAILS:
-        Used criteria for evaluation:
-        (1) to match training data and ideal functions:
-            minimum MeanSquaredError (MSE)
-        (2) to match ideal functions and test data:
-            precalculated MSE (1) * SquareRoot(2)
+    Evaluate ideal functions for a set of training data (1) and assign
+    values of a test-dataset to those ideal functions (2)
 
-    Created on Fri Nov 18 08:45:16 2022
-    in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
-    AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
+    Used criteria for evaluation:
+    (1) to match training data and ideal functions:
+    minimum SummedSquaredError (SSE)
+    (2) to match ideal functions and test data:
+    precalculated SSE (1) * SquareRoot(2)
     """
 # =============================================================================
 # Import required modules
 # =============================================================================
-    print("# Load required modules")
+    print("# Import required modules")
 
-    # import modules
+    # import standard modules
     import sys
     import sqlite3
     import csv
 
     # import own modules
-    import functionfinder.datafunctions as df
+    import functionfinder.datafunctions as df  # data handling methods
     from functionfinder.config import datafiles, dbname, out_data
     import functionfinder.classes as cl
     from functionfinder.log import logging
 
-    # Set logger for main program
+# =============================================================================
+# Define logger for main program, define logging helper
+# =============================================================================
     logger = logging.getLogger('functionfinder')
-    logging.getLogger('PIL').setLevel(logging.ERROR)
-    logging.getLogger('matplotlib').setLevel(logging.ERROR)
+    logging.getLogger('PIL').setLevel(logging.ERROR)  # prevent massive logging
+    logging.getLogger('matplotlib').setLevel(logging.ERROR)  # prevent logging
 
-    # Log Start-Time
-    print("# Start functionfinder main task")
-    logger.info("Start functionfinder main task")
+    def printandlog(textin):
+        """Print and log titles of script sections."""
+        print("#", textin)
+        logger.info(textin)
+
+    # Start logging the programm.
+    printandlog("Start functionfinder program")
 
 # =============================================================================
 # Read data for calculation.
 # =============================================================================
-    section = "Read CSV training data and ideal functions to SQLite-DB"
-    print("#", section)
-    logger.info(section)
+    printandlog("Read CSV training data and ideal functions to SQLite-DB")
 
-    # Specify datasets and load them into sqlite
+    # create empty sqlite database
     df.create_empty_sqlitedb(dbname)
+
+    # define which csv entries from datafiles variable (config module) to read
     csv_to_read = ("ideal", "train")
+
+    # iterate through csv_to_read an try importing via direct import or the
+    # use of pandas
     for i in csv_to_read:
         try:
             df.csv2sql_directly(dbname, datafiles[i], i)
@@ -88,112 +85,120 @@ def task():
                 sys.exit("Import to SQL failed. Exit programm")
 
 # =============================================================================
-# Save training-data plot
+# Load training-data in defined class and plot to png
 # =============================================================================
-    section = "loading training data to class \"projectdata\" data"
-    print("#", section)
-    logger.info(section)
+    printandlog("loading training data to class \"projectdata\" data")
 
+    # assign self defined class projectdata
     train = cl.projectdata(dataname="train",
                            plotfile="train.png",
                            plottitle="Training Data")
+
+    # load data from sqlite database
     train.getdata()
+
+    # render and save plot to specified file
     train.draw_train()
+
+# =============================================================================
+# Load ideal-data in defined class and plot to png
+# =============================================================================
+    printandlog("Load ideal data.")
+
+    # assign defined class idealdata (subclass of projectdata) to ideal data
+    ideal = cl.idealdata(dataname="ideal",
+                         plotfile="ideal.png",
+                         plottitle="Matched ideal functions")
+
+    # read ideal data from sqlite
+    ideal.getdata()
 
 # =============================================================================
 # Find matching ideal function for each of the four training functions
 # =============================================================================
-    section = ("Find matching ideal function for each of the four" +
-               " training functions")
-    print("#", section)
-    logger.info(section)
+    printandlog("Find matching ideal function for each of the four" +
+                " training functions")
 
-    # read ideal from sqlite
-    ideal = cl.idealdata(dataname="ideal",
-                         plotfile="ideal.png",
-                         plottitle="Matched ideal functions")
-    ideal.getdata()
+    ideal.matched_functions()  # create empty dictionary in ideal.matched
 
-    ideal.matched_functions()
+    # iterate through training data columns, apply method to find matching
+    # ideal function and add result to ideal.matched dictionary
     for j in train.data.axes[1][1:]:
         match_set = train.data[j]
         ideal.matched[j] = df.min_error(match_set, ideal.data)
 
+    # plot results to png
+    ideal.draw_ideal()
+
+    # log results for manual evaluation
     logger.info("See below the numbers of the matched ideal functions " +
-                 "plus the according deviation")
+                "plus the according deviation")
     logger.info("Ideal functions: %s", ideal.matched)
 
     # Remove unneeded objects from memory
     del(train, match_set)
 
 # =============================================================================
-# Save ideal-functions plot
+# Assign test data to ideal functions and write to SQLite table "test"
 # =============================================================================
+    printandlog("Calculate assignment of test data to " +
+                "selected ideal functions and write to sqlite database.")
 
-    ideal.draw_ideal()
-
-
-# =============================================================================
-# Assign test data to ideal functions
-# =============================================================================
-    section = "Calculate assignment of test data to selected ideal functions"
-    print("# ", section)
-    logger.info(section)
-
+    # open connection to sqlite database
     conn = sqlite3.connect(str(out_data + dbname))
 
-    # Rowwise calculation of best ideal function for test data entries
+    # Rowwise calculation of best ideal function for test.csv specified in
+    # datafiles dictionary
     with open(datafiles["test"], newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
         next(reader)  # skip headers
         for row in reader:
+            # execute method to find best matching ideal function, see
+            # method documentation for information on parameters.
             test_row = df.calculate_best_ideal(test_value=row,
                                                match_against=ideal.matched,
                                                index=float(row[0]),
                                                idealdata=ideal.data,
                                                function=min)
-            test_row.insert(0, "x", row[0])
-            test_row.insert(1, "y", row[1])
-            # Append result to SQL Tabel "test"
+            test_row.insert(0, "x", row[0])  # add original x-value
+            test_row.insert(1, "y", row[1])  # add original y-value
+            # Append result to SQLite table "test"
             test_row.to_sql('test', conn, if_exists='append', index=False)
 
+    # close connection to database
     conn.close()
 
 # =============================================================================
 # Evaluation of results
 # =============================================================================
-    section = "Evaluate calculated results."
-    print("#", section)
-    logger.info(section)
+    printandlog("Evaluate calculated results.")
 
-    # create object of class testdata
+    # assign object of class testdata (as subclass of projectdata)
     test = cl.testdata(dataname="test",
                        plotfile="test.png",
                        plottitle="Test Data")
 
+    # read test data from sqlite db
     test.getdata()
 
-    # query database entries where deviation was higher than allowed
+    # query database entries where deviation was higher than allowed and
+    # write dataframe to test.off
     try:
         test.off_limit()
     except:
         pass
 
-    if len(test.off) > 0:
+    if len(test.off) > 0:  # execute only if there are entries off limit
 
-        logger.info("%s entries had a deviation above the set limit:",
-                     len(test.off))
-        logger.debug(test.off)
-        logger.info("Calculating deviation for those entries " +
-                     "from all matched ideal functions for comparision.")
+        # log and print results to file/screen.
+        printandlog(str(len(test.off)) +
+                    " entries had a deviation above the set limit:")
+        printandlog(test.off)
+        printandlog("Calculating deviation for those entries " +
+                    "from all matched ideal functions for comparision.")
 
-        print("# " + str(len(test.off)) +
-              " entries had a deviation above the set limit:")
-        print(test.off)
-        print()
-        print("# Calculating deviation for those entries " +
-              "from all matched ideal functions for comparision.")
-
+        # pass data off_limit to calculation method and return all deviation
+        # values for comparison and manual evaluation. Log and print results.
         for k in test.off["x"]:
             test_value = test.data[test.data["x"] == str(k)][["x", "y"]]
             test_value = test_value.values.tolist()[0]
@@ -201,17 +206,19 @@ def task():
                                                ideal.data, "raw")
             test_row.insert(0, "x", test_value[0])
             test_row.insert(1, "y", test_value[1])
-            print(test_row)
-            logger.debug(test_row)
+            printandlog(test_row)
 
-# =============================================================================
-# PLOT assignment of test-data, hue per ideal function,
-# different symbol if off limit
-# =============================================================================
-
+    # plot to png, hue per ideal function, different symbol if off_limit
     test.draw_test()
 
-    logtext = ("Programm successfully terminated.\n See ouput folder for " +
-               "figures, Database and log-files.")
-    print("# " + logtext)
-    logger.info(logtext)
+# =============================================================================
+# End of program
+# =============================================================================
+
+    printandlog("Programm successfully terminated.\n See ouput folder for " +
+                "figures, Database and log-files.")
+
+
+# Only execute when called directly
+if __name__ == "__main__":
+    task()

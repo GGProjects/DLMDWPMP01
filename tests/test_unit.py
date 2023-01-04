@@ -1,30 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-"""
-# =============================================================================
-# Created on Fri Nov 18 08:45:16 2022
-# in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
-#
-# AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
-#
-# MODULE: DLMDWPM01
-#
-# DESCRIPTION: This is the main programm for mentioned MODULE.
-#
-# PURPOSE:
-#   Evaluate ideal functions for a set of training data (1) and assign
-#   values of a test-dataset to those ideal functions (2)
-#
-# DETAILS:
-#    Used criteria for evaluation:
-#     (1) to match training data and ideal functions:
-#         minimum MeanSquaredError (MSE)
-#     (2) to match ideal functions and test data:
-#         precalculated MSE (1) * SquareRoot(2)
-#
-# =============================================================================
-"""
+
 import unittest
 from pathlib import Path
 from functionfinder.datafunctions import create_empty_sqlitedb
@@ -96,6 +73,7 @@ class test_sqlite(unittest.TestCase):
 # DataFunctions Testset
 # =============================================================================
 
+# add structure tests (spaltenanzahl, gleiche zeilenlänge ideal und train)
 
 # =============================================================================
 # class test_df(unittest.TestCase):

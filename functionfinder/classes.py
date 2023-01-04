@@ -1,32 +1,41 @@
 #!/usr/bin/env python
 # coding: utf-8
+"""Docstring for module classes.py.
+
+
+Methods
+-------
 
 """
-Created on Fri Nov 18 08:45:16 2022
 
-@author: Grunsky
-
-@module: DLMDWPM01
-
-@description: main programm. 
-
-@purpose: evaluate ideal functions for a set of training data (1) and assign 
-    values of a test-dataset to those ideal functions (2)
-
-@details: Used criteria for evaluation:
-    (1) to match training data and ideal functions: 
-        minimum MeanSquaredError (MSE)
-    (2) to match ideal functions and test data: 
-        precalculated MSE (1) * SquareRoot(2)
-
-@Python_Version: python: 3.9.13 (main, Aug 25 2022, 23:51:50) 
-"""
+from functionfinder.config import out_data, out_figures, dbname
 
 class projectdata():
 
     # Define Constructor
     def __init__(self, dataname="train", ylabel="Y", xlabel="X",
                  plottitle="no title", plotfile="testplot.png"):
+        """
+
+
+        Parameters
+        ----------
+        dataname : TYPE, optional
+            DESCRIPTION. The default is "train".
+        ylabel : TYPE, optional
+            DESCRIPTION. The default is "Y".
+        xlabel : TYPE, optional
+            DESCRIPTION. The default is "X".
+        plottitle : TYPE, optional
+            DESCRIPTION. The default is "no title".
+        plotfile : TYPE, optional
+            DESCRIPTION. The default is "testplot.png".
+
+        Returns
+        -------
+        None.
+
+        """
         from functionfinder.config import out_data, out_figures, dbname
         self._table = dataname
         self._style = "ggplot"
@@ -38,6 +47,14 @@ class projectdata():
 
     # Define method to get data from sqlite db
     def getdata(self):
+        """
+
+
+        Returns
+        -------
+        None.
+
+        """
         import pandas as pd
         import sqlite3
         con = sqlite3.connect(self._dbcon)
@@ -47,6 +64,14 @@ class projectdata():
 
     # Define drawing method
     def draw_train(self):
+        """
+
+
+        Returns
+        -------
+        None.
+
+        """
         import pandas as pd
         from matplotlib import pyplot as plt
         from matplotlib import style
@@ -69,10 +94,31 @@ class projectdata():
 class idealdata(projectdata):
     # Define method to match data against ideal functions
     def matched_functions(self, match_result=dict()):
+        """
+
+
+        Parameters
+        ----------
+        match_result : TYPE, optional
+            DESCRIPTION. The default is dict().
+
+        Returns
+        -------
+        None.
+
+        """
         self.matched = match_result
 
     # Define drawing method
     def draw_ideal(self):
+        """
+
+
+        Returns
+        -------
+        None.
+
+        """
         import pandas as pd
         from matplotlib import pyplot as plt
         from matplotlib import style
@@ -97,6 +143,14 @@ class idealdata(projectdata):
 class testdata(projectdata):
     # Define method to receive data out of limit
     def off_limit(self):
+        """
+
+
+        Returns
+        -------
+        None.
+
+        """
         import pandas as pd
         import sqlite3
         con = sqlite3.connect(self._dbcon)
@@ -105,6 +159,14 @@ class testdata(projectdata):
         con.close()
 
     def draw_test(self):
+        """
+
+
+        Returns
+        -------
+        None.
+
+        """
         import seaborn as sns
         import pandas as pd
         from matplotlib import pyplot as plt
@@ -113,12 +175,15 @@ class testdata(projectdata):
 
         # https://matplotlib.org/ (22-11-13)
         style.use(self._style)
-        #fig, tax = plt.subplots(figsize=(6, 4))
+        # fig, tax = plt.subplots(figsize=(6, 4))
         tax = sns.scatterplot(x=pd.to_numeric(self.data.x),
                               y=pd.to_numeric(self.data.y),
                               data=self.data,
                               hue="Idealfunktion", style="Off_limit")
-        # ax.legend()
+
+        # tax.scatter(data=self.data, x='x', y='y', c="Idealfunktion",
+        #             cmap='Set3')
+
         lgd = sns.move_legend(tax,
                               bbox_to_anchor=(1.01, 1.02),
                               loc='upper left')

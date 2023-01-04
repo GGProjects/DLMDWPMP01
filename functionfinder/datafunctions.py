@@ -1,36 +1,42 @@
 #!/usr/bin/env python
 # coding: utf-8
+"""Docstring for module datafunctions.py.
 
-"""
-# =============================================================================
-# Created on Fri Nov 18 08:45:16 2022
-# in Python version: python: 3.9.13 (main, Aug 25 2022, 23:51:50)
-#
-# AUTHOR: Georg Grunsky (georg.grunsky@iu-study.org)
-#
-# MODULE: DLMDWPM01
-#
-# DESCRIPTION: This is the main programm for mentioned MODULE.
-#
-# PURPOSE:
-#   Evaluate ideal functions for a set of training data (1) and assign
-#   values of a test-dataset to those ideal functions (2)
-#
-# DETAILS:
-#    Used criteria for evaluation:
-#     (1) to match training data and ideal functions:
-#         minimum MeanSquaredError (MSE)
-#     (2) to match ideal functions and test data:
-#         precalculated MSE (1) * SquareRoot(2)
-#
-# =============================================================================
+This script contains definitions for data related functions of the
+functionfinder package.
+
+Methods
+-------
+create_empty_sqlitedb(dbname)
+    Create empty SQLite Database.
+csv2sql_directly(existing_db, csv_toadd, tablename)
+    Import csv files into existing SQLite database using subprocess.
+csv2sql_pandas(existing_db, csv_toadd, tablename)
+    Import csv files into existing SQLite database using pandas.
+min_error(train_set, ideal_df)
+    Select column of a pandas DataFrame with minimal error to a Series.
+calculate_best_ideal(test_value, match_against, index, idealdata, function)
+    Select ideal function with minimal deviation to given point.
 """
 
 from pathlib import Path
 import subprocess
-from functionfinder.config import out_data
+import pandas as pd
+import sqlite3
+from .config import out_data, error_calculation, factor
 
 def create_empty_sqlitedb(dbname):
+    """Create empty SQLite Database.
+
+    Name and location are specified by handed parameter and data output folder
+    in config.py. Existing databases in same location of the same name are
+    deleted before creation.
+
+    Parameters
+    ----------
+    dbname : string
+        Name of database to create.
+    """
     dbpath = out_data + dbname
     if Path.is_file(Path(dbpath)):
         Path.unlink(Path(dbpath))
@@ -38,6 +44,19 @@ def create_empty_sqlitedb(dbname):
 
 
 def csv2sql_directly(existing_db, csv_toadd, tablename):
+    """Import csv files into existing SQLite database using subprocess.
+
+    Direct import using subprocess enhances importing large csv files.
+
+    Parameters
+    ----------
+    existing_db : TYPE
+        DESCRIPTION.
+    csv_toadd : TYPE
+        DESCRIPTION.
+    tablename : TYPE
+        DESCRIPTION.
+    """
     db_name = Path(str(out_data + existing_db)).resolve()
     csv_file = Path(csv_toadd).resolve()
     result = subprocess.run(['sqlite3',
@@ -50,8 +69,20 @@ def csv2sql_directly(existing_db, csv_toadd, tablename):
 
 
 def csv2sql_pandas(existing_db, csv_toadd, tablename):
-    import pandas as pd
-    import sqlite3
+    """Import csv files into existing SQLite database using pandas.
+
+    No direct import. csv files are first read into a pandas dataframe and
+    then fed into an existing SQLite database.
+
+    Parameters
+    ----------
+    existing_db : TYPE
+        DESCRIPTION.
+    csv_toadd : TYPE
+        DESCRIPTION.
+    tablename : TYPE
+        DESCRIPTION.
+    """
     conn = sqlite3.connect(str(out_data + existing_db))
     pd.read_csv(csv_toadd).to_sql(tablename, conn,
                                   if_exists='replace', index=False)
@@ -59,18 +90,25 @@ def csv2sql_pandas(existing_db, csv_toadd, tablename):
 
 
 def min_error(train_set, ideal_df):
-    import pandas as pd
-    from .config import error_calculation
+    """Select column of a pandas DataFrame with minimal error to a Series.
+    
 
+    Parameters
+    ----------
+    train_set : pandas Series
+        DESCRIPTION.
+    ideal_df : pandas DataFrame
+        DESCRIPTION.
+
+    Returns
+    -------
+    None.
+
+    """
     last_val = "not_set"
     for i in ideal_df.axes[1][1:]:
         tmp_val = error_calculation(trainvalue=pd.to_numeric(train_set),
                                     idealvalue=pd.to_numeric(ideal_df[i]))
-# =============================================================================
-#         sum((pd.to_numeric(train_set) -
-#                        pd.to_numeric(ideal_df[i]))**2)
-# =============================================================================
-        # print(i + ": " + str(tmp_val))
         if last_val == "not_set":
             last_val = tmp_val
             selected = i
@@ -86,10 +124,27 @@ def min_error(train_set, ideal_df):
 
 def calculate_best_ideal(test_value, match_against, index,
                          idealdata, function):
+    """Select ideal function with minimal deviation to given point.
+    
 
-    from .config import factor
-    import pandas as pd
+    Parameters
+    ----------
+    test_value : TYPE
+        DESCRIPTION.
+    match_against : TYPE
+        DESCRIPTION.
+    index : TYPE
+        DESCRIPTION.
+    idealdata : TYPE
+        DESCRIPTION.
+    function : TYPE
+        DESCRIPTION.
 
+    Returns
+    -------
+    None.
+
+    """
     result = pd.DataFrame()
 
     for i in match_against.keys():
