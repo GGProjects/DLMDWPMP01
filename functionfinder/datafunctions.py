@@ -25,6 +25,7 @@ import pandas as pd
 import sqlite3
 from .config import out_data, error_calculation, factor
 
+
 def create_empty_sqlitedb(dbname):
     """Create empty SQLite Database.
 
@@ -50,22 +51,23 @@ def csv2sql_directly(existing_db, csv_toadd, tablename):
 
     Parameters
     ----------
-    existing_db : TYPE
-        DESCRIPTION.
-    csv_toadd : TYPE
-        DESCRIPTION.
-    tablename : TYPE
-        DESCRIPTION.
+    existing_db : string
+        Name of existing SQLite database. Location/Directory is handled by
+        parameter set in config.py.
+    csv_toadd : string
+        Location and name of csv-file to import.
+    tablename : string
+        Name of table in SQLite database in which to write the data.
     """
     db_name = Path(str(out_data + existing_db)).resolve()
     csv_file = Path(csv_toadd).resolve()
-    result = subprocess.run(['sqlite3',
-                             str(db_name),
-                             '-cmd',
-                             '.mode csv',
-                             '.import ' + str(csv_file).replace('\\', '\\\\')
-                             + ' ' + str(tablename)],
-                            capture_output=True)
+    subprocess.run(['sqlite3',
+                    str(db_name),
+                    '-cmd',
+                    '.mode csv',
+                    '.import ' + str(csv_file).replace('\\', '\\\\')
+                    + ' ' + str(tablename)],
+                   capture_output=True)
 
 
 def csv2sql_pandas(existing_db, csv_toadd, tablename):
@@ -76,12 +78,13 @@ def csv2sql_pandas(existing_db, csv_toadd, tablename):
 
     Parameters
     ----------
-    existing_db : TYPE
-        DESCRIPTION.
-    csv_toadd : TYPE
-        DESCRIPTION.
-    tablename : TYPE
-        DESCRIPTION.
+    existing_db : string
+        Name of existing SQLite database. Location/Directory is handled by
+        parameter set in config.py.
+    csv_toadd : string
+        Location and name of csv-file to import.
+    tablename : string
+        Name of table in SQLite database in which to write the data.
     """
     conn = sqlite3.connect(str(out_data + existing_db))
     pd.read_csv(csv_toadd).to_sql(tablename, conn,
@@ -91,7 +94,6 @@ def csv2sql_pandas(existing_db, csv_toadd, tablename):
 
 def min_error(train_set, ideal_df):
     """Select column of a pandas DataFrame with minimal error to a Series.
-    
 
     Parameters
     ----------
