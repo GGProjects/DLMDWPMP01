@@ -8,6 +8,10 @@ The main effort of this package is to gain basic python programming skills
 and therefore solve a simple classification task. This package is designed to
 fulfill the given task and complete the IU Python Module 'DLMDWPMP01'.
 
+During the installation process, this scripts checks for the existance of
+required package files and runs a testsuite of UnitTests to ensure the
+functionality of the program.
+
 Methods
 -------
 check_required_files(files)
@@ -62,18 +66,18 @@ def check_required_files(files):
     if isinstance(files, dict):
         files = list(files.values())
 
-        missing = list()
+    missing = list()
 
-        for i in files:
-            if not Path.is_file(Path(i)):
-                print("Fehlende Datei: " + i)
-                missing.append(i)
+    for i in files:
+        if not Path.is_file(Path(i)):
+            print("Fehlende Datei: " + i)
+            missing.append(i)
 
-        if not len(missing) == 0:
-            # Write Log
-            logger.critical("Missing File(s): %s", missing)
-            # Stop execution
-            sys.exit("Missing files! Please consult logfile.")
+    if not len(missing) == 0:
+        # Write Log
+        logger.critical("Missing File(s): %s", missing)
+        # Stop execution
+        sys.exit("Missing files! Please consult logfile.")
     else:
         logger.info("All required files available")
 
@@ -81,36 +85,31 @@ def check_required_files(files):
 def run_tests():
     """Run UnitTests specified in tests-directory.
 
-    This is done to ensure functionality of this package before installation.
+    This is done to ensure functionality of this package after installation.
     Tests from tests-directory will be loaded as a test suite and run
-    before execution of setup-method.
+    after execution of setup-method.
 
     """
     logger.info("Start UnitTests")
     test_loader = TestLoader()
-    test_result = TestResult()
+    test_result = TestResult(verbosity=2)
     test_directory = str('tests')
 
     test_suite = test_loader.discover(test_directory, pattern='test_*.py')
     test_suite.run(result=test_result)
 
     # Evaluators
-    success = len(test_result.failures) == 0 & len(test_result.errors) == 0
+    success = (len(test_result.failures) == 0) & (len(test_result.errors) == 0)
     csv_to_sql = "test_table_from_csv" in str(test_result.unexpectedSuccesses)
-    print(csv_to_sql)
 
     if csv_to_sql:
-        logtext = ("Direct import from csv to SQLite is possible. " +
-                   "Host seems to be able to handle" +
-                   "large csv files easily.")
-        logger.info(logtext)
-        print(logtext)
+        logger.info("Direct import from csv to SQLite is possible.")
+    else:
+        logger.info("Direct import from csv to SQLite is NOT possible.")
 
     if success:
         logger.info("UnitTests successful")
-        print("UnitTests successful")
-        logger.debug(test_result)
-
+        logger.info(test_result)
     else:
         logger.critical("UnitTests not successful.")
         logger.critical("Failed: %s", test_result.failures)
@@ -121,18 +120,16 @@ def run_tests():
 # =============================================================================
 # Check required files
 # =============================================================================
-logtext = "Check for required files"
-logger.info(logtext)
-print(logtext)
+logger.info("Check for required datafiles")
 check_required_files(datafiles)
+
+logger.info("Check for required modulefiles")
 check_required_files(progfiles)
 
 # =============================================================================
 # Setup package
 # =============================================================================
-logtext = "Start installing required packages"
-logger.info(logtext)
-print(logtext)
+logger.info("Start installing required packages")
 
 setup(
     name='functionfinder',
@@ -153,15 +150,13 @@ setup(
 # =============================================================================
 # Execute UnitTests
 # =============================================================================
-logtext = "Execute UnitTexts"
-logger.info(logtext)
-print(logtext)
+logger.info("Executing UnitTests")
 run_tests()
 
 # =============================================================================
 # Finish setup
 # =============================================================================
 logger.info("Setup of functionfinder successfull")
-print("Setup successfully finished")
-print("Please check setup-log in folder logs for further details.")
-print("You can now run \"ff\" to start programm!")
+logger.info("Setup successfully finished")
+logger.info("Please check setup-log in folder logs for further details.")
+logger.info("You can now run \"ff\" to start programm!")

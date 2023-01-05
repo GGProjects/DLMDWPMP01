@@ -1,0 +1,30 @@
+2023-01-05 01:34:07,189 - functionfinder - INFO - Start functionfinder program
+2023-01-05 01:34:07,189 - functionfinder - INFO - Read CSV training data and ideal functions to SQLite-DB
+2023-01-05 01:34:07,189 - functionfinder - DEBUG - Direct sql-import didn't work, try pandas next.
+2023-01-05 01:34:07,235 - functionfinder - DEBUG - Pandas sql-import worked
+2023-01-05 01:34:07,251 - functionfinder - DEBUG - Direct sql-import didn't work, try pandas next.
+2023-01-05 01:34:07,289 - functionfinder - DEBUG - Pandas sql-import worked
+2023-01-05 01:34:07,289 - functionfinder - INFO - loading training data to class "projectdata" data
+2023-01-05 01:34:08,392 - functionfinder - INFO - Load ideal data.
+2023-01-05 01:34:08,408 - functionfinder - INFO - Find matching ideal function for each of the four training functions
+2023-01-05 01:34:08,577 - functionfinder - INFO - See below the numbers of the matched ideal functions plus the according deviation
+2023-01-05 01:34:08,577 - functionfinder - INFO - Ideal functions: {'y1': ('y36', 33.71178854422821), 'y2': ('y11', 32.62893138832121), 'y3': ('y2', 33.11847188090256), 'y4': ('y33', 31.75243110139478)}
+2023-01-05 01:34:08,577 - functionfinder - INFO - Calculate assignment of test data to selected ideal functions and write to sqlite database.
+2023-01-05 01:34:10,514 - functionfinder - INFO - Evaluate calculated results.
+2023-01-05 01:34:10,530 - functionfinder - INFO - 2 entries had a deviation above the set limit:
+2023-01-05 01:34:10,530 - functionfinder - INFO -       x         y     DeltaY Idealfunktion  Off_limit
+0  -6.5  81.21402  48.714020           y36          1
+1   0.3  59.68033  57.424227           y33          1
+2023-01-05 01:34:10,546 - functionfinder - INFO - Calculating deviation for those entries from all matched ideal functions for comparision.
+2023-01-05 01:34:10,561 - functionfinder - INFO -          x         y     DeltaY Idealfunktion  Off_limit
+-6.5  -6.5  81.21402  48.714020           y36       True
+-6.5  -6.5  81.21402  87.714020           y11       True
+-6.5  -6.5  81.21402  80.237432            y2       True
+-6.5  -6.5  81.21402  74.340156           y33       True
+2023-01-05 01:34:10,583 - functionfinder - INFO -        x         y     DeltaY Idealfunktion  Off_limit
+0.3  0.3  59.68033  58.180330           y36       True
+0.3  0.3  59.68033  59.380330           y11       True
+0.3  0.3  59.68033  58.724993            y2       True
+0.3  0.3  59.68033  57.424227           y33       True
+2023-01-05 01:34:10,915 - functionfinder - INFO - Programm successfully terminated.
+ See ouput folder for figures, Database and log-files.
