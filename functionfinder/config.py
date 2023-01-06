@@ -56,6 +56,7 @@ progfiles = ["functionfinder/ffrunner.py",
              "functionfinder/classes.py",
              "functionfinder/setuplog.py",
              "functionfinder/log.py",
+             "functionfinder/exceptions.py",
              "tests/test_unit.py"]
 
 

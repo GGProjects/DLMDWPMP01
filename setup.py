@@ -133,7 +133,7 @@ logger.info("Start installing required packages")
 
 setup(
     name='functionfinder',
-    version='1.0.0',
+    version='1.2.0',
     description='Solve task in DLMDWPMP01 python course of www.iu.de ',
     author='Georg Grunsky',
     author_email='georg.grunsky@iu-study.org',
