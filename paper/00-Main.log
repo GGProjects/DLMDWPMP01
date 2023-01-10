@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  30 DEC 2022 13:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  9 JAN 2023 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -931,25 +931,31 @@ Package microtype Info: Loading generic protrusion settings for font family
 ) [2
 
 
-] [3] [4]
+]
+Overfull \hbox (110.92749pt too wide) in paragraph at lines 42--43
+[]\T1/phv/m/n/10.95 (-20) Dokumentiert wur-de die Soft-wa-re ge-mäÿ dem Num-Py-
+Doc Sty-le Gui-de. (https://numpydoc.readthedocs.io/en/latest/format.html-
+ []
+
+[3] [4]
 pdfTeX warning (ext4): destination with the same identifier (name{chapter.2}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 \chapter{Hauptteil}
+l.65 \chapter{Hauptteil}
                         
 chapter 2.
 <../output/figures/train.png, id=127, 433.62pt x 289.08pt>
 File: ../output/figures/train.png Graphic file (type png)
 <use ../output/figures/train.png>
-Package pdftex.def Info: ../output/figures/train.png  used on input line 83.
+Package pdftex.def Info: ../output/figures/train.png  used on input line 92.
 (pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
 
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 84
+Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 93
 .
 
 
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 84
+Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 93
 .
 
 
@@ -964,36 +970,31 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 <../output/figures/ideal.png, id=148, 433.62pt x 289.08pt>
 File: ../output/figures/ideal.png Graphic file (type png)
 <use ../output/figures/ideal.png>
-Package pdftex.def Info: ../output/figures/ideal.png  used on input line 168.
+Package pdftex.def Info: ../output/figures/ideal.png  used on input line 173.
 (pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
 
 
-Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 16
-9.
+Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 17
+4.
 
 
-Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 16
-9.
+Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 17
+4.
 
 [8 <../output/figures/ideal.png>] [9]
-Overfull \hbox (72.46432pt too wide) in paragraph at lines 222--226
-[]\T1/phv/m/n/10.95 (-20) Berechnung in Be-rück-sich-ti-gung auf $\OML/txmi/m/i
-t/10.95 a$ \T1/phv/m/n/10.95 (-20) y33 57.424227/31.75243110139478 = 1.80849859
-39069573268419895590189
- []
-
 <../output/figures/test.png, id=163, 528.2937pt x 332.442pt>
 File: ../output/figures/test.png Graphic file (type png)
 <use ../output/figures/test.png>
-Package pdftex.def Info: ../output/figures/test.png  used on input line 232.
+Package pdftex.def Info: ../output/figures/test.png  used on input line 239.
 (pdftex.def)             Requested size: 369.88582pt x 232.7636pt.
 
+
 Package natbib Warning: Citation `Gage:18' on page 10 undefined on input line 2
-33.
+40.
 
 
 Package natbib Warning: Citation `Gage:18' on page 10 undefined on input line 2
-33.
+40.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1002,20 +1003,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 chapter 3.
 
 Package natbib Warning: Citation `DueckKo:2016' on page 12 undefined on input l
-ine 256.
+ine 264.
 
-<pics/spiral.pdf, id=188, 88.59094pt x 80.27197pt>
+<pics/spiral.pdf, id=189, 88.59094pt x 80.27197pt>
 File: pics/spiral.pdf Graphic file (type pdf)
 <use pics/spiral.pdf>
-Package pdftex.def Info: pics/spiral.pdf  used on input line 263.
+Package pdftex.def Info: pics/spiral.pdf  used on input line 271.
 (pdftex.def)             Requested size: 227.62204pt x 206.27573pt.
 
 Package natbib Warning: Citation `Gage:18' on page 12 undefined on input line 2
-64.
+72.
 
 
 Package natbib Warning: Citation `Gage:18' on page 12 undefined on input line 2
-64.
+72.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1025,33 +1026,33 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ]
 
 Package natbib Warning: Citation `DueckKo:2016' on page 13 undefined on input l
-ine 285.
+ine 293.
 
 
 Package natbib Warning: Citation `DueckKo:2016' on page 13 undefined on input l
-ine 285.
+ine 293.
 
 [13 <./pics/spiral.pdf>]
-Overfull \hbox (0.76733pt too wide) in paragraph at lines 314--315
+Overfull \hbox (0.76733pt too wide) in paragraph at lines 322--323
 []\T1/phv/m/n/10.95 (-20) Formulæ can be gi-ven a num-ber and a la-bel. Num-be-
 ring hap-pens au-to-ma-ti-cal-ly with [][]\T1/txtt/m/n/10.95 \begin{equation}
  []
 
 
 Package natbib Warning: Citation `Wolfram_alpha' on page 14 undefined on input 
-line 333.
+line 341.
 
 
 Package natbib Warning: Citation `con:infra' on page 14 undefined on input line
- 341.
+ 349.
 
 
 Package natbib Warning: Citation `sammelband' on page 14 undefined on input lin
-e 343.
+e 351.
 
 
 Package natbib Warning: Citation `article1' on page 14 undefined on input line 
-345.
+353.
 
 ) [14]
 No file 00-Main.bbl.
@@ -1076,24 +1077,25 @@ Package rerunfilecheck Info: File `00-Main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22433 strings out of 476406
- 388762 string characters out of 2799372
- 1897787 words of memory out of 3000000
- 42009 multiletter control sequences out of 15000+600000
- 581710 words of font info for 313 fonts, out of 8000000 for 9000
+ 22449 strings out of 476406
+ 388913 string characters out of 2799372
+ 1900787 words of memory out of 3000000
+ 42010 multiletter control sequences out of 15000+600000
+ 582965 words of font info for 323 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,14n,106p,10604b,1457s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
-/fonts/type1/public/txfonts/rtxr.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
-c/txfonts/t1xtt.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txex.pf
-b><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Program File
-s/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/typ
-e1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uh
-vro8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program
- Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00-Main.pdf (18 pages, 223901 bytes).
+/fonts/type1/public/txfonts/rtxmi.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
+ic/txfonts/rtxr.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/t1xtt.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txex.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Program Files/MiKTeX/fonts/ty
+pe1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/u
+hvr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on 00-Main.pdf (18 pages, 231495 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
+ 342 PDF objects out of 1000 (max. 8388607)
  104 named destinations out of 1000 (max. 500000)
  82610 words of extra memory for PDF output out of 89155 (max. 10000000)
 

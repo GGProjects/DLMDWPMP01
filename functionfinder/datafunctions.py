@@ -25,7 +25,7 @@ import pandas as pd
 import sqlite3
 import sys
 from .config import out_data, error_calculation, factor
-from .log import logging
+#from .log import logging
 from .exceptions import TypeError
 
 
@@ -41,10 +41,15 @@ def create_empty_sqlitedb(dbname):
     dbname : string
         Name of database to create.
     """
-    dbpath = out_data + dbname
-    if Path.is_file(Path(dbpath)):
-        Path.unlink(Path(dbpath))
-    Path(dbpath).touch()
+    # Conduct instance check of variable input
+    paramdict = {"dbname": (dbname, str)}
+    checktypes("create_empty_sqlitedb", paramdict)
+
+    # Conduct actual task
+    dbpath = out_data + dbname  # create path
+    if Path.is_file(Path(dbpath)):  # check if path allready exists
+        Path.unlink(Path(dbpath))  # in case: delete file
+    Path(dbpath).touch()  # create empty db file
 
 
 def csv2sql_directly(existing_db, csv_toadd, tablename):
@@ -62,6 +67,13 @@ def csv2sql_directly(existing_db, csv_toadd, tablename):
     tablename : string
         Name of table in SQLite database in which to write the data.
     """
+    # Conduct instance check of variable input
+    paramdict = {"dbname": (existing_db, str),
+                 "csv_toadd": (csv_toadd, str),
+                 "tablename": (tablename, str)}
+    checktypes("csv2sql_directly", paramdict)
+
+    # Execute actual task
     db_name = Path(str(out_data + existing_db)).resolve()
     csv_file = Path(csv_toadd).resolve()
     subprocess.run(['sqlite3',
@@ -89,6 +101,13 @@ def csv2sql_pandas(existing_db, csv_toadd, tablename):
     tablename : string
         Name of table in SQLite database in which to write the data.
     """
+    # Conduct instance check of variable input
+    paramdict = {"dbname": (existing_db, str),
+                 "csv_toadd": (csv_toadd, str),
+                 "tablename": (tablename, str)}
+    checktypes("csv2sql_pandas", paramdict)
+
+    # Execute actual task
     conn = sqlite3.connect(str(out_data + existing_db))
     pd.read_csv(csv_toadd).to_sql(tablename, conn,
                                   if_exists='replace', index=False)
@@ -115,6 +134,12 @@ def min_error(train_set, ideal_df):
         Deviation between train_set and matched ideal function according to
         the error_calculation method.
     """
+    # Conduct instance check of variable input
+    paramdict = {"train_set": (train_set, pd.core.series.Series),
+                 "csv_toadd": (ideal_df, pd.core.frame.DataFrame)}
+    checktypes("min_error", paramdict)
+
+    # Execute actual task
     last_val = "not_set"
     for i in ideal_df.axes[1][1:]:
         tmp_val = error_calculation(trainvalue=pd.to_numeric(train_set),
@@ -167,7 +192,7 @@ def calculate_best_ideal(test_value, match_against, index,
     paramdict = {"test_value": (test_value, list),
                  "match_against": (match_against, dict),
                  "index": (index, float),
-                 "idealdata": (idealdata, dict)}
+                 "idealdata": (idealdata, pd.core.frame.DataFrame)}
     checktypes("calculate_best_ideal", paramdict)
 
     result = pd.DataFrame()
@@ -233,5 +258,5 @@ def checktypes(functionname, typedict):
         text = ("Method " + functionname + ": " +
                 "Parameters " + str(list(typedict.keys())) + " NOT of right " +
                 "data type!")
-        logging.critical(text)
+        #logging.critical(text)
         sys.exit(text)

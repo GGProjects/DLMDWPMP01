@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>functionfinder.datafunctions &#8212; DLMDWPMP01 1.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-functionfinder.datafunctions">
+<span id="functionfinder-datafunctions"></span><h1>functionfinder.datafunctions<a class="headerlink" href="#module-functionfinder.datafunctions" title="Permalink to this heading">¶</a></h1>
+<p>Docstring for module datafunctions.py.</p>
+<p>This script contains definitions for data related functions of the
+functionfinder package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.datafunctions.create_empty_sqlitedb">
+<span class="sig-prename descclassname"><span class="pre">functionfinder.datafunctions.</span></span><span class="sig-name descname"><span class="pre">create_empty_sqlitedb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dbname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.datafunctions.create_empty_sqlitedb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create empty SQLite Database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.datafunctions.csv2sql_directly">
+<span class="sig-prename descclassname"><span class="pre">functionfinder.datafunctions.</span></span><span class="sig-name descname"><span class="pre">csv2sql_directly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">existing_db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_toadd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tablename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.datafunctions.csv2sql_directly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import csv files into existing SQLite database using subprocess.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.datafunctions.csv2sql_pandas">
+<span class="sig-prename descclassname"><span class="pre">functionfinder.datafunctions.</span></span><span class="sig-name descname"><span class="pre">csv2sql_pandas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">existing_db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_toadd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tablename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.datafunctions.csv2sql_pandas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import csv files into existing SQLite database using pandas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.datafunctions.min_error">
+<span class="sig-prename descclassname"><span class="pre">functionfinder.datafunctions.</span></span><span class="sig-name descname"><span class="pre">min_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal_df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.datafunctions.min_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select column of a pandas DataFrame with minimal error to a Series.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.datafunctions.calculate_best_ideal">
+<span class="sig-prename descclassname"><span class="pre">functionfinder.datafunctions.</span></span><span class="sig-name descname"><span class="pre">calculate_best_ideal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_against</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idealdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.datafunctions.calculate_best_ideal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select ideal function with minimal deviation to given point.</p>
+</dd></dl>
+
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#functionfinder.datafunctions.calculate_best_ideal" title="functionfinder.datafunctions.calculate_best_ideal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_best_ideal</span></code></a>(test_value, ...[, function])</p></td>
+<td><p>Select ideal function with minimal deviation to given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">checktypes</span></code>(functionname, typedict)</p></td>
+<td><p>Check if types of data passed to a function upon call meet requirements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#functionfinder.datafunctions.create_empty_sqlitedb" title="functionfinder.datafunctions.create_empty_sqlitedb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_empty_sqlitedb</span></code></a>(dbname)</p></td>
+<td><p>Create empty SQLite Database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#functionfinder.datafunctions.csv2sql_directly" title="functionfinder.datafunctions.csv2sql_directly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">csv2sql_directly</span></code></a>(existing_db, csv_toadd, ...)</p></td>
+<td><p>Import csv files into existing SQLite database using subprocess.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#functionfinder.datafunctions.csv2sql_pandas" title="functionfinder.datafunctions.csv2sql_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">csv2sql_pandas</span></code></a>(existing_db, csv_toadd, tablename)</p></td>
+<td><p>Import csv files into existing SQLite database using pandas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#functionfinder.datafunctions.min_error" title="functionfinder.datafunctions.min_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_error</span></code></a>(train_set, ideal_df)</p></td>
+<td><p>Select column of a pandas DataFrame with minimal error to a Series.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DLMDWPMP01</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">MODULES</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Georg Grunsky.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/generated/functionfinder.datafunctions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

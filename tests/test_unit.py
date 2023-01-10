@@ -32,6 +32,7 @@ import sqlite3
 
 from functionfinder.datafunctions import create_empty_sqlitedb
 from functionfinder.datafunctions import csv2sql_directly, csv2sql_pandas
+from functionfinder.datafunctions import checktypes
 from functionfinder.config import out_data, datafiles
 
 
@@ -188,6 +189,12 @@ class test_df(unittest.TestCase):
         lengthcheck = len(self.traindf) == len(self.idealdf)
         self.assertTrue(lengthcheck,
                         "Train and ideal datasets are not of the same length.")
+
+    def test_instancecheck(self):
+        """Test functionality of datafunctions checktypes"""
+        configinstance = {"out_data": (out_data, str),
+                          "datafiles": (datafiles, dict)}
+        checktypes("unittest", configinstance)
 
     def tearDown(self):
         """Execute everytime after running a test of this class."""

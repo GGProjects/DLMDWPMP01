@@ -39,10 +39,12 @@ Nach erfolgreicher Installation, kann das Programm aus der Konsole mit dem einfa
 
 Im Zuge der Entwicklung wurde das vorliegende Programm mit der Pythonversion 3.11 unter Windows10 getestet. Die Lauffähigkeit auf Linux oder IOS/MacOS Plattformen wurde im gegenständlichen Programmdesign nicht berücksichtigt und könnte Thema einer Weiterentwicklung des Moduls sein.
 
-Dokumentiert wurde die Software gemäß dem NumPyDoc Style Guide. (https://numpydoc.readthedocs.io/en/latest/format.html#-standard) Verfügbar gemacht wurde diese anschließend mithilfe der Software \emph{Sphinx} im Markdown-Format für die Readme-Datei des Git-Repositories sowie im LATEX-Format als Appendix für diese Arbeit.
+Dokumentiert wurde die Software gemäß dem NumPyDoc Style Guide. (https://numpydoc.readthedocs.io/en/latest/format.html-standard) Verfügbar gemacht wurde diese anschließend mithilfe der Software \emph{Sphinx} im Markdown-Format für die Readme-Datei des Git-Repositories sowie im LATEX-Format als Appendix für diese Arbeit.
 
 Eine detaillierte Ausgabe der Ergebnisse der UnitTests kann mittels Konsolenbefehl
-\begin{center}\emph{python -m unittest -v tests/test_unit\.py}\end{center}
+\begin{center}
+\emph{python -m unittest -v tests/test\_unit\.py}
+\end{center}
 erreicht werden. 
 
 \section{Konfigurationshinweise}
@@ -139,7 +141,7 @@ Mathematisch wird daher der kleinste Wert der Formel
 \end{equation}
 gesucht. Wobei die Variable $TrainingData$ durch alle vier vorliegenden Trainingsdatenspalten iteriert und die Variable $IdealFunction$ durch sämtliche verfügbaren Datenspalten der idealtypischen Funktionen. $n$ steht hierbei für die Anzahl an Datenpunkten je Datenspalte, die in beiden Datensätzen gleichgroß sein muss. 
 
-In der Ausführung des programmierten Moduls wurde für den mathematischen Teil dieser Aufgabe (gemäß Gleichung ~\ref{leastsquare})  von der Eigenschaft des \emph{pandas}-Objekts Series} Gebrauch gemacht, die, bei der Subtraktion von zwei gleichlangen \emph{Series} der Länge $n$ (in diesem Fall mit $n=400$) erneut eine \emph{Serie} derselben Länge mit den jeweils subtrahierten Einzelwerten zurück gibt. Auch die mathematische Funktion des Quadrats wird auf jeden Einzelwert der \emph{Serie} angewandt. Die Summenbildung der \emph{Serie} fasst diese nun, dem vorgegebenen Kriterium entsprechend, zu einem Wert zusammen.
+In der Ausführung des programmierten Moduls wurde für den mathematischen Teil dieser Aufgabe (gemäß Gleichung ~\ref{leastsquare})  von der Eigenschaft des \emph{pandas}-Objekts \emph{Series} Gebrauch gemacht, die, bei der Subtraktion von zwei gleichlangen \emph{Series} der Länge $n$ (in diesem Fall mit $n=400$) erneut eine \emph{Serie} derselben Länge mit den jeweils subtrahierten Einzelwerten zurück gibt. Auch die mathematische Funktion des Quadrats wird auf jeden Einzelwert der \emph{Serie} angewandt. Die Summenbildung der \emph{Serie} fasst diese nun, dem vorgegebenen Kriterium entsprechend, zu einem Wert zusammen.
 Diese Eigenschaft ermöglichte es daher, jede Datenspalte des Trainingsdatensatzes durch die Datenspalten der verfügbaren idealtypischen Funktionen zu iterieren und die zurückgelieferten Ergebnisse direkt zu vergleichen. Das Ergebnis mit der kleinsten Summe wurde jeweils als das Passendste abgespeichert.
 
 Im Programmdesign bot es sich daher an, hierfür zwei Methoden getrennt zu definieren:
