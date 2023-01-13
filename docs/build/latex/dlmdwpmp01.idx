@@ -1,0 +1,158 @@
+\indexentry{module@\spxentry{module}!functionfinder@\spxentry{functionfinder}|hyperpage}{3}
+\indexentry{functionfinder@\spxentry{functionfinder}!module@\spxentry{module}|hyperpage}{3}
+\indexentry{module@\spxentry{module}!functionfinder.classes@\spxentry{functionfinder.classes}|hyperpage}{3}
+\indexentry{functionfinder.classes@\spxentry{functionfinder.classes}!module@\spxentry{module}|hyperpage}{3}
+\indexentry{idealdata (class in functionfinder.classes)@\spxentry{idealdata}\spxextra{class in functionfinder.classes}|hyperpage}{4}
+\indexentry{\_\_init\_\_() (functionfinder.classes.idealdata method)@\spxentry{\_\_init\_\_()}\spxextra{functionfinder.classes.idealdata method}|hyperpage}{4}
+\indexentry{draw() (functionfinder.classes.idealdata method)@\spxentry{draw()}\spxextra{functionfinder.classes.idealdata method}|hyperpage}{4}
+\indexentry{getdata() (functionfinder.classes.idealdata method)@\spxentry{getdata()}\spxextra{functionfinder.classes.idealdata method}|hyperpage}{4}
+\indexentry{matched\_functions() (functionfinder.classes.idealdata method)@\spxentry{matched\_functions()}\spxextra{functionfinder.classes.idealdata method}|hyperpage}{5}
+\indexentry{projectdata (class in functionfinder.classes)@\spxentry{projectdata}\spxextra{class in functionfinder.classes}|hyperpage}{5}
+\indexentry{\_\_init\_\_() (functionfinder.classes.projectdata method)@\spxentry{\_\_init\_\_()}\spxextra{functionfinder.classes.projectdata method}|hyperpage}{6}
+\indexentry{draw() (functionfinder.classes.projectdata method)@\spxentry{draw()}\spxextra{functionfinder.classes.projectdata method}|hyperpage}{6}
+\indexentry{getdata() (functionfinder.classes.projectdata method)@\spxentry{getdata()}\spxextra{functionfinder.classes.projectdata method}|hyperpage}{6}
+\indexentry{testdata (class in functionfinder.classes)@\spxentry{testdata}\spxextra{class in functionfinder.classes}|hyperpage}{7}
+\indexentry{\_\_init\_\_() (functionfinder.classes.testdata method)@\spxentry{\_\_init\_\_()}\spxextra{functionfinder.classes.testdata method}|hyperpage}{7}
+\indexentry{draw() (functionfinder.classes.testdata method)@\spxentry{draw()}\spxextra{functionfinder.classes.testdata method}|hyperpage}{7}
+\indexentry{getdata() (functionfinder.classes.testdata method)@\spxentry{getdata()}\spxextra{functionfinder.classes.testdata method}|hyperpage}{8}
+\indexentry{off\_limit() (functionfinder.classes.testdata method)@\spxentry{off\_limit()}\spxextra{functionfinder.classes.testdata method}|hyperpage}{8}
+\indexentry{module@\spxentry{module}!functionfinder.config@\spxentry{functionfinder.config}|hyperpage}{8}
+\indexentry{functionfinder.config@\spxentry{functionfinder.config}!module@\spxentry{module}|hyperpage}{8}
+\indexentry{error\_calculation() (in module functionfinder.config)@\spxentry{error\_calculation()}\spxextra{in module functionfinder.config}|hyperpage}{8}
+\indexentry{module@\spxentry{module}!functionfinder.datafunctions@\spxentry{functionfinder.datafunctions}|hyperpage}{9}
+\indexentry{functionfinder.datafunctions@\spxentry{functionfinder.datafunctions}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{calculate\_best\_ideal() (in module functionfinder.datafunctions)@\spxentry{calculate\_best\_ideal()}\spxextra{in module functionfinder.datafunctions}|hyperpage}{10}
+\indexentry{checktypes() (in module functionfinder.datafunctions)@\spxentry{checktypes()}\spxextra{in module functionfinder.datafunctions}|hyperpage}{10}
+\indexentry{create\_empty\_sqlitedb() (in module functionfinder.datafunctions)@\spxentry{create\_empty\_sqlitedb()}\spxextra{in module functionfinder.datafunctions}|hyperpage}{11}
+\indexentry{csv2sql\_directly() (in module functionfinder.datafunctions)@\spxentry{csv2sql\_directly()}\spxextra{in module functionfinder.datafunctions}|hyperpage}{11}
+\indexentry{csv2sql\_pandas() (in module functionfinder.datafunctions)@\spxentry{csv2sql\_pandas()}\spxextra{in module functionfinder.datafunctions}|hyperpage}{11}
+\indexentry{min\_error() (in module functionfinder.datafunctions)@\spxentry{min\_error()}\spxextra{in module functionfinder.datafunctions}|hyperpage}{12}
+\indexentry{module@\spxentry{module}!functionfinder.exceptions@\spxentry{functionfinder.exceptions}|hyperpage}{12}
+\indexentry{functionfinder.exceptions@\spxentry{functionfinder.exceptions}!module@\spxentry{module}|hyperpage}{12}
+\indexentry{TypeError@\spxentry{TypeError}|hyperpage}{13}
+\indexentry{module@\spxentry{module}!functionfinder.ffrunner@\spxentry{functionfinder.ffrunner}|hyperpage}{13}
+\indexentry{functionfinder.ffrunner@\spxentry{functionfinder.ffrunner}!module@\spxentry{module}|hyperpage}{13}
+\indexentry{task() (in module functionfinder.ffrunner)@\spxentry{task()}\spxextra{in module functionfinder.ffrunner}|hyperpage}{13}
+\indexentry{module@\spxentry{module}!functionfinder.log@\spxentry{functionfinder.log}|hyperpage}{13}
+\indexentry{functionfinder.log@\spxentry{functionfinder.log}!module@\spxentry{module}|hyperpage}{13}
+\indexentry{setlogging() (in module functionfinder.log)@\spxentry{setlogging()}\spxextra{in module functionfinder.log}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!functionfinder.setuplog@\spxentry{functionfinder.setuplog}|hyperpage}{14}
+\indexentry{functionfinder.setuplog@\spxentry{functionfinder.setuplog}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{set\_setuplogging() (in module functionfinder.setuplog)@\spxentry{set\_setuplogging()}\spxextra{in module functionfinder.setuplog}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!tests@\spxentry{tests}|hyperpage}{15}
+\indexentry{tests@\spxentry{tests}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{module@\spxentry{module}!tests.test\_unit@\spxentry{tests.test\_unit}|hyperpage}{15}
+\indexentry{tests.test\_unit@\spxentry{tests.test\_unit}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{check\_struct() (in module tests.test\_unit)@\spxentry{check\_struct()}\spxextra{in module tests.test\_unit}|hyperpage}{16}
+\indexentry{test\_df (class in tests.test\_unit)@\spxentry{test\_df}\spxextra{class in tests.test\_unit}|hyperpage}{16}
+\indexentry{\_\_init\_\_() (tests.test\_unit.test\_df method)@\spxentry{\_\_init\_\_()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{16}
+\indexentry{addClassCleanup() (tests.test\_unit.test\_df class method)@\spxentry{addClassCleanup()}\spxextra{tests.test\_unit.test\_df class method}|hyperpage}{19}
+\indexentry{addCleanup() (tests.test\_unit.test\_df method)@\spxentry{addCleanup()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{19}
+\indexentry{addTypeEqualityFunc() (tests.test\_unit.test\_df method)@\spxentry{addTypeEqualityFunc()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{19}
+\indexentry{assertAlmostEqual() (tests.test\_unit.test\_df method)@\spxentry{assertAlmostEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertCountEqual() (tests.test\_unit.test\_df method)@\spxentry{assertCountEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertDictContainsSubset() (tests.test\_unit.test\_df method)@\spxentry{assertDictContainsSubset()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertEqual() (tests.test\_unit.test\_df method)@\spxentry{assertEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertFalse() (tests.test\_unit.test\_df method)@\spxentry{assertFalse()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertGreater() (tests.test\_unit.test\_df method)@\spxentry{assertGreater()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertGreaterEqual() (tests.test\_unit.test\_df method)@\spxentry{assertGreaterEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertIn() (tests.test\_unit.test\_df method)@\spxentry{assertIn()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertIs() (tests.test\_unit.test\_df method)@\spxentry{assertIs()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertIsInstance() (tests.test\_unit.test\_df method)@\spxentry{assertIsInstance()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertIsNone() (tests.test\_unit.test\_df method)@\spxentry{assertIsNone()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{20}
+\indexentry{assertIsNot() (tests.test\_unit.test\_df method)@\spxentry{assertIsNot()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertIsNotNone() (tests.test\_unit.test\_df method)@\spxentry{assertIsNotNone()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertLess() (tests.test\_unit.test\_df method)@\spxentry{assertLess()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertLessEqual() (tests.test\_unit.test\_df method)@\spxentry{assertLessEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertListEqual() (tests.test\_unit.test\_df method)@\spxentry{assertListEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertLogs() (tests.test\_unit.test\_df method)@\spxentry{assertLogs()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertMultiLineEqual() (tests.test\_unit.test\_df method)@\spxentry{assertMultiLineEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertNoLogs() (tests.test\_unit.test\_df method)@\spxentry{assertNoLogs()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertNotAlmostEqual() (tests.test\_unit.test\_df method)@\spxentry{assertNotAlmostEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertNotEqual() (tests.test\_unit.test\_df method)@\spxentry{assertNotEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{21}
+\indexentry{assertNotIn() (tests.test\_unit.test\_df method)@\spxentry{assertNotIn()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertNotIsInstance() (tests.test\_unit.test\_df method)@\spxentry{assertNotIsInstance()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertNotRegex() (tests.test\_unit.test\_df method)@\spxentry{assertNotRegex()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertRaises() (tests.test\_unit.test\_df method)@\spxentry{assertRaises()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertRaisesRegex() (tests.test\_unit.test\_df method)@\spxentry{assertRaisesRegex()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertRegex() (tests.test\_unit.test\_df method)@\spxentry{assertRegex()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertSequenceEqual() (tests.test\_unit.test\_df method)@\spxentry{assertSequenceEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{22}
+\indexentry{assertSetEqual() (tests.test\_unit.test\_df method)@\spxentry{assertSetEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{23}
+\indexentry{assertTrue() (tests.test\_unit.test\_df method)@\spxentry{assertTrue()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{23}
+\indexentry{assertTupleEqual() (tests.test\_unit.test\_df method)@\spxentry{assertTupleEqual()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{23}
+\indexentry{assertWarns() (tests.test\_unit.test\_df method)@\spxentry{assertWarns()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{23}
+\indexentry{assertWarnsRegex() (tests.test\_unit.test\_df method)@\spxentry{assertWarnsRegex()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{23}
+\indexentry{debug() (tests.test\_unit.test\_df method)@\spxentry{debug()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{doClassCleanups() (tests.test\_unit.test\_df class method)@\spxentry{doClassCleanups()}\spxextra{tests.test\_unit.test\_df class method}|hyperpage}{24}
+\indexentry{doCleanups() (tests.test\_unit.test\_df method)@\spxentry{doCleanups()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{enterClassContext() (tests.test\_unit.test\_df class method)@\spxentry{enterClassContext()}\spxextra{tests.test\_unit.test\_df class method}|hyperpage}{24}
+\indexentry{enterContext() (tests.test\_unit.test\_df method)@\spxentry{enterContext()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{fail() (tests.test\_unit.test\_df method)@\spxentry{fail()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{failureException (tests.test\_unit.test\_df attribute)@\spxentry{failureException}\spxextra{tests.test\_unit.test\_df attribute}|hyperpage}{24}
+\indexentry{setUp() (tests.test\_unit.test\_df method)@\spxentry{setUp()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{setUpClass() (tests.test\_unit.test\_df class method)@\spxentry{setUpClass()}\spxextra{tests.test\_unit.test\_df class method}|hyperpage}{24}
+\indexentry{shortDescription() (tests.test\_unit.test\_df method)@\spxentry{shortDescription()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{skipTest() (tests.test\_unit.test\_df method)@\spxentry{skipTest()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{subTest() (tests.test\_unit.test\_df method)@\spxentry{subTest()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{tearDown() (tests.test\_unit.test\_df method)@\spxentry{tearDown()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{tearDownClass() (tests.test\_unit.test\_df class method)@\spxentry{tearDownClass()}\spxextra{tests.test\_unit.test\_df class method}|hyperpage}{24}
+\indexentry{test\_idealstruct() (tests.test\_unit.test\_df method)@\spxentry{test\_idealstruct()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{test\_instancecheck() (tests.test\_unit.test\_df method)@\spxentry{test\_instancecheck()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{test\_teststruct() (tests.test\_unit.test\_df method)@\spxentry{test\_teststruct()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{24}
+\indexentry{test\_trainideal\_length() (tests.test\_unit.test\_df method)@\spxentry{test\_trainideal\_length()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{25}
+\indexentry{test\_trainstruct() (tests.test\_unit.test\_df method)@\spxentry{test\_trainstruct()}\spxextra{tests.test\_unit.test\_df method}|hyperpage}{25}
+\indexentry{test\_sqlite (class in tests.test\_unit)@\spxentry{test\_sqlite}\spxextra{class in tests.test\_unit}|hyperpage}{25}
+\indexentry{\_\_init\_\_() (tests.test\_unit.test\_sqlite method)@\spxentry{\_\_init\_\_()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{25}
+\indexentry{addClassCleanup() (tests.test\_unit.test\_sqlite class method)@\spxentry{addClassCleanup()}\spxextra{tests.test\_unit.test\_sqlite class method}|hyperpage}{28}
+\indexentry{addCleanup() (tests.test\_unit.test\_sqlite method)@\spxentry{addCleanup()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{28}
+\indexentry{addTypeEqualityFunc() (tests.test\_unit.test\_sqlite method)@\spxentry{addTypeEqualityFunc()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{28}
+\indexentry{assertAlmostEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertAlmostEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{28}
+\indexentry{assertCountEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertCountEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{28}
+\indexentry{assertDictContainsSubset() (tests.test\_unit.test\_sqlite method)@\spxentry{assertDictContainsSubset()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{28}
+\indexentry{assertEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertFalse() (tests.test\_unit.test\_sqlite method)@\spxentry{assertFalse()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertGreater() (tests.test\_unit.test\_sqlite method)@\spxentry{assertGreater()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertGreaterEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertGreaterEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertIn() (tests.test\_unit.test\_sqlite method)@\spxentry{assertIn()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertIs() (tests.test\_unit.test\_sqlite method)@\spxentry{assertIs()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertIsInstance() (tests.test\_unit.test\_sqlite method)@\spxentry{assertIsInstance()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertIsNone() (tests.test\_unit.test\_sqlite method)@\spxentry{assertIsNone()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertIsNot() (tests.test\_unit.test\_sqlite method)@\spxentry{assertIsNot()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertIsNotNone() (tests.test\_unit.test\_sqlite method)@\spxentry{assertIsNotNone()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertLess() (tests.test\_unit.test\_sqlite method)@\spxentry{assertLess()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertLessEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertLessEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertListEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertListEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertLogs() (tests.test\_unit.test\_sqlite method)@\spxentry{assertLogs()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{29}
+\indexentry{assertMultiLineEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertMultiLineEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertNoLogs() (tests.test\_unit.test\_sqlite method)@\spxentry{assertNoLogs()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertNotAlmostEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertNotAlmostEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertNotEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertNotEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertNotIn() (tests.test\_unit.test\_sqlite method)@\spxentry{assertNotIn()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertNotIsInstance() (tests.test\_unit.test\_sqlite method)@\spxentry{assertNotIsInstance()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertNotRegex() (tests.test\_unit.test\_sqlite method)@\spxentry{assertNotRegex()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertRaises() (tests.test\_unit.test\_sqlite method)@\spxentry{assertRaises()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertRaisesRegex() (tests.test\_unit.test\_sqlite method)@\spxentry{assertRaisesRegex()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{30}
+\indexentry{assertRegex() (tests.test\_unit.test\_sqlite method)@\spxentry{assertRegex()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{31}
+\indexentry{assertSequenceEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertSequenceEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{31}
+\indexentry{assertSetEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertSetEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{31}
+\indexentry{assertTrue() (tests.test\_unit.test\_sqlite method)@\spxentry{assertTrue()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{31}
+\indexentry{assertTupleEqual() (tests.test\_unit.test\_sqlite method)@\spxentry{assertTupleEqual()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{31}
+\indexentry{assertWarns() (tests.test\_unit.test\_sqlite method)@\spxentry{assertWarns()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{31}
+\indexentry{assertWarnsRegex() (tests.test\_unit.test\_sqlite method)@\spxentry{assertWarnsRegex()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{32}
+\indexentry{debug() (tests.test\_unit.test\_sqlite method)@\spxentry{debug()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{32}
+\indexentry{doClassCleanups() (tests.test\_unit.test\_sqlite class method)@\spxentry{doClassCleanups()}\spxextra{tests.test\_unit.test\_sqlite class method}|hyperpage}{32}
+\indexentry{doCleanups() (tests.test\_unit.test\_sqlite method)@\spxentry{doCleanups()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{32}
+\indexentry{enterClassContext() (tests.test\_unit.test\_sqlite class method)@\spxentry{enterClassContext()}\spxextra{tests.test\_unit.test\_sqlite class method}|hyperpage}{32}
+\indexentry{enterContext() (tests.test\_unit.test\_sqlite method)@\spxentry{enterContext()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{32}
+\indexentry{fail() (tests.test\_unit.test\_sqlite method)@\spxentry{fail()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{32}
+\indexentry{failureException (tests.test\_unit.test\_sqlite attribute)@\spxentry{failureException}\spxextra{tests.test\_unit.test\_sqlite attribute}|hyperpage}{32}
+\indexentry{setUp() (tests.test\_unit.test\_sqlite method)@\spxentry{setUp()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{32}
+\indexentry{setUpClass() (tests.test\_unit.test\_sqlite class method)@\spxentry{setUpClass()}\spxextra{tests.test\_unit.test\_sqlite class method}|hyperpage}{32}
+\indexentry{shortDescription() (tests.test\_unit.test\_sqlite method)@\spxentry{shortDescription()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}
+\indexentry{skipTest() (tests.test\_unit.test\_sqlite method)@\spxentry{skipTest()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}
+\indexentry{subTest() (tests.test\_unit.test\_sqlite method)@\spxentry{subTest()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}
+\indexentry{tearDown() (tests.test\_unit.test\_sqlite method)@\spxentry{tearDown()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}
+\indexentry{tearDownClass() (tests.test\_unit.test\_sqlite class method)@\spxentry{tearDownClass()}\spxextra{tests.test\_unit.test\_sqlite class method}|hyperpage}{33}
+\indexentry{test\_creation() (tests.test\_unit.test\_sqlite method)@\spxentry{test\_creation()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}
+\indexentry{test\_table\_from\_csv() (tests.test\_unit.test\_sqlite method)@\spxentry{test\_table\_from\_csv()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}
+\indexentry{test\_table\_from\_pandas() (tests.test\_unit.test\_sqlite method)@\spxentry{test\_table\_from\_pandas()}\spxextra{tests.test\_unit.test\_sqlite method}|hyperpage}{33}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for module exceptions.py.
+"""Userdefined exceptions.
 
 This module contains userdefined exceptions.
 """

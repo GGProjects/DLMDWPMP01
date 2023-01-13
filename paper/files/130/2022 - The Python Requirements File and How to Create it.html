@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <title>   The Python Requirements File and How to Create it |   LearnPython.com </title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1" />
+    
+    
+    
+      <meta name="ROBOTS" content="INDEX, FOLLOW" />
+    
+
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;family=Oxygen:wght@300;400;700&amp;display=swap" rel="preload stylesheet" />
+
+    
+    
+
+    
+
+    <link href="https://learnpython.com/scss/main.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.learnpython.com/lpy/blog/css/tiny-slider.min.css" />
+
+    <script type="text/javascript" src="https://cdn.learnpython.com/lpy/blog/js/blog-static.v3.min.js"></script>
+
+    <script type="text/javascript" src="/blog-js/academy.min.js"></script>
+    <script type="text/javascript" src="/blog-js/jQuery.progressBar.min.js"></script>
+
+
+
+    
+
+    
+      
+<link rel="shortcut icon" href="https://cdn.learnpython.com/lpy/blog/img/favicon.ico" type="image/x-icon" />
+
+    
+
+    
+
+    <meta property="og:title" content="The Python Requirements File and How to Create it" />
+<meta property="og:description" content="Learn what a Python requirements.txt file is, how to create it, and how to maintain it with a list of required modules." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://learnpython.com/blog/python-requirements-file/" /><meta property="article:published_time" content="2022-01-13T18:00:00+02:00" />
+<meta property="article:modified_time" content="2022-01-13T18:00:00+02:00" /><meta property="og:site_name" content="LearnPython.com" />
+<meta property="article:publisher" content="https://www.facebook.com/FACEBOOK_FIXME" />
+<meta property="article:section" content="blog" />
+<meta property="article:tag" content="python basics" />
+
+<meta itemprop="name" content="The Python Requirements File and How to Create it" />
+<meta itemprop="description" content="Learn what a Python requirements.txt file is, how to create it, and how to maintain it with a list of required modules." />
+
+
+<meta itemprop="datePublished" content="2022-01-13T18:00:00+02:00" />
+<meta itemprop="dateModified" content="2022-01-13T18:00:00+02:00" />
+<meta itemprop="wordCount" content="1501" />
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://learnpython.com/blog/python-requirements-file/cover.png" />
+<meta name="twitter:title" content="The Python Requirements File and How to Create it" />
+<meta name="twitter:description" content="Learn what a Python requirements.txt file is, how to create it, and how to maintain it with a list of required modules." />
+<meta name="twitter:site" content="@https://twitter.com/TWITTER_FIXME" />
+
+
+
+
+<meta property="og:locale" content="en_US" />
+
+
+    
+        
+            
+<meta property="og:image" content="https://learnpython.com/blog/python-requirements-file/cover.png" />
+<meta property="og:image:secure_url" content="https://learnpython.com/blog/python-requirements-file/cover.png" />
+<meta property="og:image:width" content="4800" />
+<meta property="og:image:height" content="2700" />
+<meta property="og:image:alt" content="Learn what a Python requirements.txt file is, how to create it, and how to maintain it with a list of required modules." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://learnpython.com/blog/python-requirements-file/cover.png" />
+            
+        
+
+
+
+<meta name="description" content="Learn what a Python requirements.txt file is, how to create it, and how to maintain it with a list of required modules." />
+
+<meta property="twitter:creator" content="@TWITTER_FIXME" />
+
+    <link rel="canonical" href="https://learnpython.com/blog/python-requirements-file/" />
+
+
+
+<link rel="icon" href="https://cdn.learnpython.com/lpy/blog/img/favicon.ico" type="image/x-icon" sizes="32x32" />
+<link rel="icon" href="https://cdn.learnpython.com/lpy/blog/img/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://cdn.learnpython.com/lpy/blog/img/favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://cdn.learnpython.com/lpy/blog/img/favicon-270x270.png" />
+
+
+      
+    
+
+    <style type="text/css" id="syntaxhighlighteranchor"></style>
+    <script type="text/javascript" src="/blog-js/syntaxhighlighter3/shCore.js?ver=3.0.9b"></script>
+<script type="text/javascript" src="/blog-js/syntaxhighlighter3/shBrushSql.js?ver=3.0.9b"></script>
+<script type="text/javascript" src="/blog-js/syntaxhighlighter3/shBrushPython.js?ver=3.0.9b"></script>
+<script type="text/javascript">
+	
+
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+
+    <script type="text/javascript">
+	window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"\/blog-js\/wp-emoji\/wp-emoji-release.min.js?ver=4.9.8"}};
+	!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&amp;&amp;(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&amp;&amp;k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i&lt;j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&amp;&amp;c.supports[j[i]],"flag"!==j[i]&amp;&amp;(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&amp;&amp;c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&amp;&amp;!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&amp;&amp;c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&amp;&amp;g.twemoji&amp;&amp;(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+
+    
+      
+<script>
+    dataLayer = [];
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K7Q9T5K');</script>
+
+    
+
+  <base href="https://learnpython.com/blog/python-requirements-file/" /></head>
+
+  <body class="">
+    <header class="site-header">
+<nav role="navigation">
+  <div class="site-navigation">
+        <a href="/" class="site-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="185" height="41" viewBox="0 0 185.697 41.732">
+                <title>LearnPython.com</title>
+                <path d="M0,37.187a2.955,2.955,0,0,1,.734-1.982,2.629,2.629,0,0,1,2.1-.854,2.627,2.627,0,0,1,2.1.854,3.04,3.04,0,0,1,0,3.962,2.62,2.62,0,0,1-2.1.854,2.622,2.622,0,0,1-2.1-.854A2.947,2.947,0,0,1,0,37.187Z" fill="#006dff"/>
+                <path d="M14.539,37.081c0,1.8.7,2.54,2.413,2.54a8.847,8.847,0,0,0,1.518-.145c.585-.092.923.164.923.749v.31a.86.86,0,0,1-.713.933,9.154,9.154,0,0,1-2.139.264c-2.7,0-4.579-1.516-4.579-4.651s1.883-4.662,4.579-4.662a9.108,9.108,0,0,1,2.139.266.858.858,0,0,1,.713.931v.312c0,.585-.4.822-1.088.713a9.459,9.459,0,0,0-1.353-.12C15.243,34.521,14.539,35.28,14.539,37.081Z" fill="#ffffff"/>
+                <path d="M20.758,37.081c0-2.971,1.636-4.662,4.625-4.662s4.625,1.691,4.625,4.662-1.637,4.651-4.625,4.651S20.758,40.042,20.758,37.081Zm6.672,0c0-1.773-.676-2.523-2.047-2.523s-2.048.75-2.048,2.523c0,1.755.677,2.513,2.048,2.513S27.43,38.836,27.43,37.081Z" fill="#ffffff"/>
+                <path d="M46.033,36.578v4.15a.76.76,0,0,1-.84.84h-.814a.761.761,0,0,1-.841-.84V36.45c0-1.307-.557-1.892-1.763-1.892s-1.655.585-1.655,1.892v4.278a.76.76,0,0,1-.841.84h-.8a.761.761,0,0,1-.841-.84V36.45c0-1.307-.448-1.892-1.654-1.892s-1.765.585-1.765,1.892v4.278a.76.76,0,0,1-.841.84h-.813a.761.761,0,0,1-.841-.84v-4.15c0-3.053,1.582-4.159,4.04-4.159,1.627,0,2.578.467,3.117,1.289.53-.822,1.489-1.289,3.108-1.289C44.452,32.419,46.033,33.525,46.033,36.578Z" fill="#ffffff"/>
+                <path d="M.687,17.464V3.03A1.3,1.3,0,0,1,2.128,1.589H3.663A1.305,1.305,0,0,1,5.106,3.03V16.664c0,.736.218,1.316,1.519,1.316h6.707a1.306,1.306,0,0,1,1.443,1.442v1.1a1.306,1.306,0,0,1-1.443,1.441H5.544C2.175,21.961.687,20.723.687,17.464Z" fill="#ffffff"/>
+                <path d="M28.042,15.677l-6.629.689c.564,1.756,1.99,2.382,4.074,2.382a15.567,15.567,0,0,0,3.589-.5c1.019-.235,1.63.2,1.63,1.223v.469a1.51,1.51,0,0,1-1.222,1.615,18.527,18.527,0,0,1-4.764.689c-4.749,0-7.93-2.586-7.93-7.976,0-5.093,2.7-7.993,7.961-7.993,4.419,0,7.036,2.069,7.036,5.987C31.787,14.455,30.862,15.379,28.042,15.677Zm-.377-3.823c0-1.49-.908-2.289-2.914-2.289-2.179,0-3.338.988-3.573,3.636l5.406-.549C27.493,12.559,27.665,12.386,27.665,11.854Z" fill="#ffffff"/>
+                <path d="M48.691,12.292v5.172c0,3.259-1.489,4.5-4.858,4.5H40.276c-3.825,0-6.16-1.019-6.16-4.7,0-3.7,2.352-4.717,6.16-4.717h4.058v-.251c0-1.724-1.363-2.476-3.651-2.476a21.493,21.493,0,0,0-4.043.486c-.987.188-1.583-.267-1.583-1.27V8.453a1.591,1.591,0,0,1,1.5-1.63,23.791,23.791,0,0,1,4.748-.549C45.557,6.274,48.691,8.076,48.691,12.292Zm-4.357,4.952V15.661H40.495c-1.9,0-2.288.439-2.288,1.6,0,1.143.392,1.583,2.273,1.583h2.287C44.114,18.843,44.334,18.294,44.334,17.244Z" fill="#ffffff"/>
+                <path d="M61.394,7.842V8.75c0,.925-.549,1.442-1.583,1.458-3.29.047-3.432.329-3.432,1.5V20.52a1.3,1.3,0,0,1-1.441,1.441H53.386a1.305,1.305,0,0,1-1.442-1.441V11.085c0-3.588,1.286-4.56,7.915-4.669A1.316,1.316,0,0,1,61.394,7.842Z" fill="#ffffff"/>
+                <path d="M79.1,13.521v7a1.307,1.307,0,0,1-1.444,1.443H76.181a1.306,1.306,0,0,1-1.443-1.443V13.459c0-2.761-1-3.529-3.357-3.529s-3.356.768-3.356,3.529v7.059a1.307,1.307,0,0,1-1.444,1.443H65.107a1.307,1.307,0,0,1-1.444-1.443v-7c0-5.63,2.84-7.262,7.718-7.262S79.1,7.891,79.1,13.521Z" fill="#ffffff"/>
+                <path d="M82.934,20.518V6.071c0-3.262,1.49-4.5,4.862-4.5H89.93c6.1,0,9.317,1.38,9.317,6.917s-3.216,6.95-9.317,6.95H87.357v5.082a1.306,1.306,0,0,1-1.443,1.443H84.376A1.306,1.306,0,0,1,82.934,20.518ZM94.823,8.455c0-2.463-1.176-3.2-4.407-3.2H88.644c-1.083,0-1.287.565-1.287,1.49v4.942h3.059C93.647,11.687,94.823,10.918,94.823,8.455Z" fill="#006dff"/>
+                <path d="M114.58,6.542h1.475A1.305,1.305,0,0,1,117.5,7.984v14.5c0,4.157-3.261,6.039-7.481,6.039a17.143,17.143,0,0,1-4.236-.565,1.5,1.5,0,0,1-1.223-1.616v-.58c0-1.02.6-1.475,1.6-1.255a15.932,15.932,0,0,0,3.389.439c2.117,0,3.592-.706,3.592-2.462v-.33c-.769.063-1.506.094-2.2.094-5.491,0-8.752-2.008-8.752-7.984V7.984a1.305,1.305,0,0,1,1.442-1.442h1.475a1.306,1.306,0,0,1,1.443,1.442v6.008c0,3.529,1.224,4.58,4.267,4.58a22.288,22.288,0,0,0,2.321-.14V7.984A1.306,1.306,0,0,1,114.58,6.542Z" fill="#006dff"/>
+                <path d="M129.474,10.118h-4.267v6.149c0,1.6.706,2.274,2.432,2.274.831,0,1.364-.172,1.913-.172.973,0,1.35.376,1.35,1.145V20.3a1.411,1.411,0,0,1-1.162,1.538c-4.988,1.191-8.971-.079-8.971-5.569V4.408a1.305,1.305,0,0,1,1.442-1.443h1.553a1.306,1.306,0,0,1,1.443,1.443V6.542h4.267a1.306,1.306,0,0,1,1.443,1.442v.691A1.306,1.306,0,0,1,129.474,10.118Z" fill="#006dff"/>
+                <path d="M148.507,14.243v6.275a1.307,1.307,0,0,1-1.443,1.443h-1.475a1.306,1.306,0,0,1-1.443-1.443V14.243c0-3.325-1.224-4.329-4.267-4.329-.675,0-1.443.047-2.321.109v10.5a1.307,1.307,0,0,1-1.444,1.443H134.64a1.307,1.307,0,0,1-1.444-1.443V1.443A1.308,1.308,0,0,1,134.64,0h1.474a1.307,1.307,0,0,1,1.444,1.443V6.354c.753-.063,1.49-.095,2.18-.095C145.243,6.259,148.507,8.267,148.507,14.243Z" fill="#006dff"/>
+                <path d="M151.447,14.259c0-5.1,2.808-8,7.938-8s7.936,2.9,7.936,8c0,5.083-2.807,7.984-7.936,7.984S151.447,19.342,151.447,14.259Zm11.452,0c0-3.043-1.162-4.329-3.514-4.329s-3.514,1.286-3.514,4.329c0,3.012,1.16,4.313,3.514,4.313S162.9,17.271,162.9,14.259Z" fill="#006dff"/>
+                <path d="M185.7,13.521v7a1.306,1.306,0,0,1-1.443,1.443h-1.475a1.306,1.306,0,0,1-1.442-1.443V13.459c0-2.761-1-3.529-3.357-3.529s-3.357.768-3.357,3.529v7.059a1.306,1.306,0,0,1-1.443,1.443h-1.475a1.306,1.306,0,0,1-1.442-1.443v-7c0-5.63,2.839-7.262,7.717-7.262S185.7,7.891,185.7,13.521Z" fill="#006dff"/>
+            </svg>
+
+            
+        </a>
+      <div id="skip-navigation">
+          <button class="button--ghost">Skip navigation</button>
+      </div>
+      
+      <ul class="main-menu"><li class="main-menu__item main-menu__item--courses">
+                    <a href="/course-explorer" title="Courses page">Courses</a>
+                </li><li class="main-menu__item main-menu__item--library">
+                    <button title="SQL Library" id="library-button">SQL Library
+                        <svg width="13px" height="8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="03-TRACKS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="LearnSQL_Track_Details_Logged" transform="translate(-1509.000000, -55.000000)" fill-rule="nonzero" stroke="currentColor">
+                                    <g id="Navigation">
+                                        <g id="Profile" transform="translate(1356.000000, 39.000000)">
+                                            <polyline id="ico_arrow_small_bottom" transform="translate(159.000000, 20.033937) rotate(90.000000) translate(-159.000000, -20.033937) " points="155.966063 14.0339368 162.033937 20.1018105 156.10181 26.0339368"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
+                    <div class="library-modal modal" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="SQL Library" aria-describedby="SQL Library">
+                        <div class="library-modal__layer"></div>
+                        <div class="library-modal__window modal__window">
+                            <a href="/blog">Articles</a>
+                            <a href="/cookbook">Cookbooks</a>
+                        </div>
+                    </div>
+                </li>
+        <li class="main-menu__item main-menu__item--log-in">
+            <a href="/log-in" title="Log in page">Log in</a>
+        </li>
+        <li class="main-menu__item main-menu__item--create-free-account">
+            <a class="button--primary" href="/sign-up" title="Create free account page">Create free account</a>
+        </li>
+          
+              <div class="main-menu__item main-menu__item--logout hide" tabindex="0" role="button">
+                  <p class="logout__full-name user-name-element">fullName</p>
+                  <svg role="document" width="13px" height="8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    
+                    <title>User profile menu open</title>
+                    <desc>Open user profile menu</desc>
+                    <g id="03-TRACKS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="LearnSQL_Track_Details_Logged" transform="translate(-1509.000000, -55.000000)" fill-rule="nonzero" stroke="currentColor">
+                            <g id="Navigation">
+                                <g id="Profile" transform="translate(1356.000000, 39.000000)">
+                                    <polyline id="ico_arrow_small_bottom" transform="translate(159.000000, 20.033937) rotate(90.000000) translate(-159.000000, -20.033937) " points="155.966063 14.0339368 162.033937 20.1018105 156.10181 26.0339368"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <img class="logout__avatar avatar" src="https://cdn.learnpython.com/lpy/blog/img/user.png" alt="avatar" />
+              </div>
+              <div class="logout-modal modal" aria-modal="true" role="dialog" aria-labelledby="User Profile Menu" aria-describedby="User fullName">
+                  <div class="logout-modal__layer modal__layer"></div>
+                  <div class="logout-modal__window modal__window" aria-label="" tabindex="-1">
+                      <div class="logout-modal__intro">
+                          <img class="logout-modal__avatar avatar" src="https://cdn.learnpython.com/lpy/blog/img/user.png" alt="avatar" />
+                          <div class="logout-modal__name user-name-element">fullName</div>
+                      </div>
+                      <div class="logout-modal__link">
+                          <a href="/dashboard">Dashboard</a>
+                      </div>
+                      <div class="logout-modal__link">
+                          <a href="/dashboard/my-profile">My Profile</a>
+                      </div>
+                      <div class="logout-modal__link">
+                          <a href="/dashboard/payment-billing">Payment &amp; Billing</a>
+                      </div>
+                      <div class="logout-modal__separator-border"></div>
+                      <div class="logout-modal__link logout-modal__link--logout">
+                          <a id="layout-logout-button" tabindex="0" rel="nofollow">Log out 
+                            <svg role="img" width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="03-TRACKS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="LearnSQL_Track_Details_Logged_Profile" transform="translate(-1478.000000, -291.000000)" fill="currentColor">
+                                        <g id="logout-Profile-menu" transform="translate(0.000000, 30.000000)">
+                                            <path d="M1484.1807,273.421452 C1484.39808,273.421452 1484.57727,273.589234 1484.57727,273.798961 C1484.57727,274.008689 1484.40102,274.176471 1484.1807,274.176471 L1480.57039,274.176471 C1479.15447,274.176471 1478,273.080296 1478,271.729651 L1478,263.446819 C1478,262.098971 1479.15154,261 1480.57039,261 L1484.23945,261 C1484.45977,261 1484.63602,261.167782 1484.63602,261.377509 C1484.63602,261.587237 1484.45977,261.755018 1484.23945,261.755018 L1480.57039,261.755018 C1479.59218,261.755018 1478.79315,262.512833 1478.79315,263.446819 L1478.79315,271.729651 C1478.79315,272.660841 1479.58924,273.421452 1480.57039,273.421452 L1484.1807,273.421452 Z M1490.7139,267.322581 C1490.86959,267.467992 1490.86959,267.708479 1490.71096,267.859483 L1488.19051,270.258764 C1488.11413,270.334265 1488.01132,270.370618 1487.91144,270.370618 C1487.81156,270.370618 1487.70874,270.331469 1487.63237,270.258764 C1487.47668,270.110556 1487.47668,269.872865 1487.63237,269.724658 L1489.47718,267.968541 L1481.43111,267.968541 C1481.21079,267.968541 1481.03453,267.800759 1481.03453,267.591032 C1481.03453,267.381304 1481.21079,267.213522 1481.43111,267.213522 L1489.47718,267.213522 L1487.63237,265.457405 C1487.47668,265.309198 1487.47668,265.071507 1487.63237,264.9233 C1487.78806,264.775092 1488.03776,264.775092 1488.19345,264.9233 L1490.7139,267.322581 Z" id="logout-path"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          
+      </ul>
+      
+      
+
+
+
+
+
+
+
+
+
+      <div class="site-header-home-navigation-layer-menu pages">
+          <span class="site-header-home-navigation-layer-menu-cover">MENU</span>
+          <span class="site-header-home-navigation-layer-menu-cover-active">CLOSE</span>
+          <div class="site-header-home-navigation-layer-menu-icon pages" role="button" tabindex="0" aria-label="Toggle menu">
+              <div class="site-header-home-navigation-layer-menu-icon top"></div>
+              <div class="site-header-home-navigation-layer-menu-icon middle"></div>
+              <div class="site-header-home-navigation-layer-menu-icon bottom"></div>
+          </div>
+          <div class="site-header-home-navigation-hamburger-wrapper pages hide">
+              <div class="site-header-home-navigation-hamburger-layout">
+                  <ul class="site-header-home-navigation-hamburger"><li class="site-header-home-navigation-hamburger-item site-header-home-navigation-hamburger-item--courses">
+                                <a class="site-header-home-navigation-hamburger-link" href="/course-explorer" title="Courses page">Courses</a>
+                            </li><li class="site-header-home-navigation-hamburger-item site-header-home-navigation-hamburger-item--articles">
+                            <a class="site-header-home-navigation-hamburger-link" href="/blog" title="Articles page">Articles</a>
+                        </li>
+                      
+
+                      <li class="site-header-home-navigation-hamburger-item showOnLogged hide">
+                        <a class="site-header-home-navigation-hamburger-link" href="/dashboard">Dashboard</a>
+                      </li>
+                      <li class="site-header-home-navigation-hamburger-item showOnLogged hide">
+                          <a class="site-header-home-navigation-hamburger-link" href="/dashboard/my-profile">My Profile</a>
+                      </li>
+                      <li class="site-header-home-navigation-hamburger-item showOnLogged hide">
+                          <a class="site-header-home-navigation-hamburger-link" href="/dashboard/payment-billing">Payment &amp; Billing</a>
+                      </li>
+                  </ul>
+                  <ul class="site-header-home-navigation-below hideOnLogged">
+                      <li class="site-header-home-navigation-below-item">
+                          <a class="site-header-home-navigation-below-item-link" href="/log-in">Log in</a>
+                      </li>
+                      <li class="site-header-home-navigation-below-item">
+                          <a class="site-header-home-navigation-below-item-button button--primary" href="/sign-up">Create free account</a>
+                      </li>
+                  </ul>
+                  <ul class="site-header-home-navigation-below showOnLogged hide">
+                    <li class="site-header-home-navigation-below-item">
+                        <a class="site-header-home-navigation-below-item-link button--link" id="hamburger-logout-button" tabindex="0">Log out 
+                          <svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                              <g id="03-TRACKS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <g id="LearnSQL_Track_Details_Logged_Profile" transform="translate(-1478.000000, -291.000000)" fill="currentColor">
+                                      <g id="logout-Profile-menu" transform="translate(0.000000, 30.000000)">
+                                          <path d="M1484.1807,273.421452 C1484.39808,273.421452 1484.57727,273.589234 1484.57727,273.798961 C1484.57727,274.008689 1484.40102,274.176471 1484.1807,274.176471 L1480.57039,274.176471 C1479.15447,274.176471 1478,273.080296 1478,271.729651 L1478,263.446819 C1478,262.098971 1479.15154,261 1480.57039,261 L1484.23945,261 C1484.45977,261 1484.63602,261.167782 1484.63602,261.377509 C1484.63602,261.587237 1484.45977,261.755018 1484.23945,261.755018 L1480.57039,261.755018 C1479.59218,261.755018 1478.79315,262.512833 1478.79315,263.446819 L1478.79315,271.729651 C1478.79315,272.660841 1479.58924,273.421452 1480.57039,273.421452 L1484.1807,273.421452 Z M1490.7139,267.322581 C1490.86959,267.467992 1490.86959,267.708479 1490.71096,267.859483 L1488.19051,270.258764 C1488.11413,270.334265 1488.01132,270.370618 1487.91144,270.370618 C1487.81156,270.370618 1487.70874,270.331469 1487.63237,270.258764 C1487.47668,270.110556 1487.47668,269.872865 1487.63237,269.724658 L1489.47718,267.968541 L1481.43111,267.968541 C1481.21079,267.968541 1481.03453,267.800759 1481.03453,267.591032 C1481.03453,267.381304 1481.21079,267.213522 1481.43111,267.213522 L1489.47718,267.213522 L1487.63237,265.457405 C1487.47668,265.309198 1487.47668,265.071507 1487.63237,264.9233 C1487.78806,264.775092 1488.03776,264.775092 1488.19345,264.9233 L1490.7139,267.322581 Z" id="logout-path"/>
+                                      </g>
+                                  </g>
+                              </g>
+                          </svg>
+                        </a>
+                    </li>
+                </ul>
+              </div>
+          </div>
+
+  </div>
+</div></nav>
+
+
+
+</header>
+
+
+    
+<div class="learnpy-blog-navigation">
+    <div class="learnpy-blog-navigation-wrapper">
+        
+        
+            <a class="button--link-back learnpy-blog-navigation-item learnpy-blog-navigation-item--back" href="/blog">Back to articles list</a>
+        
+        
+        
+        <a href="/blog" title="Articles" class="learnpy-blog-navigation-item active">Articles</a>
+        
+    </div>
+</div>
+
+    <main>
+      <div class="site-content post-container" id="sticky_container">
+  <article>
+    <div class="blog-post-header-background">
+      <div class="blog-post-header-gradient"></div>
+    </div>
+    <header class="blog-post-intro">
+      <div class="blog-post-header">
+        <time class="summary-time" datetime="2022-01-13T18:00:00+02:00">
+          13th Jan 2022
+        </time>
+        <span class="blog-post-reading-time">8 minutes read</span>
+        
+        <h1 class="blog-post-header-title">The Python Requirements File and How to Create it</h1>
+        <div class="blog-post-meta-wrapper">      <div class="summary-blog-post-meta">
+         
+     
+        
+
+  
+    <div class="summary-blog-post-meta-author">
+      
+      
+        
+        
+        
+          
+          
+          <div class="img summary-blog-post-meta-author-img"><a href="/authors/xavier-rigoulet/"><img src="/authors/xavier-rigoulet/xavier-rigoulet_hu459e455aef437f32f1b6205cfd089a11_528043_50x50_fill_q90_box_center.jpg" alt="Author's photo" /></a></div>
+        
+        <div class="summary-blog-post-meta-author-info">
+          <a href="/authors/xavier-rigoulet/"><div class="summary-blog-post-meta-author-name">Xavier Rigoulet</div></a>
+          
+        </div>
+      
+    </div>
+  
+
+
+</div>
+
+
+<div class="summary-tags">
+  <ul class="summary-tags-list">
+      
+       <li class="summary-tags-list-element">
+         <a href="/tags/python-basics">python basics</a>
+       </li>
+      
+    </ul>
+</div>
+
+</div>
+        
+        
+      </div>
+
+
+
+    
+    
+      
+    
+
+    
+
+
+
+
+<div class="blog-post-featured-image blog-list-feature-image tall" style="background-image:url('/blog/python-requirements-file/cover_hu32f9317a649ad5c5dc4c24469eea0ae1_2736937_968x550_fill_box_center_2.png')">
+
+  
+</div>
+
+</header>
+    <div class="blog-post-main blog-post-container">
+        <div class="social_ico" id="sticky-ico">
+            <a data-sumome-share-id="46ed7856-05ac-49b7-9856-091dc96a2504"></a>
+        </div>
+      <div class="blog-post-main-content">
+<p>Python requirements files are a great way to keep track of the Python modules. It is a simple text file that saves a list of the modules and packages required by your project. By creating a Python <code>requirements.txt</code> file, you save yourself the hassle of having to track down and install all of the required modules manually.</p>
+<p>In this article, we will learn how to create Python requirements files along with the best practices and the benefits of using them. It's often used together with virtual environments in Python projects, but that is outside the scope of this article.</p>
+<p>Before we go into the details on how to create a Python requirements file, make sure to check our list of Python IDEs and code editors <a href="https://learnpython.com/blog/best-python-code-editors/">here</a> if you are serious about <a href="https://learnpython.com/track/learn-programming-with-python">learning Python</a>. It makes your life easier and increases your productivity.</p>
+<p>Using a Python requirements file comes with a lot of benefits.</p>
+<p>First, it allows you to keep track of the Python modules and packages used by your project. It simplifies the installation of all of the required modules on any computer without having to search through online documentation or Python package archives. It is used to install all of the dependencies on another computer so that they are compatible with one another.</p>
+<p>Second, it makes it easy to share your project with others. They install the same Python modules you have listed in your requirements file and run your project without any problems.</p>
+<p>Third, if you ever need to update or add a Python module to your project, you simply update the requirements file rather than having to search through all of your code for every reference to the old module.</p>
+<p>Next, let’s learn how to create one!</p>
+
+<h2>How to Create a Python Requirements File</h2>
+<p>It is just a text file with all of the required modules for your Python project. Start by navigating to your Python project directory and creating a new <code>.txt</code> document. Make sure it is named <code>requirements.txt</code>, and then save it in the same directory as your <code>.py</code> files for this project.</p>
+<p>There's not much else we need to do to create a Python requirements file at this point, but we will cover how to install specific packages manually in the terminal.</p>
+<p>You can also generate a Python <code>requirements.txt</code> file directly from the command line with:</p>
+
+
+<pre class="brush: python; title: ; notranslate">pip freeze &gt; requirements.txt
+</pre>
+
+<p><code>pip freeze</code> outputs a list of all installed Python modules with their versions.</p>
+<h2>Adding Modules to Your Python Requirements File</h2>
+<p>Now that we have created a Python requirements file, it's time to start adding some modules! The first step is to open the text document and add the names of the modules you would like to install.</p>
+<p>For example, if I want to install the <code>tensorflow</code> library into my project, I type in <code>tensorflow</code> on its own line along with the required version. Let’s type an example in your newly created Python <code>requirements.txt</code> file:</p>
+
+
+<pre class="brush: python; title: ; notranslate">tensorflow==2.3.1
+uvicorn==0.12.2
+fastapi==0.63.0
+</pre>
+
+<p>Once you add all of the modules you need, save the document and exit!</p>
+<h2>Installing Python Packages From a Requirements File</h2>
+<p>Now that our Python requirements file is all set up, let's take a look at how to install packages from it. To do this, we will use the pip package manager.</p>
+<p>The <code>pip</code> utility is used to install, upgrade, and uninstall Python packages. It is also used to manage Python virtual environments and more.</p>
+<p>To start, open up a terminal or a command prompt and navigate to the directory of your Python project. Once you are there, type the following command:</p>
+
+
+
+<pre class="brush: python; title: ; notranslate">pip install -r requirements.txt
+</pre>
+
+<p>This installs all of the modules listed in our Python requirements file into our project environment.</p>
+<p><strong><code>Output:</code></strong></p>
+
+
+
+<pre class="brush: python; title: ; notranslate">Successfully installed absl-py-1.0.0 astunparse-1.6.3 cachetools-4.2.4 certifi-2021.10.8 charset-normalizer-2.0.9 click-7.1.2 fastapi-0.63.0 gast-0.3.3 google-auth-2.3.3 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.42.0 h11-0.12.0 h5py-2.10.0 idna-3.3 importlib-metadata-4.8.2 keras-preprocessing-1.1.2 markdown-3.3.6 numpy-1.18.5 oauthlib-3.1.1 opt-einsum-3.3.0 protobuf-3.19.1 pyasn1-0.4.8 pyasn1-modules-0.2.8 pydantic-1.8.2 requests-2.26.0 requests-oauthlib-1.3.0 rsa-4.8 six-1.16.0 starlette-0.13.6 tensorboard-2.7.0 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.0 tensorflow-2.3.1 tensorflow-estimator-2.3.0 termcolor-1.1.0 typing-extensions-4.0.1 urllib3-1.26.7 uvicorn-0.12.2 werkzeug-2.0.2 wheel-0.37.0 wrapt-1.13.3 zipp-3.6.0</pre>
+
+<p>It is a good practice to set a new environment before installing packages with your Python requirements file. <!-- Learn about <code>pyenv</code> and <code>venv</code> to help you with this process in my next article, <a href="#2s8eyo1">here</a> and <a href="#2s8eyo1">here</a>.</p> -->
+
+</p><p>If you ever need to remove a module for any reason, use the same command but with the <code>uninstall</code> keyword instead of <code>install</code>. Also, use upgrade instead of <code>install</code> to update previously installed Python packages.</p>
+<p>As mentioned before, use the <code>pip freeze</code> command to output a list of the Python modules installed in your environment.</p>
+<h2>How to Maintain a Python Requirements File</h2>
+<p>If you created a Python <code>requirements.txt</code> file at one point but have failed to maintain it for some reason, fear not! You can do it as follows.</p>
+<p><strong>Step 1:</strong> Output a list of outdated packages with <code>pip list --outdated</code>.</p>
+<p><strong><code>Output:</code></strong></p>
+
+
+<pre class="brush: python; title: ; notranslate">Package              Version Latest Type                                                                                                                                                                     -------------------- ------- ------ -----                                                                                                                                                                    click                7.1.2   8.0.3  wheel                                                                                                                                                                    fastapi              0.63.0  0.70.0 wheel                                                                                                                                                                    gast                 0.3.3   0.5.3  wheel                                                                                                                                                                    h5py                 2.10.0  3.6.0  wheel                                                                                                                                                                    numpy                1.18.5  1.21.4 wheel                                                                                                                                                                    pip                  20.0.2  21.3.1 wheel                                                                                                                                                                    setuptools           44.0.0  59.5.0 wheel                                                                                                                                                                    starlette            0.13.6  0.17.1 wheel                                                                                                                                                                    tensorflow           2.3.1   2.7.0  wheel                                                                                                                                                                    tensorflow-estimator 2.3.0   2.7.0  wheel                                                                                                                                                                    uvicorn              0.12.2  0.15.0 wheel</pre>
+
+
+<p><strong>Step 2:</strong> Upgrade the required package with <code>pip install -U PackageName</code>.</p>
+<p>As an example, let’s update <code>fastapi</code>:</p>
+
+
+<pre class="brush: python; title: ; notranslate">pip install -U fastapi</pre>
+
+<p><strong><code>Output:</code></strong></p>
+
+
+
+<pre class="brush: python; title: ; notranslate">Successfully installed anyio-3.4.0 fastapi-0.70.0 sniffio-1.2.0 starlette-0.16.0</pre>
+
+<p>It is also possible to upgrade everything with <code>pip install -U -r requirements.txt</code>.</p>
+<p><strong>Step 3:</strong> Check to see if all of the tests pass.</p>
+<p><strong>Step 4:</strong> Run <code>pip freeze &gt; requirements.txt</code> to update the Python requirements file.</p>
+<p><strong>Step 5:</strong> Run <code>git commit</code> and <code>git push</code> to the production branch.</p>
+<p>Freezing all your dependencies helps you have predictable builds.</p>
+<p>If you need to check for missing dependencies, you can do so with the following command:</p>
+
+
+
+<pre class="brush: python; title: ; notranslate">python -m pip check</pre>
+
+<p><strong><code>Output:</code></strong></p>
+
+<pre class="brush: python; title: ; notranslate">No broken requirements found.</pre>
+
+<p>In our case, we are good to go!</p>
+<h2>How to Create Python Requirements File After Development</h2>
+<p>While it is possible to create it manually, it is a good practice to use the <code>pipreqs</code> module. It is used to scan your <code>imports</code> and build a Python requirements file for you.</p>
+<p>According to <a href="https://github.com/bndr/pipreqs">the documentation</a>, once installed with the following command:</p>
+
+
+
+<pre class="brush: python; title: ; notranslate">pip install pipreqs</pre>
+
+<p>running <code>pipreqs</code> in the command line generates a <code>requirements.txt</code> file automatically:</p>
+
+
+
+<pre class="brush: python; title: ; notranslate">$ pipreqs /home/project/location
+Successfully saved requirements file in   /home/project/location/requirements.txt
+</pre>
+
+<h2>Why You Should Use a Python Requirements File</h2>
+<p>Create a Python <code>requirements.txt</code> file when starting a new data science project. It is always a good idea to include one in your project, particularly in the context of version control.</p>
+<p>If you are unsure about version control, read more about it <a href="https://learnpython.com/blog/what-is-git-quick-tutorial-for-beginners/">here</a>. And if you are interested in writing better Python code, you can find more information <a href="https://learnpython.com/blog/better-python-code/">here</a>.</p>
+<p>Using Python requirements files is among Python development best practices. It dramatically reduces the need for managing and supervising different libraries. Managing your library dependencies from one place makes it easier, more convenient, and faster. It helps keep everything organized and easy for everyone involved.</p>
+<p>Compared to pasting a list of dependency paths into the command line every time you want to install or update them, it makes installing your Python applications on another system easier. It is a great way to ensure you have all the necessary dependencies installed for your project.</p>
+<p>Also, GitHub provides automated vulnerability alerts for dependencies in your repository. By uploading a <code>requirements.txt</code> with your code, <a href="https://github.com/">GitHub</a> checks for any conflict and sends an alert to the administrator if it detects any. It can even resolve the vulnerabilities automatically!</p>
+<h2>Best Practices for Using a Python Requirements File</h2>
+
+
+<p>There are several best practices to follow in using a Python <code>requirements.txt</code> file:</p>
+<ul>
+<li>Always use the <code>pip freeze</code> command to generate a list of Python modules and packages installed in the virtual environment of your project. This ensures the list is up to date and accurate.</li>
+<li>Only list the Python modules and packages your project needs. Do not include unnecessary modules or packages, as this makes the txt file bloated and difficult to read. It is also a waste of resources.</li>
+<li>Save the Python <code>requirements.txt</code> file in the project source code repository so that other developers can easily install all of the Python modules and packages when they clone or check out your project.</li>
+<li>Use the <code>pip install -r requirements.txt</code> command to install all of the Python modules and packages listed in your <code>requirements.txt</code> file. This saves time and effort.</li>
+<li>Keep your Python <code>requirements.txt</code> files up to date and accurate. This ensures your project always uses the latest versions of the Python modules and packages.</li>
+</ul>
+<p>Looking for data science project ideas to experiment with creating and maintaining a Python requirements file? Feel free to check <a href="https://learnpython.com/blog/python-data-science-project-ideas/">this article</a> to find some inspiration!</p>
+<h2>Closing Thoughts on the Python Requirements File</h2>
+<p>In this article, we've learned what a Python <code>requirements.txt</code> file is and how to create it. We've also learned about its benefits and the Python community best practices for using a requirements file.</p>
+<p>Thank you for reading! I hope this article was helpful and informative. You can find out more on <a href="https://learnpython.com/">LearnPython.com</a>.</p></div>
+    </div>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://google.com/article"
+ },
+ "headline": "The Python Requirements File and How to Create it",
+ "image": [
+      "https://learnpython.com/blog/python-requirements-file/cover.png"
+ ],
+ "datePublished": "2022-01-13T18:00:00+02:00",
+ "dateModified": "2022-01-13T18:00:00+02:00",
+ "author": {
+    "@type": "Person",
+    "name": "Xavier Rigoulet"
+ },
+ "publisher": {
+    "@type": "Organization",
+    "name": "LearnPython.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn.learnpython.com/lpy/blog/img/logo.png"
+    }
+ },
+ "description": "Learn what a Python requirements.txt file is, how to create it, and how to maintain it with a list of required modules."
+}
+</script>
+
+    <div class="blog-post-tags-below">
+      <p class="blog-post-tags-label">Tags:</p> 
+<div class="summary-tags">
+  <ul class="summary-tags-list">
+      
+       <li class="summary-tags-list-element">
+         <a href="/tags/python-basics">python basics</a>
+       </li>
+      
+    </ul>
+</div>
+
+
+    </div>
+    
+    
+    
+    <div class="blog-post-see-also blog-post-container"></div>
+    <div class="post-navigation blog-post-container">
+      
+    </div>
+    
+    <aside>
+      
+      
+    </aside>
+  </article>
+<div class="related-posts">
+  <h3>You may also like</h3>
+  <div class="related-posts__content row blog-post-container">
+    <div class="tiny-slider">
+    
+      
+      
+      
+      <div>
+        <a href="/blog/best-python-code-editors/" class="related-posts__item">
+          
+            
+            
+              
+            
+            
+            <img class="related-posts__image tns-lazy-img" data-src="/blog/best-python-code-editors/best-python-code-editors_hud88ddb26d1cb48572d5eca61e0e65307_512384_262x262_fill_box_center_2.png" src="" alt="" height="262px" />
+          
+  
+          <div class="contents">
+            <div>
+              <div class="title">Top Python IDEs and Code Editors for Programming and Data Science Beginners</div>
+              <div class="excerpt">
+              What are the top Python IDEs available to beginning programmers and data science students? Find the best code editor for your needs in this article. 
+              
+              </div> 
+            </div> 
+            <div class="summary-read-more"><span class="summary-read-more-link button--link">Read more</span></div>
+          </div>
+        </a>
+      </div>
+      
+    
+      
+      
+      
+      <div>
+        <a href="/blog/what-is-git-quick-tutorial-for-beginners/" class="related-posts__item">
+          
+            
+            
+              
+            
+            
+            <img class="related-posts__image tns-lazy-img" data-src="/blog/what-is-git-quick-tutorial-for-beginners/featured-image_hue880cb33b58bb36cffd9026765098ee8_39500_262x262_fill_box_center_2.png" src="" alt="" height="262px" />
+          
+  
+          <div class="contents">
+            <div>
+              <div class="title">What is Git, How to Start Working With GitHub–a Beginner Friendly Overview</div>
+              <div class="excerpt">
+              With this beginner-friendly and quick Git tutorial, you'll learn how to create a remote repository and track changes in your projects.
+              
+              </div> 
+            </div> 
+            <div class="summary-read-more"><span class="summary-read-more-link button--link">Read more</span></div>
+          </div>
+        </a>
+      </div>
+      
+    
+      
+      
+      
+      <div>
+        <a href="/blog/better-python-code/" class="related-posts__item">
+          
+            
+            
+              
+            
+            
+            <img class="related-posts__image tns-lazy-img" data-src="/blog/better-python-code/cover_huf2625561e5f7e93209bbc612c0ffd4d4_620895_262x262_fill_box_center_2.png" src="" alt="" height="262px" />
+          
+  
+          <div class="contents">
+            <div>
+              <div class="title">Things That Can Help You Write Better Python Code</div>
+              <div class="excerpt">
+              Discover some of the best practices for writing better Python code.
+              
+              </div> 
+            </div> 
+            <div class="summary-read-more"><span class="summary-read-more-link button--link">Read more</span></div>
+          </div>
+        </a>
+      </div>
+      
+    
+      
+      
+      
+      <div>
+        <a href="/blog/python-data-science-project-ideas/" class="related-posts__item">
+          
+            
+            
+              
+            
+            
+            <img class="related-posts__image tns-lazy-img" data-src="/blog/python-data-science-project-ideas/cover_hu45464a0250a1955f806198d24ecbdc65_599294_262x262_fill_box_center_2.png" src="" alt="" height="262px" />
+          
+  
+          <div class="contents">
+            <div>
+              <div class="title">Python Data Science Project Ideas</div>
+              <div class="excerpt">
+              Here are some data science project ideas to showcase your Python skills in data visualization, tabular data analysis, time series forecasting, and more.
+              
+              </div> 
+            </div> 
+            <div class="summary-read-more"><span class="summary-read-more-link button--link">Read more</span></div>
+          </div>
+        </a>
+      </div>
+      
+    
+      
+      
+      
+      <div>
+        <a href="/blog/python-coding-best-practices-and-style-guidelines/" class="related-posts__item">
+          
+            
+            
+              
+            
+            
+            <img class="related-posts__image tns-lazy-img" data-src="/blog/python-coding-best-practices-and-style-guidelines/Python%20Coding%20Best%20Practices%20and%20Style%20Guidelines_hu1453f0a6a160cd97c10a3e8b325bfb8e_51973_262x262_fill_q90_box_center.jpg" src="" alt="" height="262px" />
+          
+  
+          <div class="contents">
+            <div>
+              <div class="title">Python Coding Best Practices and Style Guidelines</div>
+              <div class="excerpt">
+              You've spent hours studying Python, and you may even have several successful projects in your portfolio. But do you write your Python code like a pro? Let's review some important guidelines to help you clean up your code.
+              
+              </div> 
+            </div> 
+            <div class="summary-read-more"><span class="summary-read-more-link button--link">Read more</span></div>
+          </div>
+        </a>
+      </div>
+      
+    
+      
+      
+      
+      <div>
+        <a href="/blog/pycharm-python-ide-tutorial/" class="related-posts__item">
+          
+            
+            
+              
+            
+            
+            <img class="related-posts__image tns-lazy-img" data-src="/blog/pycharm-python-ide-tutorial/Python-IDE-PyCharm-Tutorial-for-Beginners_hubdf1f830d22da96d725cae30eef60ce6_30082_262x262_fill_box_center_2.png" src="" alt="" height="262px" />
+          
+  
+          <div class="contents">
+            <div>
+              <div class="title">Python IDE: PyCharm Tutorial for Beginners</div>
+              <div class="excerpt">
+              Best Python IDE for beginners? It depends! Read our PyCharm tutorial article and discover the most helpful features for writing your Python code. 
+              
+              </div> 
+            </div> 
+            <div class="summary-read-more"><span class="summary-read-more-link button--link">Read more</span></div>
+          </div>
+        </a>
+      </div>
+      
+    
+    </div> 
+  </div> 
+</div> 
+
+
+<div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="ico_arrow_right" width="14px" height="12px" viewBox="0 0 14 12" version="1.1"><g id="02-HOME" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="LearnSQL_Home" transform="translate(-1573.000000, -3348.000000)" fill="currentColor"><g id="SQL-Querying&amp;Reporting" transform="translate(0.000000, 1825.000000)"><g id="Tracks" transform="translate(311.000000, 1201.000000)"><g id="Arrows" transform="translate(0.000000, 298.000000)"><g id="arr" transform="translate(1239.000000, 0.000000)"><polygon id="ico_arrow_right" transform="translate(29.596830, 30.222222) scale(-1, 1) translate(-29.596830, -30.222222)" fill="currentColor" points="23 30 29.88856 36 31.0453754 35.0356723 25.8772488 30.7051965 36 30.7662506 36 29.2599792 25.8772488 29.1989252 31.0453754 24.8573326 29.7806604 24"/></g></g></g></g></g></g></svg></div>
+
+<script type="text/javascript">
+  var sliderContainer = document.querySelector('.tiny-slider');
+  var slider = tns({
+    container: sliderContainer,
+    loop: true,
+    center: true,
+    gutter: 10,
+    nav: false,
+    navPosition: "bottom",
+    controlsPosition: "bottom",
+    mouseDrag: true,
+    lazyload: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        800: {
+            items: 3
+        },
+    },
+    controlsText: [
+      document.querySelector("#ico_arrow_right").outerHTML,
+      document.querySelector("#ico_arrow_right").outerHTML,
+    ]
+  });
+</script>
+
+<div class="newsletter"> 
+    <script type="text/javascript">
+
+        function subscribe(email, onSuccess, onError) {
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+            if (this.readyState != 4) return;
+                if (this.status == 200) {
+                    onSuccess('Thank you for subscribing!')
+                } else {
+                    onError('Failed to subscribe');
+                }
+            };
+            
+            xhr.open("POST", '/api/v1/mailchimp/blog-subscribe', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                email: email
+            }));
+            return false
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        }
+
+
+        function setError(msg) {
+            var errorDiv = getErrorContainer();
+            if (errorDiv) {
+                errorDiv.innerHTML = msg;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function setSuccess(msg) {
+            var successDiv = getSuccessContainer();
+            if (successDiv) {
+                successDiv.innerHTML = msg;
+                successDiv.style.display = 'block';
+            }
+        }
+
+        function clearMessages() {
+            var errorContainer = getErrorContainer();
+            var successContainer = getSuccessContainer();
+            errorContainer.style.display = 'none';
+            successContainer.style.display = 'none';
+        }
+
+        function getErrorContainer() {
+            return document.getElementById('mce-error-response');
+        }
+
+        function getSuccessContainer() {
+            return document.getElementById('mce-success-response');
+        }
+
+        function subscribeUser() {
+            clearMessages();
+
+            var email = document.getElementsByName('EMAIL')[0].value;
+            if (!validateEmail(email)) {
+                setError('The email is invalid');
+            }
+            subscribe(email, setSuccess, setError);
+            return false;
+        }
+
+    </script>
+
+
+    
+    <div id="mc_embed_signup">
+        <form method="post" class="validate" target="_blank" novalidate="" onsubmit="return subscribeUser();">
+            <div class="newsletter_gradient-wrapper">
+                <div class="newsletter_gradient"></div>
+            </div>
+            <div class="newsletter_content" id="mc_embed_signup_scroll">
+                <span class="newsletter_title">Subscribe to our newsletter</span>
+                <span class="newsletter_subtitle">Join our monthly newsletter to be <br /> notified about the latest posts.</span>
+                <div class="mc-field-group">
+                    <input class="newsletter_email" id="mce-EMAIL" name="EMAIL" placeholder=" " /> 
+                    <label class="newsletter_email-label" for="EMAIL">
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="07-LOG-IN-|-SIGN-UP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="LearnSQL_Sign_up-1A" transform="translate(-470.000000, -255.000000)" fill="#006DFF" fill-rule="nonzero">
+                                    <g id="Login" transform="translate(390.000000, 76.000000)">
+                                        <g id="Form" transform="translate(64.000000, 33.000000)">
+                                            <g id="form" transform="translate(0.000000, 72.000000)">
+                                                <g id="Email" transform="translate(0.000000, 58.000000)">
+                                                    <path d="M31.994897,23.5262486 C31.756755,19.6466998 28.6949302,16.4477736 24.8166187,16.0394001 C22.4011791,15.8011821 20.0537801,16.6519604 18.3527663,18.3535169 C16.6517525,20.0550734 15.8012456,22.4032214 16.0393875,24.8194316 C16.4136105,28.596887 19.4414151,31.5916264 23.2176657,31.9659689 C23.4898279,32 23.7619902,32 24.0341524,32 C25.6331053,32 27.1299975,31.5575953 28.4567882,30.6387548 C28.796991,30.4005369 28.8990518,29.9241011 28.6609099,29.5837898 C28.422768,29.2434785 27.9464841,29.1413851 27.6062813,29.379603 C26.3475311,30.2303812 24.8846593,30.5706925 23.3877671,30.434568 C20.3259423,30.1282879 17.9105027,27.7120776 17.6043202,24.6492759 C17.4001985,22.7095015 18.080604,20.8037582 19.4754354,19.4084819 C20.8702667,18.0132056 22.7413819,17.3666141 24.7145579,17.5367698 C27.8444233,17.8430499 30.3279034,20.4294158 30.4980048,23.5943109 C30.5320251,24.4450891 30.4299643,25.2958674 30.1578021,26.0785834 C29.9536804,26.6571126 29.409356,27.0654862 28.7629707,27.0654862 C27.9464841,27.0654862 27.3000989,26.4188947 27.3000989,25.6021476 L27.3000989,20.8037582 C27.3000989,20.3953847 26.9598961,20.0210423 26.5176325,20.0210423 C26.0753689,20.0210423 25.7351662,20.3613536 25.7351662,20.8037582 L25.7351662,21.0419762 C25.1228012,20.5995715 24.4083754,20.3613536 23.5918888,20.3613536 C21.5846925,20.3273224 19.917699,21.9948478 19.917699,24.0026845 C19.917699,26.0105211 21.5506722,27.6780465 23.5918888,27.6780465 C24.5104362,27.6780465 25.3269229,27.3377352 25.9733081,26.7932371 C26.449592,27.8482021 27.5042205,28.6309181 28.7289505,28.6309181 C30.0217209,28.6309181 31.1443901,27.814171 31.5866536,26.6230815 C31.8928361,25.6021476 32.0289172,24.5812137 31.994897,23.5262486 Z M23.5918888,26.1466456 C22.4011791,26.1466456 21.4486114,25.193774 21.4486114,24.0026845 C21.4486114,22.8115949 22.4011791,21.8587233 23.5918888,21.8587233 C24.7825984,21.8587233 25.7351662,22.8115949 25.7351662,24.0026845 C25.7351662,25.193774 24.7485782,26.1466456 23.5918888,26.1466456 Z" id="ico_mail"/>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        Email address
+                    </label>
+                </div>
+                <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_9b8d486cb0c5e78ce5fb6818a_de3af0cb8d" tabindex="-1" value="" /></div>
+                <div class="newsletter_submit clear">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button--primary" />
+                </div>
+            </div>
+            <div class="newsletter_graphics">
+                <div class="tab tab-1">
+                    <img class="tab_image lazyload" data-src="/blog-img/newsletter-woman1.png" src="" alt="" />
+                    <p class="tab_title">How Do You Write a SELECT Statement in SQL?</p>
+                </div>
+                <div class="tab tab-2">
+                    <img class="tab_image lazyload" data-src="/blog-img/newsletter-woman2.png" src="" alt="" />
+                    <p class="tab_title">What Is a Foreign Key in SQL?</p>
+                </div>
+                <div class="tab tab-3">
+                    <img class="tab_image lazyload" data-src="/blog-img/tab-photo.png" src="" alt="" />
+                    <p class="tab_title">Enumerate and Explain All the Basic Elements of an SQL Query</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+ </div>
+</div>
+
+
+    </main>
+
+
+
+<footer class="footer" role="contentinfo">
+    <div class="footer__wrapper">
+        <div class="footer__main-section">
+            <div class="footer__quick-links">
+                <h3 class="footer__header">Quick links</h3>
+                <ul class="footer__quick-link-list">
+                    <li class="footer__quick-link-list-item"><a href="/pricing">Pricing</a></li>
+                    <li class="footer__quick-link-list-item"><a href="/blog">Blog</a></li>
+                    <li class="footer__quick-link-list-item"><a href="/cookbook">Cookbook</a></li>
+                    <li class="footer__quick-link-list-item"><a href="https://vertabelo.com">Vertabelo.com</a></li>
+                </ul>
+            </div>
+            <div class="footer__assistance">
+                <h3 class="footer__header">Assistance</h3>
+                <p class="footer__assistance-content">Need assistance? Drop us a line at <strong>contact@learnpython.com</strong></p>
+                <a class="button--footer" href="mailto:contact@learnpython.com">Write to us</a>
+            </div>
+            <div class="footer__follow-us">
+                <h3 class="footer__header">Follow us</h3>
+                <div class="footer__social-share">
+                    <a class="footer__social-share-item" href="https://www.facebook.com/LearnSQL/" aria-label="Facebook LearnSQL">
+                        <svg width="16px" height="31px" viewBox="0 0 16 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>LearnSQL Facebook</title>
+                            <g id="04-TRACK-DETAILS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="LearnSQL_Track_Details" transform="translate(-1173.000000, -3713.000000)" fill="currentColor" fill-rule="nonzero">
+                                    <g id="Footer" transform="translate(0.000000, 3485.000000)">
+                                        <g id="Follow-us" transform="translate(1138.000000, 166.000000)">
+                                            <g id="social" transform="translate(0.000000, 36.000000)">
+                                                <g id="fb" transform="translate(0.000000, -0.000000)">
+                                                    <g id="ico_fb" transform="translate(35.661344, 26.276780)">
+                                                        <path d="M12.27501,4.98633178 L15.016554,4.98633178 L15.016554,0.211465513 C14.543572,0.146399202 12.9169142,0 11.0224835,0 C7.06970503,0 4.36194544,2.48628388 4.36194544,7.05594101 L4.36194544,11.261477 L-1.06690143e-13,11.261477 L-1.06690143e-13,16.5994172 L4.36194544,16.5994172 L4.36194544,30.0306055 L9.70989576,30.0306055 L9.70989576,16.6006684 L13.8954114,16.6006684 L14.5598385,11.2627283 L9.70864449,11.2627283 L9.70864449,7.58523043 C9.70989576,6.04240807 10.1253191,4.98633178 12.27501,4.98633178 L12.27501,4.98633178 Z" id="Path"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                    <a class="footer__social-share-item" href="https://www.facebook.com/groups/welearnsql/" aria-label="Facebook We Learn SQL">
+                        <svg width="16px" height="31px" viewBox="0 0 16 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>We Learn SQL Facebook</title>
+                            <g id="04-TRACK-DETAILS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="LearnSQL_Track_Details" transform="translate(-1173.000000, -3713.000000)" fill="currentColor" fill-rule="nonzero">
+                                    <g id="Footer" transform="translate(0.000000, 3485.000000)">
+                                        <g id="Follow-us" transform="translate(1138.000000, 166.000000)">
+                                            <g id="social" transform="translate(0.000000, 36.000000)">
+                                                <g id="fb" transform="translate(0.000000, -0.000000)">
+                                                    <g id="ico_fb" transform="translate(35.661344, 26.276780)">
+                                                        <path d="M12.27501,4.98633178 L15.016554,4.98633178 L15.016554,0.211465513 C14.543572,0.146399202 12.9169142,0 11.0224835,0 C7.06970503,0 4.36194544,2.48628388 4.36194544,7.05594101 L4.36194544,11.261477 L-1.06690143e-13,11.261477 L-1.06690143e-13,16.5994172 L4.36194544,16.5994172 L4.36194544,30.0306055 L9.70989576,30.0306055 L9.70989576,16.6006684 L13.8954114,16.6006684 L14.5598385,11.2627283 L9.70864449,11.2627283 L9.70864449,7.58523043 C9.70989576,6.04240807 10.1253191,4.98633178 12.27501,4.98633178 L12.27501,4.98633178 Z" id="Path"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                    <a class="footer__social-share-item" href="https://www.linkedin.com/company/vertabelo/" aria-label="Linkedin Vertabelo">
+                        <svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>Vertabelo Linkedin</title>
+                            <g id="04-TRACK-DETAILS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="LearnSQL_Track_Details" transform="translate(-1238.000000, -3713.000000)" fill="currentColor" fill-rule="nonzero">
+                                    <g id="Footer" transform="translate(0.000000, 3485.000000)">
+                                        <g id="Follow-us" transform="translate(1138.000000, 166.000000)">
+                                            <g id="social" transform="translate(0.000000, 36.000000)">
+                                                <g id="linkedin" transform="translate(68.461078, -0.000000)">
+                                                    <g id="ico_linkedin" transform="translate(31.907518, 26.276780)">
+                                                        <path d="M6.11655622,8.44316485 C6.35067385,8.44316485 6.54037525,8.63336946 6.54037525,8.86791834 L6.54037525,8.86791834 L6.54037525,25.8519413 C6.54037525,26.0865752 6.35067385,26.2766948 6.11655622,26.2766948 L6.11655622,26.2766948 L0.841450299,26.2766948 C0.607332668,26.2766948 0.417631271,26.0865752 0.417631271,25.8519413 L0.417631271,25.8519413 L0.417631271,8.86791834 C0.417631271,8.63336946 0.607332668,8.44316485 0.841450299,8.44316485 L0.841450299,8.44316485 Z M19.5341581,8.02104483 C25.475677,8.02104483 26.2767798,12.3254117 26.2767798,16.535993 L26.2767798,25.8520263 C26.2767798,26.0866601 26.0870784,26.2767798 25.8529607,26.2767798 L25.8529607,26.2767798 L20.5874331,26.2767798 C20.3533155,26.2767798 20.1636141,26.0866601 20.1636141,25.8520263 L20.1636141,25.8520263 L20.1630943,17.3858266 C20.15147,15.1769025 19.9281531,13.5139569 17.8481212,13.5139569 C15.8785494,13.5139569 15.1110979,14.6171267 15.1110979,17.4487883 L15.1110979,17.4487883 L15.1110979,25.8519413 C15.1110979,26.0865752 14.9213965,26.2767798 14.6872789,26.2767798 L14.6872789,26.2767798 L9.42370086,26.2767798 C9.18958323,26.2767798 8.99988184,26.0865752 8.99988184,25.8519413 L8.99988184,25.8519413 L8.99988184,8.86791834 C8.99988184,8.63336946 9.18958323,8.44316485 9.42370086,8.44316485 L9.42370086,8.44316485 L14.4755389,8.44316485 C14.7096566,8.44316485 14.899358,8.63336946 14.899358,8.86791834 L14.899358,8.86791834 L14.899358,9.97100314 C15.8493059,8.93384008 17.4154868,8.02104483 19.5341581,8.02104483 Z M3.48091045,1.02673425e-12 C5.39877631,1.02673425e-12 6.95910845,1.56326273 6.95902369,3.48476255 C6.95902369,5.40702693 5.39877631,6.97096927 3.48091045,6.97096927 C1.56151883,6.97096927 -6.66133815e-14,5.40711188 -6.66133815e-14,3.48476255 C-6.66133815e-14,1.56326273 1.56151883,1.02673425e-12 3.48091045,1.02673425e-12 Z" id="linkedin-copy"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                    <a class="footer__social-share-item" href="https://www.youtube.com/channel/UCMbqEtWNIz5mEqrblj_axBA?view_as=subscriber" aria-label="YouTube We Learn SQL">
+                        <svg width="35px" height="25px" viewBox="0 0 35 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>We Learn SQL Youtube</title>
+                            <defs>
+                                <polygon id="path-1" points="6.22563753e-05 0.000168060308 33.0153986 0.000168060308 33.0153986 23.8710719 6.22563753e-05 23.8710719"/>
+                            </defs>
+                            <g id="04-TRACK-DETAILS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="LearnSQL_Track_Details" transform="translate(-1301.000000, -3717.000000)">
+                                    <g id="Footer" transform="translate(0.000000, 3485.000000)">
+                                        <g id="Follow-us" transform="translate(1138.000000, 166.000000)">
+                                            <g id="social" transform="translate(0.000000, 36.000000)">
+                                                <g id="youtube" transform="translate(136.922156, 0.000000)">
+                                                    <g id="ico_yt" transform="translate(26.276780, 30.030605)">
+                                                        <mask id="mask-2" fill="white">
+                                                            <use xlink:href="#path-1"/>
+                                                        </mask>
+                                                        <g id="Mask"/>
+                                                        <path d="M12.4409901,17.0702216 L12.4409901,6.06395203 C15.8616637,7.90589301 19.2530173,9.73270855 22.6948666,11.5847331 C19.2595329,13.4233129 15.8649215,15.2383642 12.4409901,17.0702216 M32.118008,3.1010488 C31.6602893,1.87420855 30.8165232,1.07088028 29.6290607,0.632242879 C27.6010899,-0.122347904 10.0041673,-0.21310047 4.31118903,0.418806287 C3.20354232,0.543170915 2.27507376,1.05575485 1.55184561,1.93134906 C-0.559198698,4.49762996 -0.235049147,17.5223038 0.862824207,20.6347807 C1.31239846,21.9103585 2.15127795,22.7540212 3.3957516,23.1758526 C6.19093064,24.1253933 28.0522931,24.1388382 30.1747396,22.9893056 C30.9614946,22.5657937 31.5804736,21.9708602 31.9583766,21.1305586 C33.3624817,18.029846 33.3185016,6.3210843 32.118008,3.1010488" id="Fill-1" fill="currentColor" mask="url(#mask-2)"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <a class="to-top home" href="#top">
+                <img src="https://cdn.learnpython.com/lpy/blog/img/arrow_top_white.svg" alt="go to top" />
+            </a>
+        </div>
+        <div class="footer__hr"></div>
+        <div class="footer__bottom-text">
+            <div class="footer__copyright">
+                Copyright ©2016-<span id="current-year">2018</span> <a class="footer__vertabelo-link" href="https://www.vertabelo.com/">Vertabelo SA</a> All rights reserved
+                <script content-type="text/javascript">
+                    document.getElementById("current-year").innerHTML = new Date().getFullYear();
+                </script>
+            </div>
+            <div class="footer__logo">
+                <a0:img xmlns:a0="http://www.w3.org/1999/xhtml" class="lazyload" data-src="https://cdn.learnpython.com/lpy/blog/img/vertabelo-logo.svg" src="" xmlns="http://www.w3.org/2000/svg" alt="Vertabelo" />
+            </div>
+            <ul class="footer__policies-list">
+                <li class="footer__policies-list-item"><a href="/files/terms-of-service">Terms of service</a></li>
+                <li class="footer__policies-list-item"><a href="/files/privacy-policy">Privacy policy</a></li>
+                <li class="footer__policies-list-item"><a href="/imprint">Imprint</a></li>
+            </ul> 
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

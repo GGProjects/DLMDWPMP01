@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <link href="https://cdn.realpython.com" rel="preconnect" />
+    <link href="https://files.realpython.com" rel="preconnect" />
+
+    <title>Getting Started With Testing in Python – Real Python</title>
+    <meta name="author" content="Real Python" />
+    <meta name="description" content="In this in-depth tutorial, you’ll see how to create Python unit tests, execute them, and find the bugs before your users do. You’ll learn about the tools available to write and execute tests, check your application’s performance, and even look for security issues." />
+    <meta name="keywords" content="" />
+
+    
+  
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+
+    
+      <link rel="stylesheet" href="https://cdn.realpython.com/static/realpython.min.1a28062d0366.css" />
+      <link rel="stylesheet" href="https://cdn.realpython.com/static/gfonts/font.5ac42994de49.css" />
+      <link rel="preload" href="https://cdn.realpython.com/static/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://cdn.realpython.com/static/glightbox.min.9b438b29cef1.css" /></noscript>
+    
+
+    
+  
+
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/python-testing/" />
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg" />
+        <meta property="og:image" content="https://files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg" />
+      
+      <meta name="twitter:creator" content="@realpython" />
+      <meta name="twitter:site" content="@realpython" />
+      <meta property="og:title" content="Getting Started With Testing in Python – Real Python" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="https://realpython.com/python-testing/" />
+      <meta property="og:description" content="In this in-depth tutorial, you’ll see how to create Python unit tests, execute them, and find the bugs before your users do. You’ll learn about the tools available to write and execute tests, check your application’s performance, and even look for security issues." />
+    
+
+    <link href="https://cdn.realpython.com/static/favicon.68cbf4197b0c.png" rel="icon" />
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+
+    
+    
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+
+  
+    ga('set', 'anonymizeIp', true);
+  
+
+  
+
+  
+  
+  ga('set', {
+    dimension1: false,
+    dimension2: false
+  });
+  
+
+  ga('send', 'pageview');
+  
+</script>
+
+  <base href="https://realpython.com/python-testing/#choosing-a-test-runner" /></head>
+  <body>
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column ">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="/">
+      <img src="https://cdn.realpython.com/static/real-python-logo.893c30edea53.svg" class="d-inline-block align-top" alt="Real Python" width="165" height="40" />
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/start-here/">Start Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-graduation-cap" aria-hidden="true"></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            <a class="dropdown-item" href="/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><i class="fa fa-fw mr-1 fa-graduation-cap" aria-hidden="true"></i> Python Tutorials →<br /><small class="text-secondary">In-depth articles and video courses</small></a>
+            
+            <a class="dropdown-item" href="/learning-paths/" style="color: #ffc873; line-height: 110%;"><i class="fa fa-fw mr-1 fa-map-o" aria-hidden="true"></i> Learning Paths →<br /><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+            <a class="dropdown-item" href="/quizzes/" style="color: #abe0e5; line-height: 110%;"><i class="fa fa-fw mr-1 fa-trophy" aria-hidden="true"></i> Quizzes →<br /><small class="text-secondary">Check your learning progress</small></a>
+            <a class="dropdown-item" href="/tutorials/all/" style="color: #ccc; line-height: 110%;"><i class="fa fa-fw mr-1 fa-tags" aria-hidden="true"></i> Browse Topics →<br /><small class="text-secondary">Focus on a specific area or skill level</small></a>
+            <a class="dropdown-item" href="/community/" style="color: #e5c6ab; line-height: 110%;"><i class="fa fa-fw mr-1 fa-slack" aria-hidden="true"></i> Community Chat →<br /><small class="text-secondary">Learn with other Pythonistas</small></a>
+            <a class="dropdown-item" href="/office-hours/" style="color: #e5c6ab; line-height: 110%;"><i class="fa fa-fw mr-1 fa-users" aria-hidden="true"></i> Office Hours →<br /><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+            <a class="dropdown-item" href="/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><i class="fa fa-fw mr-1 fa-podcast" aria-hidden="true"></i> Podcast →<br /><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+            <a class="dropdown-item pb-3" href="/products/books/" style="color: #abe5b1; line-height: 110%;"><i class="fa fa-fw mr-1 fa-book" aria-hidden="true"></i> Books →<br /><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+            
+              <a class="dropdown-item border-top text-warning" href="/account/join/"><i class="fa fa-fw fa-star text-warning" aria-hidden="true"></i> Unlock All Content →</a>
+            
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="/products/">Python Learning Resources</a>
+            <a class="dropdown-item" href="/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="/team/">Meet the Team</a>
+            <a class="dropdown-item" href="/write-for-us/">Become a Tutorial Author</a>
+            <a class="dropdown-item" href="/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/search" title="Search"><span class="d-block d-lg-none"><i class="fa fa-search" aria-hidden="true"></i> Search</span><span class="d-none d-lg-block"><i class="fa fa-search" aria-hidden="true"></i></span></a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100" action="/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="/search" title="Search"><i class="fa fa-search fa-fw text-muted pl-2" aria-hidden="true"></i></a>
+          <input class="search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" name="q" autocomplete="off" />
+          <input type="hidden" name="_from" value="nav" />
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline">
+            <a class="ml-2 ml-lg-0 btn btn-sm btn-primary px-3" href="/account/join/">Join</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-light" href="/account/login/?next=%2Fpython-testing%2F">Sign‑In</a>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    <div class="col-md-11 col-lg-8 article with-headerlinks">
+      
+
+  
+    <figure class="embed-responsive embed-responsive-16by9">
+      
+        <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain;" alt="Getting Started With Testing in Python" src="https://files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg&amp;w=480&amp;sig=de5103ef26a8b5db348d5f9b3291ec8a4102ec05 480w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg&amp;w=960&amp;sig=fa3b60dea368384a60b520489dad35bbadfac12e 960w, https://files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg 1920w" sizes="75vw" width="1920" height="1080" />
+      
+    </figure>
+  
+
+  <h1>Getting Started With Testing in Python</h1>
+  <div class="mb-0">
+    
+      <span class="text-muted">by <a class="text-muted" href="#author">Anthony Shaw</a>
+    
+    
+    
+      <span class="ml-2 mr-1 fa fa-comments"></span><a class="text-muted" href="#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/python-testing/"></span></a>
+    
+    
+    <span class="ml-2 fa fa-tags" aria-hidden="true"></span>
+    
+      <a href="/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+    
+      <a href="/tutorials/intermediate/" class="badge badge-light text-muted">intermediate</a>
+    
+      <a href="/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+    
+    <div class="d-sm-flex flex-row justify-content-between my-3 text-center">
+      <div class="jsCompletionStatusWidget btn-group mb-0">
+  <button title="Click to mark as completed" class="jsBtnCompletion btn btn-secondary border-right " style="border-top-right-radius: 0; border-bottom-right-radius: 0;" disabled="disabled">Mark as Completed</button>
+  <button title="Add bookmark" class="jsBtnBookmark btn btn-secondary border-left" disabled="disabled"><i class="fa fa-fw fa-bookmark-o"></i></button>
+</div>
+
+      
+      
+        <div class="align-self-center my-2">
+          
+<span>
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Check out this %23Python tutorial: Getting%20Started%20With%20Testing%20in%20Python by @realpython&amp;url=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-twitter text-light mb-1"><i class="mr-1 fa fa-twitter text-light"></i>Tweet</a>
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-facebook text-light mb-1"><i class="mr-1 fa fa-facebook text-light"></i>Share</a>
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python article for you&amp;body=Check out this Python tutorial:%0A%0AGetting%20Started%20With%20Testing%20in%20Python%0A%0Ahttps%3A//realpython.com/python-testing/" class="badge badge-red text-light mb-1"><i class="mr-1 fa fa-envelope text-light"></i>Email</a>
+</span>
+
+        </div>
+      
+    </div>
+  </span></div>
+
+  
+
+  <div class="article-body">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+        <p class="h3 mb-2 text-muted">Table of Contents</p>
+        <div class="toc">
+<ul>
+<li><a href="#testing-your-code">Testing Your Code</a><ul>
+<li><a href="#automated-vs-manual-testing">Automated vs. Manual Testing</a></li>
+<li><a href="#unit-tests-vs-integration-tests">Unit Tests vs. Integration Tests</a></li>
+<li><a href="#choosing-a-test-runner">Choosing a Test Runner</a></li>
+</ul>
+</li>
+<li><a href="#writing-your-first-test">Writing Your First Test</a><ul>
+<li><a href="#where-to-write-the-test">Where to Write the Test</a></li>
+<li><a href="#how-to-structure-a-simple-test">How to Structure a Simple Test</a></li>
+<li><a href="#how-to-write-assertions">How to Write Assertions</a></li>
+<li><a href="#side-effects">Side Effects</a></li>
+</ul>
+</li>
+<li><a href="#executing-your-first-test">Executing Your First Test</a><ul>
+<li><a href="#executing-test-runners">Executing Test Runners</a></li>
+<li><a href="#understanding-test-output">Understanding Test Output</a></li>
+<li><a href="#running-your-tests-from-pycharm">Running Your Tests From PyCharm</a></li>
+<li><a href="#running-your-tests-from-visual-studio-code">Running Your Tests From Visual Studio Code</a></li>
+</ul>
+</li>
+<li><a href="#testing-for-web-frameworks-like-django-and-flask">Testing for Web Frameworks Like Django and Flask</a><ul>
+<li><a href="#why-theyre-different-from-other-applications">Why They’re Different From Other Applications</a></li>
+<li><a href="#how-to-use-the-django-test-runner">How to Use the Django Test Runner</a></li>
+<li><a href="#how-to-use-unittest-and-flask">How to Use unittest and Flask</a></li>
+</ul>
+</li>
+<li><a href="#more-advanced-testing-scenarios">More Advanced Testing Scenarios</a><ul>
+<li><a href="#handling-expected-failures">Handling Expected Failures</a></li>
+<li><a href="#isolating-behaviors-in-your-application">Isolating Behaviors in Your Application</a></li>
+<li><a href="#writing-integration-tests">Writing Integration Tests</a></li>
+<li><a href="#testing-data-driven-applications">Testing Data-Driven Applications</a></li>
+</ul>
+</li>
+<li><a href="#testing-in-multiple-environments">Testing in Multiple Environments</a><ul>
+<li><a href="#installing-tox">Installing Tox</a></li>
+<li><a href="#configuring-tox-for-your-dependencies">Configuring Tox for Your Dependencies</a></li>
+<li><a href="#executing-tox">Executing Tox</a></li>
+</ul>
+</li>
+<li><a href="#automating-the-execution-of-your-tests">Automating the Execution of Your Tests</a></li>
+<li><a href="#whats-next">What’s Next</a><ul>
+<li><a href="#introducing-linters-into-your-application">Introducing Linters Into Your Application</a></li>
+<li><a href="#keeping-your-test-code-clean">Keeping Your Test Code Clean</a></li>
+<li><a href="#testing-for-performance-degradation-between-changes">Testing for Performance Degradation Between Changes</a></li>
+<li><a href="#testing-for-security-flaws-in-your-application">Testing for Security Flaws in Your Application</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    
+    <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+      
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+<a class="small text-muted" href="/account/join/" rel="nofollow"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Remove ads</a>
+
+
+    </div>
+    
+
+    
+      <div class="border rounded p-3 card mb-2">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="/courses/test-driven-development-pytest/"><strong>Test-Driven Development With PyTest</strong></a></p>
+</div>
+
+    
+
+    <p>This tutorial is for anyone who has written a fantastic application in Python but hasn’t yet written any tests.</p>
+<p>Testing in Python is a huge topic and can come with a lot of complexity, but it doesn’t need to be hard. You can get started creating simple tests for your application in a few easy steps and then build on it from there.</p>
+<p>In this tutorial, you’ll learn how to create a basic test, execute it, and find the bugs before your users do! You’ll learn about the tools available to write and execute tests, check your application’s performance, and even look for security issues.</p>
+<div class="alert alert-warning" role="alert">
+<p><strong markdown="1">Free Bonus:</strong> <a href="https://realpython.com/bonus/python-mastery-course/" class="alert-link" data-toggle="modal" data-target="#modal-python-mastery-course" data-focus="false" markdown="1">5 Thoughts On Python Mastery</a>, a free course for Python developers that shows you the roadmap and the mindset you’ll need to take your Python skills to the next level.</p>
+</div>
+<section class="section2" id="testing-your-code"><h2>Testing Your Code<a class="headerlink" href="#testing-your-code" title="Permanent link"></a></h2>
+<p>There are many ways to test your code. In this tutorial, you’ll learn the techniques from the most basic steps and work towards advanced methods.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div><section class="section3" id="automated-vs-manual-testing"><h3>Automated vs. Manual Testing<a class="headerlink" href="#automated-vs-manual-testing" title="Permanent link"></a></h3>
+<p>The good news is, you’ve probably already created a test without realizing it. Remember when you ran your application and used it for the first time? Did you check the features and experiment using them? That’s known as <strong>exploratory testing</strong> and is a form of manual testing.</p>
+<p>Exploratory testing is a form of testing that is done without a plan. In an exploratory test, you’re just exploring the application.</p>
+<p>To have a complete set of manual tests, all you need to do is make a list of all the features your application has, the different types of input it can accept, and the expected results. Now, every time you make a change to your code, you need to go through every single item on that list and check it.</p>
+<p>That doesn’t sound like much fun, does it?</p>
+<p>This is where automated testing comes in. Automated testing is the execution of your test plan (the parts of your application you want to test, the order in which you want to test them, and the expected responses) by a script instead of a human. Python already comes with a set of tools and libraries to help you create automated tests for your application. We’ll explore those tools and libraries in this tutorial.</p>
+</section><section class="section3" id="unit-tests-vs-integration-tests"><h3>Unit Tests vs. Integration Tests<a class="headerlink" href="#unit-tests-vs-integration-tests" title="Permanent link"></a></h3>
+<p>The world of testing has no shortage of terminology, and now that you know the difference between automated and manual testing, it’s time to go a level deeper.</p>
+<p>Think of how you might test the lights on a car. You would turn on the lights (known as the <strong>test step</strong>) and go outside the car or ask a friend to check that the lights are on (known as the <strong>test assertion</strong>). Testing multiple components is known as <strong>integration testing</strong>.</p>
+<p>Think of all the things that need to work correctly in order for a simple task to give the right result. These components are like the parts to your application, all of those classes, functions, and modules you’ve written. </p>
+<p>A major challenge with integration testing is when an integration test doesn’t give the right result. It’s very hard to diagnose the issue without being able to isolate which part of the system is failing. If the lights didn’t turn on, then maybe the bulbs are broken. Is the battery dead? What about the alternator? Is the car’s computer failing?</p>
+<p>If you have a fancy modern car, it will tell you when your light bulbs have gone. It does this using a form of <strong>unit test</strong>.</p>
+<p>A unit test is a smaller test, one that checks that a single component operates in the right way. A unit test helps you to isolate what is broken in your application and fix it faster.</p>
+<p>You have just seen two types of tests:</p>
+<ol>
+<li>An integration test checks that components in your application operate with each other.</li>
+<li>A unit test checks a small component in your application.</li>
+</ol>
+<p>You can write both integration tests and unit tests in Python. To write a unit test for the built-in function <code>sum()</code>, you would check the output of <code>sum()</code> against a known output. </p>
+<p>For example, here’s how you check that the <code>sum()</code> of the numbers <code>(1, 2, 3)</code> equals <code>6</code>:</p>
+<div class="highlight python repl"><span class="repl-toggle" title="Toggle REPL prompts and output">&gt;&gt;&gt;</span><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+</code></pre></div>
+<p>This will not output anything on the REPL because the values are correct.</p>
+<p>If the result from <code>sum()</code> is incorrect, this will fail with an <code>AssertionError</code> and the message <code>"Should be 6"</code>. Try an assertion statement again with the wrong values to see an <code>AssertionError</code>:</p>
+<div class="highlight python repl"><span class="repl-toggle" title="Toggle REPL prompts and output">&gt;&gt;&gt;</span><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AssertionError</span>: <span class="n">Should be 6</span>
+</code></pre></div>
+<p>In the REPL, you are seeing the raised <code>AssertionError</code> because the result of <code>sum()</code> does not match <code>6</code>.</p>
+<p>Instead of testing on the REPL, you’ll want to put this into a new Python file called <code>test_sum.py</code> and execute it again:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">def</span> <span class="nf">test_sum</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">test_sum</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Everything passed"</span><span class="p">)</span>
+</code></pre></div>
+<p>Now you have written a <strong>test case</strong>, an assertion, and an entry point (the command line). You can now execute this at the command line:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python test_sum.py
+<span class="go">Everything passed</span>
+</code></pre></div>
+<p>You can see the successful result, <code>Everything passed</code>.</p>
+<p>In Python, <code>sum()</code> accepts any iterable as its first argument. You tested with a list. Now test with a tuple as well. Create a new file called <code>test_sum_2.py</code> with the following code:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">def</span> <span class="nf">test_sum</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+
+<span class="k">def</span> <span class="nf">test_sum_tuple</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">test_sum</span><span class="p">()</span>
+    <span class="n">test_sum_tuple</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Everything passed"</span><span class="p">)</span>
+</code></pre></div>
+<p>When you execute <code>test_sum_2.py</code>, the script will give an error because the <code>sum()</code> of <code>(1, 2, 2)</code> is <code>5</code>, not <code>6</code>. The result of the script gives you the error message, the line of code, and the traceback:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python test_sum_2.py
+<span class="go">Traceback (most recent call last):</span>
+<span class="go">  File "test_sum_2.py", line 9, in &lt;module&gt;</span>
+<span class="go">    test_sum_tuple()</span>
+<span class="go">  File "test_sum_2.py", line 5, in test_sum_tuple</span>
+<span class="go">    assert sum((1, 2, 2)) == 6, "Should be 6"</span>
+<span class="go">AssertionError: Should be 6</span>
+</code></pre></div>
+<p>Here you can see how a mistake in your code gives an error on the console with some information on where the error was and what the expected result was.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> It’s possible to simultaneously document and test your code, while ensuring that your code and its documentation remain in sync, with <code>doctest</code>. Check out <a href="https://realpython.com/python-doctest/">Python’s doctest: Document and Test Your Code at Once</a> to learn more.</p>
+</div>
+<p>Writing tests in this way is okay for a simple check, but what if more than one fails? This is where test runners come in. The test runner is a special application designed for running tests, checking the output, and giving you tools for debugging and diagnosing tests and applications.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section><section class="section3" id="choosing-a-test-runner"><h3>Choosing a Test Runner<a class="headerlink" href="#choosing-a-test-runner" title="Permanent link"></a></h3>
+<p>There are many test runners available for Python. The one built into the Python standard library is called <code>unittest</code>. In this tutorial, you will be using <code>unittest</code> test cases and the <code>unittest</code> test runner. The principles of <code>unittest</code> are easily portable to other frameworks. The three most popular test runners are:</p>
+<ul>
+<li><code>unittest</code></li>
+<li><code>nose</code> or <code>nose2</code></li>
+<li><code>pytest</code></li>
+</ul>
+<p>Choosing the best test runner for your requirements and level of experience is important.</p>
+<section class="section4" id="unittest"><h4><code>unittest</code><a class="headerlink" href="#unittest" title="Permanent link"></a></h4>
+<p><code>unittest</code> has been built into the Python standard library since version 2.1. You’ll probably see it in commercial Python applications and open-source projects.</p>
+<p><code>unittest</code> contains both a testing framework and a test runner. <code>unittest</code> has some important requirements for writing and executing tests.</p>
+<p><code>unittest</code> requires that:</p>
+<ul>
+<li>You put your tests into classes as methods</li>
+<li>You use a series of special assertion methods in the <code>unittest.TestCase</code> class instead of the built-in <code>assert</code> statement</li>
+</ul>
+<p>To convert the earlier example to a <code>unittest</code> test case, you would have to:</p>
+<ol>
+<li><a href="https://realpython.com/absolute-vs-relative-python-imports/">Import</a> <code>unittest</code> from the standard library</li>
+<li>Create a class called <code>TestSum</code> that inherits from the <code>TestCase</code> class</li>
+<li>Convert the test functions into methods by adding <code>self</code> as the first argument</li>
+<li>Change the assertions to use the <code>self.assertEqual()</code> method on the <code>TestCase</code> class</li>
+<li>Change the command-line entry point to call <code>unittest.main()</code></li>
+</ol>
+<p>Follow those steps by creating a new file <code>test_sum_unittest.py</code> with the following code:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+
+
+<span class="k">class</span> <span class="nc">TestSum</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_sum_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>If you execute this at the command line, you’ll see  one success (indicated with <code>.</code>) and one failure (indicated with <code>F</code>):</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python test_sum_unittest.py
+<span class="go">.F</span>
+<span class="go">======================================================================</span>
+<span class="go">FAIL: test_sum_tuple (__main__.TestSum)</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Traceback (most recent call last):</span>
+<span class="go">  File "test_sum_unittest.py", line 9, in test_sum_tuple</span>
+<span class="go">    self.assertEqual(sum((1, 2, 2)), 6, "Should be 6")</span>
+<span class="go">AssertionError: Should be 6</span>
+
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Ran 2 tests in 0.001s</span>
+
+<span class="go">FAILED (failures=1)</span>
+</code></pre></div>
+<p>You have just executed two tests using the <code>unittest</code> test runner.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Be careful if you’re writing test cases that need to execute in both Python 2 and 3. In Python 2.7 and below, <code>unittest</code> is called <code>unittest2</code>. If you simply <a href="https://realpython.com/python-import/">import</a> from <code>unittest</code>, you will get different versions with different features between Python 2 and 3.</p>
+</div>
+<p>For more information on <code>unittest</code>, you can explore the <a href="https://docs.python.org/3/library/unittest.html">unittest Documentation</a>.</p>
+</section><section class="section4" id="nose"><h4><code>nose</code><a class="headerlink" href="#nose" title="Permanent link"></a></h4>
+<p>You may find that over time, as you write hundreds or even thousands of tests for your application, it becomes increasingly hard to understand and use the output from <code>unittest</code>.</p>
+<p><code>nose</code> is compatible with any tests written using the <code>unittest</code> framework and can be used as a drop-in replacement for the <code>unittest</code> test runner. The development of <code>nose</code> as an open-source application fell behind, and a fork called <code>nose2</code> was created. If you’re starting from scratch, it is recommended that you use <code>nose2</code> instead of <code>nose</code>.</p>
+<p>To get started with <code>nose2</code>, install <code>nose2</code> from PyPI and execute it on the command line. <code>nose2</code> will try to discover all test scripts named <code>test*.py</code> and test cases inheriting from <code>unittest.TestCase</code> in your current directory:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>pip install nose2
+<span class="gp">$ </span>python -m nose2
+<span class="go">.F</span>
+<span class="go">======================================================================</span>
+<span class="go">FAIL: test_sum_tuple (__main__.TestSum)</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Traceback (most recent call last):</span>
+<span class="go">  File "test_sum_unittest.py", line 9, in test_sum_tuple</span>
+<span class="go">    self.assertEqual(sum((1, 2, 2)), 6, "Should be 6")</span>
+<span class="go">AssertionError: Should be 6</span>
+
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Ran 2 tests in 0.001s</span>
+
+<span class="go">FAILED (failures=1)</span>
+</code></pre></div>
+<p>You have just executed the test you created in <code>test_sum_unittest.py</code> from the <code>nose2</code> test runner.  <code>nose2</code> offers many command-line flags for filtering the tests that you execute. For more information, you can explore the <a href="https://nose2.readthedocs.io/">Nose 2 documentation</a>.</p>
+</section><section class="section4" id="pytest"><h4><code>pytest</code><a class="headerlink" href="#pytest" title="Permanent link"></a></h4>
+<p><a href="https://realpython.com/pytest-python-testing/"><code>pytest</code></a> supports execution of <code>unittest</code>  test cases. The real advantage of <code>pytest</code> comes by writing <code>pytest</code> test cases. <code>pytest</code> test cases are a series of functions in a Python file starting with the name <code>test_</code>.</p>
+<p><code>pytest</code> has some other great features:</p>
+<ul>
+<li>Support for the built-in <code>assert</code> statement instead of using special <code>self.assert*()</code> methods</li>
+<li>Support for filtering for test cases</li>
+<li>Ability to rerun from the last failing test</li>
+<li>An ecosystem of hundreds of plugins to extend the functionality</li>
+</ul>
+<p>Writing the <code>TestSum</code> test case example for <code>pytest</code> would look like this:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">def</span> <span class="nf">test_sum</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+
+<span class="k">def</span> <span class="nf">test_sum_tuple</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Should be 6"</span>
+</code></pre></div>
+<p>You have dropped the <code>TestCase</code>, any use of classes, and the command-line entry point.</p>
+<p>More information can be found at the <a href="https://docs.pytest.org/en/latest/">Pytest Documentation Website</a>.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section></section></section><section class="section2" id="writing-your-first-test"><h2>Writing Your First Test<a class="headerlink" href="#writing-your-first-test" title="Permanent link"></a></h2>
+<p>Let’s bring together what you’ve learned so far and, instead of testing the built-in <code>sum()</code> function, test a simple implementation of the same requirement. </p>
+<p>Create a new project folder and, inside that, create a new folder called <code>my_sum</code>. Inside <code>my_sum</code>, create an empty file called <code>__init__.py</code>. Creating the <code>__init__.py</code> file means that the <code>my_sum</code> folder can be imported as a module from the parent directory.</p>
+<p>Your project folder should look like this:</p>
+<div class="highlight"><pre><span></span><code>project/
+│
+└── my_sum/
+    └── __init__.py
+</code></pre></div>
+<p>Open up <code>my_sum/__init__.py</code> and create a new function called <code>sum()</code>, which takes an iterable (a list, tuple, or set) and adds the values together:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>
+<p>This code example creates a variable called <code>total</code>, iterates over all the values in <code>arg</code>, and adds them to <code>total</code>. It then returns the result once the iterable has been exhausted.</p>
+<section class="section3" id="where-to-write-the-test"><h3>Where to Write the Test<a class="headerlink" href="#where-to-write-the-test" title="Permanent link"></a></h3>
+<p>To get started writing tests, you can simply create a file called <code>test.py</code>, which will contain your first test case. Because the file will need to be able to import your application to be able to test it, you want to place <code>test.py</code> above the package folder, so your directory tree will look something like this:</p>
+<div class="highlight"><pre><span></span><code>project/
+│
+├── my_sum/
+│   └── __init__.py
+|
+└── test.py
+</code></pre></div>
+<p>You’ll find that, as you add more and more tests, your single file will become cluttered and hard to maintain, so you can create a folder called <code>tests/</code> and split the tests into multiple files. It is convention to ensure each file starts with <code>test_</code> so all test runners will assume that Python file contains tests to be executed. Some very large projects split tests into more subdirectories based on their purpose or usage.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> What if your application is a single script?</p>
+<p>You can import any attributes of the script, such as classes, functions, and variables by using the built-in <code>__import__()</code> function. Instead of <code>from my_sum import sum</code>, you can write the following:</p>
+<div class="highlight python"><pre><span></span><code><span class="n">target</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s2">"my_sum.py"</span><span class="p">)</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">sum</span>
+</code></pre></div>
+<p>The benefit of using <code>__import__()</code> is that you don’t have to turn your project folder into a package, and you can specify the file name. This is also useful if your filename collides with any standard library packages. For example, <code>math.py</code> would collide with the <code>math</code> module.</p>
+</div>
+</section><section class="section3" id="how-to-structure-a-simple-test"><h3>How to Structure a Simple Test<a class="headerlink" href="#how-to-structure-a-simple-test" title="Permanent link"></a></h3>
+<p>Before you dive into writing tests, you’ll want to first make a couple of decisions:</p>
+<ol>
+<li>What do you want to test?</li>
+<li>Are you writing a unit test or an integration test?</li>
+</ol>
+<p>Then the structure of a test should loosely follow this workflow:</p>
+<ol>
+<li>Create your inputs</li>
+<li>Execute the code being tested, capturing the output</li>
+<li>Compare the output with an expected result</li>
+</ol>
+<p>For this application, you’re testing <code>sum()</code>. There are many behaviors in <code>sum()</code> you could check, such as:</p>
+<ul>
+<li>Can it sum a list of whole numbers (integers)?</li>
+<li>Can it sum a tuple or set?</li>
+<li>Can it sum a list of floats?</li>
+<li>What happens when you provide it with a bad value, such as a single integer or a string?</li>
+<li>What happens when one of the values is negative?</li>
+</ul>
+<p>The most simple test would be a list of integers. Create a file, <code>test.py</code> with the following Python code:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">my_sum</span> <span class="kn">import</span> <span class="nb">sum</span>
+
+
+<span class="k">class</span> <span class="nc">TestSum</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_list_int</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Test that it can sum a list of integers</span>
+<span class="sd">        """</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>This code example:</p>
+<ol>
+<li>
+<p>Imports <code>sum()</code> from the <code>my_sum</code> package you created</p>
+</li>
+<li>
+<p>Defines a new test case class called <code>TestSum</code>, which inherits from <code>unittest.TestCase</code></p>
+</li>
+<li>
+<p>Defines a test method, <code>.test_list_int()</code>, to test a list of integers.  The method <code>.test_list_int()</code> will:</p>
+<ul>
+<li>Declare a variable <code>data</code> with a list of numbers <code>(1, 2, 3)</code></li>
+<li>Assign the result of <code>my_sum.sum(data)</code> to a <code>result</code> variable</li>
+<li>Assert that the value of <code>result</code> equals <code>6</code> by using the <code>.assertEqual()</code> method on the <code>unittest.TestCase</code> class</li>
+</ul>
+</li>
+<li>
+<p>Defines a command-line entry point, which runs the <code>unittest</code> test-runner <code>.main()</code></p>
+</li>
+</ol>
+<p>If you’re unsure what <code>self</code> is or how <code>.assertEqual()</code> is defined, you can brush up on your object-oriented programming with <a href="https://realpython.com/python3-object-oriented-programming/">Python 3 Object-Oriented Programming</a>.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section><section class="section3" id="how-to-write-assertions"><h3>How to Write Assertions<a class="headerlink" href="#how-to-write-assertions" title="Permanent link"></a></h3>
+<p>The last step of writing a test is to validate the output against a known response. This is known as an <strong>assertion</strong>. There are some general best practices around how to write assertions:</p>
+<ul>
+<li>Make sure tests are repeatable and run your test multiple times to make sure it gives the same result every time</li>
+<li>Try and assert results that relate to your input data, such as checking that the result is the actual sum of values in the <code>sum()</code> example</li>
+</ul>
+<p><code>unittest</code> comes with lots of methods to assert on the values, types, and existence of variables. Here are some of the most commonly used methods:</p>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Method</th>
+<th>Equivalent to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.assertEqual(a, b)</code></td>
+<td><code>a == b</code></td>
+</tr>
+<tr>
+<td><code>.assertTrue(x)</code></td>
+<td><code>bool(x) is True</code></td>
+</tr>
+<tr>
+<td><code>.assertFalse(x)</code></td>
+<td><code>bool(x) is False</code></td>
+</tr>
+<tr>
+<td><code>.assertIs(a, b)</code></td>
+<td><code>a is b</code></td>
+</tr>
+<tr>
+<td><code>.assertIsNone(x)</code></td>
+<td><code>x is None</code></td>
+</tr>
+<tr>
+<td><code>.assertIn(a, b)</code></td>
+<td><code>a in b</code></td>
+</tr>
+<tr>
+<td><code>.assertIsInstance(a, b)</code></td>
+<td><code>isinstance(a, b)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>.assertIs()</code>, <code>.assertIsNone()</code>, <code>.assertIn()</code>, and <code>.assertIsInstance()</code> all have opposite methods, named <code>.assertIsNot()</code>, and so forth.</p>
+</section><section class="section3" id="side-effects"><h3>Side Effects<a class="headerlink" href="#side-effects" title="Permanent link"></a></h3>
+<p>When you’re writing tests, it’s often not as simple as looking at the return value of a function. Often, executing a piece of code will alter other things in the environment, such as the attribute of a class, a file on the filesystem, or a value in a database. These are known as <strong>side effects</strong> and are an important part of testing. Decide if the side effect is being tested before including it in your list of assertions. </p>
+<p>If you find that the unit of code you want to test has lots of side effects, you might be breaking the <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single Responsibility Principle</a>. Breaking the Single Responsibility Principle means the piece of code is doing too many things and would be better off being refactored. Following the Single Responsibility Principle is a great way to design code that it is easy to write repeatable and simple unit tests for, and ultimately, reliable applications.</p>
+</section></section><section class="section2" id="executing-your-first-test"><h2>Executing Your First Test<a class="headerlink" href="#executing-your-first-test" title="Permanent link"></a></h2>
+<p>Now that you’ve created the first test, you want to execute it. Sure, you know it’s going to pass, but before you create more complex tests, you should check that you can execute the tests successfully.</p>
+<section class="section3" id="executing-test-runners"><h3>Executing Test Runners<a class="headerlink" href="#executing-test-runners" title="Permanent link"></a></h3>
+<p>The Python application that executes your test code, checks the assertions, and gives you test results in your console is called the <strong>test runner</strong>. </p>
+<p>At the bottom of <code>test.py</code>, you added this small snippet of code:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>This is a command line entry point. It means that if you execute the script alone by running <code>python test.py</code> at the command line, it will call <code>unittest.main()</code>. This executes the test runner by discovering all classes in this file that inherit from <code>unittest.TestCase</code>.</p>
+<p>This is one of many ways to execute the <code>unittest</code> test runner. When you have a single test file named <code>test.py</code>, calling <code>python test.py</code> is a great way to get started.</p>
+<p>Another way is using the <code>unittest</code> command line. Try this:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest <span class="nb">test</span>
+</code></pre></div>
+<p>This will execute the same test module (called <code>test</code>) via the command line.</p>
+<p>You can provide additional options to change the output. One of those is <code>-v</code> for verbose. Try that next:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest -v <span class="nb">test</span>
+<span class="go">test_list_int (test.TestSum) ... ok</span>
+
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Ran 1 tests in 0.000s</span>
+</code></pre></div>
+<p>This executed the one test inside <code>test.py</code> and printed the results to the console. Verbose mode listed the names of the tests it executed first, along with the result of each test.</p>
+<p>Instead of providing the name of a module containing tests, you can request an auto-discovery using the following:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest discover
+</code></pre></div>
+<p>This will search the current directory for any files named <code>test*.py</code> and attempt to test them.</p>
+<p>Once you have multiple test files, as long as you follow the <code>test*.py</code> naming pattern, you can provide the name of the directory instead by using the <code>-s</code> flag and the name of the directory:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest discover -s tests
+</code></pre></div>
+<p><code>unittest</code> will run all tests in a single test plan and give you the results.</p>
+<p>Lastly, if your source code is not in the directory root and contained in a subdirectory, for example in a folder called <code>src/</code>, you can tell <code>unittest</code> where to execute the tests so that it can import the modules correctly with the <code>-t</code> flag:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest discover -s tests -t src
+</code></pre></div>
+<p><code>unittest</code> will change to the <code>src/</code> directory, scan for all <code>test*.py</code> files inside the the <code>tests</code> directory, and execute them.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section><section class="section3" id="understanding-test-output"><h3>Understanding Test Output<a class="headerlink" href="#understanding-test-output" title="Permanent link"></a></h3>
+<p>That was a very simple example where everything passes, so now you’re going to try a failing test and interpret the output.</p>
+<p><code>sum()</code> should be able to accept other lists of numeric types, like fractions.</p>
+<p>At the top of the <code>test.py</code> file, add an import statement to import the <code>Fraction</code> type from the <code>fractions</code> module in the standard library:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+</code></pre></div>
+<p>Now add a test with an assertion expecting the incorrect value, in this case expecting the sum of 1/4, 1/4, and 2/5 to be 1:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">my_sum</span> <span class="kn">import</span> <span class="nb">sum</span>
+
+
+<span class="k">class</span> <span class="nc">TestSum</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_list_int</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Test that it can sum a list of integers</span>
+<span class="sd">        """</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="hll">    <span class="k">def</span> <span class="nf">test_list_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="sd">"""</span>
+</span><span class="hll"><span class="sd">        Test that it can sum a list of fractions</span>
+</span><span class="hll"><span class="sd">        """</span>
+</span><span class="hll">        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+</span><span class="hll">        <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>If you execute the tests again with <code>python -m unittest test</code>, you should see the following output:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest <span class="nb">test</span>
+<span class="go">F.</span>
+<span class="go">======================================================================</span>
+<span class="go">FAIL: test_list_fraction (test.TestSum)</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Traceback (most recent call last):</span>
+<span class="go">  File "test.py", line 21, in test_list_fraction</span>
+<span class="go">    self.assertEqual(result, 1)</span>
+<span class="go">AssertionError: Fraction(9, 10) != 1</span>
+
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Ran 2 tests in 0.001s</span>
+
+<span class="go">FAILED (failures=1)</span>
+</code></pre></div>
+<p>In the output, you’ll see the following information:</p>
+<ol>
+<li>
+<p>The first line shows the execution results of all the tests, one failed (<code>F</code>) and one passed (<code>.</code>).</p>
+</li>
+<li>
+<p>The <code>FAIL</code> entry shows some details about the failed test:</p>
+<ul>
+<li>The test method name (<code>test_list_fraction</code>)</li>
+<li>The test module (<code>test</code>) and the test case (<code>TestSum</code>)</li>
+<li>A traceback to the failing line</li>
+<li>The details of the assertion with the expected result (<code>1</code>) and the actual result (<code>Fraction(9, 10)</code>)</li>
+</ul>
+</li>
+</ol>
+<p>Remember, you can add extra information to the test output by adding the <code>-v</code> flag to the <code>python -m unittest</code> command.</p>
+</section><section class="section3" id="running-your-tests-from-pycharm"><h3>Running Your Tests From PyCharm<a class="headerlink" href="#running-your-tests-from-pycharm" title="Permanent link"></a></h3>
+<p>If you’re using the <a href="https://realpython.com/pycharm-guide/">PyCharm</a> IDE,  you can run <code>unittest</code> or <code>pytest</code> by following these steps: </p>
+<ol>
+<li>In the Project tool window, select the <code>tests</code> directory.</li>
+<li>On the context menu, choose the run command for <code>unittest</code>. For example, choose <em>Run ‘Unittests in my Tests…’</em>.</li>
+</ol>
+<p>This will execute <code>unittest</code> in a test window and give you the results within PyCharm:</p>
+<figure class="js-lightbox"><a href="https://files.realpython.com/media/py_run_test_folder.b0e61b478c81.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-75" src="https://files.realpython.com/media/py_run_test_folder.b0e61b478c81.png" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/py_run_test_folder.b0e61b478c81.png&amp;w=186&amp;sig=e27b73c7795314ecda65f920a07b1f644521c20a 186w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/py_run_test_folder.b0e61b478c81.png&amp;w=372&amp;sig=1582183b1f1b264987ccdd9c9d6a2466e7c82fbc 372w, https://files.realpython.com/media/py_run_test_folder.b0e61b478c81.png 744w" sizes="75vw" alt="PyCharm Testing" data-asset="843" width="744" height="232" /></a></figure>
+
+<p>More information is available on the <a href="https://www.jetbrains.com/help/pycharm/performing-tests.html">PyCharm Website</a>.</p>
+</section><section class="section3" id="running-your-tests-from-visual-studio-code"><h3>Running Your Tests From Visual Studio Code<a class="headerlink" href="#running-your-tests-from-visual-studio-code" title="Permanent link"></a></h3>
+<p>If you’re using the Microsoft Visual Studio Code IDE, support for <code>unittest</code>, <code>nose</code>, and <code>pytest</code> execution is built into the Python plugin.</p>
+<p>If you have the Python plugin installed, you can set up the configuration of your tests by opening the Command Palette with <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span> and typing “Python test”. You will see a range of options:</p>
+<figure class="js-lightbox"><a href="https://files.realpython.com/media/vscode-test-capture.dfefa1d20789.PNG" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-100" src="https://files.realpython.com/media/vscode-test-capture.dfefa1d20789.PNG" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/vscode-test-capture.dfefa1d20789.PNG&amp;w=388&amp;sig=034459935c093ba1f57cd790ebb55c6899cf94aa 388w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/vscode-test-capture.dfefa1d20789.PNG&amp;w=776&amp;sig=d9bf466b67c4d9a8a1ac7f8c8fa27d1f6f6d3bbc 776w, https://files.realpython.com/media/vscode-test-capture.dfefa1d20789.PNG 1552w" sizes="75vw" alt="Visual Studio Code Step 1" data-asset="839" width="1552" height="624" /></a></figure>
+
+<p>Choose <em>Debug All Unit Tests</em>, and VSCode will then raise a prompt to configure the test framework. Click on the cog to select the test runner (<code>unittest</code>) and the home directory (<code>.</code>).</p>
+<p>Once this is set up, you will see the status of your tests at the bottom of the window, and you can quickly access the test logs and run the tests again by clicking on these icons:</p>
+<figure class="js-lightbox"><a href="https://files.realpython.com/media/vscode-test-results.951be75c3d3b.PNG" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-50" src="https://files.realpython.com/media/vscode-test-results.951be75c3d3b.PNG" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/vscode-test-results.951be75c3d3b.PNG&amp;w=120&amp;sig=7420fd564c8a3dc44f5d9a52746b7a678fd4f772 120w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/vscode-test-results.951be75c3d3b.PNG&amp;w=241&amp;sig=062d5eb16ad1fff2ef01884279a42b5ae865537a 241w, https://files.realpython.com/media/vscode-test-results.951be75c3d3b.PNG 483w" sizes="75vw" alt="Visual Studio Code Step 2" data-asset="840" width="483" height="112" /></a></figure>
+
+<p>This shows the tests are executing, but some of them are failing.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section></section><section class="section2" id="testing-for-web-frameworks-like-django-and-flask"><h2>Testing for Web Frameworks Like Django and Flask<a class="headerlink" href="#testing-for-web-frameworks-like-django-and-flask" title="Permanent link"></a></h2>
+<p>If you’re writing tests for a web application using one of the popular frameworks like Django or Flask, there are some important differences in the way you write and run the tests.</p>
+<section class="section3" id="why-theyre-different-from-other-applications"><h3>Why They’re Different From Other Applications<a class="headerlink" href="#why-theyre-different-from-other-applications" title="Permanent link"></a></h3>
+<p>Think of all the code you’re going to be testing in a web application. The routes, views, and models all require lots of imports and knowledge about the frameworks being used.</p>
+<p>This is similar to the car test at the beginning of the tutorial: you have to start up the car’s computer before you can run a simple test like checking the lights.</p>
+<p>Django and Flask both make this easy for you by providing a test framework based on <code>unittest</code>. You can continue writing tests in the way you’ve been learning but execute them slightly differently.</p>
+</section><section class="section3" id="how-to-use-the-django-test-runner"><h3>How to Use the Django Test Runner<a class="headerlink" href="#how-to-use-the-django-test-runner" title="Permanent link"></a></h3>
+<p>The Django <code>startapp</code> template will have created a <code>tests.py</code> file inside your application directory. If you don’t have that already, you can create it with the following contents:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="k">class</span> <span class="nc">MyTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="c1"># Your test methods</span>
+</code></pre></div>
+<p>The major difference with the examples so far is that you need to inherit from the <code>django.test.TestCase</code> instead of <code>unittest.TestCase</code>. These classes have the same API, but the Django <code>TestCase</code> class sets up all the required state to test.</p>
+<p>To execute your test suite, instead of using <code>unittest</code> at the command line, you use <code>manage.py test</code>:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python manage.py <span class="nb">test</span>
+</code></pre></div>
+<p>If you want multiple test files, replace <code>tests.py</code> with a folder called <code>tests</code>, insert an empty file inside called <code>__init__.py</code>, and create your <code>test_*.py</code> files. Django will discover and execute these.</p>
+<p>More information is available at the <a href="https://docs.djangoproject.com/en/2.1/topics/testing/overview/">Django Documentation Website</a>.</p>
+</section><section class="section3" id="how-to-use-unittest-and-flask"><h3>How to Use <code>unittest</code> and Flask<a class="headerlink" href="#how-to-use-unittest-and-flask" title="Permanent link"></a></h3>
+<p>Flask requires that the app be imported and then set in test mode. You can instantiate a test client and use the test client to make requests to any routes in your application.</p>
+<p>All of the test client instantiation is done in the <code>setUp</code> method of your test case. In the following example, <code>my_app</code> is the name of the application. Don’t worry if you don’t know what <code>setUp</code> does. You’ll learn about that in the <a href="#more-advanced-testing-scenarios">More Advanced Testing Scenarios</a> section.</p>
+<p>The code within your test file should look like this:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">import</span> <span class="nn">my_app</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+
+<span class="k">class</span> <span class="nc">MyTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">my_app</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">testing</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">my_app</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">test_client</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_home</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
+        <span class="c1"># Make your assertions</span>
+</code></pre></div>
+<p>You can then execute the test cases using the <code>python -m unittest discover</code> command.</p>
+<p>More information is available at the <a href="http://flask.pocoo.org/docs/0.12/testing/">Flask Documentation Website</a>.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section></section><section class="section2" id="more-advanced-testing-scenarios"><h2>More Advanced Testing Scenarios<a class="headerlink" href="#more-advanced-testing-scenarios" title="Permanent link"></a></h2>
+<p>Before you step into creating tests for your application, remember the three basic steps of every test:</p>
+<ol>
+<li>Create your inputs</li>
+<li>Execute the code, capturing the output</li>
+<li>Compare the output with an expected result</li>
+</ol>
+<p>It’s not always as easy as creating a static value for the input like a string or a number. Sometimes, your application will require an instance of a class or a context. What do you do then?</p>
+<p>The data that you create as an input is known as a <strong>fixture</strong>. It’s common practice to create fixtures and reuse them.</p>
+<p>If you’re running the same test and passing different values each time and expecting the same result, this is known as <strong>parameterization</strong>.</p>
+<section class="section3" id="handling-expected-failures"><h3>Handling Expected Failures<a class="headerlink" href="#handling-expected-failures" title="Permanent link"></a></h3>
+<p>Earlier, when you made a list of scenarios to test <code>sum()</code>, a question came up: 
+What happens when you provide it with a bad value, such as a single integer or a string?</p>
+<p>In this case, you would expect <code>sum()</code> to throw an error. When it does throw an error, that would cause the test to fail.</p>
+<p>There’s a special way to handle expected errors. You can use <code>.assertRaises()</code> as a context-manager, then inside the <code>with</code> block execute the test steps:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">my_sum</span> <span class="kn">import</span> <span class="nb">sum</span>
+
+
+<span class="k">class</span> <span class="nc">TestSum</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_list_int</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Test that it can sum a list of integers</span>
+<span class="sd">        """</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_list_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Test that it can sum a list of fractions</span>
+<span class="sd">        """</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="hll">    <span class="k">def</span> <span class="nf">test_bad_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="n">data</span> <span class="o">=</span> <span class="s2">"banana"</span>
+</span><span class="hll">        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+</span><span class="hll">            <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>This test case will now only pass if <code>sum(data)</code> raises a <code>TypeError</code>. You can replace <code>TypeError</code> with any exception type you choose.</p>
+</section><section class="section3" id="isolating-behaviors-in-your-application"><h3>Isolating Behaviors in Your Application<a class="headerlink" href="#isolating-behaviors-in-your-application" title="Permanent link"></a></h3>
+<p>Earlier in the tutorial, you learned what a side effect is. Side effects make unit testing harder since, each time a test is run, it might give a different result, or even worse, one test could impact the state of the application and cause another test to fail!  </p>
+<figure class="js-lightbox"><a href="https://files.realpython.com/media/YXhT6fA.d277d5317026.gif" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-80" src="https://files.realpython.com/media/YXhT6fA.d277d5317026.gif" srcset="https://files.realpython.com/media/YXhT6fA.d277d5317026.gif 120w, https://files.realpython.com/media/YXhT6fA.d277d5317026.gif 240w, https://files.realpython.com/media/YXhT6fA.d277d5317026.gif 480w" sizes="75vw" alt="Testing Side Effects" data-asset="842" width="480" height="270" /></a></figure>
+
+<p>There are some simple techniques you can use to test parts of your application that have many side effects:</p>
+<ul>
+<li>Refactoring code to follow the Single Responsibility Principle</li>
+<li>Mocking out any method or function calls to remove side effects</li>
+<li>Using integration testing instead of unit testing for this piece of the application</li>
+</ul>
+<p>If you’re not familiar with mocking, see <a href="https://realpython.com/python-cli-testing/#mocks">Python CLI Testing</a> for some great examples.</p>
+</section><section class="section3" id="writing-integration-tests"><h3>Writing Integration Tests<a class="headerlink" href="#writing-integration-tests" title="Permanent link"></a></h3>
+<p>So far, you’ve been learning mainly about unit testing. Unit testing is a great way to build predictable and stable code. But at the end of the day, your application needs to work when it starts!</p>
+<p>Integration testing is the testing of multiple components of the application to check that they work together. Integration testing might require acting like a consumer or user of the application by:</p>
+<ul>
+<li>Calling an HTTP REST API</li>
+<li>Calling a Python API</li>
+<li>Calling a web service</li>
+<li>Running a command line</li>
+</ul>
+<p>Each of these types of integration tests can be written in the same way as a unit test, following the Input, Execute, and Assert pattern. The most significant difference is that integration tests are checking more components at once and therefore will have more side effects than a unit test. Also, integration tests will require more fixtures to be in place, like a database, a network socket, or a configuration file.</p>
+<p>This is why it’s good practice to separate your unit tests and your integration tests. The creation of fixtures required for an integration like a test database and the test cases themselves often take a lot longer to execute than unit tests, so you may only want to run integration tests before you push to production instead of once on every commit.</p>
+<p>A simple way to separate unit and integration tests is simply to put them in different folders:</p>
+<div class="highlight"><pre><span></span><code>project/
+│
+├── my_app/
+│   └── __init__.py
+│
+└── tests/
+    |
+    ├── unit/
+    |   ├── __init__.py
+    |   └── test_sum.py
+    |
+    └── integration/
+        ├── __init__.py
+        └── test_integration.py
+</code></pre></div>
+<p>There are many ways to execute only a select group of tests. The specify source directory flag, <code>-s</code>, can be added to <code>unittest discover</code> with the path containing the tests:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>python -m unittest discover -s tests/integration
+</code></pre></div>
+<p><code>unittest</code> will have given you the results of all the tests within the <code>tests/integration</code> directory.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section><section class="section3" id="testing-data-driven-applications"><h3>Testing Data-Driven Applications<a class="headerlink" href="#testing-data-driven-applications" title="Permanent link"></a></h3>
+<p>Many integration tests will require backend data like a database to exist with certain values. For example, you might want to have a test that checks that the application displays correctly with more than 100 customers in the database, or the order page works even if the product names are displayed in Japanese.</p>
+<p>These types of integration tests will depend on different test fixtures to make sure they are repeatable and predictable.</p>
+<p>A good technique to use is to store the test data in a folder within your integration testing folder called <code>fixtures</code> to indicate that it contains test data. Then, within your tests, you can load the data and run the test. </p>
+<p>Here’s an example of that structure if the data consisted of JSON files:</p>
+<div class="highlight"><pre><span></span><code>project/
+│
+├── my_app/
+│   └── __init__.py
+│
+└── tests/
+    |
+    └── unit/
+    |   ├── __init__.py
+    |   └── test_sum.py
+    |
+    └── integration/
+        |
+        ├── fixtures/
+        |   ├── test_basic.json
+        |   └── test_complex.json
+        |
+        ├── __init__.py
+        └── test_integration.py
+</code></pre></div>
+<p>Within your test case, you can use the <code>.setUp()</code> method to load the test data from a fixture file in a known path and execute many tests against that test data. Remember you can have multiple test cases in a single Python file, and the <code>unittest</code> discovery will execute both. You can have one test case for each set of test data:</p>
+<div class="highlight python"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+
+
+<span class="k">class</span> <span class="nc">TestBasic</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Load test data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s1">'fixtures/test_basic.json'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_customer_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">customers</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_existence_of_customer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">customer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get_customer</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"Org XYZ"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="s2">"10 Red Road, Reading"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">TestComplexData</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># load test data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s1">'fixtures/test_complex.json'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_customer_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">customers</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_existence_of_customer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">customer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get_customer</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">9999</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="sa">u</span><span class="s2">"バナナ"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="s2">"10 Red Road, Akihabara, Tokyo"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>If your application depends on data from a remote location, like a <a href="https://realpython.com/python-api/">remote API</a>, you’ll want to ensure your tests are repeatable. Having your tests fail because the API is offline or there is a <a href="https://realpython.com/site-connectivity-checker-python/">connectivity issue</a> could slow down development.  In these types of situations, it is best practice to store remote fixtures locally so they can be recalled and sent to the application. </p>
+<p>The <code>requests</code> library has a complimentary package called <code>responses</code> that gives you ways to create response fixtures and save them in your test folders. Find out more <a href="https://github.com/getsentry/responses">on their GitHub Page</a>.</p>
+</section></section><section class="section2" id="testing-in-multiple-environments"><h2>Testing in Multiple Environments<a class="headerlink" href="#testing-in-multiple-environments" title="Permanent link"></a></h2>
+<p>So far, you’ve been testing against a single version of Python using a <a href="https://realpython.com/python-virtual-environments-a-primer/">virtual environment</a> with a specific set of dependencies. You might want to check that your application works on multiple versions of Python, or multiple versions of a package. Tox is an application that automates testing in multiple environments.</p>
+<section class="section3" id="installing-tox"><h3>Installing Tox<a class="headerlink" href="#installing-tox" title="Permanent link"></a></h3>
+<p>Tox is available on PyPI as a package to install via <a href="https://realpython.com/what-is-pip/"><code>pip</code></a>:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>pip install tox
+</code></pre></div>
+<p>Now that you have Tox installed, it needs to be configured.</p>
+</section><section class="section3" id="configuring-tox-for-your-dependencies"><h3>Configuring Tox for Your Dependencies<a class="headerlink" href="#configuring-tox-for-your-dependencies" title="Permanent link"></a></h3>
+<p>Tox is configured via a configuration file in your project directory. The Tox configuration file contains the following:</p>
+<ul>
+<li>The command to run in order to execute tests</li>
+<li>Any additional packages required before executing</li>
+<li>The target Python versions to test against</li>
+</ul>
+<p>Instead of having to learn the Tox configuration syntax, you can get a head start by running the quickstart application:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>tox-quickstart
+</code></pre></div>
+<p>The Tox configuration tool will ask you those questions and create a file similar to the following in <code>tox.ini</code>:</p>
+<div class="highlight ini"><pre><span></span><code><span class="k">[tox]</span><span class="w"></span>
+<span class="na">envlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">py27, py36</span><span class="w"></span>
+
+<span class="k">[testenv]</span><span class="w"></span>
+<span class="na">deps</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+
+<span class="na">commands</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">python -m unittest discover</span><span class="w"></span>
+</code></pre></div>
+<p>Before you can run Tox, it requires that you have a <code>setup.py</code> file in your application folder containing the steps to install your package. If you don’t have one, you can follow <a href="https://packaging.python.org/tutorials/packaging-projects/#setup-py">this guide</a> on how to create a <code>setup.py</code> before you continue.</p>
+<p>Alternatively, if your project is not for distribution on PyPI, you can skip this requirement by adding the following line in the <code>tox.ini</code> file under the <code>[tox]</code> heading:</p>
+<div class="highlight ini"><pre><span></span><code><span class="k">[tox]</span><span class="w"></span>
+<span class="na">envlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">py27, py36</span><span class="w"></span>
+<span class="hll"><span class="na">skipsdist</span><span class="o">=</span><span class="s">True</span><span class="w"></span>
+</span></code></pre></div>
+<p>If you don’t create a <code>setup.py</code>, and your application has some dependencies from PyPI, you’ll need to specify those on a number of lines under the <code>[testenv]</code> section. For example, Django would require the following:</p>
+<div class="highlight ini"><pre><span></span><code><span class="k">[testenv]</span><span class="w"></span>
+<span class="na">deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">django</span><span class="w"></span>
+</code></pre></div>
+<p>Once you have completed that stage, you’re ready to run the tests.</p>
+<p>You can now execute Tox, and it will create two virtual environments: one for Python 2.7 and one for Python 3.6. The Tox directory is called <code>.tox/</code>. Within the <code>.tox/</code> directory, Tox will execute <code>python -m unittest discover</code> against each virtual environment.</p>
+<p>You can run this process by calling Tox at the command line:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>tox
+</code></pre></div>
+<p>Tox will output the results of your tests against each environment. The first time it runs, Tox takes a little bit of time to create the virtual environments, but once it has, the second execution will be a lot faster.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section><section class="section3" id="executing-tox"><h3>Executing Tox<a class="headerlink" href="#executing-tox" title="Permanent link"></a></h3>
+<p>The output of Tox is quite straightforward. It creates an environment for each version, installs your dependencies, and then runs the test commands.</p>
+<p>There are some additional command line options that are great to remember.</p>
+<p>Run only a single environment, such as Python 3.6:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>tox -e py36
+</code></pre></div>
+<p>Recreate the virtual environments, in case your dependencies have changed or <a href="https://docs.python.org/3/install/#how-installation-works">site-packages</a> is corrupt:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>tox -r
+</code></pre></div>
+<p>Run Tox with less verbose output:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>tox -q
+</code></pre></div>
+<p>Running Tox with more verbose output:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>tox -v
+</code></pre></div>
+<p>More information on Tox can be found at the <a href="https://tox.readthedocs.io/en/latest/">Tox Documentation Website</a>.</p>
+</section></section><section class="section2" id="automating-the-execution-of-your-tests"><h2>Automating the Execution of Your Tests<a class="headerlink" href="#automating-the-execution-of-your-tests" title="Permanent link"></a></h2>
+<p>So far, you have been executing the tests manually by running a command. There are some tools for executing tests automatically when you make changes and commit them to a source-control repository like Git. Automated testing tools are often known as CI/CD tools, which stands for “Continuous Integration/Continuous Deployment.” They can run your tests, compile and publish any applications, and even deploy them into production.</p>
+<p><a href="https://travis-ci.com/">Travis CI</a> is one of many available CI (<a href="https://realpython.com/python-continuous-integration/">Continuous Integration</a>) services available.</p>
+<p>Travis CI works nicely with Python, and now that you’ve created all these tests, you can automate the execution of them in the cloud! Travis CI is free for any open-source projects on GitHub and GitLab and is available for a charge for private projects.</p>
+<p>To get started, login to the website and authenticate with your GitHub or GitLab credentials. Then create a file called <code>.travis.yml</code> with the following contents:</p>
+<div class="highlight yaml"><pre><span></span><code><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span><span class="w"></span>
+<span class="nt">python</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"2.7"</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"3.7"</span><span class="w"></span>
+<span class="nt">install</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span><span class="w"></span>
+<span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m unittest discover</span><span class="w"></span>
+</code></pre></div>
+<p>This configuration instructs Travis CI to:</p>
+<ol>
+<li>Test against Python 2.7 and 3.7 (You can replace those versions with any you choose.)</li>
+<li>Install all the packages you list in <code>requirements.txt</code> (You should remove this section if you don’t have any dependencies.)</li>
+<li>Run <code>python -m unittest discover</code> to run the tests</li>
+</ol>
+<p>Once you have committed and pushed this file, Travis CI will run these commands every time you push to your remote Git repository. You can check out the results on their website.</p>
+<div><div class="rounded border border-light" style="display:block;position:relative;"><div style="display:block;width:100%;padding-top:12.5%;"></div><div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div></div><a class="small text-muted" href="/account/join/" rel="nofollow"><i aria-hidden="true" class="fa fa-info-circle mr-1"></i>Remove ads</a></div></section><section class="section2" id="whats-next"><h2>What’s Next<a class="headerlink" href="#whats-next" title="Permanent link"></a></h2>
+<p>Now that you’ve learned how to create tests, execute them, include them in your project, and even execute them automatically, there are a few advanced techniques you might find handy as your test library grows.</p>
+<section class="section3" id="introducing-linters-into-your-application"><h3>Introducing Linters Into Your Application<a class="headerlink" href="#introducing-linters-into-your-application" title="Permanent link"></a></h3>
+<p>Tox and Travis CI have configuration for a test command. The test command you have been using throughout this tutorial is <code>python -m unittest discover</code>. </p>
+<p>You can provide one or many commands in all of these tools, and this option is there to enable you to add more tools that improve the quality of your application.</p>
+<p>One such type of application is called a linter. A linter will look at your code and comment on it. It could give you tips about mistakes you’ve made, correct trailing spaces, and even predict bugs you may have introduced.</p>
+<p>For more information on linters, read the <a href="https://realpython.com/python-code-quality/">Python Code Quality tutorial</a>.</p>
+<section class="section4" id="passive-linting-with-flake8"><h4>Passive Linting With <code>flake8</code><a class="headerlink" href="#passive-linting-with-flake8" title="Permanent link"></a></h4>
+<p>A popular linter that comments on the style of your code in relation to the <a href="https://www.youtube.com/watch?v=Hwckt4J96dI">PEP 8</a> specification is <code>flake8</code>.</p>
+<p>You can install <code>flake8</code> using <code>pip</code>:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>pip install flake8
+</code></pre></div>
+<p>You can then run <code>flake8</code> over a single file, a folder, or a pattern:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>flake8 test.py
+<span class="go">test.py:6:1: E302 expected 2 blank lines, found 1</span>
+<span class="go">test.py:23:1: E305 expected 2 blank lines after class or function definition, found 1</span>
+<span class="go">test.py:24:20: W292 no newline at end of file</span>
+</code></pre></div>
+<p>You will see a list of errors and warnings for your code that <code>flake8</code> has found.</p>
+<p><code>flake8</code> is configurable on the command line or inside a configuration file in your project. If you wanted to ignore certain rules, like <code>E305</code> shown above, you can set them in the configuration. <code>flake8</code> will inspect a <code>.flake8</code> file in the project folder or a <code>setup.cfg</code> file. If you decided to use Tox, you can put the <code>flake8</code> configuration section inside <code>tox.ini</code>.</p>
+<p>This example ignores the <code>.git</code> and <code>__pycache__</code> directories as well as the <code>E305</code> rule. Also, it sets the max line length to 90 instead of 80 characters. You will likely find that the default constraint of 79 characters for line-width is very limiting for tests, as they contain long method names, string literals with test values, and other pieces of data that can be longer. It is common to set the line length for tests to up to 120 characters:</p>
+<div class="highlight ini"><pre><span></span><code><span class="k">[flake8]</span><span class="w"></span>
+<span class="na">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">E305</span><span class="w"></span>
+<span class="na">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.git,__pycache__</span><span class="w"></span>
+<span class="na">max-line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">90</span><span class="w"></span>
+</code></pre></div>
+<p>Alternatively, you can provide these options on the command line: </p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>flake8 --ignore E305 --exclude .git,__pycache__ --max-line-length<span class="o">=</span><span class="m">90</span>
+</code></pre></div>
+<p>A full list of configuration options is available on the <a href="http://flake8.pycqa.org/en/latest/user/options.html">Documentation Website</a>.</p>
+<p>You can now add <code>flake8</code> to your CI configuration. For Travis CI, this would look as follows:</p>
+<div class="highlight yaml"><pre><span></span><code><span class="nt">matrix</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">include</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"2.7"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="s">"flake8"</span><span class="w"></span>
+</code></pre></div>
+<p>Travis will read the configuration in <code>.flake8</code> and fail the build if any linting errors occur. Be sure to add the <code>flake8</code> dependency to your <code>requirements.txt</code> file.</p>
+</section><section class="section4" id="aggressive-linting-with-a-code-formatter"><h4>Aggressive Linting With a Code Formatter<a class="headerlink" href="#aggressive-linting-with-a-code-formatter" title="Permanent link"></a></h4>
+<p><code>flake8</code> is a passive linter: it recommends changes, but you have to go and change the code. A more aggressive approach is a code formatter. Code formatters will change your code automatically to meet a collection of style and layout practices.</p>
+<p><code>black</code> is a very unforgiving formatter. It doesn’t have any configuration options, and it has a very specific style. This makes it great as a drop-in tool to put in your test pipeline.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> <code>black</code> requires Python 3.6+.</p>
+</div>
+<p>You can install <code>black</code> via pip:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>pip install black
+</code></pre></div>
+<p>Then to run <code>black</code> at the command line, provide the file or directory you want to format:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>black test.py
+</code></pre></div>
+</section></section><section class="section3" id="keeping-your-test-code-clean"><h3>Keeping Your Test Code Clean<a class="headerlink" href="#keeping-your-test-code-clean" title="Permanent link"></a></h3>
+<p>When writing tests, you may find that you end up copying and pasting code a lot more than you would in regular applications. Tests can be very repetitive at times, but that is by no means a reason to leave your code sloppy and hard to maintain. </p>
+<p>Over time, you will develop a lot of <a href="https://martinfowler.com/bliki/TechnicalDebt.html">technical debt</a> in your test code, and if you have significant changes to your application that require changes to your tests, it can be a more cumbersome task than necessary because of the way you structured them.</p>
+<p>Try to follow the <strong>DRY</strong> principle when writing tests: <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself.</p>
+<p>Test fixtures and functions are a great way to produce test code that is easier to maintain. Also, readability counts. Consider deploying a linting tool like <code>flake8</code> over your test code:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>flake8 --max-line-length<span class="o">=</span><span class="m">120</span> tests/
+</code></pre></div>
+</section><section class="section3" id="testing-for-performance-degradation-between-changes"><h3>Testing for Performance Degradation Between Changes<a class="headerlink" href="#testing-for-performance-degradation-between-changes" title="Permanent link"></a></h3>
+<p>There are many ways to benchmark code in Python. The standard library provides the <code>timeit</code> module, which can time functions a number of times and give you the distribution. This example will execute <code>test()</code> 100 times and <code>print()</code> the output:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="c1"># ... your code</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">timeit</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s2">"test()"</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s2">"from __main__ import test"</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+<p>Another option, if you decided to use <code>pytest</code> as a test runner, is the <code>pytest-benchmark</code> plugin. This provides a <code>pytest</code> fixture called <code>benchmark</code>. You can pass <code>benchmark()</code> any callable, and it will log the timing of the callable to the results of <code>pytest</code>.</p>
+<p>You can install <code>pytest-benchmark</code> from PyPI using <code>pip</code>:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>pip install pytest-benchmark
+</code></pre></div>
+<p>Then, you can add a test that uses the fixture and passes the callable to be executed:</p>
+<div class="highlight python"><pre><span></span><code><span class="k">def</span> <span class="nf">test_my_function</span><span class="p">(</span><span class="n">benchmark</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</code></pre></div>
+<p>Execution of <code>pytest</code> will now give you benchmark results:</p>
+<figure class="js-lightbox"><a href="https://files.realpython.com/media/pytest-bench-screen.6d83bffe8e21.png" target="_blank"><img loading="lazy" class="img-fluid mx-auto d-block w-80" src="https://files.realpython.com/media/pytest-bench-screen.6d83bffe8e21.png" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/pytest-bench-screen.6d83bffe8e21.png&amp;w=328&amp;sig=7c64a59c1ca07a4b6753a0756b548ebf89367816 328w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/pytest-bench-screen.6d83bffe8e21.png&amp;w=656&amp;sig=f699ace3c02a6807aca45880bc0c57e952e8fd2a 656w, https://files.realpython.com/media/pytest-bench-screen.6d83bffe8e21.png 1313w" sizes="75vw" alt="Pytest benchmark screenshot" data-asset="841" width="1313" height="416" /></a></figure>
+
+<p>More information is available at the <a href="https://pytest-benchmark.readthedocs.io/en/latest/">Documentation Website</a>.</p>
+</section><section class="section3" id="testing-for-security-flaws-in-your-application"><h3>Testing for Security Flaws in Your Application<a class="headerlink" href="#testing-for-security-flaws-in-your-application" title="Permanent link"></a></h3>
+<p>Another test you will want to run on your application is checking for common security mistakes or vulnerabilities. </p>
+<p>You can install <code>bandit</code> from PyPI using <code>pip</code>:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>pip install bandit
+</code></pre></div>
+<p>You can then pass the name of your application module with the <code>-r</code> flag, and it will give you a summary:</p>
+<div class="highlight sh"><pre><span></span><code><span class="gp">$ </span>bandit -r my_sum
+<span class="go">[main]  INFO    profile include tests: None</span>
+<span class="go">[main]  INFO    profile exclude tests: None</span>
+<span class="go">[main]  INFO    cli include tests: None</span>
+<span class="go">[main]  INFO    cli exclude tests: None</span>
+<span class="go">[main]  INFO    running on Python 3.5.2</span>
+<span class="go">Run started:2018-10-08 00:35:02.669550</span>
+
+<span class="go">Test results:</span>
+<span class="go">        No issues identified.</span>
+
+<span class="go">Code scanned:</span>
+<span class="go">        Total lines of code: 5</span>
+<span class="go">        Total lines skipped (#nosec): 0</span>
+
+<span class="go">Run metrics:</span>
+<span class="go">        Total issues (by severity):</span>
+<span class="go">                Undefined: 0.0</span>
+<span class="go">                Low: 0.0</span>
+<span class="go">                Medium: 0.0</span>
+<span class="go">                High: 0.0</span>
+<span class="go">        Total issues (by confidence):</span>
+<span class="go">                Undefined: 0.0</span>
+<span class="go">                Low: 0.0</span>
+<span class="go">                Medium: 0.0</span>
+<span class="go">                High: 0.0</span>
+<span class="go">Files skipped (0):</span>
+</code></pre></div>
+<p>As with <code>flake8</code>, the rules that <code>bandit</code> flags are configurable, and if there are any you wish to ignore, you can add the following section to your <code>setup.cfg</code> file with the options:</p>
+<div class="highlight ini"><pre><span></span><code><span class="k">[bandit]</span><span class="w"></span>
+<span class="na">exclude: /test</span><span class="w"></span>
+<span class="na">tests: B101,B102,B301</span><span class="w"></span>
+</code></pre></div>
+<p>More details are available at the <a href="https://github.com/PyCQA/bandit">GitHub Website</a>.</p>
+</section></section><section class="section2" id="conclusion"><h2>Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<p>Python has made testing accessible by building in the commands and libraries you need to validate that your applications work as designed. Getting started with testing in Python needn’t be complicated: you can use <code>unittest</code> and write small, maintainable methods to validate your code.</p>
+<p>As you learn more about testing and your application grows, you can consider switching to one of the other test frameworks, like <code>pytest</code>, and start to leverage more advanced features.</p>
+<p>Thank you for reading. I hope you have a bug-free future with Python!</p>
+</section>
+
+    
+      
+      <div class="text-center my-3">
+        <div class="jsCompletionStatusWidget btn-group mb-0">
+  <button title="Click to mark as completed" class="jsBtnCompletion btn btn-secondary border-right " style="border-top-right-radius: 0; border-bottom-right-radius: 0;" disabled="disabled">Mark as Completed</button>
+  <button title="Add bookmark" class="jsBtnBookmark btn btn-secondary border-left" disabled="disabled"><i class="fa fa-fw fa-bookmark-o"></i></button>
+</div>
+
+        <span class="ml-2"><div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right px-3" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" aria-label="Thumbs up (liked it)" href="/feedback/survey/article/python-testing/liked/?from=article-footer" target="_blank"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+  <a class="btn btn-secondary border-left px-3" aria-label="Thumbs down (disliked it)" title="Disliked it" href="/feedback/survey/article/python-testing/disliked/?from=article-footer" target="_blank"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
+</div>
+</span>
+      </div>
+    
+
+    
+      <div class="border rounded p-3 card mb-2">
+  <p class="mb-0"><span class="badge badge-pill badge-success"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="/courses/test-driven-development-pytest/"><strong>Test-Driven Development With PyTest</strong></a></p>
+</div>
+
+    
+  </div>
+
+  
+    
+
+<div class="card mt-4 mb-4 bg-secondary">
+  <p class="card-header h3 text-center bg-light">������ Python Tricks ������</p>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <img class="img-fluid rounded mb-3" src="https://cdn.realpython.com/static/pytrick-dict-merge.4201a0125a5e.png" alt="Python Tricks Dictionary Merge" width="738" height="490" />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <form class="col-12" action="/optins/process/" method="post">
+          <input type="hidden" name="csrfmiddlewaretoken" value="NVTmsZQMuPbbF6plLoAFPZrjlbK6w5mHFiVwP7s50T6deQOZG3ofLBQOf9WKEYyq" />
+          <input type="hidden" name="slug" value="static-python-tricks-footer" />
+          <div class="form-group">
+            <input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required="" />
+          </div>
+          <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+
+
+
+<div class="card mt-3" id="author">
+  <p class="card-header h3">About <strong>Anthony Shaw</strong></p>
+  <div class="card-body">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-12 col-md-3 align-self-center">
+          <a href="/team/ashaw/"><img loading="lazy" src="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=551&amp;h=551&amp;mode=crop&amp;sig=c05bc24bc6e85059dc301292b3cbd11a77da9a99" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=137&amp;h=137&amp;mode=crop&amp;sig=c4a3dc8d9701357dd90d57ff3edeb72d4fe08fda 137w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=275&amp;h=275&amp;mode=crop&amp;sig=9a0e6868a262e25e0989a983ea9e74ad8a724fbb 275w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=551&amp;h=551&amp;mode=crop&amp;sig=c05bc24bc6e85059dc301292b3cbd11a77da9a99 551w" sizes="25vw" class="d-block d-md-none rounded-circle img-fluid w-33 mb-0 mx-auto" alt="Anthony Shaw" width="551" height="551" /></a>
+          <a href="/team/ashaw/"><img loading="lazy" src="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=551&amp;h=551&amp;mode=crop&amp;sig=c05bc24bc6e85059dc301292b3cbd11a77da9a99" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=137&amp;h=137&amp;mode=crop&amp;sig=c4a3dc8d9701357dd90d57ff3edeb72d4fe08fda 137w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=275&amp;h=275&amp;mode=crop&amp;sig=9a0e6868a262e25e0989a983ea9e74ad8a724fbb 275w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/10995490_10152772557676353_1442757472697890998_n.e88e3d7b17c7.jpg&amp;w=551&amp;h=551&amp;mode=crop&amp;sig=c05bc24bc6e85059dc301292b3cbd11a77da9a99 551w" sizes="25vw" class="d-none d-md-block rounded-circle img-fluid w-100 mb-0" alt="Anthony Shaw" width="551" height="551" /></a>
+        </div>
+        <div class="col mt-3">
+          <p>Anthony is an avid Pythonista and writes for Real Python. Anthony is a Fellow of the Python Software Foundation and member of the Open-Source Apache Foundation.</p>
+          <a href="/team/ashaw/" class="card-link">» More about Anthony</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-0" />
+  <div class="card-body pb-0">
+    <div class="container">
+      <div class="row">
+        <p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+      </div>
+
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="/team/asantos/"><img loading="lazy" src="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/PP.9b8b026f75b8.jpg&amp;w=959&amp;h=959&amp;mode=crop&amp;sig=70bedc2eab90a227eb9a657c415689c3eb1eca4f" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/PP.9b8b026f75b8.jpg&amp;w=239&amp;h=239&amp;mode=crop&amp;sig=11667a6dd5c29e4c9363f18be59360551af5eddc 239w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/PP.9b8b026f75b8.jpg&amp;w=479&amp;h=479&amp;mode=crop&amp;sig=1541e1ec541357813def826d8507c0565164b701 479w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/PP.9b8b026f75b8.jpg&amp;w=959&amp;h=959&amp;mode=crop&amp;sig=70bedc2eab90a227eb9a657c415689c3eb1eca4f 959w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Aldren Santos" width="551" height="551" /></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="/team/asantos/" class="card-link small"><p>Aldren</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="/team/damos/"><img loading="lazy" src="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/me-small.f5f49f1c48e1.jpg&amp;w=400&amp;h=400&amp;mode=crop&amp;sig=522ebc378492fd2228f8a9980bf89544b51aba2c" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/me-small.f5f49f1c48e1.jpg&amp;w=100&amp;h=100&amp;mode=crop&amp;sig=4e832705873c990ccc3fe2459dcd2b081613ecb1 100w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/me-small.f5f49f1c48e1.jpg&amp;w=200&amp;h=200&amp;mode=crop&amp;sig=ecc773a7a56114ed2831d281156669f0d7f1ab68 200w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/me-small.f5f49f1c48e1.jpg&amp;w=400&amp;h=400&amp;mode=crop&amp;sig=522ebc378492fd2228f8a9980bf89544b51aba2c 400w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="David Amos" width="551" height="551" /></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="/team/damos/" class="card-link small"><p>David</p></a>
+        </div>
+
+        
+
+        
+      
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="/team/gahjelle/"><img loading="lazy" src="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/gahjelle.470149ee709e.jpg&amp;w=800&amp;h=800&amp;mode=crop&amp;sig=e9b761c6cf1359953014dba05554f5424eb116e1" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/gahjelle.470149ee709e.jpg&amp;w=200&amp;h=200&amp;mode=crop&amp;sig=c6390201e73d3e09429d73da5bb29c17ab10403a 200w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/gahjelle.470149ee709e.jpg&amp;w=400&amp;h=400&amp;mode=crop&amp;sig=fcea459ee24a7b320573cadee324cf75509dc1d6 400w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/gahjelle.470149ee709e.jpg&amp;w=800&amp;h=800&amp;mode=crop&amp;sig=e9b761c6cf1359953014dba05554f5424eb116e1 800w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Geir Arne Hjelle" width="551" height="551" /></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="/team/gahjelle/" class="card-link small"><p>Geir Arne</p></a>
+        </div>
+
+        
+
+        
+          </div>
+        
+      
+        
+          <div class="row align-items-center w-100 mx-auto">
+        
+
+        <div class="col-4 col-sm-2 align-self-center">
+          
+            <a href="/team/jjablonski/"><img loading="lazy" src="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg&amp;w=800&amp;h=800&amp;mode=crop&amp;sig=c363b704eeccb35f2247db13baff3d4383459858" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg&amp;w=200&amp;h=200&amp;mode=crop&amp;sig=706b16de3cb88a8f353f4a98d7c7bc7234229bd0 200w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg&amp;w=400&amp;h=400&amp;mode=crop&amp;sig=6d7aa672ca3f1ac5f7cd62ed1641b60f98d04d8b 400w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg&amp;w=800&amp;h=800&amp;mode=crop&amp;sig=c363b704eeccb35f2247db13baff3d4383459858 800w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Joanna Jablonski" width="551" height="551" /></a>
+          
+        </div>
+        <div class="col pl-0 d-none d-sm-block">
+          <a href="/team/jjablonski/" class="card-link small"><p>Joanna</p></a>
+        </div>
+
+        
+          
+          
+            <div class="col-4 col-sm-2 align-self-center"></div>
+            <div class="col pl-0 d-none d-sm-block"></div>
+            <div class="col-4 col-sm-2 align-self-center"></div>
+            <div class="col pl-0 d-none d-sm-block"></div>
+          
+        
+
+        
+          </div>
+        
+      
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+  
+    
+
+<div class="bg-light rounded py-4 my-4 shadow shadow-sm mx-n2">
+  
+  <div class="col-12 text-center d-block d-md-none">
+    <p class="h2 mb-3">Master <u><span class="marker-highlight">Real-World Python Skills</span></u> With Unlimited Access to Real Python</p>
+    <p class="mb-1"><img class="w-75" src="https://cdn.realpython.com/static/videos/lesson-locked.f5105cfd26db.svg" width="510" height="260" /></p>
+    <p class="mx-auto w-75 mb-3 small"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p class="mb-0"><a href="/account/join/?utm_source=rp_article_footer&amp;utm_content=python-testing" class="btn btn-primary btn-sm px-4 mb-0">Level Up Your Python Skills »</a>
+  </p></div>
+
+  
+  <div class="col-12 text-center d-none d-md-block">
+    <p class="h2 mb-2">Master <u><span class="marker-highlight">Real-World Python Skills</span></u><br />With Unlimited Access to Real Python</p>
+    <p class="mb-2"><img class="w-50 mb-2" src="https://cdn.realpython.com/static/videos/lesson-locked.f5105cfd26db.svg" width="510" height="260" /></p>
+    <p class="mx-auto w-50 mb-3"><strong>Join us and get access to thousands of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+    <p><a href="/account/join/?utm_source=rp_article_footer&amp;utm_content=python-testing" class="btn btn-primary btn-lg px-4">Level Up Your Python Skills »</a>
+  </p></div>
+</div>
+
+  
+
+  
+  <div class="card mt-4" id="reader-comments">
+    <p class="card-header h3">What Do You Think?</p>
+    
+    <div class="text-center mt-3 mb-0 p-0">
+      <div class="mb-2">
+        <strong class="mr-2">Rate this article:</strong>
+        <div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right px-3" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" aria-label="Thumbs up (liked it)" href="/feedback/survey/article/python-testing/liked/?from=article-comments" target="_blank"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+  <a class="btn btn-secondary border-left px-3" aria-label="Thumbs down (disliked it)" title="Disliked it" href="/feedback/survey/article/python-testing/disliked/?from=article-comments" target="_blank"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
+</div>
+
+      </div>
+      
+<span>
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Check out this %23Python tutorial: Getting%20Started%20With%20Testing%20in%20Python by @realpython&amp;url=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-twitter text-light mb-1"><i class="mr-1 fa fa-twitter text-light"></i>Tweet</a>
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-facebook text-light mb-1"><i class="mr-1 fa fa-facebook text-light"></i>Share</a>
+  
+  <a target="_blank" rel="nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-linkedin text-light mb-1"><i class="mr-1 fa fa-linkedin text-light"></i>Share</a>
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python article for you&amp;body=Check out this Python tutorial:%0A%0AGetting%20Started%20With%20Testing%20in%20Python%0A%0Ahttps%3A//realpython.com/python-testing/" class="badge badge-red text-light mb-1"><i class="mr-1 fa fa-envelope text-light"></i>Email</a>
+</span>
+
+    </div>
+    
+    <div class="card-body">
+      <p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+
+      <div class="alert alert-dark">
+        <p class="mb-0"><strong>Commenting Tips:</strong> The most useful comments are those written with the goal of learning from or helping out other students. <a href="https://realpython.com/python-beginner-tips/#tip-9-ask-good-questions" target="_blank">Get tips for asking good questions</a> and <a href="https://support.realpython.com" target="_blank">get answers to common questions in our support portal</a>.</p><hr />Looking for a real-time conversation? Visit the <a href="/community/" target="_blank">Real Python Community Chat</a> or join the next <a href="/office-hours/" target="_blank">“Office Hours” Live Q&amp;A Session</a>. Happy Pythoning!<p></p>
+
+      </div>
+
+      <div class="mb-4" id="disqus_thread">
+      
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3">Keep Learning</p>
+    <div class="card-body">
+      <p class="mb-0">Related Tutorial Categories:
+      
+        <a href="/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+      
+        <a href="/tutorials/intermediate/" class="badge badge-light text-muted">intermediate</a>
+      
+        <a href="/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+      
+      </p>
+      
+        <p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="/courses/test-driven-development-pytest/">Test-Driven Development With PyTest</a></p>
+      
+    </div>
+  </div>
+
+  
+    
+
+<div class="modal fade" tabindex="-1" role="dialog" id="rprw">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <div class="col-12 col-lg-9 mx-auto modal-title text-center my-2">
+          <h2 class="my-0">Keep reading Real Python by creating a free account or signing in:</h2>
+        </div>
+      </div>
+
+      
+      <div class="modal-body bg-light">
+        <div class="col-12 text-center">
+
+          <div class="col-12 col-lg-8 mx-auto mb-2 mt-3">
+            <a href="/account/signup/?intent=continue_reading&amp;utm_source=rp&amp;utm_medium=web&amp;utm_campaign=rwn&amp;utm_content=v1&amp;next=%2Fpython-testing%2F"><img class="w-100" src="https://cdn.realpython.com/static/videos/lesson-locked.f5105cfd26db.svg" alt="Keep reading" /></a>
+          </div>
+
+          <p><a href="/account/signup/?intent=continue_reading&amp;utm_source=rp&amp;utm_medium=web&amp;utm_campaign=rwn&amp;utm_content=v1&amp;next=%2Fpython-testing%2F" class="btn btn-primary btn-lg px-5">Continue »</a></p>
+
+        </div>
+      </div>
+      
+
+      <div class="modal-footer border-0">
+        <p class="text-center text-muted mt-2 mb-1">Already have an account? <a href="/account/login/?next=/python-testing/">Sign-In</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <script src="https://cdn.realpython.com/static/frontend/reader/rw.38bf29157dfe.js" async=""></script>
+  
+
+
+    </div>
+
+    <aside class="col-md-7 col-lg-4">
+      
+  
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">������ Python Tricks ������</p>
+      <p><img class="img-fluid rounded" src="https://cdn.realpython.com/static/pytrick-dict-merge.4201a0125a5e.png" alt="Python Tricks Dictionary Merge" width="738" height="490" /></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="NVTmsZQMuPbbF6plLoAFPZrjlbK6w5mHFiVwP7s50T6deQOZG3ofLBQOf9WKEYyq" />
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar" />
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="" />
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">������ No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+  
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <p class="h4"><a class="link-unstyled" href="/tutorials/all/">All Tutorial Topics</a></p>
+    
+      <a href="/tutorials/advanced/" class="badge badge-light text-muted">advanced</a> 
+    
+      <a href="/tutorials/api/" class="badge badge-light text-muted">api</a> 
+    
+      <a href="/tutorials/basics/" class="badge badge-light text-muted">basics</a> 
+    
+      <a href="/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a> 
+    
+      <a href="/tutorials/community/" class="badge badge-light text-muted">community</a> 
+    
+      <a href="/tutorials/databases/" class="badge badge-light text-muted">databases</a> 
+    
+      <a href="/tutorials/data-science/" class="badge badge-light text-muted">data-science</a> 
+    
+      <a href="/tutorials/devops/" class="badge badge-light text-muted">devops</a> 
+    
+      <a href="/tutorials/django/" class="badge badge-light text-muted">django</a> 
+    
+      <a href="/tutorials/docker/" class="badge badge-light text-muted">docker</a> 
+    
+      <a href="/tutorials/flask/" class="badge badge-light text-muted">flask</a> 
+    
+      <a href="/tutorials/front-end/" class="badge badge-light text-muted">front-end</a> 
+    
+      <a href="/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a> 
+    
+      <a href="/tutorials/gui/" class="badge badge-light text-muted">gui</a> 
+    
+      <a href="/tutorials/intermediate/" class="badge badge-light text-muted">intermediate</a> 
+    
+      <a href="/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a> 
+    
+      <a href="/tutorials/projects/" class="badge badge-light text-muted">projects</a> 
+    
+      <a href="/tutorials/python/" class="badge badge-light text-muted">python</a> 
+    
+      <a href="/tutorials/testing/" class="badge badge-light text-muted">testing</a> 
+    
+      <a href="/tutorials/tools/" class="badge badge-light text-muted">tools</a> 
+    
+      <a href="/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a> 
+    
+      <a href="/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a> 
+    
+</div>
+
+
+
+  
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+
+</div>
+
+
+
+  <div class="sidebar-sticky ">
+    
+      <div class="bg-light sidebar-module sidebar-module-inset" id="sidebar-toc">
+        <p class="h4 text-muted"><a class="link-unstyled" href="#toc">Table of Contents</a></p>
+        <div class="toc">
+<ul>
+<li><a href="#testing-your-code">Testing Your Code</a><ul>
+<li><a href="#automated-vs-manual-testing">Automated vs. Manual Testing</a></li>
+<li><a href="#unit-tests-vs-integration-tests">Unit Tests vs. Integration Tests</a></li>
+<li><a href="#choosing-a-test-runner">Choosing a Test Runner</a></li>
+</ul>
+</li>
+<li><a href="#writing-your-first-test">Writing Your First Test</a><ul>
+<li><a href="#where-to-write-the-test">Where to Write the Test</a></li>
+<li><a href="#how-to-structure-a-simple-test">How to Structure a Simple Test</a></li>
+<li><a href="#how-to-write-assertions">How to Write Assertions</a></li>
+<li><a href="#side-effects">Side Effects</a></li>
+</ul>
+</li>
+<li><a href="#executing-your-first-test">Executing Your First Test</a><ul>
+<li><a href="#executing-test-runners">Executing Test Runners</a></li>
+<li><a href="#understanding-test-output">Understanding Test Output</a></li>
+<li><a href="#running-your-tests-from-pycharm">Running Your Tests From PyCharm</a></li>
+<li><a href="#running-your-tests-from-visual-studio-code">Running Your Tests From Visual Studio Code</a></li>
+</ul>
+</li>
+<li><a href="#testing-for-web-frameworks-like-django-and-flask">Testing for Web Frameworks Like Django and Flask</a><ul>
+<li><a href="#why-theyre-different-from-other-applications">Why They’re Different From Other Applications</a></li>
+<li><a href="#how-to-use-the-django-test-runner">How to Use the Django Test Runner</a></li>
+<li><a href="#how-to-use-unittest-and-flask">How to Use unittest and Flask</a></li>
+</ul>
+</li>
+<li><a href="#more-advanced-testing-scenarios">More Advanced Testing Scenarios</a><ul>
+<li><a href="#handling-expected-failures">Handling Expected Failures</a></li>
+<li><a href="#isolating-behaviors-in-your-application">Isolating Behaviors in Your Application</a></li>
+<li><a href="#writing-integration-tests">Writing Integration Tests</a></li>
+<li><a href="#testing-data-driven-applications">Testing Data-Driven Applications</a></li>
+</ul>
+</li>
+<li><a href="#testing-in-multiple-environments">Testing in Multiple Environments</a><ul>
+<li><a href="#installing-tox">Installing Tox</a></li>
+<li><a href="#configuring-tox-for-your-dependencies">Configuring Tox for Your Dependencies</a></li>
+<li><a href="#executing-tox">Executing Tox</a></li>
+</ul>
+</li>
+<li><a href="#automating-the-execution-of-your-tests">Automating the Execution of Your Tests</a></li>
+<li><a href="#whats-next">What’s Next</a><ul>
+<li><a href="#introducing-linters-into-your-application">Introducing Linters Into Your Application</a></li>
+<li><a href="#keeping-your-test-code-clean">Keeping Your Test Code Clean</a></li>
+<li><a href="#testing-for-performance-degradation-between-changes">Testing for Performance Degradation Between Changes</a></li>
+<li><a href="#testing-for-security-flaws-in-your-application">Testing for Security Flaws in Your Application</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
+      </div>
+    
+
+    <div class="sidebar-module sidebar-module-inset text-center my-3 py-0">
+      <div class="jsCompletionStatusWidget btn-group mb-0">
+  <button title="Click to mark as completed" class="jsBtnCompletion btn btn-secondary border-right " style="border-top-right-radius: 0; border-bottom-right-radius: 0;" disabled="disabled">Mark as Completed</button>
+  <button title="Add bookmark" class="jsBtnBookmark btn btn-secondary border-left" disabled="disabled"><i class="fa fa-fw fa-bookmark-o"></i></button>
+</div>
+
+      <div class="my-2">
+        <div class="btn-group mb-0">
+  <a class="btn btn-secondary border-right px-3" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" title="Liked it" aria-label="Thumbs up (liked it)" href="/feedback/survey/article/python-testing/liked/?from=article-sidebar" target="_blank"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+  <a class="btn btn-secondary border-left px-3" aria-label="Thumbs down (disliked it)" title="Disliked it" href="/feedback/survey/article/python-testing/disliked/?from=article-sidebar" target="_blank"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
+</div>
+
+      </div>
+    </div>
+
+    
+      <div class="sidebar-module sidebar-module-inset text-center my-3 py-0">
+        
+<span>
+  <a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Check out this %23Python tutorial: Getting%20Started%20With%20Testing%20in%20Python by @realpython&amp;url=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-twitter text-light mb-1"><i class="mr-1 fa fa-twitter text-light"></i>Tweet</a>
+  <a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A//realpython.com/python-testing/" class="mr-1 badge badge-facebook text-light mb-1"><i class="mr-1 fa fa-facebook text-light"></i>Share</a>
+  
+  <a target="_blank" rel="nofollow" href="mailto:?subject=Python article for you&amp;body=Check out this Python tutorial:%0A%0AGetting%20Started%20With%20Testing%20in%20Python%0A%0Ahttps%3A//realpython.com/python-testing/" class="badge badge-red text-light mb-1"><i class="mr-1 fa fa-envelope text-light"></i>Email</a>
+</span>
+
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset border card">
+        <p><span class="badge badge-pill badge-success"><i class="fa fa-play-circle mr-1" aria-hidden="true"></i> Recommended Video Course</span><br /><a class="stretched-link text-success" href="/courses/test-driven-development-pytest/">Test-Driven Development With PyTest</a></p>
+      </div>
+    
+
+    
+      <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+
+      </div>
+    
+
+    
+  </div>
+
+
+    </aside>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+      
+        
+          <div class="modal fade" id="modal-python-mastery-course" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header bg-light pt-3 pb-2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="progress" style="height: .5rem;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated w-75" role="progressbar"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <p class="text-muted text-center mb-0 mt-2">Almost there! Complete this form and click the button below to gain instant access:</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body m-4">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-4 mb-4">
+              
+                <img class="img-fluid rounded" src="https://files.realpython.com/media/python-logo.8eb72ea6927b.png" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/python-logo.8eb72ea6927b.png&amp;w=250&amp;sig=3922247197a4a17add6954dd288123a4df30e55a 250w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/python-logo.8eb72ea6927b.png&amp;w=500&amp;sig=40c3b1b474ae94aec528188714ba5878a77362ea 500w, https://files.realpython.com/media/python-logo.8eb72ea6927b.png 1000w" sizes="50vw" alt="Python Logo" width="1000" height="1000" />
+              
+            </div>
+            <div class="col">
+              <p class="text-center h3 mb-4">5 Thoughts On Python Mastery</p>
+
+              <form class="col-12" action="/optins/process/" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="NVTmsZQMuPbbF6plLoAFPZrjlbK6w5mHFiVwP7s50T6deQOZG3ofLBQOf9WKEYyq" />
+                
+                <input type="hidden" name="slug" value="python-mastery-course" />
+                <input type="hidden" name="source_path" value="/python-testing/" /> 
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Email Address" required="" autofocus="" />
+                </div>
+                <button name="submit" type="submit" class="btn btn-primary btn-block text-wrap">Start the Class »</button>
+                <p class="mb-0 mt-2 text-muted text-center"><small>������ No spam. We take your privacy seriously.</small></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        
+      
+    
+
+    
+      <footer class="footer">
+  <div class="container">
+    
+      <div class="mx-auto mt-4 mb-0" style="max-width: 768px;">
+        
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:12.5%;"></div>
+  <div class="rpad rounded border" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+<a class="small text-muted" href="/account/join/" rel="nofollow"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Remove ads</a>
+
+
+      </div>
+    
+
+    <p class="text-center text-muted w-75 mx-auto">© 2012–2022 Real Python ⋅ <a href="/newsletter/">Newsletter</a> ⋅ <a href="/podcasts/rpp/">Podcast</a> ⋅ <a href="https://www.youtube.com/realpython">YouTube</a> ⋅ <a href="https://twitter.com/realpython">Twitter</a> ⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a> ⋅ <a href="https://www.instagram.com/realpython/">Instagram</a> ⋅ <a href="/">Python Tutorials</a> ⋅ <a href="/search">Search</a> ⋅ <a href="/privacy-policy/">Privacy Policy</a> ⋅ <a href="/energy-policy/" class="">Energy Policy</a> ⋅ <a href="/sponsorships/">Advertise</a> ⋅ <a href="/contact/">Contact</a><br />❤️ Happy Pythoning!</p>
+  </div>
+</footer>
+
+    
+
+    
+    
+    <script>
+      (function(document, history, location) {
+        var HISTORY_SUPPORT = !!(history &amp;&amp; history.pushState);
+
+        var anchorScrolls = {
+          ANCHOR_REGEX: /^#[^ ]+$/,
+          OFFSET_HEIGHT_PX: 120,
+
+          /**
+           * Establish events, and fix initial scroll position if a hash is provided.
+           */
+          init: function() {
+            this.scrollToCurrent();
+            window.addEventListener('hashchange', this.scrollToCurrent.bind(this));
+            document.body.addEventListener('click', this.delegateAnchors.bind(this));
+          },
+
+          /**
+           * Return the offset amount to deduct from the normal scroll position.
+           * Modify as appropriate to allow for dynamic calculations
+           */
+          getFixedOffset: function() {
+            return this.OFFSET_HEIGHT_PX;
+          },
+
+          /**
+           * If the provided href is an anchor which resolves to an element on the
+           * page, scroll to it.
+           * @param  {String} href
+           * @return {Boolean} - Was the href an anchor.
+           */
+          scrollIfAnchor: function(href, pushToHistory) {
+            var match, rect, anchorOffset;
+
+            if(!this.ANCHOR_REGEX.test(href)) {
+              return false;
+            }
+
+            match = document.getElementById(href.slice(1));
+
+            if(match) {
+              rect = match.getBoundingClientRect();
+              anchorOffset = window.pageYOffset + rect.top - this.getFixedOffset();
+              window.scrollTo(window.pageXOffset, anchorOffset);
+
+              // Add the state to history as-per normal anchor links
+              if(HISTORY_SUPPORT &amp;&amp; pushToHistory) {
+                history.pushState({}, document.title, location.pathname + href);
+              }
+            }
+
+            return !!match;
+          },
+
+          /**
+           * Attempt to scroll to the current location's hash.
+           */
+          scrollToCurrent: function() {
+            this.scrollIfAnchor(window.location.hash);
+          },
+
+          /**
+           * If the click event's target was an anchor, fix the scroll position.
+           */
+          delegateAnchors: function(e) {
+            var elem = e.target;
+
+            // 
+            if (elem.dataset.toggle === "tab") {
+              return;
+            }
+
+            if(
+              elem.nodeName === 'A' &amp;&amp;
+              this.scrollIfAnchor(elem.getAttribute('href'), true)
+            ) {
+              e.preventDefault();
+            }
+          }
+        };
+
+        window.addEventListener(
+          'DOMContentLoaded', anchorScrolls.init.bind(anchorScrolls)
+        );
+      })(window.document, window.history, window.location);
+    </script>
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") &gt; -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('https://cdn.realpython.com/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('https://cdn.realpython.com/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('https://cdn.realpython.com/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="https://cdn.realpython.com/static/jquery.min.00727d1d5d9c.js"></script>
+    <script src="https://cdn.realpython.com/static/popper.min.47dc3aaf2942.js"></script>
+    <script src="https://cdn.realpython.com/static/bootstrap.min.a3b2689424c3.js"></script>
+
+    
+    
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="https://cdn.realpython.com/static/frontend/reader/repl-toggle.925bef973b9c.js" async=""></script>
+    <script src="https://cdn.realpython.com/static/frontend/reader/lightbox.bab438c0f968.js" async=""></script>
+    <script src="https://cdn.realpython.com/static/frontend/reader/platforms-ui.b11202dc6079.js" async=""></script>
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="https://srv.realpython.net/tag.js" async=""></script>
+
+
+
+<script src="https://cdn.realpython.com/static/frontend/reader/toc-refresh.76a102c7d921.js" async=""></script>
+
+<script id="js-context" type="application/json">{"is_completed": false, "is_bookmarked": false, "api_article_bookmark_url": "/api/v1/articles/python-testing/bookmark/", "api_article_completion_status_url": "/api/v1/articles/python-testing/completion_status/"}</script>
+<script src="https://cdn.realpython.com/static/frontend/reader/completion-status.0689aa7a4df0.js" async=""></script>
+
+
+
+
+
+
+  
+    <script id="dsq-count-scr" src="https://realpython.disqus.com/count.js" async=""></script>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://realpython.com/python-testing/';
+        this.page.identifier = 'https://realpython.com/python-testing/';
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+    </script>
+    <script src="https://cdn.realpython.com/static/frontend/reader/lazy-disqus.07ee9079f4a3.js" defer="defer"></script>
+  
+
+
+  
+  
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Getting Started With Testing in Python",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Getting-Started-with-Testing-in-Python_Watermarked.9f22be97343d.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/python-testing/"
+    },
+    "datePublished": "2018-10-22T14:00:00+00:00",
+    "dateModified": "2022-11-10T22:01:44.609856+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cdn.realpython.com/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "https://cdn.realpython.com/static/real-python-logo-square.146e987bf77c.png"
+    },
+    "description": "In this in\u002Ddepth tutorial, you’ll see how to create Python unit tests, execute them, and find the bugs before your users do. You’ll learn about the tools available to write and execute tests, check your application’s performance, and even look for security issues."
+  }
+  </script>
+  
+
+
+    
+
+    
+
+    
+<script>
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '6214500';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/6214500.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+
+
+    
+
+
+
+    
+
+    
+
+  <script>(function(){var js = "window['__CF$cv$params']={r:'775cbbc1686278b5',m:'YUAHBx.04zsJZvZL5khJgG5PWNHfYLjgncpYbRLIdes-1670410573-0-AYgOloxVUqsVUv4IlMWNtrq5D1a77jzLxRkjEYywj/rKXf3LorRmrfI3f38ejD0X5TNMRCYNH8+1TtUsNdYKop9P8HxXEEwovuMyPn04wV4wZVJePwTZOm5boXSDAryk2A==',s:[0x4705bac5bc,0x418cb98f89],u:'/cdn-cgi/challenge-platform/h/g'};var now=Date.now()/1000,offset=14400,ts=''+(Math.floor(now)-Math.floor(now%offset)),_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/h/g/scripts/alpha/invisible.js?ts='+ts,document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script>
+
+</body></html>

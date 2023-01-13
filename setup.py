@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for package-setup.
+"""Install functionfinder program.
 
 This script installs the functionfinder package and can be called using
 'pip install -e .' from within the package root directory.
@@ -31,7 +31,7 @@ from pathlib import Path
 # Try importing own modules, if availaible
 # =============================================================================
 try:
-    from functionfinder.setuplog import logging
+    from functionfinder.setuplog import logging, set_setuplogging
     from functionfinder.config import datafiles, progfiles
 except ImportError:
     print("Initially required modules not found.")
@@ -40,6 +40,7 @@ except ImportError:
 # =============================================================================
 # Define logger for setup process and start logging
 # =============================================================================
+set_setuplogging()
 logger = logging.getLogger('ff-setup')
 
 # Log DocString and start of setup process

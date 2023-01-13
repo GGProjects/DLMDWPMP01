@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>functionfinder.datafunctions &#8212; DLMDWPMP01 1.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="functionfinder.datafunctions.calculate_best_ideal" href="functionfinder.datafunctions.calculate_best_ideal.html" />
+    <link rel="prev" title="functionfinder.config.error_calculation" href="functionfinder.config.error_calculation.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.datafunctions.calculate_best_ideal.html" title="functionfinder.datafunctions.calculate_best_ideal"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.config.error_calculation.html" title="functionfinder.config.error_calculation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DLMDWPMP01 1.2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="functionfinder.html" accesskey="U">functionfinder</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">functionfinder.datafunctions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-functionfinder.datafunctions">
+<span id="functionfinder-datafunctions"></span><h1>functionfinder.datafunctions<a class="headerlink" href="#module-functionfinder.datafunctions" title="Permalink to this heading">¶</a></h1>
+<p>Functions used for data handling.</p>
+<p>This script contains definitions for data related functions of the
+functionfinder package.</p>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt>create_empty_sqlitedb(dbname)</dt><dd><p>Create empty SQLite Database.</p>
+</dd>
+<dt>csv2sql_directly(existing_db, csv_toadd, tablename)</dt><dd><p>Import csv files into existing SQLite database using subprocess.</p>
+</dd>
+<dt>csv2sql_pandas(existing_db, csv_toadd, tablename)</dt><dd><p>Import csv files into existing SQLite database using pandas.</p>
+</dd>
+<dt>min_error(train_set, ideal_df)</dt><dd><p>Select column of a pandas DataFrame with minimal error to a Series.</p>
+</dd>
+<dt>calculate_best_ideal(test_value, match_against, index, idealdata, function)</dt><dd><p>Select ideal function with minimal deviation to given point.</p>
+</dd>
+</dl>
+</section>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functionfinder.datafunctions.calculate_best_ideal.html#functionfinder.datafunctions.calculate_best_ideal" title="functionfinder.datafunctions.calculate_best_ideal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_best_ideal</span></code></a>(test_value, ...[, function])</p></td>
+<td><p>Select ideal function with minimal deviation to given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="functionfinder.datafunctions.checktypes.html#functionfinder.datafunctions.checktypes" title="functionfinder.datafunctions.checktypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checktypes</span></code></a>(functionname, typedict)</p></td>
+<td><p>Check if types of data passed to a function upon call meet requirements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="functionfinder.datafunctions.create_empty_sqlitedb.html#functionfinder.datafunctions.create_empty_sqlitedb" title="functionfinder.datafunctions.create_empty_sqlitedb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_empty_sqlitedb</span></code></a>(dbname)</p></td>
+<td><p>Create empty SQLite Database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="functionfinder.datafunctions.csv2sql_directly.html#functionfinder.datafunctions.csv2sql_directly" title="functionfinder.datafunctions.csv2sql_directly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">csv2sql_directly</span></code></a>(existing_db, csv_toadd, ...)</p></td>
+<td><p>Import csv files into existing SQLite database using subprocess.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="functionfinder.datafunctions.csv2sql_pandas.html#functionfinder.datafunctions.csv2sql_pandas" title="functionfinder.datafunctions.csv2sql_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">csv2sql_pandas</span></code></a>(existing_db, csv_toadd, tablename)</p></td>
+<td><p>Import csv files into existing SQLite database using pandas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="functionfinder.datafunctions.min_error.html#functionfinder.datafunctions.min_error" title="functionfinder.datafunctions.min_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_error</span></code></a>(train_set, ideal_df)</p></td>
+<td><p>Select column of a pandas DataFrame with minimal error to a Series.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">functionfinder.datafunctions</a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="functionfinder.config.error_calculation.html"
+                          title="previous chapter">functionfinder.config.error_calculation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="functionfinder.datafunctions.calculate_best_ideal.html"
+                          title="next chapter">functionfinder.datafunctions.calculate_best_ideal</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/functionfinder.datafunctions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.datafunctions.calculate_best_ideal.html" title="functionfinder.datafunctions.calculate_best_ideal"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.config.error_calculation.html" title="functionfinder.config.error_calculation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DLMDWPMP01 1.2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="functionfinder.html" >functionfinder</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">functionfinder.datafunctions</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Georg Grunsky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    </div>
+  </body>
+</html>

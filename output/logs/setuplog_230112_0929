@@ -1,0 +1,34 @@
+2023-01-12 09:29:05,640 - ff-setup - INFO - Install functionfinder program.
+
+This script installs the functionfinder package and can be called using
+'pip install -e .' from within the package root directory.
+The main effort of this package is to gain basic python programming skills
+and therefore solve a simple classification task. This package is designed to
+fulfill the given task and complete the IU Python Module 'DLMDWPMP01'.
+
+During the installation process, this scripts checks for the existance of
+required package files and runs a testsuite of UnitTests to ensure the
+functionality of the program.
+
+Methods
+-------
+check_required_files(files)
+    Check for specifically required files to run program.
+run_tests()
+    Run UnitTests specified in tests-directory.
+
+2023-01-12 09:29:05,640 - ff-setup - INFO - Starting setup of functionfinder
+2023-01-12 09:29:05,640 - ff-setup - INFO - Check for required datafiles
+2023-01-12 09:29:05,640 - ff-setup - INFO - All required files available
+2023-01-12 09:29:05,640 - ff-setup - INFO - Check for required modulefiles
+2023-01-12 09:29:05,640 - ff-setup - INFO - All required files available
+2023-01-12 09:29:05,640 - ff-setup - INFO - Start installing required packages
+2023-01-12 09:29:05,910 - ff-setup - INFO - Executing UnitTests
+2023-01-12 09:29:05,910 - ff-setup - INFO - Start UnitTests
+2023-01-12 09:29:06,331 - ff-setup - INFO - Direct import from csv to SQLite is NOT possible.
+2023-01-12 09:29:06,331 - ff-setup - INFO - UnitTests successful
+2023-01-12 09:29:06,331 - ff-setup - INFO - <unittest.result.TestResult run=8 errors=0 failures=0>
+2023-01-12 09:29:06,331 - ff-setup - INFO - Setup of functionfinder successfull
+2023-01-12 09:29:06,331 - ff-setup - INFO - Setup successfully finished
+2023-01-12 09:29:06,331 - ff-setup - INFO - Please check setup-log in folder logs for further details.
+2023-01-12 09:29:06,331 - ff-setup - INFO - You can now run "ff" to start programm!

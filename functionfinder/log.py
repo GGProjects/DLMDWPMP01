@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for module log.py.
+"""Definition of logging parameters.
 
 This script defines the basic logging configuration for the main program.
 User configurable variables are read from 'config' module.
@@ -23,7 +23,9 @@ levels = {"DEBUG": logging.DEBUG,
 
 logformat = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
-# specify logging-config
-logging.basicConfig(filename=logfile, filemode="w",
-                    format=logformat,
-                    level=levels[loglevel])
+def setlogging():
+    """Set predefined parameters for logging."""
+    logging.basicConfig(filename=logfile, filemode="w",
+                        format=logformat,
+                        level=levels[loglevel])
+

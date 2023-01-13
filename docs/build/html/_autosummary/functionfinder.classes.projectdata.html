@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>functionfinder.classes.projectdata &#8212; DLMDWPMP01 1.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="functionfinder.classes.testdata" href="functionfinder.classes.testdata.html" />
+    <link rel="prev" title="functionfinder.classes.idealdata" href="functionfinder.classes.idealdata.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.classes.testdata.html" title="functionfinder.classes.testdata"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.classes.idealdata.html" title="functionfinder.classes.idealdata"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DLMDWPMP01 1.2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="functionfinder.html" >functionfinder</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="functionfinder.classes.html" accesskey="U">functionfinder.classes</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">functionfinder.classes.projectdata</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="functionfinder-classes-projectdata">
+<h1>functionfinder.classes.projectdata<a class="headerlink" href="#functionfinder-classes-projectdata" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="functionfinder.classes.projectdata">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">functionfinder.classes.</span></span><span class="sig-name descname"><span class="pre">projectdata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plottitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'no</span> <span class="pre">title'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'testplot.png'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.classes.projectdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Storage defined to handle necessary data operations.</p>
+<p>Contains recurring methods for the given types of datasets.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt>_table<span class="classifier">string</span></dt><dd><p>Refered table name in SQLite Database</p>
+</dd>
+<dt>_style<span class="classifier">string</span></dt><dd><p>Matplotlib plotting style</p>
+</dd>
+<dt>ylabel<span class="classifier">string</span></dt><dd><p>Label of y-axis for plotting</p>
+</dd>
+<dt>xlabel<span class="classifier">string</span></dt><dd><p>Label of x-axis for plotting</p>
+</dd>
+<dt>title<span class="classifier">string</span></dt><dd><p>Title of plot</p>
+</dd>
+<dt>fname<span class="classifier">string</span></dt><dd><p>Name of png file to save plots</p>
+</dd>
+<dt>_dbcon<span class="classifier">string</span></dt><dd><p>Name and location of SQLite Database</p>
+</dd>
+<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Data read in from SQLite Database</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h2>
+<dl>
+<dt>__init__(dataname=”train”, ylabel=”Y”, xlabel=”X”, plottitle = “no title”,</dt><dd><blockquote>
+<div><p>plotfile=”testplot.png”)</p>
+</div></blockquote>
+<p>Constructor method to specify relevant attributes.</p>
+</dd>
+<dt>getdata()</dt><dd><p>Query SQLite database to read and store data in ‘data’ attribute.</p>
+</dd>
+<dt>draw()</dt><dd><p>Plot data and save to png file.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.classes.projectdata.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plottitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'no</span> <span class="pre">title'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'testplot.png'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.classes.projectdata.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct attributes for this class.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
+<dl class="simple">
+<dt>dataname<span class="classifier">string</span></dt><dd><p>Provide SQLite table name to read data from.
+The default is “train”.</p>
+</dd>
+<dt>ylabel<span class="classifier">string, optional</span></dt><dd><p>Provide y-axis title for plotting. The default is “Y”.</p>
+</dd>
+<dt>xlabel<span class="classifier">string, optional</span></dt><dd><p>Provide x-axis title for plotting. The default is “X”.</p>
+</dd>
+<dt>plottitle<span class="classifier">string</span></dt><dd><p>Provide plot-title for contained data. The default is “no title”.</p>
+</dd>
+<dt>plotfile<span class="classifier">string</span></dt><dd><p>Provide name of PNG to save plot. The default is “testplot.png”.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#functionfinder.classes.projectdata.__init__" title="functionfinder.classes.projectdata.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([dataname, ylabel, xlabel, ...])</p></td>
+<td><p>Construct attributes for this class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#functionfinder.classes.projectdata.draw" title="functionfinder.classes.projectdata.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>()</p></td>
+<td><p>Plot data and save to png file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#functionfinder.classes.projectdata.getdata" title="functionfinder.classes.projectdata.getdata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getdata</span></code></a>()</p></td>
+<td><p>Query SQLite database to read and store data in 'data' attribute.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.classes.projectdata.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.classes.projectdata.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot data and save to png file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="functionfinder.classes.projectdata.getdata">
+<span class="sig-name descname"><span class="pre">getdata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functionfinder.classes.projectdata.getdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query SQLite database to read and store data in ‘data’ attribute.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">functionfinder.classes.projectdata</a><ul>
+<li><a class="reference internal" href="#functionfinder.classes.projectdata"><code class="docutils literal notranslate"><span class="pre">projectdata</span></code></a><ul>
+<li><a class="reference internal" href="#functionfinder.classes.projectdata.__init__"><code class="docutils literal notranslate"><span class="pre">projectdata.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#functionfinder.classes.projectdata.draw"><code class="docutils literal notranslate"><span class="pre">projectdata.draw()</span></code></a></li>
+<li><a class="reference internal" href="#functionfinder.classes.projectdata.getdata"><code class="docutils literal notranslate"><span class="pre">projectdata.getdata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="functionfinder.classes.idealdata.html"
+                          title="previous chapter">functionfinder.classes.idealdata</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="functionfinder.classes.testdata.html"
+                          title="next chapter">functionfinder.classes.testdata</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/functionfinder.classes.projectdata.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.classes.testdata.html" title="functionfinder.classes.testdata"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="functionfinder.classes.idealdata.html" title="functionfinder.classes.idealdata"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DLMDWPMP01 1.2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="functionfinder.html" >functionfinder</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="functionfinder.classes.html" >functionfinder.classes</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">functionfinder.classes.projectdata</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Georg Grunsky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    </div>
+  </body>
+</html>

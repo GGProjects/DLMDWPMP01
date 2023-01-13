@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for module classes.py.
+"""Definition of object classes.
 
 This module defines three classes used to store data information. The latter
 two are subclasses of the first class projectdata.

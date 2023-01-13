@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for module datafunctions.py.
+"""Functions used for data handling.
 
 This script contains definitions for data related functions of the
 functionfinder package.
@@ -25,7 +25,7 @@ import pandas as pd
 import sqlite3
 import sys
 from .config import out_data, error_calculation, factor
-#from .log import logging
+from .log import logging
 from .exceptions import TypeError
 
 
@@ -258,5 +258,5 @@ def checktypes(functionname, typedict):
         text = ("Method " + functionname + ": " +
                 "Parameters " + str(list(typedict.keys())) + " NOT of right " +
                 "data type!")
-        #logging.critical(text)
+        logging.critical(text)
         sys.exit(text)

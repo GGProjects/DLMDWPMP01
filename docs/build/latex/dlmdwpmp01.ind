@@ -1,0 +1,249 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter {\sphinxsymbolsname}
+  \item \spxentry{\_\_init\_\_()}\spxextra{functionfinder.classes.idealdata method}, \hyperpage{4}
+  \item \spxentry{\_\_init\_\_()}\spxextra{functionfinder.classes.projectdata method}, 
+		\hyperpage{6}
+  \item \spxentry{\_\_init\_\_()}\spxextra{functionfinder.classes.testdata method}, \hyperpage{7}
+  \item \spxentry{\_\_init\_\_()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{16}
+  \item \spxentry{\_\_init\_\_()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{25}
+
+  \indexspace
+  \bigletter A
+  \item \spxentry{addClassCleanup()}\spxextra{tests.test\_unit.test\_df class method}, 
+		\hyperpage{19}
+  \item \spxentry{addClassCleanup()}\spxextra{tests.test\_unit.test\_sqlite class method}, 
+		\hyperpage{28}
+  \item \spxentry{addCleanup()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{19}
+  \item \spxentry{addCleanup()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{28}
+  \item \spxentry{addTypeEqualityFunc()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{19}
+  \item \spxentry{addTypeEqualityFunc()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{28}
+  \item \spxentry{assertAlmostEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertAlmostEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{28}
+  \item \spxentry{assertCountEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertCountEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{28}
+  \item \spxentry{assertDictContainsSubset()}\spxextra{tests.test\_unit.test\_df method}, 
+		\hyperpage{20}
+  \item \spxentry{assertDictContainsSubset()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{28}
+  \item \spxentry{assertEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertFalse()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertFalse()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertGreater()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertGreater()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertGreaterEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertGreaterEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{29}
+  \item \spxentry{assertIn()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertIn()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertIs()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertIs()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertIsInstance()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertIsInstance()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{29}
+  \item \spxentry{assertIsNone()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{20}
+  \item \spxentry{assertIsNone()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertIsNot()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertIsNot()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertIsNotNone()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertIsNotNone()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertLess()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertLess()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertLessEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertLessEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertListEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertListEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertLogs()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertLogs()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{29}
+  \item \spxentry{assertMultiLineEqual()}\spxextra{tests.test\_unit.test\_df method}, 
+		\hyperpage{21}
+  \item \spxentry{assertMultiLineEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{30}
+  \item \spxentry{assertNoLogs()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertNoLogs()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{30}
+  \item \spxentry{assertNotAlmostEqual()}\spxextra{tests.test\_unit.test\_df method}, 
+		\hyperpage{21}
+  \item \spxentry{assertNotAlmostEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{30}
+  \item \spxentry{assertNotEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{21}
+  \item \spxentry{assertNotEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{30}
+  \item \spxentry{assertNotIn()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertNotIn()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{30}
+  \item \spxentry{assertNotIsInstance()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertNotIsInstance()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{30}
+  \item \spxentry{assertNotRegex()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertNotRegex()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{30}
+  \item \spxentry{assertRaises()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertRaises()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{30}
+  \item \spxentry{assertRaisesRegex()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertRaisesRegex()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{30}
+  \item \spxentry{assertRegex()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertRegex()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{31}
+  \item \spxentry{assertSequenceEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{22}
+  \item \spxentry{assertSequenceEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{31}
+  \item \spxentry{assertSetEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{23}
+  \item \spxentry{assertSetEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{31}
+  \item \spxentry{assertTrue()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{23}
+  \item \spxentry{assertTrue()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{31}
+  \item \spxentry{assertTupleEqual()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{23}
+  \item \spxentry{assertTupleEqual()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{31}
+  \item \spxentry{assertWarns()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{23}
+  \item \spxentry{assertWarns()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{31}
+  \item \spxentry{assertWarnsRegex()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{23}
+  \item \spxentry{assertWarnsRegex()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{32}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{calculate\_best\_ideal()}\spxextra{in module functionfinder.datafunctions}, 
+		\hyperpage{10}
+  \item \spxentry{check\_struct()}\spxextra{in module tests.test\_unit}, \hyperpage{16}
+  \item \spxentry{checktypes()}\spxextra{in module functionfinder.datafunctions}, \hyperpage{10}
+  \item \spxentry{create\_empty\_sqlitedb()}\spxextra{in module functionfinder.datafunctions}, 
+		\hyperpage{11}
+  \item \spxentry{csv2sql\_directly()}\spxextra{in module functionfinder.datafunctions}, 
+		\hyperpage{11}
+  \item \spxentry{csv2sql\_pandas()}\spxextra{in module functionfinder.datafunctions}, 
+		\hyperpage{11}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{debug()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{debug()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{32}
+  \item \spxentry{doClassCleanups()}\spxextra{tests.test\_unit.test\_df class method}, 
+		\hyperpage{24}
+  \item \spxentry{doClassCleanups()}\spxextra{tests.test\_unit.test\_sqlite class method}, 
+		\hyperpage{32}
+  \item \spxentry{doCleanups()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{doCleanups()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{32}
+  \item \spxentry{draw()}\spxextra{functionfinder.classes.idealdata method}, \hyperpage{4}
+  \item \spxentry{draw()}\spxextra{functionfinder.classes.projectdata method}, \hyperpage{6}
+  \item \spxentry{draw()}\spxextra{functionfinder.classes.testdata method}, \hyperpage{7}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{enterClassContext()}\spxextra{tests.test\_unit.test\_df class method}, 
+		\hyperpage{24}
+  \item \spxentry{enterClassContext()}\spxextra{tests.test\_unit.test\_sqlite class method}, 
+		\hyperpage{32}
+  \item \spxentry{enterContext()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{enterContext()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{32}
+  \item \spxentry{error\_calculation()}\spxextra{in module functionfinder.config}, \hyperpage{8}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{fail()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{fail()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{32}
+  \item \spxentry{failureException}\spxextra{tests.test\_unit.test\_df attribute}, \hyperpage{24}
+  \item \spxentry{failureException}\spxextra{tests.test\_unit.test\_sqlite attribute}, 
+		\hyperpage{32}
+  \item \spxentry{functionfinder}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{functionfinder.classes}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{functionfinder.config}
+    \subitem \spxentry{module}, \hyperpage{8}
+  \item \spxentry{functionfinder.datafunctions}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{functionfinder.exceptions}
+    \subitem \spxentry{module}, \hyperpage{12}
+  \item \spxentry{functionfinder.ffrunner}
+    \subitem \spxentry{module}, \hyperpage{13}
+  \item \spxentry{functionfinder.log}
+    \subitem \spxentry{module}, \hyperpage{13}
+  \item \spxentry{functionfinder.setuplog}
+    \subitem \spxentry{module}, \hyperpage{14}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{getdata()}\spxextra{functionfinder.classes.idealdata method}, \hyperpage{4}
+  \item \spxentry{getdata()}\spxextra{functionfinder.classes.projectdata method}, \hyperpage{6}
+  \item \spxentry{getdata()}\spxextra{functionfinder.classes.testdata method}, \hyperpage{8}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{idealdata}\spxextra{class in functionfinder.classes}, \hyperpage{4}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{matched\_functions()}\spxextra{functionfinder.classes.idealdata method}, 
+		\hyperpage{5}
+  \item \spxentry{min\_error()}\spxextra{in module functionfinder.datafunctions}, \hyperpage{12}
+  \item \spxentry{module}
+    \subitem \spxentry{functionfinder}, \hyperpage{3}
+    \subitem \spxentry{functionfinder.classes}, \hyperpage{3}
+    \subitem \spxentry{functionfinder.config}, \hyperpage{8}
+    \subitem \spxentry{functionfinder.datafunctions}, \hyperpage{9}
+    \subitem \spxentry{functionfinder.exceptions}, \hyperpage{12}
+    \subitem \spxentry{functionfinder.ffrunner}, \hyperpage{13}
+    \subitem \spxentry{functionfinder.log}, \hyperpage{13}
+    \subitem \spxentry{functionfinder.setuplog}, \hyperpage{14}
+    \subitem \spxentry{tests}, \hyperpage{15}
+    \subitem \spxentry{tests.test\_unit}, \hyperpage{15}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{off\_limit()}\spxextra{functionfinder.classes.testdata method}, \hyperpage{8}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{projectdata}\spxextra{class in functionfinder.classes}, \hyperpage{5}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{set\_setuplogging()}\spxextra{in module functionfinder.setuplog}, \hyperpage{14}
+  \item \spxentry{setlogging()}\spxextra{in module functionfinder.log}, \hyperpage{14}
+  \item \spxentry{setUp()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{setUp()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{32}
+  \item \spxentry{setUpClass()}\spxextra{tests.test\_unit.test\_df class method}, \hyperpage{24}
+  \item \spxentry{setUpClass()}\spxextra{tests.test\_unit.test\_sqlite class method}, 
+		\hyperpage{32}
+  \item \spxentry{shortDescription()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{shortDescription()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{33}
+  \item \spxentry{skipTest()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{skipTest()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{33}
+  \item \spxentry{subTest()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{subTest()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{33}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{task()}\spxextra{in module functionfinder.ffrunner}, \hyperpage{13}
+  \item \spxentry{tearDown()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{tearDown()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{33}
+  \item \spxentry{tearDownClass()}\spxextra{tests.test\_unit.test\_df class method}, \hyperpage{24}
+  \item \spxentry{tearDownClass()}\spxextra{tests.test\_unit.test\_sqlite class method}, 
+		\hyperpage{33}
+  \item \spxentry{test\_creation()}\spxextra{tests.test\_unit.test\_sqlite method}, \hyperpage{33}
+  \item \spxentry{test\_df}\spxextra{class in tests.test\_unit}, \hyperpage{16}
+  \item \spxentry{test\_idealstruct()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{test\_instancecheck()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{test\_sqlite}\spxextra{class in tests.test\_unit}, \hyperpage{25}
+  \item \spxentry{test\_table\_from\_csv()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{33}
+  \item \spxentry{test\_table\_from\_pandas()}\spxextra{tests.test\_unit.test\_sqlite method}, 
+		\hyperpage{33}
+  \item \spxentry{test\_teststruct()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{24}
+  \item \spxentry{test\_trainideal\_length()}\spxextra{tests.test\_unit.test\_df method}, 
+		\hyperpage{25}
+  \item \spxentry{test\_trainstruct()}\spxextra{tests.test\_unit.test\_df method}, \hyperpage{25}
+  \item \spxentry{testdata}\spxextra{class in functionfinder.classes}, \hyperpage{7}
+  \item \spxentry{tests}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{tests.test\_unit}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{TypeError}, \hyperpage{13}
+
+\end{sphinxtheindex}

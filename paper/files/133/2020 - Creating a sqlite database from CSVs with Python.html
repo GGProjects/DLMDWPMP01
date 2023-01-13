@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8" />
+<title>Creating a sqlite database from CSVs with Python - MungingData</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Stargazer 4.0.0" />
+
+<!-- This site is optimized with the Yoast SEO plugin v11.8 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="This post shows how to create a sqlite database with Python and load CSV files into sqlite tables. It leverages Pandas to read the CSV files and load them into the database." />
+<link rel="canonical" href="https://mungingdata.com/sqlite/create-database-load-csv-python/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Creating a sqlite database from CSVs with Python - MungingData" />
+<meta property="og:description" content="This post shows how to create a sqlite database with Python and load CSV files into sqlite tables. It leverages Pandas to read the CSV files and load them into the database." />
+<meta property="og:url" content="https://mungingdata.com/sqlite/create-database-load-csv-python/" />
+<meta property="og:site_name" content="MungingData" />
+<meta property="article:section" content="sqlite" />
+<meta property="article:published_time" content="2020-09-16T01:02:07+00:00" />
+<meta property="article:modified_time" content="2021-09-01T15:40:14+00:00" />
+<meta property="og:updated_time" content="2021-09-01T15:40:14+00:00" />
+<meta property="og:image" content="https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM.png" />
+<meta property="og:image:secure_url" content="https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="This post shows how to create a sqlite database with Python and load CSV files into sqlite tables. It leverages Pandas to read the CSV files and load them into the database." />
+<meta name="twitter:title" content="Creating a sqlite database from CSVs with Python - MungingData" />
+<meta name="twitter:image" content="https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM.png" />
+<script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://mungingdata.com/#website","url":"https://mungingdata.com/","name":"MungingData","potentialAction":{"@type":"SearchAction","target":"https://mungingdata.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://mungingdata.com/sqlite/create-database-load-csv-python/#primaryimage","url":"https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM.png","width":353,"height":166},{"@type":"WebPage","@id":"https://mungingdata.com/sqlite/create-database-load-csv-python/#webpage","url":"https://mungingdata.com/sqlite/create-database-load-csv-python/","inLanguage":"en-US","name":"Creating a sqlite database from CSVs with Python - MungingData","isPartOf":{"@id":"https://mungingdata.com/#website"},"primaryImageOfPage":{"@id":"https://mungingdata.com/sqlite/create-database-load-csv-python/#primaryimage"},"datePublished":"2020-09-16T01:02:07+00:00","dateModified":"2021-09-01T15:40:14+00:00","author":{"@id":"https://mungingdata.com/#/schema/person/b1835097ad5210de0c25a3716a361b69"},"description":"This post shows how to create a sqlite database with Python and load CSV files into sqlite tables. It leverages Pandas to read the CSV files and load them into the database."},{"@type":["Person"],"@id":"https://mungingdata.com/#/schema/person/b1835097ad5210de0c25a3716a361b69","name":"mrpowers","image":{"@type":"ImageObject","@id":"https://mungingdata.com/#authorlogo","url":"https://secure.gravatar.com/avatar/3b5e38afbccf47011db011b392f8a178?s=96&amp;d=mm&amp;r=g","caption":"mrpowers"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="//js.hs-scripts.com" />
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//s.w.org" />
+<link rel="alternate" type="application/rss+xml" title="MungingData » Feed" href="https://mungingdata.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="MungingData » Comments Feed" href="https://mungingdata.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="MungingData » Creating a sqlite database from CSVs with Python Comments Feed" href="https://mungingdata.com/sqlite/create-database-load-csv-python/feed/" />
+<link rel="pingback" href="https://mungingdata.com/xmlrpc.php" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.12.3 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+    (window.gaDevIds=window.gaDevIds||[]).push("dZGIzZG");
+	var mi_version         = '7.12.3';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-118586561-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') &gt; -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	if ( 'undefined' === typeof gaOptout ) {
+		function gaOptout() {
+			__gaTrackerOptout();
+		}
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-118586561-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('require', 'displayfeatures');
+		__gaTracker('require', 'linkid', 'linkid.js');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/mungingdata.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.11"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&amp;&amp;i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r&lt;o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&amp;&amp;!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&amp;&amp;t.supports[o[r]],"flag"!==o[r]&amp;&amp;(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&amp;&amp;t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&amp;&amp;!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&amp;&amp;t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&amp;&amp;n.twemoji&amp;&amp;(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<link rel="stylesheet" id="wp-block-library-css" href="https://mungingdata.com/wp-includes/css/dist/block-library/style.min.css?ver=5.5.11" type="text/css" media="all" />
+<link rel="stylesheet" id="stargazer-font-css" href="https://fonts.googleapis.com/css?family=Droid+Serif%3A400%2C700%2C400italic%2C700italic%7COpen+Sans%3A300%2C400%2C600%2C700&amp;ver=5.5.11#038;subset=latin,latin-ext" type="text/css" media="all" />
+<link rel="stylesheet" id="hybrid-one-five-css" href="https://mungingdata.com/wp-content/themes/stargazer/library/css/one-five.min.css?ver=4.0.0" type="text/css" media="all" />
+<link rel="stylesheet" id="hybrid-gallery-css" href="https://mungingdata.com/wp-content/themes/stargazer/library/css/gallery.min.css?ver=4.0.0" type="text/css" media="all" />
+<link rel="stylesheet" id="stargazer-mediaelement-css" href="https://mungingdata.com/wp-content/themes/stargazer/css/mediaelement.min.css?ver=5.5.11" type="text/css" media="all" />
+<link rel="stylesheet" id="stargazer-media-css" href="https://mungingdata.com/wp-content/themes/stargazer/css/media.min.css?ver=5.5.11" type="text/css" media="all" />
+<link rel="stylesheet" id="hybrid-style-css" href="https://mungingdata.com/wp-content/themes/stargazer/style.min.css?ver=5.5.11" type="text/css" media="all" />
+<link rel="stylesheet" id="enlighter-local-css" href="https://mungingdata.com/wp-content/plugins/enlighter/resources/EnlighterJS.min.css?ver=3.10.0" type="text/css" media="all" />
+<script type="text/javascript" id="monsterinsights-frontend-script-js-extra">
+/* &lt;![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/mungingdata.com","hash_tracking":"false"};
+/* ]]&gt; */
+</script>
+<script type="text/javascript" src="https://mungingdata.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.12.3" id="monsterinsights-frontend-script-js"></script>
+<script type="text/javascript" src="https://mungingdata.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp" id="jquery-core-js"></script>
+<link rel="https://api.w.org/" href="https://mungingdata.com/wp-json/" /><link rel="alternate" type="application/json" href="https://mungingdata.com/wp-json/wp/v2/posts/339" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mungingdata.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://mungingdata.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.5.11" />
+<link rel="shortlink" href="https://mungingdata.com/?p=339" />
+<link rel="alternate" type="application/json+oembed" href="https://mungingdata.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmungingdata.com%2Fsqlite%2Fcreate-database-load-csv-python%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://mungingdata.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmungingdata.com%2Fsqlite%2Fcreate-database-load-csv-python%2F&amp;format=xml" />
+			<!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v8.0.1-->
+			<script type="text/javascript">
+				var _hsq = _hsq || [];
+				_hsq.push(["setContentType", "blog-post"]);
+			</script>
+			<!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
+						<script>
+				(function() {
+					var hbspt = window.hbspt = window.hbspt || {};
+					hbspt.forms = hbspt.forms || {};
+					hbspt._wpFormsQueue = [];
+					hbspt.enqueueForm = function(formDef) {
+						if (hbspt.forms &amp;&amp; hbspt.forms.create) {
+							hbspt.forms.create(formDef);
+						} else {
+							hbspt._wpFormsQueue.push(formDef);
+						}
+					}
+					if (!window.hbspt.forms.create) {
+						Object.defineProperty(window.hbspt.forms, 'create', {
+							configurable: true,
+							get: function() {
+								return hbspt._wpCreateForm;
+							},
+							set: function(value) {
+								hbspt._wpCreateForm = value;
+								while (hbspt._wpFormsQueue.length) {
+									var formDef = hbspt._wpFormsQueue.shift();
+									if (!document.currentScript) {
+										var formScriptId = 'leadin-forms-v2-js';
+										hubspot.utils.currentScript = document.getElementById(formScriptId);
+									}
+									hbspt._wpCreateForm.call(hbspt.forms, formDef);
+								}
+							},
+						});
+					}
+				})();
+			</script>
+		
+<style type="text/css" id="custom-colors-css">a, .wp-playlist-light .wp-playlist-playing, .wp-embed-comments a,.wp-embed-share-dialog-open, .wp-embed a { color: rgba( 204, 74, 0, 0.75 ); } a:hover, a:focus, legend, mark, .comment-respond .required, pre,.form-allowed-tags code, pre code,.wp-playlist-light .wp-playlist-item:hover,.wp-playlist-light .wp-playlist-item:focus,.mejs-button button:hover::after, .mejs-button button:focus::after,.mejs-overlay-button:hover::after, .mejs-overlay-button:focus::after,.wp-embed-comments a:hover, .wp-embed-comments a:focus,.wp-embed-share-dialog-open:hover, .wp-embed-share-dialog-open:focus,.wp-embed a:hover, .wp-embed a:focus{ color: #cc4a00; } input[type='submit'], input[type='reset'], input[type='button'], button, .page-links a,.comment-reply-link, .comment-reply-login, .wp-calendar td.has-posts a, #menu-sub-terms li a{ background-color: rgba( 204, 74, 0, 0.8 ); } legend, mark, pre, .form-allowed-tags code { background-color: rgba( 204, 74, 0, 0.1 ); } input[type='submit']:hover, input[type='submit']:focus,input[type='reset']:hover, input[type='reset']:focus,input[type='button']:hover, input[type='button']:focus,button:hover, button:focus,.page-links a:hover, .page-links a:focus,.wp-calendar td.has-posts a:hover, .wp-calendar td.has-posts a:focus,.widget-title &gt; .wrap,#comments-number &gt; .wrap, #reply-title &gt; .wrap, .attachment-meta-title &gt; .wrap,.widget_search &gt; .search-form,#menu-sub-terms li a:hover, #menu-sub-terms li a:focus,.comment-reply-link:hover, .comment-reply-link:focus,.comment-reply-login:hover, .comment-reply-login:focus,.mejs-time-rail .mejs-time-loaded, .skip-link .screen-reader-text{ background-color: #cc4a00; } ::selection { background-color: #cc4a00; } legend { border-color: rgba( 204, 74, 0, 0.15 ); } body { border-top-color: #cc4a00; } .entry-content a, .entry-summary a, .comment-content a { border-bottom-color: rgba( 204, 74, 0, 0.15 ); } .entry-content a:hover, .entry-content a:focus,           .entry-summary a:hover, .entry-summary a:focus,           .comment-content a:hover, .comment-content a:focus           { border-bottom-color: rgba( 204, 74, 0, 0.75 ); } body, .widget-title, #comments-number, #reply-title,.attachment-meta-title { border-bottom-color: #cc4a00; } blockquote { background-color: rgba( 204, 74, 0, 0.85 ); } blockquote blockquote { background-color: rgba( 204, 74, 0, 0.9 ); } blockquote { outline-color: rgba( 204, 74, 0, 0.85); }</style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-header-css">body.custom-header #site-title a { color: #252525; }</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background: #2d2d2d; }</style>
+<base href="https://mungingdata.com/sqlite/create-database-load-csv-python/" /></head>
+
+<body class="wordpress ltr en en-us parent-theme y2022 m12 d08 h21 thursday logged-out custom-background custom-header display-header-text singular singular-post singular-post-339 post-template-default post-format-standard layout-2c-l custom-colors" dir="ltr" itemscope="itemscope" itemtype="http://schema.org/Blog">
+
+	<div id="container">
+
+		<div class="skip-link">
+			<a href="#content" class="screen-reader-text">Skip to content</a>
+		</div><!-- .skip-link -->
+
+		
+		<div class="wrap">
+
+			<header class="site-header" id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+
+				
+					<div id="branding">
+						
+													<h1 class="site-title" id="site-title" itemprop="headline"><a href="https://mungingdata.com" rel="home">MungingData</a></h1>							<h2 class="site-description" id="site-description" itemprop="description">Piles of precious data</h2>											</div><!-- #branding -->
+
+				
+				
+			</header><!-- #header -->
+
+			
+				<img class="header-image" src="https://mungingdata.com/wp-content/themes/stargazer/images/headers/orange-burn.jpg" alt="" width="1175" height="400" />
+
+			
+			<div id="main" class="main">
+
+				
+	<nav role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><ul class="trail-items" itemscope="" itemtype="http://schema.org/BreadcrumbList"><meta name="numberOfItems" content="3" /><meta name="itemListOrder" content="Ascending" /><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="trail-item trail-begin"><a href="https://mungingdata.com/" rel="home"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="trail-item"><a href="https://mungingdata.com/category/sqlite/"><span itemprop="name">sqlite</span></a><meta itemprop="position" content="2" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="trail-item trail-end"><span itemprop="name">Creating a sqlite database from CSVs with Python</span><meta itemprop="position" content="3" /></li></ul></nav>
+
+<main class="content" id="content" role="main">
+
+	
+	
+		
+			
+			<article class="entry author-mrpowers post-339 post type-post status-publish format-standard category-sqlite" id="post-339" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+
+	
+		<header class="entry-header">
+
+			<h1 class="entry-title" itemprop="headline">Creating a sqlite database from CSVs with Python</h1>
+
+			<div class="entry-byline">
+				<span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><a href="https://mungingdata.com/author/mrpowers/" title="Posts by mrpowers" rel="author" class="url fn n" itemprop="url"><span itemprop="name">mrpowers</span></a></span>
+				<time class="entry-published updated" datetime="2020-09-16T01:02:07+00:00" itemprop="datePublished" title="Wednesday, September 16, 2020, 1:02 am">September 16, 2020</time>
+				<a href="https://mungingdata.com/sqlite/create-database-load-csv-python/#comments" class="comments-link" itemprop="discussionURL">1</a>											</div><!-- .entry-byline -->
+
+		</header><!-- .entry-header -->
+
+		<div class="entry-content" itemprop="articleBody">
+			
+<p>This blog post demonstrates how to build a sqlite database from CSV files.</p>
+
+
+
+<p>Python is perfect language for this task because it has great libraries for sqlite and CSV DataFrames.</p>
+
+
+
+<h2>Creating a sqlite database</h2>
+
+
+
+<p>sqlite is a lightweight database that can be started as an empty text file.  You can create the file with <code>touch my_data.db</code> or with this equivalent Python code:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">from pathlib import Path
+Path('my_data.db').touch()</pre>
+
+
+
+<p>A zero byte text file is a great starting point for a lightweight database!</p>
+
+
+
+<h2>Creating sqlite table</h2>
+
+
+
+<p>Create a database connection and cursor to execute queries.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import sqlite3
+
+conn = sqlite3.connect('my_data.db')
+c = conn.cursor()</pre>
+
+
+
+<p>Execute a query that’ll create a <code>users</code> table with <code>user_id</code> and <code>username</code> columns.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">c.execute('''CREATE TABLE users (user_id int, username text)''')</pre>
+
+
+
+<h2>Load CSV file into sqlite table</h2>
+
+
+
+<p>Suppose you have the following <code>users.csv</code> file:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">user_id,username
+1,pokerkid
+2,crazyken</pre>
+
+
+
+<p>Pandas makes it easy to load this CSV data into a sqlite table:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import pandas as pd
+
+# load the data into a Pandas DataFrame
+users = pd.read_csv('users.csv')
+# write the data to a sqlite table
+users.to_sql('users', conn, if_exists='append', index = False)</pre>
+
+
+
+<p>The <code>to_sql</code> method makes it easy to write DataFrames to databases.</p>
+
+
+
+<h2>Fetch values from sqlite table</h2>
+
+
+
+<p>Fetch all the rows from the <code>users</code> table:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">c.execute('''SELECT * FROM users''').fetchall() # [(1, 'pokerkid'), (2, 'crazyken')]</pre>
+
+
+
+<p>The <code>fetchall()</code> method returns an array of tuples.</p>
+
+
+
+<p><code>c.execute()</code> returns a <code>sqlite3.Cursor</code> object.  Cursors can be thought of as iterators in the database world.</p>
+
+
+
+<h2>Load another CSV into the databases</h2>
+
+
+
+<p>Suppose you have the following <code>orders.csv</code> file:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">order_id,user_id,item_name
+1,1,speaker
+2,1,phone
+3,2,spoon
+4,2,fork
+5,2,speaker</pre>
+
+
+
+<p>Create a table and then load the orders data into the database.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">c.execute('''CREATE TABLE orders (order_id int, user_id int, item_name text)''')
+orders = pd.read_csv('orders.csv') # load to DataFrame
+orders.to_sql('orders', conn, if_exists='append', index = False) # write to sqlite table</pre>
+
+
+
+<h2>Fetch results of database join</h2>
+
+
+
+<p>Join the <code>users</code> and <code>orders</code> tables on the <code>user_id</code> value and print the results:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">c.execute('''SELECT * FROM users u LEFT JOIN orders o ON u.user_id = o.user_id''')
+c.fetchall()</pre>
+
+
+
+<p>Here’s the array that’s returned:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">[(1, 'pokerkid', 1, 1, 'speaker'),
+ (1, 'pokerkid', 2, 1, 'phone'),
+ (2, 'crazyken', 3, 2, 'spoon'),
+ (2, 'crazyken', 4, 2, 'fork'),
+ (2, 'crazyken', 5, 2, 'speaker')]</pre>
+
+
+
+<p>You can also read the SQL query directly into a Pandas DataFrame.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">pd.read_sql('''SELECT * FROM users u LEFT JOIN orders o ON u.user_id = o.user_id''', conn)</pre>
+
+
+
+<figure class="wp-block-image"><img loading="lazy" src="https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM.png" alt="" class="wp-image-340" srcset="https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM.png 353w, https://mungingdata.com/wp-content/uploads/2020/09/Screen-Shot-2020-09-15-at-5.04.17-PM-300x141.png 300w" sizes="(max-width: 353px) 100vw, 353px" width="353" height="166" /></figure>
+
+
+
+<h2>Next steps</h2>
+
+
+
+<p>Python’s build in sqlite library coupled with Pandas DataFrames makes it easy to load CSV data into sqlite databases.</p>
+
+
+
+<p>sqlite databases are great for local experimentation and are used extensively on mobile phones.  It’s a great database when you’d like relational database query functionality without the overhead of Postgres.</p>
+
+
+
+<p>Python’s great support for sqlite will make you love it in no time.</p>
+<div class="awac-wrapper"><div class="awac widget text-3"><h4 class="widget-title">Registration</h4>			<div class="textwidget">
+					<script>
+						hbspt.enqueueForm({
+							portalId: 19944734,
+							formId: "c496ac0d-52fc-42c2-a93f-c82c6d5f7b63",
+							target: "#hbspt-form-1670536405000-7680439389",
+							shortcode: "wp",
+							
+						});
+					</script>
+					<div class="hbspt-form" id="hbspt-form-1670536405000-7680439389"></div>
+</div>
+		</div></div>					</div><!-- .entry-content -->
+
+		<footer class="entry-footer">
+			<span class="entry-terms category" itemprop="articleSection">Posted in <a href="https://mungingdata.com/category/sqlite/" rel="tag">sqlite</a></span>					</footer><!-- .entry-footer -->
+
+	
+</article><!-- .entry -->
+			
+				
+<section id="comments-template">
+
+	
+		<div id="comments">
+
+			<h3 id="comments-number">1 Comment</h3>
+
+			<ol class="comment-list">
+				<li class="comment odd alt thread-odd thread-alt depth-1 has-avatar" id="comment-9899" itemprop="comment" itemscope="itemscope" itemtype="http://schema.org/Comment">
+
+	<article>
+		<header class="comment-meta">
+			<img alt="" src="https://secure.gravatar.com/avatar/e98a3c76be0df2109c4b7dca7bc405f7?s=96&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e98a3c76be0df2109c4b7dca7bc405f7?s=192&amp;d=mm&amp;r=g 2x" class="avatar avatar-96 photo" loading="lazy" itemprop="image" width="96" height="96" />			<cite class="comment-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">MEETKUMAR BHATT</cite><br />
+			<time class="comment-published" datetime="2021-03-23T13:54:24+00:00" title="Tuesday, March 23, 2021, 1:54 pm" itemprop="datePublished">2 years ago</time>
+			<a class="comment-permalink" href="https://mungingdata.com/sqlite/create-database-load-csv-python/#comment-9899" itemprop="url">Permalink</a>
+					</header><!-- .comment-meta -->
+
+		<div class="comment-content" itemprop="text">
+
+			
+			<p>what i need to do if i have more than one file csv and that i want to upload to create sqlite dat frame</p>
+		</div><!-- .comment-content -->
+
+			</article>
+
+</li><!-- .comment -->			</ol><!-- .comment-list -->
+
+			
+		</div><!-- #comments-->
+
+	
+	
+	<p class="comments-closed pings-open">
+		Comments are closed, but <a href="https://mungingdata.com/sqlite/create-database-load-csv-python/trackback/">trackbacks</a> and pingbacks are open.	</p><!-- .comments-closed .pings-open -->
+
+
+	
+</section><!-- #comments-template -->
+			
+		
+		
+	<div class="loop-nav">
+		<div class="prev">Previous Post: <a href="https://mungingdata.com/python/jupyter-workflow-poetry-pandas/" rel="prev">Amazing Python Data Workflow with Poetry, Pandas, and Jupyter</a></div>		<div class="next">Next Post: <a href="https://mungingdata.com/sqlite/export-tables-queries-to-csv-parquet/" rel="next">Write sqlite tables to CSV / Parquet files</a></div>	</div><!-- .loop-nav -->
+
+
+	
+</main><!-- #content -->
+
+				
+	<aside class="sidebar sidebar-primary" role="complementary" id="sidebar-primary" aria-label="Primary Sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+
+		<h3 id="sidebar-primary-title" class="screen-reader-text">Primary Sidebar</h3>
+
+		
+			<section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://mungingdata.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></section>
+		<section id="recent-posts-2" class="widget widget_recent_entries">
+		<h3 class="widget-title">Recent Posts</h3>
+		<ul>
+											<li>
+					<a href="https://mungingdata.com/devrel/virtuous-content-cycle-developer-advocates/">The Virtuous Content Cycle for Developer Advocates</a>
+									</li>
+											<li>
+					<a href="https://mungingdata.com/devrel/devrel-driven-development/">DevRel Driven Development</a>
+									</li>
+											<li>
+					<a href="https://mungingdata.com/apache-spark/convert-csv-to-delta-lake-latency-trigger/">Convert streaming CSV data to Delta Lake with different latency requirements</a>
+									</li>
+											<li>
+					<a href="https://mungingdata.com/pyspark/install-delta-lake-jupyter-conda-mac/">Install PySpark, Delta Lake, and Jupyter Notebooks on Mac with conda</a>
+									</li>
+											<li>
+					<a href="https://mungingdata.com/investing/ultra-cheap-real-estate-1000-square-meter/">Ultra-cheap international real estate markets in 2022</a>
+									</li>
+					</ul>
+
+		</section><section id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Chris Winne</span> on <a href="https://mungingdata.com/pyspark/chaining-dataframe-transformations/#comment-20486">Chaining Custom PySpark DataFrame Transformations</a></li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.kayswell.com" rel="external nofollow ugc" class="url fn n" itemprop="url"><span itemprop="name">KAYSWELL</span></a></span> on <a href="https://mungingdata.com/scala/serializing-deserializing-case-classes/#comment-19635">Serializing and Deserializing Scala Case Classes with JSON</a></li><li class="recentcomments"><span class="comment-author-link">mrpowers</span> on <a href="https://mungingdata.com/apache-spark/dataframe-summary-describe/#comment-11740">Exploring DataFrames with summary and describe</a></li><li class="recentcomments"><span class="comment-author-link">carlo sancassani</span> on <a href="https://mungingdata.com/apache-spark/week-end-start-dayofweek-next-day/#comment-11415">Calculating Week Start and Week End Dates with Spark</a></li><li class="recentcomments"><span class="comment-author-link">Andrew</span> on <a href="https://mungingdata.com/apache-spark/dataframe-summary-describe/#comment-11258">Exploring DataFrames with summary and describe</a></li></ul></section><section id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>
+			<ul>
+					<li><a href="https://mungingdata.com/2022/09/">September 2022</a></li>
+	<li><a href="https://mungingdata.com/2022/06/">June 2022</a></li>
+	<li><a href="https://mungingdata.com/2022/01/">January 2022</a></li>
+	<li><a href="https://mungingdata.com/2021/12/">December 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/11/">November 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/10/">October 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/08/">August 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/06/">June 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/05/">May 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/04/">April 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/03/">March 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/02/">February 2021</a></li>
+	<li><a href="https://mungingdata.com/2021/01/">January 2021</a></li>
+	<li><a href="https://mungingdata.com/2020/12/">December 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/11/">November 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/10/">October 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/09/">September 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/08/">August 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/07/">July 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/06/">June 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/04/">April 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/03/">March 2020</a></li>
+	<li><a href="https://mungingdata.com/2020/01/">January 2020</a></li>
+	<li><a href="https://mungingdata.com/2019/12/">December 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/11/">November 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/10/">October 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/09/">September 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/08/">August 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/07/">July 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/04/">April 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/03/">March 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/02/">February 2019</a></li>
+	<li><a href="https://mungingdata.com/2019/01/">January 2019</a></li>
+	<li><a href="https://mungingdata.com/2018/12/">December 2018</a></li>
+	<li><a href="https://mungingdata.com/2018/10/">October 2018</a></li>
+	<li><a href="https://mungingdata.com/2018/09/">September 2018</a></li>
+	<li><a href="https://mungingdata.com/2018/07/">July 2018</a></li>
+	<li><a href="https://mungingdata.com/2018/05/">May 2018</a></li>
+	<li><a href="https://mungingdata.com/2018/04/">April 2018</a></li>
+	<li><a href="https://mungingdata.com/2017/10/">October 2017</a></li>
+	<li><a href="https://mungingdata.com/2017/01/">January 2017</a></li>
+			</ul>
+
+			</section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://mungingdata.com/category/apache-spark/">Apache Spark</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://mungingdata.com/category/aws/">AWS</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://mungingdata.com/category/books/">books</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="https://mungingdata.com/category/career/">Career</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://mungingdata.com/category/creator/">Creator</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://mungingdata.com/category/dask/">Dask</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://mungingdata.com/category/delta-lake/">Delta Lake</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://mungingdata.com/category/devrel/" title="Developer relations">DevRel</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://mungingdata.com/category/emacs/" title="Text editing with Emacs">Emacs</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://mungingdata.com/category/github/" title="GitHub features">github</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://mungingdata.com/category/go/">Golang</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="https://mungingdata.com/category/investing/">Investing</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://mungingdata.com/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="https://mungingdata.com/category/numpy/">NumPy</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://mungingdata.com/category/oss/">OSS</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://mungingdata.com/category/pandas/">Pandas</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="https://mungingdata.com/category/pyarrow/">PyArrow</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://mungingdata.com/category/pyspark/" title="PySpark">PySpark</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://mungingdata.com/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://mungingdata.com/category/scala/">Scala</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://mungingdata.com/category/spark-3/" title="New features in Spark 3">Spark 3</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://mungingdata.com/category/sqlite/">sqlite</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://mungingdata.com/category/unix/">Unix</a>
+</li>
+			</ul>
+
+			</section><section id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>
+		<ul>
+						<li><a rel="nofollow" href="https://mungingdata.com/wp-login.php">Log in</a></li>
+			<li><a href="https://mungingdata.com/feed/">Entries feed</a></li>
+			<li><a href="https://mungingdata.com/comments/feed/">Comments feed</a></li>
+
+			<li><a href="https://wordpress.org/">WordPress.org</a></li>
+		</ul>
+
+		</section>
+		
+	</aside><!-- #sidebar-primary -->
+
+
+			</div><!-- #main -->
+
+			
+		</div><!-- .wrap -->
+
+		<footer class="site-footer" id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+
+			<div class="wrap">
+
+				
+				<p class="credit">
+					Copyright © 2022 <a class="site-link" href="https://mungingdata.com" rel="home">MungingData</a>. Powered by <a class="wp-link" href="https://wordpress.org">WordPress</a> and <a class="theme-link" href="https://themehybrid.com/themes/stargazer">Stargazer</a>.				</p><!-- .credit -->
+
+			</div><!-- .wrap -->
+
+		</footer><!-- #footer -->
+
+	</div><!-- #container -->
+
+	<script type="text/javascript" id="leadin-script-loader-js-js-extra">
+/* &lt;![CDATA[ */
+var leadin_wordpress = {"userRole":"visitor","pageType":"post","leadinPluginVersion":"8.0.1"};
+/* ]]&gt; */
+</script>
+<script type="text/javascript" src="https://js.hs-scripts.com/19944734.js?integration=WordPress" async="" defer="defer" id="hs-script-loader"></script>
+<script type="text/javascript" id="stargazer-js-extra">
+/* &lt;![CDATA[ */
+var stargazer_i18n = {"search_toggle":"Expand Search Form"};
+/* ]]&gt; */
+</script>
+<script type="text/javascript" src="https://mungingdata.com/wp-content/themes/stargazer/js/stargazer.min.js" id="stargazer-js"></script>
+<script type="text/javascript" src="https://mungingdata.com/wp-content/plugins/enlighter/resources/mootools-core-yc.js?ver=3.10.0" id="mootools-local-js"></script>
+<script type="text/javascript" src="https://mungingdata.com/wp-content/plugins/enlighter/resources/EnlighterJS.min.js?ver=3.10.0" id="enlighter-local-js"></script>
+<script type="text/javascript" src="https://mungingdata.com/wp-includes/js/wp-embed.min.js?ver=5.5.11" id="wp-embed-js"></script>
+<script type="text/javascript" src="https://js.hsforms.net/forms/v2.js" id="leadin-forms-v2-js"></script>
+<script type="text/javascript">/* &lt;![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"enlighter","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":true,"windowButton":true,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&amp;&amp;console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]&gt; */</script>
+
+</body></html>

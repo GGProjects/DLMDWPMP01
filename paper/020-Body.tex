@@ -7,7 +7,16 @@ Anschließend soll das gleiche Programm die Punkte eines Testdatensatzes, anhand
 Fokus der vorliegenden Aufgabenstellung, sowie dieser Arbeit war jedoch primär die Erlernung der Programmiersprache Python und nicht die ausschließliche Erfüllung der beschriebenen mathematischen Aspekte. Diese, isoliert betrachtet, hätte ebenso in Form eines einfachen Jupyter-Notebooks erarbeitet werden können.
 
 
-\section{Installationshinweise}
+\section{Struktur der Hausarbeit}
+
+Im Hauptteil der vorliegenden Hausarbeit wird zuerst auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
+Anschließend wird in einem weiteren Abschnitt die Auswahl idealtypischer Funktionen anhand der vorliegenden Trainingsdaten beschrieben und dargestellt.
+Der dritte Abschnitt diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
+In der Zusammenfassung werden, anhand der dargestellten Ergebnisse, Ansätze für mögliche Anpassungen des Programms zur Verarbeitung größerer Datenmengen erneut aufgegriffen und als potentielles Thema für eine weitere Hausarbeit zur Diskussion gestellt.
+
+\chapter{Hauptteil}
+
+\section{Installation und Konfiguration}
 
 Das Programm wurde vom Autor mit dem Namen \emph{"functionfinder"} betitelt und steht auf GitHub unter dem Link \begin{center}\url{https://github.com/GGProjects/DLMDWPMP01}\end{center} zum Download zur Verfügung.
 
@@ -17,7 +26,7 @@ Die übrigen Verzeichnisse stehen für die bereitgestellten Daten (\emph{data}),
 \definecolor{mygray}{rgb}{0.9,0.9,0.9}
 \lstset{backgroundcolor=\color{mygray},
 	captionpos=b,  % sets the caption-position to bottom
-	emph={functionfinder}, 
+	emph={functionfinder, ffrunner}, 
 	emphstyle=\color{red},
 	basicstyle=\small,
 	frame=single,
@@ -47,22 +56,13 @@ Eine detaillierte Ausgabe der Ergebnisse der UnitTests kann mittels Konsolenbefe
 \end{center}
 erreicht werden. 
 
-\section{Konfigurationshinweise}
+\subsection{Konfiguration}
 
 Über Änderungen in der Datei \emph{functionfinder/config.py} können, falls benötigt, Verzeichnispfade, Log-Einstellungen, Bewertungsfunktionen, sowie auch die Pfade zu den vorliegenden Datendateien angepasst werden.
 
 Letzteres ermöglicht eine einfache Änderung der verwendeten Trainings-, Funktions- und Testdaten, um das Programm auch mit anderen als den, im Rahmen der Aufgabenstellung, bereitgestellten Daten auszuführen.
 
 Eine Anpassung der Bewertungsfunktionen bietet des weiteren die Möglichkeit, die zur Bewertung der Trainingsdaten herangezogene Funktion (der Standardwert ist hierfür die kleinste Summe der quadratischen Abweichungen) sowie den Faktor für den errechneten Fehlerwert, zur Klassifikation der Testdaten (der Standardwert ist, gemäß Aufgabenstellung, die Wurzel aus Zwei) zu verändern.
-
-\section{Struktur der Hausarbeit}
-
-Im Hauptteil der vorliegenden Hausarbeit wird zuerst auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
-Anschließend wird in einem weiteren Abschnitt die Auswahl idealtypischer Funktionen anhand der vorliegenden Trainingsdaten beschrieben und dargestellt.
-Der dritte Abschnitt diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
-In der Zusammenfassung werden, anhand der dargestellten Ergebnisse, Ansätze für mögliche Anpassungen des Programms zur Verarbeitung größerer Datenmengen erneut aufgegriffen und als potentielles Thema für eine weitere Hausarbeit zur Diskussion gestellt.
-
-\chapter{Hauptteil}
 
 \section{Bereitgestellte Datensätze}
 
@@ -98,17 +98,25 @@ Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen
 \begin{table}[H]
 \small
 \centering
-\csvreader[
-	tabular = ccccc,
-	range={+5},
-	late after line = \\\hline,
-	no head]%
-  {../data/ideal.csv}{}{%
-  \csvcoli & \csvcolii & \csvcoliii & \csvcoll & \csvcolli}
-%\csvautotabular[range={+5}]{../data/ideal.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoll & %\csvcolli}
-\caption{Exemplarischer Auszug der Datei ideal.csv}
+\csvautotabular[range={+5}]{ideal.csv}
+\caption{Exemplarischer Auszug der Datei train.csv}
 \label{tab:ideal.csv}
 \end{table} 
+
+%\begin{table}[H]
+%\small
+%\centering
+%\csvreader[
+%	tabular = ccccc,
+%	range={+5},
+%	late after line = \\\hline,
+%	no head]%
+% {../data/ideal.csv}{}{%
+%  \csvcoli & \csvcolii & \csvcoliii & \csvcoll & \csvcolli}
+%\csvautotabular[range={+5}]{../data/ideal.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoll & %\csvcolli}
+%\caption{Exemplarischer Auszug der Datei ideal.csv}
+%\label{tab:ideal.csv}
+%\end{table} 
 
 Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatensatz nur aus 100 einzelnen Datenpunkten. Diese werden in einer Spalte \emph{y} der Datei \emph{test.csv} zusammengefasst und sind nicht als zusammengehörige Funktion zu verstehen. 
 
@@ -222,13 +230,19 @@ Bei der Bearbeitung der zur Aufgabe übergebenen Datensätze waren hierbei zwei 
 
 In den oben angeführten Tabellen wird die Distanz der beiden betroffenen Datenpunkte zu den vier gewählten Funktionen ersichtlich. In der Zuweisung wurden dennoch jene Funktionen mit dem geringsten Abstand gewählt (grafisch hervorgehoben).
 
-In der grafischen Repräsentation der Ergebnisse ist die Annäherung der einzelnen Datenpunkte des Testdatensatzes an die gewählten idealtypischen Funktionen gut erkennbar. Jene beiden Datenpunkte, die im Vergleich den definierten Maximalabstand überschritten haben werden durch das Symbol $x$ dargestellt. Wobei hier die optische Beurteilung des zweiten Punktes eher eine Tendenz zur Funktion \emph{y36} vermuten ließe, als zur Funktion \emph{y33}. In der oben angeführten Darstellung zu diesem Datenpunkt wird aber auch deutlich, dass die Berechneten Abstände tatsächlich sehr nahe beieinander liegen.
+In der grafischen Repräsentation der Ergebnisse ist die Annäherung der einzelnen Datenpunkte des Testdatensatzes an die gewählten idealtypischen Funktionen gut erkennbar. Jene beiden Datenpunkte, die im Vergleich den definierten Maximalabstand überschritten haben werden durch das Symbol $x$ dargestellt und liegen etwa bei den Koordinaten 
+$(\begin{array}x\\y\\z\end{array})$
+$ \begin{pmatrix}-7 \\81 \end{pmatrix}$ sowie 
+$ \begin{pmatrix}0 // 60 \end{pmatrix}$. 
+Wobei hier die optische Beurteilung des zweiten Punktes eher eine Tendenz zur Funktion \emph{y36} vermuten ließe, als zur Funktion \emph{y33}. In der oben angeführten Darstellung zu diesem Datenpunkt wird aber auch deutlich, dass die Berechneten Abstände tatsächlich sehr nahe beieinander liegen.
 
 Würde die Distanz allerdings unter dem Aspekt der Relation zur berechneten Abweichung betrachtet werden, entspräche die Klassifikation der oben angesprochenen, optischen Beurteilung. 
 
-y33: $ \frac{57.424227\ -\ Punktabweichung}{31.752431\ -\ Fehlerwert\ Funktion\ y33} = 1.808498 $ 
+\begin{center}
+y33: $ \frac{57.424227\ (Punktabweichung)}{31.752431\ (Fehlerwert\ Funktion\ y33)} = 1.808498 $ 
 
-y36: $ \frac{58.180330\ -\ Punktabweichung}{33.711788\ -\ Fehlerwert\ Funktion\ y36} = 1.725815 $
+y36: $ \frac{58.180330\ (Punktabweichung)}{33.711788\ (Fehlerwert\ Funktion\ y36)} = 1.725815 $
+\end{center}
 
 Eine Klassifikation unter Berücksichtigung der berechneten Abweichung $a$ für jeder der ausgewählten idealtypischen Funktionen, wäre aus Sicht des Autors, eine mögliche Weiterentwicklung des Programmes.
 
@@ -257,97 +271,6 @@ Des Weiteren wurden in den vorangegangenen Abschnitten zwei Themenbereiche anges
 
 Durch diese beiden Anpassungen könnte voraussichtlich die Effizienz des Programmes in der Verarbeitung größerer Datensätze, sowie die Genauigkeit der Klassifikation der Testdaten gesteigert werden. Die Validierung dieser Vermutung wäre, aus Sicht des Autors, eine mögliche Fragestellung für eine weiterführende Arbeit. 
 
-Kompatibilität auf anderen Plattformen wie IOS IPad, Linux
-
-% =========================================================
-\section{Literature References}
-Here is an example of a reference with a page-number: \cite[S. 6]{DueckKo:2016}
+Kompatibilität \cite{dunn_getting_2017-1}auf anderen Plattformen wie IOS IPad, Linux  \citep[][S. 22]{lampe_clean_2020} 
 
 
-\section{Pictures}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=8cm]{pics/spiral.pdf}
-\caption{A spiral... smooth vector-based with a clean parametrisation! \\ Nothing to do with \cite{Gage:18}}\label{fig:spiral}
-\end{figure}
-\FloatBarrier
-
-\section{Tables}
-
-\begin{table}[H]
-\small
-\centering
-\begin{tabular}{p{5cm}|l|p{3cm}}
-`` Industrial era '' &  ``Jobs '' & `` Wanted: Upgrade''' \\ \hline
-Parts exchanger & Fitter & mecatronics specialist \\
-eShop & reseller & `` Client-suggester'' \\
-`` Coding-guru''' & Softwaredesign & Whole-life designer \\
-JA! Gut \& Günstig & brand-names & `` Life-Style Feeling'' \\
-Internetbanking & Bank clerk & Customer adviser \\
-Robots & Specialist & Machine supervisor \\
-Bush & Gardener & Nature-sculptor \\
-Painting & Painter & Interior Design \\
- &  & \\
-\end{tabular}
-\caption[Downgrade and upgrade of job denominations]{Downgrade and Upgrade of job denominations \\ \ \ \ \cite{DueckKo:2016}}
-\label{tab:Downgrade and Upgrade of job denominations}
-\end{table} 
-
-\section{Listes}
-
-\begin{itemize}
- \itemsep0pt
- \item one
- \item twoi
- \item threei
-\end{itemize}
-
-\begin{enumerate}
- \itemsep0pt
- \item first
- \item second
- \item third
-\end{enumerate}
-
-
-\section{Formulæ}
-
-A formula can be written inline, e.g. as $ \frac{d}{dx}\mbox{arctg}(x) = \frac{1}{1+x^2}$ or, in centered math:
-
-\begin{equation}  \frac{d}{dx}\mbox{arctg}(x) = \frac{1}{1+x^2} \label{arctanderivative}\end{equation}
-
-Notice that formulæ that are centered start bigger (technically, they start in \verb+\displaystyle+) than they start inline (technically, they start in \verb+\textstyle+ all subsequents reductions, e.g. an exponent, goes to \verb+\scriptstyle+ then \verb+\scriptscriptstyle+). Indeed a best effort is made so that inline formulæ do not change the line height which would bother the eye of a reader.
-
-Formulæ can be given a number and a label. Numbering happens automatically with \verb+\begin{equation}+ and \verb+\end{equation}+ and can be avoided if enclosing the formula betwee \verb+\[+ and \verb+\]+. If using the \verb+\label+ macro inside, you can refer automatically to this equation using \verb+\ref{label}+. E.g. Thanks to equation~\ref{arctanderivative} one dare say that:
-
-\begin{equation} \int_0^t \frac{1}{1+x^2} dx = \mbox{arctan}(t) \end{equation}
-
-
-\section{Tools and Code}
-
-Many users of this template will want to include some code.
-
-The simplest way to do so is to use the \verb+\verb+ macro which is followed by a sign, then some code, then the sign again to close. This is the inline version which works as in: 
-
-
-\begin{verbatim}
-As we could calculate with \cite{Wolfram_alpha} using 
-\verb_integrate 1 / pi e ^ (t/pi) from zero to infinity_.
-\end{verbatim}
-
-which yields: 
-
-As we could calculate with \cite{Wolfram_alpha} using \verb_integrate 1 / pi e ^ (t/pi)_ from zero to infinity.
-
-
-The multiline version of this is called \verb+\begin{verbatim}+ and finishes with \verb+\end{verbatim}+.
-
-
-\section{Citation examples}
-
-Monography \citep[][S. 22]{con:infra} 
-
-Collection \citep{sammelband} 
-
-Article \citep{article1}

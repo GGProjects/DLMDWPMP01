@@ -1,0 +1,946 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>tests.test_unit.test_sqlite &#8212; DLMDWPMP01 1.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="tests.test_unit.test_df" href="tests.test_unit.test_df.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.test_unit.test_df.html" title="tests.test_unit.test_df"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DLMDWPMP01 1.2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="tests.html" >tests</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="tests.test_unit.html" accesskey="U">tests.test_unit</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tests.test_unit.test_sqlite</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tests-test-unit-test-sqlite">
+<h1>tests.test_unit.test_sqlite<a class="headerlink" href="#tests-test-unit-test-sqlite" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_unit.</span></span><span class="sig-name descname"><span class="pre">test_sqlite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.__init__" title="tests.test_unit.test_sqlite.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([methodName])</p></td>
+<td><p>Create an instance of the class that will use the named test method when executed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.addClassCleanup" title="tests.test_unit.test_sqlite.addClassCleanup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addClassCleanup</span></code></a>(function, /, *args, **kwargs)</p></td>
+<td><p>Same as addCleanup, except the cleanup items are called even if setUpClass fails (unlike tearDownClass).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.addCleanup" title="tests.test_unit.test_sqlite.addCleanup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addCleanup</span></code></a>(function, /, *args, **kwargs)</p></td>
+<td><p>Add a function, with arguments, to be called when the test is completed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.addTypeEqualityFunc" title="tests.test_unit.test_sqlite.addTypeEqualityFunc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addTypeEqualityFunc</span></code></a>(typeobj, function)</p></td>
+<td><p>Add a type specific assertEqual style function to compare a type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertAlmostEqual" title="tests.test_unit.test_sqlite.assertAlmostEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertAlmostEqual</span></code></a>(first, second[, places, ...])</p></td>
+<td><p>Fail if the two objects are unequal as determined by their difference rounded to the given number of decimal places (default 7) and comparing to zero, or by comparing that the difference between the two objects is more than the given delta.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertAlmostEquals</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertCountEqual" title="tests.test_unit.test_sqlite.assertCountEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertCountEqual</span></code></a>(first, second[, msg])</p></td>
+<td><p>Asserts that two iterables have the same elements, the same number of times, without regard to order.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertDictContainsSubset" title="tests.test_unit.test_sqlite.assertDictContainsSubset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertDictContainsSubset</span></code></a>(subset, dictionary)</p></td>
+<td><p>Checks whether dictionary is a superset of subset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertDictEqual</span></code>(d1, d2[, msg])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertEqual" title="tests.test_unit.test_sqlite.assertEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertEqual</span></code></a>(first, second[, msg])</p></td>
+<td><p>Fail if the two objects are unequal as determined by the '==' operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertEquals</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertFalse" title="tests.test_unit.test_sqlite.assertFalse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertFalse</span></code></a>(expr[, msg])</p></td>
+<td><p>Check that the expression is false.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertGreater" title="tests.test_unit.test_sqlite.assertGreater"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertGreater</span></code></a>(a, b[, msg])</p></td>
+<td><p>Just like self.assertTrue(a &gt; b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertGreaterEqual" title="tests.test_unit.test_sqlite.assertGreaterEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertGreaterEqual</span></code></a>(a, b[, msg])</p></td>
+<td><p>Just like self.assertTrue(a &gt;= b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIn" title="tests.test_unit.test_sqlite.assertIn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertIn</span></code></a>(member, container[, msg])</p></td>
+<td><p>Just like self.assertTrue(a in b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIs" title="tests.test_unit.test_sqlite.assertIs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertIs</span></code></a>(expr1, expr2[, msg])</p></td>
+<td><p>Just like self.assertTrue(a is b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsInstance" title="tests.test_unit.test_sqlite.assertIsInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertIsInstance</span></code></a>(obj, cls[, msg])</p></td>
+<td><p>Same as self.assertTrue(isinstance(obj, cls)), with a nicer default message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsNone" title="tests.test_unit.test_sqlite.assertIsNone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertIsNone</span></code></a>(obj[, msg])</p></td>
+<td><p>Same as self.assertTrue(obj is None), with a nicer default message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsNot" title="tests.test_unit.test_sqlite.assertIsNot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertIsNot</span></code></a>(expr1, expr2[, msg])</p></td>
+<td><p>Just like self.assertTrue(a is not b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsNotNone" title="tests.test_unit.test_sqlite.assertIsNotNone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertIsNotNone</span></code></a>(obj[, msg])</p></td>
+<td><p>Included for symmetry with assertIsNone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertLess" title="tests.test_unit.test_sqlite.assertLess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertLess</span></code></a>(a, b[, msg])</p></td>
+<td><p>Just like self.assertTrue(a &lt; b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertLessEqual" title="tests.test_unit.test_sqlite.assertLessEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertLessEqual</span></code></a>(a, b[, msg])</p></td>
+<td><p>Just like self.assertTrue(a &lt;= b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertListEqual" title="tests.test_unit.test_sqlite.assertListEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertListEqual</span></code></a>(list1, list2[, msg])</p></td>
+<td><p>A list-specific equality assertion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertLogs" title="tests.test_unit.test_sqlite.assertLogs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertLogs</span></code></a>([logger, level])</p></td>
+<td><p>Fail unless a log message of level <em>level</em> or higher is emitted on <em>logger_name</em> or its children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertMultiLineEqual" title="tests.test_unit.test_sqlite.assertMultiLineEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertMultiLineEqual</span></code></a>(first, second[, msg])</p></td>
+<td><p>Assert that two multi-line strings are equal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNoLogs" title="tests.test_unit.test_sqlite.assertNoLogs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNoLogs</span></code></a>([logger, level])</p></td>
+<td><p>Fail unless no log messages of level <em>level</em> or higher are emitted on <em>logger_name</em> or its children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotAlmostEqual" title="tests.test_unit.test_sqlite.assertNotAlmostEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotAlmostEqual</span></code></a>(first, second[, ...])</p></td>
+<td><p>Fail if the two objects are equal as determined by their difference rounded to the given number of decimal places (default 7) and comparing to zero, or by comparing that the difference between the two objects is less than the given delta.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotAlmostEquals</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotEqual" title="tests.test_unit.test_sqlite.assertNotEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotEqual</span></code></a>(first, second[, msg])</p></td>
+<td><p>Fail if the two objects are equal as determined by the '!=' operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotEquals</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotIn" title="tests.test_unit.test_sqlite.assertNotIn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotIn</span></code></a>(member, container[, msg])</p></td>
+<td><p>Just like self.assertTrue(a not in b), but with a nicer default message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotIsInstance" title="tests.test_unit.test_sqlite.assertNotIsInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotIsInstance</span></code></a>(obj, cls[, msg])</p></td>
+<td><p>Included for symmetry with assertIsInstance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotRegex" title="tests.test_unit.test_sqlite.assertNotRegex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotRegex</span></code></a>(text, unexpected_regex[, msg])</p></td>
+<td><p>Fail the test if the text matches the regular expression.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertNotRegexpMatches</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertRaises" title="tests.test_unit.test_sqlite.assertRaises"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertRaises</span></code></a>(expected_exception, *args, **kwargs)</p></td>
+<td><p>Fail unless an exception of class expected_exception is raised by the callable when invoked with specified positional and keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertRaisesRegex" title="tests.test_unit.test_sqlite.assertRaisesRegex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertRaisesRegex</span></code></a>(expected_exception, ...)</p></td>
+<td><p>Asserts that the message in a raised exception matches a regex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertRaisesRegexp</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertRegex" title="tests.test_unit.test_sqlite.assertRegex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertRegex</span></code></a>(text, expected_regex[, msg])</p></td>
+<td><p>Fail the test unless the text matches the regular expression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertRegexpMatches</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertSequenceEqual" title="tests.test_unit.test_sqlite.assertSequenceEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertSequenceEqual</span></code></a>(seq1, seq2[, msg, seq_type])</p></td>
+<td><p>An equality assertion for ordered sequences (like lists and tuples).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertSetEqual" title="tests.test_unit.test_sqlite.assertSetEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertSetEqual</span></code></a>(set1, set2[, msg])</p></td>
+<td><p>A set-specific equality assertion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertTrue" title="tests.test_unit.test_sqlite.assertTrue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertTrue</span></code></a>(expr[, msg])</p></td>
+<td><p>Check that the expression is true.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertTupleEqual" title="tests.test_unit.test_sqlite.assertTupleEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertTupleEqual</span></code></a>(tuple1, tuple2[, msg])</p></td>
+<td><p>A tuple-specific equality assertion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertWarns" title="tests.test_unit.test_sqlite.assertWarns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertWarns</span></code></a>(expected_warning, *args, **kwargs)</p></td>
+<td><p>Fail unless a warning of class warnClass is triggered by the callable when invoked with specified positional and keyword arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.assertWarnsRegex" title="tests.test_unit.test_sqlite.assertWarnsRegex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertWarnsRegex</span></code></a>(expected_warning, ...)</p></td>
+<td><p>Asserts that the message in a triggered warning matches a regexp.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">countTestCases</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.debug" title="tests.test_unit.test_sqlite.debug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug</span></code></a>()</p></td>
+<td><p>Run the test without collecting errors in a TestResult</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultTestResult</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.doClassCleanups" title="tests.test_unit.test_sqlite.doClassCleanups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doClassCleanups</span></code></a>()</p></td>
+<td><p>Execute all class cleanup functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.doCleanups" title="tests.test_unit.test_sqlite.doCleanups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doCleanups</span></code></a>()</p></td>
+<td><p>Execute all cleanup functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.enterClassContext" title="tests.test_unit.test_sqlite.enterClassContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterClassContext</span></code></a>(cm)</p></td>
+<td><p>Same as enterContext, but class-wide.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.enterContext" title="tests.test_unit.test_sqlite.enterContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterContext</span></code></a>(cm)</p></td>
+<td><p>Enters the supplied context manager.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.fail" title="tests.test_unit.test_sqlite.fail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fail</span></code></a>([msg])</p></td>
+<td><p>Fail immediately, with the given message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failIf</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failIfAlmostEqual</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failIfEqual</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failUnless</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failUnlessAlmostEqual</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failUnlessEqual</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">failUnlessRaises</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code>([result])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.setUp" title="tests.test_unit.test_sqlite.setUp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUp</span></code></a>()</p></td>
+<td><p>Execute everytime before running a test of this class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.setUpClass" title="tests.test_unit.test_sqlite.setUpClass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUpClass</span></code></a>()</p></td>
+<td><p>Execute before running tests of this class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.shortDescription" title="tests.test_unit.test_sqlite.shortDescription"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shortDescription</span></code></a>()</p></td>
+<td><p>Returns a one-line description of the test, or None if no description has been provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.skipTest" title="tests.test_unit.test_sqlite.skipTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skipTest</span></code></a>(reason)</p></td>
+<td><p>Skip this test.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.subTest" title="tests.test_unit.test_sqlite.subTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subTest</span></code></a>([msg])</p></td>
+<td><p>Return a context manager that will return the enclosed block of code in a subtest identified by the optional message and keyword parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.tearDown" title="tests.test_unit.test_sqlite.tearDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tearDown</span></code></a>()</p></td>
+<td><p>Execute everytime after running a test of this class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.tearDownClass" title="tests.test_unit.test_sqlite.tearDownClass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tearDownClass</span></code></a>()</p></td>
+<td><p>Execute after running  all tests of this class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.test_creation" title="tests.test_unit.test_sqlite.test_creation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_creation</span></code></a>()</p></td>
+<td><p>Test creation of empty sqlite database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.test_table_from_csv" title="tests.test_unit.test_sqlite.test_table_from_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_table_from_csv</span></code></a>()</p></td>
+<td><p>Test import of csv files to SQLite using subprocess.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.test_unit.test_sqlite.test_table_from_pandas" title="tests.test_unit.test_sqlite.test_table_from_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_table_from_pandas</span></code></a>()</p></td>
+<td><p>Test import of csv files to SQLite using pandas.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">longMessage</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxDiff</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.addClassCleanup">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">addClassCleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.addClassCleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as addCleanup, except the cleanup items are called even if
+setUpClass fails (unlike tearDownClass).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.addCleanup">
+<span class="sig-name descname"><span class="pre">addCleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.addCleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a function, with arguments, to be called when the test is
+completed. Functions added are called on a LIFO basis and are
+called after tearDown on test failure or success.</p>
+<p>Cleanup items are called even if setUp fails (unlike tearDown).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.addTypeEqualityFunc">
+<span class="sig-name descname"><span class="pre">addTypeEqualityFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typeobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.addTypeEqualityFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a type specific assertEqual style function to compare a type.</p>
+<p>This method is for use by TestCase subclasses that need to register
+their own type equality functions to provide nicer error messages.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>typeobj: The data type to call this function on when both values</dt><dd><p>are of the same type in assertEqual().</p>
+</dd>
+<dt>function: The callable taking two arguments and an optional</dt><dd><p>msg= argument that raises self.failureException with a
+useful error message when the two arguments are not equal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertAlmostEqual">
+<span class="sig-name descname"><span class="pre">assertAlmostEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">places</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertAlmostEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail if the two objects are unequal as determined by their
+difference rounded to the given number of decimal places
+(default 7) and comparing to zero, or by comparing that the
+difference between the two objects is more than the given
+delta.</p>
+<p>Note that decimal places (from zero) are usually not the same
+as significant digits (measured from the most significant digit).</p>
+<p>If the two objects compare equal then they will automatically
+compare almost equal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertCountEqual">
+<span class="sig-name descname"><span class="pre">assertCountEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertCountEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asserts that two iterables have the same elements, the same number of
+times, without regard to order.</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>self.assertEqual(Counter(list(first)),</dt><dd><p>Counter(list(second)))</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>Example:</dt><dd><ul class="simple">
+<li><p>[0, 1, 1] and [1, 0, 1] compare equal.</p></li>
+<li><p>[0, 0, 1] and [0, 1] compare unequal.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertDictContainsSubset">
+<span class="sig-name descname"><span class="pre">assertDictContainsSubset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertDictContainsSubset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether dictionary is a superset of subset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertEqual">
+<span class="sig-name descname"><span class="pre">assertEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail if the two objects are unequal as determined by the ‘==’
+operator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertFalse">
+<span class="sig-name descname"><span class="pre">assertFalse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertFalse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the expression is false.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertGreater">
+<span class="sig-name descname"><span class="pre">assertGreater</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertGreater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a &gt; b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertGreaterEqual">
+<span class="sig-name descname"><span class="pre">assertGreaterEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertGreaterEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a &gt;= b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertIn">
+<span class="sig-name descname"><span class="pre">assertIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">member</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a in b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertIs">
+<span class="sig-name descname"><span class="pre">assertIs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expr2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertIs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a is b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertIsInstance">
+<span class="sig-name descname"><span class="pre">assertIsInstance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertIsInstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as self.assertTrue(isinstance(obj, cls)), with a nicer
+default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertIsNone">
+<span class="sig-name descname"><span class="pre">assertIsNone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertIsNone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as self.assertTrue(obj is None), with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertIsNot">
+<span class="sig-name descname"><span class="pre">assertIsNot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expr2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertIsNot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a is not b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertIsNotNone">
+<span class="sig-name descname"><span class="pre">assertIsNotNone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertIsNotNone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Included for symmetry with assertIsNone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertLess">
+<span class="sig-name descname"><span class="pre">assertLess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertLess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a &lt; b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertLessEqual">
+<span class="sig-name descname"><span class="pre">assertLessEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertLessEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a &lt;= b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertListEqual">
+<span class="sig-name descname"><span class="pre">assertListEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertListEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list-specific equality assertion.</p>
+<dl>
+<dt>Args:</dt><dd><p>list1: The first list to compare.
+list2: The second list to compare.
+msg: Optional message to use on failure instead of a list of</p>
+<blockquote>
+<div><p>differences.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertLogs">
+<span class="sig-name descname"><span class="pre">assertLogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertLogs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail unless a log message of level <em>level</em> or higher is emitted
+on <em>logger_name</em> or its children.  If omitted, <em>level</em> defaults to
+INFO and <em>logger</em> defaults to the root logger.</p>
+<p>This method must be used as a context manager, and will yield
+a recording object with two attributes: <cite>output</cite> and <cite>records</cite>.
+At the end of the context manager, the <cite>output</cite> attribute will
+be a list of the matching formatted log messages and the
+<cite>records</cite> attribute will be a list of the corresponding LogRecord
+objects.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertLogs</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">cm</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;first message&#39;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;foo.bar&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;second message&#39;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">output</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;INFO:foo:first message&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;ERROR:foo.bar:second message&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertMultiLineEqual">
+<span class="sig-name descname"><span class="pre">assertMultiLineEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertMultiLineEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that two multi-line strings are equal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertNoLogs">
+<span class="sig-name descname"><span class="pre">assertNoLogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertNoLogs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail unless no log messages of level <em>level</em> or higher are emitted
+on <em>logger_name</em> or its children.</p>
+<p>This method must be used as a context manager.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertNotAlmostEqual">
+<span class="sig-name descname"><span class="pre">assertNotAlmostEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">places</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertNotAlmostEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail if the two objects are equal as determined by their
+difference rounded to the given number of decimal places
+(default 7) and comparing to zero, or by comparing that the
+difference between the two objects is less than the given delta.</p>
+<p>Note that decimal places (from zero) are usually not the same
+as significant digits (measured from the most significant digit).</p>
+<p>Objects that are equal automatically fail.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertNotEqual">
+<span class="sig-name descname"><span class="pre">assertNotEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertNotEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail if the two objects are equal as determined by the ‘!=’
+operator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertNotIn">
+<span class="sig-name descname"><span class="pre">assertNotIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">member</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertNotIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like self.assertTrue(a not in b), but with a nicer default message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertNotIsInstance">
+<span class="sig-name descname"><span class="pre">assertNotIsInstance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertNotIsInstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Included for symmetry with assertIsInstance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertNotRegex">
+<span class="sig-name descname"><span class="pre">assertNotRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unexpected_regex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertNotRegex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail the test if the text matches the regular expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertRaises">
+<span class="sig-name descname"><span class="pre">assertRaises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_exception</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertRaises" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail unless an exception of class expected_exception is raised
+by the callable when invoked with specified positional and
+keyword arguments. If a different type of exception is
+raised, it will not be caught, and the test case will be
+deemed to have suffered an error, exactly as for an
+unexpected exception.</p>
+<p>If called with the callable and arguments omitted, will return a
+context object used like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">SomeException</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An optional keyword argument ‘msg’ can be provided when assertRaises
+is used as a context object.</p>
+<p>The context manager keeps a reference to the exception as
+the ‘exception’ attribute. This allows you to inspect the
+exception after the assertion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">SomeException</span><span class="p">)</span> <span class="k">as</span> <span class="n">cm</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+<span class="n">the_exception</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">exception</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">the_exception</span><span class="o">.</span><span class="n">error_code</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertRaisesRegex">
+<span class="sig-name descname"><span class="pre">assertRaisesRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_exception</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_regex</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertRaisesRegex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asserts that the message in a raised exception matches a regex.</p>
+<dl>
+<dt>Args:</dt><dd><p>expected_exception: Exception class expected to be raised.
+expected_regex: Regex (re.Pattern object or string) expected</p>
+<blockquote>
+<div><p>to be found in error message.</p>
+</div></blockquote>
+<p>args: Function to be called and extra positional args.
+kwargs: Extra kwargs.
+msg: Optional message used in case of failure. Can only be used</p>
+<blockquote>
+<div><p>when assertRaisesRegex is used as a context manager.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertRegex">
+<span class="sig-name descname"><span class="pre">assertRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_regex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertRegex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail the test unless the text matches the regular expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertSequenceEqual">
+<span class="sig-name descname"><span class="pre">assertSequenceEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertSequenceEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>An equality assertion for ordered sequences (like lists and tuples).</p>
+<p>For the purposes of this function, a valid ordered sequence type is one
+which can be indexed, has a length, and has an equality operator.</p>
+<dl>
+<dt>Args:</dt><dd><p>seq1: The first sequence to compare.
+seq2: The second sequence to compare.
+seq_type: The expected datatype of the sequences, or None if no</p>
+<blockquote>
+<div><p>datatype should be enforced.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>msg: Optional message to use on failure instead of a list of</dt><dd><p>differences.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertSetEqual">
+<span class="sig-name descname"><span class="pre">assertSetEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertSetEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>A set-specific equality assertion.</p>
+<dl>
+<dt>Args:</dt><dd><p>set1: The first set to compare.
+set2: The second set to compare.
+msg: Optional message to use on failure instead of a list of</p>
+<blockquote>
+<div><p>differences.</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>assertSetEqual uses ducktyping to support different types of sets, and
+is optimized for sets specifically (parameters must support a
+difference method).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertTrue">
+<span class="sig-name descname"><span class="pre">assertTrue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertTrue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the expression is true.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertTupleEqual">
+<span class="sig-name descname"><span class="pre">assertTupleEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tuple1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tuple2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertTupleEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple-specific equality assertion.</p>
+<dl>
+<dt>Args:</dt><dd><p>tuple1: The first tuple to compare.
+tuple2: The second tuple to compare.
+msg: Optional message to use on failure instead of a list of</p>
+<blockquote>
+<div><p>differences.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertWarns">
+<span class="sig-name descname"><span class="pre">assertWarns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_warning</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertWarns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail unless a warning of class warnClass is triggered
+by the callable when invoked with specified positional and
+keyword arguments.  If a different type of warning is
+triggered, it will not be handled: depending on the other
+warning filtering rules in effect, it might be silenced, printed
+out, or raised as an exception.</p>
+<p>If called with the callable and arguments omitted, will return a
+context object used like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertWarns</span><span class="p">(</span><span class="n">SomeWarning</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An optional keyword argument ‘msg’ can be provided when assertWarns
+is used as a context object.</p>
+<p>The context manager keeps a reference to the first matching
+warning as the ‘warning’ attribute; similarly, the ‘filename’
+and ‘lineno’ attributes give you information about the line
+of Python code from which the warning was triggered.
+This allows you to inspect the warning after the assertion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertWarns</span><span class="p">(</span><span class="n">SomeWarning</span><span class="p">)</span> <span class="k">as</span> <span class="n">cm</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+<span class="n">the_warning</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">warning</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">the_warning</span><span class="o">.</span><span class="n">some_attribute</span><span class="p">,</span> <span class="mi">147</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.assertWarnsRegex">
+<span class="sig-name descname"><span class="pre">assertWarnsRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_warning</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_regex</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.assertWarnsRegex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asserts that the message in a triggered warning matches a regexp.
+Basic functioning is similar to assertWarns() with the addition
+that only warnings whose messages also match the regular expression
+are considered successful matches.</p>
+<dl>
+<dt>Args:</dt><dd><p>expected_warning: Warning class expected to be triggered.
+expected_regex: Regex (re.Pattern object or string) expected</p>
+<blockquote>
+<div><p>to be found in error message.</p>
+</div></blockquote>
+<p>args: Function to be called and extra positional args.
+kwargs: Extra kwargs.
+msg: Optional message used in case of failure. Can only be used</p>
+<blockquote>
+<div><p>when assertWarnsRegex is used as a context manager.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the test without collecting errors in a TestResult</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.doClassCleanups">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">doClassCleanups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.doClassCleanups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute all class cleanup functions. Normally called for you after
+tearDownClass.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.doCleanups">
+<span class="sig-name descname"><span class="pre">doCleanups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.doCleanups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute all cleanup functions. Normally called for you after
+tearDown.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.enterClassContext">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enterClassContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.enterClassContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as enterContext, but class-wide.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.enterContext">
+<span class="sig-name descname"><span class="pre">enterContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.enterContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enters the supplied context manager.</p>
+<p>If successful, also adds its __exit__ method as a cleanup
+function and returns the result of the __enter__ method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.fail">
+<span class="sig-name descname"><span class="pre">fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.fail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail immediately, with the given message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.failureException">
+<span class="sig-name descname"><span class="pre">failureException</span></span><a class="headerlink" href="#tests.test_unit.test_sqlite.failureException" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">AssertionError</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute everytime before running a test of this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.setUpClass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setUpClass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.setUpClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute before running tests of this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.shortDescription">
+<span class="sig-name descname"><span class="pre">shortDescription</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.shortDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a one-line description of the test, or None if no
+description has been provided.</p>
+<p>The default implementation of this method returns the first line of
+the specified test method’s docstring.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.skipTest">
+<span class="sig-name descname"><span class="pre">skipTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.skipTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skip this test.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.subTest">
+<span class="sig-name descname"><span class="pre">subTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg=&lt;object</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.subTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a context manager that will return the enclosed block
+of code in a subtest identified by the optional message and
+keyword parameters.  A failure in the subtest marks the test
+case as failed but resumes execution at the end of the enclosed
+block, allowing further test code to be executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute everytime after running a test of this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.tearDownClass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tearDownClass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.tearDownClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute after running  all tests of this class.</p>
+<p>Try deleting created files during testing process. Pass if deletion is
+not possible. The existance of test-files can be accepted an has no
+negative effect on the result of the main program.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.test_creation">
+<span class="sig-name descname"><span class="pre">test_creation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.test_creation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test creation of empty sqlite database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.test_table_from_csv">
+<span class="sig-name descname"><span class="pre">test_table_from_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.test_table_from_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test import of csv files to SQLite using subprocess.</p>
+<p>Test csv2sql_directly function inside the module datafunctions.py.
+This Test is expected to fail, therefore a &#64;expectedFailure decorator
+was placed. In case of success, a log-file entry gets printed during
+the setup process. Success would suggest, that the system is able to
+handle extremely large csv files, due to the possibility to directly
+write those files to the SQLite database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_unit.test_sqlite.test_table_from_pandas">
+<span class="sig-name descname"><span class="pre">test_table_from_pandas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unit.test_sqlite.test_table_from_pandas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test import of csv files to SQLite using pandas.</p>
+<p>Test csv2sql_pandas function of module datafunction.py</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tests.test_unit.test_sqlite</a><ul>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite"><code class="docutils literal notranslate"><span class="pre">test_sqlite</span></code></a><ul>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.__init__"><code class="docutils literal notranslate"><span class="pre">test_sqlite.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.addClassCleanup"><code class="docutils literal notranslate"><span class="pre">test_sqlite.addClassCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.addCleanup"><code class="docutils literal notranslate"><span class="pre">test_sqlite.addCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.addTypeEqualityFunc"><code class="docutils literal notranslate"><span class="pre">test_sqlite.addTypeEqualityFunc()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertAlmostEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertAlmostEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertCountEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertCountEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertDictContainsSubset"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertDictContainsSubset()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertFalse"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertFalse()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertGreater"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertGreater()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertGreaterEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertGreaterEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIn"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertIn()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIs"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertIs()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsInstance"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertIsInstance()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsNone"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertIsNone()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsNot"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertIsNot()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertIsNotNone"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertIsNotNone()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertLess"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertLess()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertLessEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertLessEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertListEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertListEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertLogs"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertLogs()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertMultiLineEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertMultiLineEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNoLogs"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertNoLogs()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotAlmostEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertNotAlmostEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertNotEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotIn"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertNotIn()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotIsInstance"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertNotIsInstance()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertNotRegex"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertNotRegex()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertRaises"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertRaises()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertRaisesRegex"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertRaisesRegex()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertRegex"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertRegex()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertSequenceEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertSequenceEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertSetEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertSetEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertTrue"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertTrue()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertTupleEqual"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertTupleEqual()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertWarns"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertWarns()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.assertWarnsRegex"><code class="docutils literal notranslate"><span class="pre">test_sqlite.assertWarnsRegex()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.debug"><code class="docutils literal notranslate"><span class="pre">test_sqlite.debug()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.doClassCleanups"><code class="docutils literal notranslate"><span class="pre">test_sqlite.doClassCleanups()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.doCleanups"><code class="docutils literal notranslate"><span class="pre">test_sqlite.doCleanups()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.enterClassContext"><code class="docutils literal notranslate"><span class="pre">test_sqlite.enterClassContext()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.enterContext"><code class="docutils literal notranslate"><span class="pre">test_sqlite.enterContext()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.fail"><code class="docutils literal notranslate"><span class="pre">test_sqlite.fail()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.failureException"><code class="docutils literal notranslate"><span class="pre">test_sqlite.failureException</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.setUp"><code class="docutils literal notranslate"><span class="pre">test_sqlite.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.setUpClass"><code class="docutils literal notranslate"><span class="pre">test_sqlite.setUpClass()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.shortDescription"><code class="docutils literal notranslate"><span class="pre">test_sqlite.shortDescription()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.skipTest"><code class="docutils literal notranslate"><span class="pre">test_sqlite.skipTest()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.subTest"><code class="docutils literal notranslate"><span class="pre">test_sqlite.subTest()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.tearDown"><code class="docutils literal notranslate"><span class="pre">test_sqlite.tearDown()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.tearDownClass"><code class="docutils literal notranslate"><span class="pre">test_sqlite.tearDownClass()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.test_creation"><code class="docutils literal notranslate"><span class="pre">test_sqlite.test_creation()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.test_table_from_csv"><code class="docutils literal notranslate"><span class="pre">test_sqlite.test_table_from_csv()</span></code></a></li>
+<li><a class="reference internal" href="#tests.test_unit.test_sqlite.test_table_from_pandas"><code class="docutils literal notranslate"><span class="pre">test_sqlite.test_table_from_pandas()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tests.test_unit.test_df.html"
+                          title="previous chapter">tests.test_unit.test_df</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/tests.test_unit.test_sqlite.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.test_unit.test_df.html" title="tests.test_unit.test_df"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DLMDWPMP01 1.2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="tests.html" >tests</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="tests.test_unit.html" >tests.test_unit</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tests.test_unit.test_sqlite</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Georg Grunsky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    </div>
+  </body>
+</html>

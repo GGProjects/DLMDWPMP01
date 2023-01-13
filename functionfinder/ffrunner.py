@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for module ffrunner.py.
+"""Main program.
 
 This script contains the main part of the programm which orchestrates
 calculations and can be called, after installation, by the CLI-command ff.
@@ -10,6 +10,19 @@ Methods
 task()
     Run the calculations to solve the given task.
 """
+# =============================================================================
+# Import required modules
+# =============================================================================
+# import standard modules
+import sys
+import sqlite3
+import csv
+
+# import own modules
+import functionfinder.datafunctions as df  # data handling methods
+from functionfinder.config import datafiles, dbname, out_data
+import functionfinder.classes as cl
+from functionfinder.log import logging, setlogging
 
 
 def task():
@@ -25,24 +38,9 @@ def task():
     precalculated SSE (1) * SquareRoot(2)
     """
 # =============================================================================
-# Import required modules
+# Define logger for main program, define logging helper, set logging params
 # =============================================================================
-    print("# Import required modules")
-
-    # import standard modules
-    import sys
-    import sqlite3
-    import csv
-
-    # import own modules
-    import functionfinder.datafunctions as df  # data handling methods
-    from functionfinder.config import datafiles, dbname, out_data
-    import functionfinder.classes as cl
-    from functionfinder.log import logging
-
-# =============================================================================
-# Define logger for main program, define logging helper
-# =============================================================================
+    setlogging()
     logger = logging.getLogger('functionfinder')
     logging.getLogger('PIL').setLevel(logging.ERROR)  # prevent massive logging
     logging.getLogger('matplotlib').setLevel(logging.ERROR)  # prevent logging
@@ -202,7 +200,7 @@ def task():
         for k in test.off["x"]:
             test_value = test.data[test.data["x"] == str(k)][["x", "y"]]
             test_value = test_value.values.tolist()[0]
-            test_row = df.calculate_best_ideal(test_value, ideal.matched, k,
+            test_row = df.calculate_best_ideal(test_value, ideal.matched, float(k),
                                                ideal.data, "raw")
             test_row.insert(0, "x", test_value[0])
             test_row.insert(1, "y", test_value[1])

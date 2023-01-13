@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 # coding: utf-8
-"""Docstring for module config.py.
+"""User configurable parameters.
 
 This script contains definitions of configurable elements for the
 functionfinder package and should be adjusted to your own needs before running

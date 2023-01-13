@@ -1,0 +1,60 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}functionfinder}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}functionfinder.classes}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}functionfinder.classes.idealdata}{4}{subsection.1.1.1}%
+\contentsline {subsubsection}{Attributes}{4}{subsubsection*.4}%
+\contentsline {subsubsection}{Methods}{4}{subsubsection*.5}%
+\contentsline {paragraph}{Parameters}{4}{paragraph*.7}%
+\contentsline {paragraph}{Parameters}{5}{paragraph*.11}%
+\contentsline {subsection}{\numberline {1.1.2}functionfinder.classes.projectdata}{5}{subsection.1.1.2}%
+\contentsline {subsubsection}{Attributes}{5}{subsubsection*.13}%
+\contentsline {subsubsection}{Methods}{6}{subsubsection*.14}%
+\contentsline {paragraph}{Parameters}{6}{paragraph*.16}%
+\contentsline {subsection}{\numberline {1.1.3}functionfinder.classes.testdata}{7}{subsection.1.1.3}%
+\contentsline {subsubsection}{Attributes}{7}{subsubsection*.20}%
+\contentsline {subsubsection}{Methods}{7}{subsubsection*.21}%
+\contentsline {paragraph}{Parameters}{7}{paragraph*.23}%
+\contentsline {section}{\numberline {1.2}functionfinder.config}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Methods}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}functionfinder.config.error\_calculation}{8}{subsection.1.2.2}%
+\contentsline {subsubsection}{Parameters}{8}{subsubsection*.28}%
+\contentsline {subsubsection}{Returns}{9}{subsubsection*.29}%
+\contentsline {subsubsection}{Notes}{9}{subsubsection*.30}%
+\contentsline {section}{\numberline {1.3}functionfinder.datafunctions}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Methods}{9}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}functionfinder.datafunctions.calculate\_best\_ideal}{10}{subsection.1.3.2}%
+\contentsline {subsubsection}{Parameters}{10}{subsubsection*.32}%
+\contentsline {subsubsection}{Returns}{10}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {1.3.3}functionfinder.datafunctions.checktypes}{10}{subsection.1.3.3}%
+\contentsline {subsubsection}{Parameters}{10}{subsubsection*.35}%
+\contentsline {subsubsection}{Returns}{11}{subsubsection*.36}%
+\contentsline {subsection}{\numberline {1.3.4}functionfinder.datafunctions.create\_empty\_sqlitedb}{11}{subsection.1.3.4}%
+\contentsline {subsubsection}{Parameters}{11}{subsubsection*.38}%
+\contentsline {subsection}{\numberline {1.3.5}functionfinder.datafunctions.csv2sql\_directly}{11}{subsection.1.3.5}%
+\contentsline {subsubsection}{Parameters}{11}{subsubsection*.40}%
+\contentsline {subsection}{\numberline {1.3.6}functionfinder.datafunctions.csv2sql\_pandas}{11}{subsection.1.3.6}%
+\contentsline {subsubsection}{Parameters}{12}{subsubsection*.42}%
+\contentsline {subsection}{\numberline {1.3.7}functionfinder.datafunctions.min\_error}{12}{subsection.1.3.7}%
+\contentsline {subsubsection}{Parameters}{12}{subsubsection*.44}%
+\contentsline {subsubsection}{Returns}{12}{subsubsection*.45}%
+\contentsline {section}{\numberline {1.4}functionfinder.exceptions}{12}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}functionfinder.exceptions.TypeError}{13}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.5}functionfinder.ffrunner}{13}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Methods}{13}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}functionfinder.ffrunner.task}{13}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}functionfinder.log}{13}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}functionfinder.log.setlogging}{14}{subsection.1.6.1}%
+\contentsline {section}{\numberline {1.7}functionfinder.setuplog}{14}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}functionfinder.setuplog.set\_setuplogging}{14}{subsection.1.7.1}%
+\contentsline {chapter}{\numberline {2}tests}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}tests.test\_unit}{15}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Notes}{15}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}TestSets}{15}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Methods}{15}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}tests.test\_unit.check\_struct}{16}{subsection.2.1.4}%
+\contentsline {subsubsection}{Parameters}{16}{subsubsection*.51}%
+\contentsline {subsubsection}{Returns}{16}{subsubsection*.52}%
+\contentsline {subsection}{\numberline {2.1.5}tests.test\_unit.test\_df}{16}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}tests.test\_unit.test\_sqlite}{25}{subsection.2.1.6}%
+\contentsline {chapter}{Python Module Index}{35}{section*.165}%
+\contentsline {chapter}{Index}{37}{section*.166}%

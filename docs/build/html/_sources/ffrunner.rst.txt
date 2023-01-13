@@ -1,5 +1,0 @@
-ffrunner
-========
-
-.. automodule:: functionfinder.ffrunner
-    :members:

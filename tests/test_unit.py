@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for test_unit.py.
+"""Definition of UnitTest-Sets.
 
 This script contains sets of UnitTests to check the functionality of the
 functionfinder package and is called during the setup process by setup.py.

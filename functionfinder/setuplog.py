@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Docstring for module setuplog.py.
+"""Definition of logging parameters for the installation process.
 
 This script defines the basic logging configuration for the setup process of
 this program. User configurable variables are read from 'config' module.
@@ -22,7 +22,8 @@ levels = {"DEBUG": logging.DEBUG,
 
 logformat = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
-# specify logging-config
-logging.basicConfig(filename=logfile, filemode="w",
-                    format=logformat,
-                    level=levels[setuploglevel])
+def set_setuplogging():
+    """Set predefined parameters for logging setup process."""
+    logging.basicConfig(filename=logfile, filemode="w",
+                        format=logformat,
+                        level=levels[setuploglevel])
