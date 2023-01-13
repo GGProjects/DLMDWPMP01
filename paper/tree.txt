@@ -9,7 +9,7 @@ DMLDWPMP01.
 |       
 +---docs                        # Sphinx-Dokumentation des Packages
 |
-+---functionfinder              # Hauptteil des Packages
++---functionfinder              # Hauptpackage der Software
 |   |   __init__.py
 |   |   classes.py              # Definition von verwendeten Klassen
 |   |   config.py               # Benutzer-Konfigurierbare Parameter
@@ -24,6 +24,6 @@ DMLDWPMP01.
 |   +---figures                 # Grafiken
 |   +---data                    # SQLite Datenbank
 |           
-\---tests                       # Verzeichnis der UnitTests
+\---tests                       # Package der UnitTests
     |   __init__.py
     \   test_unit.py            # Beinhaltet UnitTest-Klassen

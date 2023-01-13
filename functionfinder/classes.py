@@ -69,7 +69,6 @@ class projectdata():
         plotfile : string
             Provide name of PNG to save plot. The default is "testplot.png".
         """
-        # from functionfinder.config import out_data, out_figures, dbname
         self._table = dataname
         self._style = "ggplot"
         self.ylabel = ylabel
@@ -80,8 +79,6 @@ class projectdata():
 
     def getdata(self):
         """Query SQLite database to read and store data in 'data' attribute."""
-        # import pandas as pd
-        # import sqlite3
         con = sqlite3.connect(self._dbcon)
         selectstring = "SELECT * FROM " + self._table
         self.data = pd.read_sql_query(selectstring, con)
@@ -89,11 +86,6 @@ class projectdata():
 
     def draw(self):
         """Plot data and save to png file."""
-        # import pandas as pd
-        # from matplotlib import pyplot as plt
-        # from matplotlib import style
-        # from pathlib import Path
-
         style.use(self._style)
         fig, trax = plt.subplots(figsize=(6, 4))
         for i in self.data.axes[1][1:]:
@@ -139,11 +131,6 @@ class idealdata(projectdata):
 
     def draw(self):
         """Plot data and save to png file."""
-        # import pandas as pd
-        # from matplotlib import pyplot as plt
-        # from matplotlib import style
-        # from pathlib import Path
-
         style.use(self._style)
         fig, iax = plt.subplots(figsize=(6, 4))
         for i in self.matched.keys():
@@ -180,8 +167,6 @@ class testdata(projectdata):
 
     def off_limit(self):
         """Read data, exceeding predifined deviation limit, from SQLite."""
-        # import pandas as pd
-        # import sqlite3
         con = sqlite3.connect(self._dbcon)
         selstring = "SELECT * FROM " + self._table + " WHERE Off_limit = True"
         self.off = pd.read_sql_query(selstring, con)
@@ -190,7 +175,6 @@ class testdata(projectdata):
     def draw(self):
         """Plot data and save to png file."""
         style.use(self._style)
-        # fig, tax = plt.subplots(figsize=(6, 4))
         tax = sns.scatterplot(x=pd.to_numeric(self.data.x),
                               y=pd.to_numeric(self.data.y),
                               data=self.data,
