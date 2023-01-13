@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  13 JAN 2023 01:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  13 JAN 2023 16:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -908,13 +908,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{chapter.2}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.17 \chapter{Hauptteil}
-                        
+l.19 \chapter{Das Python-Package functionfinder}
+                                                
 chapter 2.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 21.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 25.
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 2
-1.
+5.
 (C:\Program Files\MiKTeX\tex/latex/txfonts\t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
@@ -922,11 +922,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `txtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 39.
- (tree.txt
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 5
-.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 3
+3.
 
 (C:\Program Files\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
@@ -935,86 +932,63 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [3
+ (tree.txt) [3
 
-]
-Overfull \hbox (110.92749pt too wide) in paragraph at lines 51--52
-[]\T1/phv/m/n/10.95 (-20) Dokumentiert wur-de die Soft-wa-re ge-mäÿ dem Num-Py-
-Doc Sty-le Gui-de. (https://numpydoc.readthedocs.io/en/latest/format.html-
- []
-
-[4]
-<../output/figures/train.png, id=110, 433.62pt x 289.08pt>
+] [4]
+[5]
+<../output/figures/train.png, id=142, 433.62pt x 289.08pt>
 File: ../output/figures/train.png Graphic file (type png)
 <use ../output/figures/train.png>
-Package pdftex.def Info: ../output/figures/train.png  used on input line 92.
+Package pdftex.def Info: ../output/figures/train.png  used on input line 118.
 (pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
-
-
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 93
-.
-
-
-Package natbib Warning: Citation `Gage:18' on page 5 undefined on input line 93
-.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5] [6 <../output/figures/train.png>] [7]
+ [6 <../output/figures/train.png>] [7]
 (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-<../output/figures/ideal.png, id=133, 433.62pt x 289.08pt>
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 184.
+ [8]
+<../output/figures/ideal.png, id=167, 433.62pt x 289.08pt>
 File: ../output/figures/ideal.png Graphic file (type png)
 <use ../output/figures/ideal.png>
-Package pdftex.def Info: ../output/figures/ideal.png  used on input line 181.
+Package pdftex.def Info: ../output/figures/ideal.png  used on input line 196.
 (pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
 
 
-Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 18
-2.
+Package natbib Warning: Citation `Gage:18' on page 9 undefined on input line 19
+7.
 
 
-Package natbib Warning: Citation `Gage:18' on page 8 undefined on input line 18
-2.
+Package natbib Warning: Citation `Gage:18' on page 9 undefined on input line 19
+7.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8] [9 <../output/figures/ideal.png>]
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.234 $(\begin{array}x
-                      \\y\\z\end{array})$
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[10]
-<../output/figures/test.png, id=169, 528.2937pt x 332.442pt>
+[9 <../output/figures/ideal.png>] [10]
+<../output/figures/test.png, id=183, 528.2937pt x 332.442pt>
 File: ../output/figures/test.png Graphic file (type png)
 <use ../output/figures/test.png>
-Package pdftex.def Info: ../output/figures/test.png  used on input line 253.
+Package pdftex.def Info: ../output/figures/test.png  used on input line 268.
 (pdftex.def)             Requested size: 369.88582pt x 232.7636pt.
 
 
 Package natbib Warning: Citation `Gage:18' on page 11 undefined on input line 2
-54.
+69.
 
 
 Package natbib Warning: Citation `Gage:18' on page 11 undefined on input line 2
-54.
+69.
 
-[11 <../output/figures/test.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11] [12 <../output/figures/test.png>]
 chapter 3.
-) [12
 
-] (00-Main.bbl) [13
+Package natbib Warning: Citation `dunn_getting_2017-1' on page 13 undefined on 
+input line 289.
+
+) [13
+
+] (00-Main.bbl) [14
 
 
 
@@ -1023,7 +997,7 @@ chapter 3.
 
  (041-Annexes.tex
 chapter A.
-) [14
+) [15
 
 
 ]
@@ -1031,17 +1005,20 @@ chapter A.
 Package natbib Warning: There were undefined citations.
 
 (00-Main.aux (001-Titlepage.aux) (020-Body.aux) (041-Annexes.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `00-Main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22405 strings out of 476406
- 389135 string characters out of 2799372
+ 22409 strings out of 476406
+ 389286 string characters out of 2799372
  1924787 words of memory out of 3000000
- 42006 multiletter control sequences out of 15000+600000
- 574644 words of font info for 293 fonts, out of 8000000 for 9000
+ 42008 multiletter control sequences out of 15000+600000
+ 574316 words of font info for 290 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,14n,106p,10604b,1458s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 108i,14n,106p,10604b,1385s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
 /fonts/type1/public/txfonts/rtxmi.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/txfonts/rtxr.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/t1xtt.p
@@ -1051,9 +1028,9 @@ pe1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/u
 hvr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Pro
 gram Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on 00-Main.pdf (17 pages, 220944 bytes).
+Output written on 00-Main.pdf (18 pages, 230558 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 96 named destinations out of 1000 (max. 500000)
- 70269 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
+ 70309 words of extra memory for PDF output out of 74296 (max. 10000000)
 

@@ -5,53 +5,53 @@ Reallocating 'name_of_file' (item size: 1) to 18 items.
 A level-1 auxiliary file: 001-Titlepage.aux
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: 020-Body.aux
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+The style file: iubh.bst
 Reallocating 'name_of_file' (item size: 1) to 7 items.
-Reallocating 'name_of_file' (item size: 1) to 15 items.
-A level-1 auxiliary file: 070-Pledge.aux
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+A level-1 auxiliary file: 041-Annexes.aux
 Database file #1: biblio.bib
 Warning--I didn't find a database entry for "Gage:18"
-Warning--I didn't find a database entry for "DueckKo:2016"
-You've used 4 entries,
-            2773 wiz_defined-function locations,
-            621 strings with 5397 characters,
-and the built_in function-call counts, 1209 in all, are:
-= -- 99
-> -- 40
-< -- 4
-+ -- 16
-- -- 12
-* -- 65
-:= -- 191
-add.period$ -- 11
-call.type$ -- 4
-change.case$ -- 15
-chr.to.int$ -- 4
-cite$ -- 8
-duplicate$ -- 65
-empty$ -- 129
-format.name$ -- 16
-if$ -- 253
+Warning--I didn't find a database entry for "dunn_getting_2017-1"
+You've used 5 entries,
+            2775 wiz_defined-function locations,
+            611 strings with 5106 characters,
+and the built_in function-call counts, 1860 in all, are:
+= -- 157
+> -- 50
+< -- 5
++ -- 20
+- -- 16
+* -- 129
+:= -- 335
+add.period$ -- 6
+call.type$ -- 5
+change.case$ -- 31
+chr.to.int$ -- 6
+cite$ -- 5
+duplicate$ -- 149
+empty$ -- 150
+format.name$ -- 20
+if$ -- 356
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 2
-newline$ -- 26
-num.names$ -- 16
-pop$ -- 47
+missing$ -- 24
+newline$ -- 19
+num.names$ -- 20
+pop$ -- 51
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 25
 quote$ -- 0
-skip$ -- 52
+skip$ -- 54
 stack$ -- 0
-substring$ -- 8
-swap$ -- 7
+substring$ -- 57
+swap$ -- 59
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 39
+type$ -- 42
 warning$ -- 0
-while$ -- 12
+while$ -- 15
 width$ -- 0
-write$ -- 53
+write$ -- 51
 (There were 2 warnings)

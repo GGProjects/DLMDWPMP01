@@ -3,9 +3,9 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: 020-Body.aux
 I found no \bibdata command---while reading file 020-Body.aux
 I found no \bibstyle command---while reading file 020-Body.aux
-You've used 7 entries,
+You've used 3 entries,
             0 wiz_defined-function locations,
-            93 strings with 599 characters,
+            87 strings with 541 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0

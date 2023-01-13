@@ -1,30 +1,24 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[{alecxe}(2013)]{alecxe_answer_2013}
-{alecxe}.
-\newblock Answer to "{{Bulk}} insert huge data into {{SQLite}} using
-  {{Python}}", August 2013.
+\bibitem[{Croitoru(2022)}]{croitoru_programmieren_2022}
+\textbf{Croitoru, P. D.~C.}: \emph{Programmieren mit {Python}} (\textbf{2022}),
+  iU Internationale Hochschule GmbH.
 
-\bibitem[Dunn(2017)]{dunn_getting_2017-1}
-Michael Dunn.
-\newblock Getting {{Started}} with {{Sphinx}} / {{Autodoc}}: {{Part}} 1,
-  December 2017.
+\bibitem[{{Henk Griffioen}(2017)}]{henk_griffioen_how_2017}
+\textbf{{Henk Griffioen}} (\textbf{2017}): \emph{How to {Start} a {Data}
+  {Science} {Project} in {Python}}.
 
-\bibitem[{Kerrim}(2021)]{kerrim_answer_2021}
-{Kerrim}.
-\newblock Answer to "{{How}} to create a virtual environment in {{Python}}
-  using an environment.yaml file?", June 2021.
+\bibitem[{Kofler(2022)}]{kofler_python_2022}
+\textbf{Kofler, M.} (\textbf{2022}): \emph{Python: der {Grundkurs}}. Rheinwerk
+  Computing, Bonn, 2., aktualisierte auflage edition.
 
-\bibitem[Lampe(2020)]{lampe_clean_2020}
-J{\"u}rgen Lampe.
-\newblock \emph{{Clean Code f\"ur Dummies}}.
-\newblock {f\"ur Dummies}. {Wiley-VCH Verlag GmbH \& Co. KGaA}, {Weinheim},
-  2020.
-\newblock ISBN 978-3-527-71634-0.
+\bibitem[{Leedham(2020)}]{leedham_answer_2020}
+\textbf{Leedham, J.} (\textbf{2020}): \emph{Answer to "{Sphinx} autodoc is not
+  automatic enough"}.
+
+\bibitem[{{numpydoc v1.6.0}()}]{numpydoc_v160_style_nodate}
+\textbf{{numpydoc v1.6.0}} (): \emph{Style guide — numpydoc v1.6.0rc1.dev0
+  {Manual}}.
 
 \end{thebibliography}

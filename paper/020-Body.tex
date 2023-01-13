@@ -4,24 +4,41 @@
 
 Im Rahmen der Aufgabenstellung zum Kurs DLMDWPMP01 – Programmieren mit Python soll ein Python-Programm umgesetzt werden, das verwaschene Trainingsdaten korrekt auf vier idealtypische Funktionen abbildet. Hierfür stehen 50 idealtypische Funktionen zur Auswahl. Maßgeblich für die Auswahl ist hierbei, gemäß Vorgabe, die kleinste Summe der quadratischen Abweichungen (Least Square).
 Anschließend soll das gleiche Programm die Punkte eines Testdatensatzes, anhand eines definierten minimalen, statistischen Abstandswertes zu den gewählten idealtypischen Funktionen, klassifizieren und jeweils der entsprechenden Funktion zuordnen.
-Fokus der vorliegenden Aufgabenstellung, sowie dieser Arbeit war jedoch primär die Erlernung der Programmiersprache Python und nicht die ausschließliche Erfüllung der beschriebenen mathematischen Aspekte. Diese, isoliert betrachtet, hätte ebenso in Form eines einfachen Jupyter-Notebooks erarbeitet werden können.
+
+Fokus der vorliegenden Aufgabenstellung, sowie dieser Arbeit ist primär die Erlernung der Programmiersprache Python und nicht die ausschließliche Erfüllung der beschriebenen mathematischen Aspekte. Diese, isoliert betrachtet, könnten ebenso in Form eines Jupyter-Notebooks erarbeitet werden. Die in dieser Arbeit getroffenen Entscheidungen mögen daher, in mancher Hinsicht, unnötig kompliziert wirken, dienen jedoch der Aneignung von Fähigkeiten im Umgang mit Python.
 
 
 \section{Struktur der Hausarbeit}
 
-Im Hauptteil der vorliegenden Hausarbeit wird zuerst auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
+Im Hauptteil der vorliegenden Hausarbeit werden zuerst, vom Autor getroffene Entscheidungen, in Bezug auf den strukturellen Aufbau, die Installation und Konfiguration, sowie die Dokumentation des Programmes dargelegt. 
+In weiterer Folge wird auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
 Anschließend wird in einem weiteren Abschnitt die Auswahl idealtypischer Funktionen anhand der vorliegenden Trainingsdaten beschrieben und dargestellt.
-Der dritte Abschnitt diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
+Der letzte Abschnitt diskutiert die Klassifikation der Testdaten mithilfe der ausgewählten idealtypischen Funktionen. Hierbei wird auch auf die automatisierte Ausgabe zur Evaluierung nicht erfolgreich klassifizierter Testdaten eingegangen.
 In der Zusammenfassung werden, anhand der dargestellten Ergebnisse, Ansätze für mögliche Anpassungen des Programms zur Verarbeitung größerer Datenmengen erneut aufgegriffen und als potentielles Thema für eine weitere Hausarbeit zur Diskussion gestellt.
 
-\chapter{Hauptteil}
+\chapter{Das Python-Package functionfinder}
 
-\section{Installation und Konfiguration}
+\section{Struktur, Installation, Konfiguration und Dokumentation}
 
-Das Programm wurde vom Autor mit dem Namen \emph{"functionfinder"} betitelt und steht auf GitHub unter dem Link \begin{center}\url{https://github.com/GGProjects/DLMDWPMP01}\end{center} zum Download zur Verfügung.
+\subsection{Struktur}
 
-In der folgenden Abbildung werden die wesentlichen Elemente der bereitgestellten Modulstruktur dargestellt. Hervorzuheben ist hierbei das Verzeichnis \emph{functionfinder}, welches jene Pythondateien beinhaltet, die für die Programmfunktionalität verantwortlich sind.
-Die übrigen Verzeichnisse stehen für die bereitgestellten Daten (\emph{data}), die vom Programm erzeugten Ausgaben (\emph{output}), sowie für die vorgesehenen UnitTests (\emph{tests}) zur Verfügung.
+Das Programm wurde vom Autor mit dem Namen \emph{\glqq functionfinder\grqq} betitelt und steht auf GitHub unter dem Link \begin{center}\url{https://github.com/GGProjects/DLMDWPMP01}\end{center} zum Download zur Verfügung.
+
+Hinsichtlich der Struktur des vorliegenden Programmes, entschied sich der Autor für eine Aufteilung des Quellcodes in mehrere Module die im Package \emph{functionfinder} zusammengeführt sind \citep[S. 242]{kofler_python_2022}. Die weitere Ordnerstruktur orientiert sich an einem Blog-Post von \cite{henk_griffioen_how_2017}, der, nach Meinung des Autors, ein leicht verständliches Framework für Pythonprojekte bietet.
+
+In Anlehnung an \cite{croitoru_programmieren_2022}, \cite{kofler_python_2022} und \cite{henk_griffioen_how_2017} werden in dieser Arbeit unterschiedliche Begriffe für die Abgrenzung der beschriebenen Elemente verwendet.
+
+\begin{itemize}
+ \itemsep0pt
+ \item Die Bezeichnungen \emph{Programm} bzw. \emph{Projekt} oder auch \emph{Software} beziehen sich auf die Gesamtheit aller bereitgestellten Module, Packages sowie aller zusätzlichen Ordner und Dateien.
+ \item Mit \emph{Package} werden alle jenen Ordner angesprochen, die Module beinhalten und des weiteren über eine Datei \_\_init\_\_.py verfügen.
+ \item Als \emph{Module} werden die einzelnen, verfügbaren Pythonskripte bezeichnet.
+ \item In Modulen abgelegte \emph{Funktionen} bezeichnen, in sich geschlossenen, Code, der im Programmablauf von den Modulen aufgerufen wird. Im Rahmen dieser Arbeit wird jedoch der Begriff Funktion auch in Bezug auf den mathematischen Zusammenhang der Datenpunkte, innerhalb der bereitgestellten Datensätze verwendet.
+ \item Unter dem Begriff \emph{Methoden} werden letztlich jene Funktionen zusammengefasst, die einer bestimmten Objektklasse zugeordnet sind.
+\end{itemize}
+
+In der nachfolgenden Abbildung werden die wesentlichen Ordner und Dateien der bereitgestellten Programmstruktur dargestellt. Hervorzuheben ist hierbei das Package \emph{functionfinder}, das sämtliche Pythonmodule beinhaltet, die für die Programmfunktionalität verantwortlich sind, sowie das Modul \emph{ffrunner}, über das die eigentliche Ausführung des Programmes gestartet wird.
+Die übrigen Verzeichnisse des Projekts stehen für die bereitgestellten Daten (\emph{data}), die Dokumentation (\emph{docs}), die vom Programm erzeugten Ausgaben (\emph{output}), sowie für die vorgesehenen UnitTests (\emph{tests}) zur Verfügung.
 
 \definecolor{mygray}{rgb}{0.9,0.9,0.9}
 \lstset{backgroundcolor=\color{mygray},
@@ -35,38 +52,47 @@ Die übrigen Verzeichnisse stehen für die bereitgestellten Daten (\emph{data}),
 	morecomment=[l][\color{red}]{/},}
 	
 \begin{tabular}{c}  % the tabular makes the listing as small as possible and centers it
-\lstinputlisting[caption={Struktur des Moduls},
+\lstinputlisting[title={Struktur des Programmes},
 	label=folder]{tree.txt}
 \end{tabular}
 
+\subsection{Installation}
 
-Für die Installation bietet es sich an, lokal eine virtuelle Pythonumgebung anzulegen. Anschließend kann nach Wechsel in das Modulverzeichnis, mit dem Befehl
+Für die Installation bietet es sich an, lokal eine virtuelle Pythonumgebung anzulegen. Anschließend kann nach Wechsel in das Projektverzeichnis, mit dem Befehl
 \begin{center}\emph{pip install -e .}\end{center}
-die Datei \emph{setup.py} ausgeführt und somit das Modul installiert werden.
-Mit der Installation wird die Verfügbarkeit der benötigten Dateien überprüft und UnitTests zur Sicherstellung der Funktionalität durchgeführt. Benötigte Pakete werden gegebenenfalls in der virtuellen Umgebung nachinstalliert. Im Rahmen der Installation wird außerdem ein Logfile mit der Bezeichnung \emph{setuplog\_[DATUM]\_[UHRZEIT]} im Verzeichnis \emph{output/logs} angelegt.
+das Modul \emph{setup.py} ausgeführt und somit das Programm installiert werden.
+Mit der Installation werden die Verfügbarkeit der benötigten Dateien überprüft und UnitTests zur Sicherstellung der Funktionalität durchgeführt. Benötigte Pakete werden gegebenenfalls in der virtuellen Umgebung nachinstalliert. Im Rahmen der Installation wird außerdem ein Logfile mit der Bezeichnung \emph{setuplog\_[DATUM]\_[UHRZEIT]} im Verzeichnis \emph{output/logs} angelegt.
 Nach erfolgreicher Installation, kann das Programm aus der Konsole mit dem einfachen Aufruf \emph{ff} ausgeführt werden.
 
-Im Zuge der Entwicklung wurde das vorliegende Programm mit der Pythonversion 3.11 unter Windows10 getestet. Die Lauffähigkeit auf Linux oder IOS/MacOS Plattformen wurde im gegenständlichen Programmdesign nicht berücksichtigt und könnte Thema einer Weiterentwicklung des Moduls sein.
+Der Konsolenbefehl \emph{python -m unittest -v tests/test\_unit\.py} stellt eine detaillierte Ausgabe der Ergebnisse der UnitTests zur Verfügung. 
 
-Dokumentiert wurde die Software gemäß dem NumPyDoc Style Guide. (https://numpydoc.readthedocs.io/en/latest/format.html-standard) Verfügbar gemacht wurde diese anschließend mithilfe der Software \emph{Sphinx} im Markdown-Format für die Readme-Datei des Git-Repositories sowie im LATEX-Format als Appendix für diese Arbeit.
-
-Eine detaillierte Ausgabe der Ergebnisse der UnitTests kann mittels Konsolenbefehl
-\begin{center}
-\emph{python -m unittest -v tests/test\_unit\.py}
-\end{center}
-erreicht werden. 
+Im Zuge der Entwicklung wurde das vorliegende Programm mit der Pythonversion 3.11 unter Windows10 getestet. Die Lauffähigkeit auf Linux oder IOS/MacOS Plattformen wurde im gegenständlichen Programmdesign nicht berücksichtigt und bietet sich, aus Sicht des Autors, als Thema für eine Weiterentwicklung der Software an.
 
 \subsection{Konfiguration}
 
-Über Änderungen in der Datei \emph{functionfinder/config.py} können, falls benötigt, Verzeichnispfade, Log-Einstellungen, Bewertungsfunktionen, sowie auch die Pfade zu den vorliegenden Datendateien angepasst werden.
+Über Änderungen im Modul \emph{functionfinder/config.py} können, falls benötigt, Verzeichnispfade, Log-Einstellungen, Bewertungsfunktionen, sowie auch die Pfade zu den vorliegenden Datendateien angepasst werden.
 
 Letzteres ermöglicht eine einfache Änderung der verwendeten Trainings-, Funktions- und Testdaten, um das Programm auch mit anderen als den, im Rahmen der Aufgabenstellung, bereitgestellten Daten auszuführen.
 
 Eine Anpassung der Bewertungsfunktionen bietet des weiteren die Möglichkeit, die zur Bewertung der Trainingsdaten herangezogene Funktion (der Standardwert ist hierfür die kleinste Summe der quadratischen Abweichungen) sowie den Faktor für den errechneten Fehlerwert, zur Klassifikation der Testdaten (der Standardwert ist, gemäß Aufgabenstellung, die Wurzel aus Zwei) zu verändern.
 
+\subsection{Dokumentation}
+
+Bei der Dokumentation der Software entschied sich der Autor für eine Formatierung gemäß NumPyDoc Style Guide \citep{numpydoc_v160_style_nodate}. Dieser bietet den Vorteil, durch die Software \emph{Sphinx} automatisiert zu einer übersichtlichen Dokumentation zusammengefasst werden zu können. Die \emph{autosummary}-Funktion von Sphinx ermöglicht hierbei eine rekursive Verarbeitung der in den Modulen, Funktionen und Methoden hinterlegten Dokumentation \citep{leedham_answer_2020}.
+
+Verfügbar ist diese, automatisch generierte, Dokumentation
+\begin{itemize}
+ \itemsep0pt
+ \item als HTML-Website, durch laden der Datei \emph{docs/build/html/index.html}
+ \item oder als LATEX-Pdf (\emph{docs/build/latex/dlmdwpmp01.pdf}).
+\end{itemize}
+
+
 \section{Bereitgestellte Datensätze}
 
-Im Zuge der Aufgabenstellung wurden, zur Bearbeitung dieser, drei Datensätze angefertigt und in Form unten aufgelisteter CSV-Dateien bereitgestellt.
+\subsection{Beschreibung der Datensätze}
+
+Im Zuge der Aufgabenstellung wurden dem Autor drei Datensätze in Form unten aufgelisteter CSV-Dateien bereitgestellt.
 
 \begin{itemize}
  \itemsep0pt
@@ -75,7 +101,7 @@ Im Zuge der Aufgabenstellung wurden, zur Bearbeitung dieser, drei Datensätze an
  \item \emph{test.csv}
 \end{itemize}
 
-Erstere beinhaltet eine Tabelle von vier "verwaschenen" Funktionen in den Spalten \emph{y1} bis \emph{y4} mit jeweils 400 Datenpunkten. Die folgende Tabelle zeigt die exemplarische Struktur des Trainingsdatensatzes.
+Erstere beinhaltet eine Tabelle von vier \glqq verwaschenen\grqq mathematischen Funktionen in den Spalten \emph{y1} bis \emph{y4} mit jeweils 400 Datenpunkten. Die folgende Tabelle zeigt die exemplarische Struktur des Trainingsdatensatzes.
 
 \begin{table}[H]
 \small
@@ -86,37 +112,23 @@ Erstere beinhaltet eine Tabelle von vier "verwaschenen" Funktionen in den Spalte
 \end{table} 
 
 
-Eine Visualisierung der Trainingsdaten lässt bereits optische Rückschlüsse auf passende idealtypische Funktionen zu.
+Eine Visualisierung der Trainingsdaten lässt bereits optische Rückschlüsse auf mögliche, passende idealtypische Funktionen zu.
 \begin{figure}[h]
 \centering
 \includegraphics[width=13cm]{../output/figures/train.png}
-\caption{Darstellung der bereitgestellten Trainingsdatensätze \cite{Gage:18}}\label{fig:train}
+\caption{Darstellung der bereitgestellten Trainingsdatensätze}
+\label{fig:train}
 \end{figure}
 
-Die Datei ideal.csv beinhaltet 50, nicht "verwaschene", idealtypische Funktionen in den Spalten \emph{y1} bis \emph{y50}. Wie im Detail im folgenden Abschnitt beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. Auf die Darstellung eines exemplarischen Auszuges wird daher an dieser Stelle verzichtet.
+Die Datei \emph{ideal.csv} beinhaltet 50, nicht \glqq verwaschene\grqq , idealtypische Funktionen in den Spalten \emph{y1} bis \emph{y50}. Wie im Detail im folgenden Abschnitt beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. 
 
 \begin{table}[H]
 \small
 \centering
 \csvautotabular[range={+5}]{ideal.csv}
-\caption{Exemplarischer Auszug der Datei train.csv}
+\caption{Exemplarischer Auszug der Datei ideal.csv}
 \label{tab:ideal.csv}
 \end{table} 
-
-%\begin{table}[H]
-%\small
-%\centering
-%\csvreader[
-%	tabular = ccccc,
-%	range={+5},
-%	late after line = \\\hline,
-%	no head]%
-% {../data/ideal.csv}{}{%
-%  \csvcoli & \csvcolii & \csvcoliii & \csvcoll & \csvcolli}
-%\csvautotabular[range={+5}]{../data/ideal.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoll & %\csvcolli}
-%\caption{Exemplarischer Auszug der Datei ideal.csv}
-%\label{tab:ideal.csv}
-%\end{table} 
 
 Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatensatz nur aus 100 einzelnen Datenpunkten. Diese werden in einer Spalte \emph{y} der Datei \emph{test.csv} zusammengefasst und sind nicht als zusammengehörige Funktion zu verstehen. 
 
@@ -128,7 +140,11 @@ Im Gegenzug zu den oben dargestellten beiden Datensätzen besteht der Testdatens
 \label{tab:test.csv}
 \end{table} 
 
-In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener mit der geringsten Abweichung zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als Klassifikation der Testdaten bezeichnet. Diese wird im Abschnitt "Klassifikation der Testdaten" im Detail behandelt.
+In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener, mit der geringsten Abweichung, zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als \glqq Klassifikation der Testdaten\grqq bezeichnet und im gleichnamigen Abschnitt im Detail behandelt.
+
+Für die interne Verarbeitung der Daten wurde, im Rahmen des Programms, eine eigene Objektklasse geschaffen, die spezifische Methoden sowie die Parameter der Visualisierung bereitstellt. Diese Klasse und deren Unterklassen für die verschiedenen Datensätze sind im Modul \emph{functionfinder/classes.py} definiert.
+
+\subsection{Ablage der Datensätze in einer SQLite Datenbank}
 
 Gemäß der Vorgabe der Aufgabenstellung sollen sowohl die Trainings- (\emph{train.csv}) als auch die Funktionsdaten (\emph{ideal.csv}) in eine SQLite Datenbank eingelesen werden. Diese wird im Verzeichnis \emph{output/data} bereitgestellt. Der Autor entschied sich hierbei für das Python-Modul \emph{sqlite3} anstelle des, in der Vorgabe vorgeschlagenen, Moduls \emph{sqlalchemy}. Dieses bietet für die gegebene Anwendung eine vereinfachte Möglichkeit Daten mit einer SQLite Datenbank zu verarbeiten.
 
@@ -136,7 +152,6 @@ Gemäß der Vorgabe der Aufgabenstellung sollen sowohl die Trainings- (\emph{tra
 
 Die Testdaten (\emph{test.csv}) werden, gemäß Vorgabe, in der Programmausführung zeilenweise eingelesen, mit den Daten der gewählten Funktionen verglichen und gemeinsam mit der getroffenen Klassifikation in die SQLite Datenbank geschrieben.
 
-Für die interne Verarbeitung der Daten wurde, im Rahmen des Programms, eine eigene Objektklasse geschaffen, die spezifische Funktionen sowie die Parameter der Visualisierung bereitstellt. Diese Klasse und deren Unterklassen für die verschiedenen Datensätze sind in der Datei \emph{functionfinder/classes.py} definiert.
 
 \section{Auswahl idealtypischer Funktionen}
 
@@ -231,7 +246,7 @@ Bei der Bearbeitung der zur Aufgabe übergebenen Datensätze waren hierbei zwei 
 In den oben angeführten Tabellen wird die Distanz der beiden betroffenen Datenpunkte zu den vier gewählten Funktionen ersichtlich. In der Zuweisung wurden dennoch jene Funktionen mit dem geringsten Abstand gewählt (grafisch hervorgehoben).
 
 In der grafischen Repräsentation der Ergebnisse ist die Annäherung der einzelnen Datenpunkte des Testdatensatzes an die gewählten idealtypischen Funktionen gut erkennbar. Jene beiden Datenpunkte, die im Vergleich den definierten Maximalabstand überschritten haben werden durch das Symbol $x$ dargestellt und liegen etwa bei den Koordinaten 
-$(\begin{array}x\\y\\z\end{array})$
+%$(\begin{array}x\\y\\z\end{array})$
 $ \begin{pmatrix}-7 \\81 \end{pmatrix}$ sowie 
 $ \begin{pmatrix}0 // 60 \end{pmatrix}$. 
 Wobei hier die optische Beurteilung des zweiten Punktes eher eine Tendenz zur Funktion \emph{y36} vermuten ließe, als zur Funktion \emph{y33}. In der oben angeführten Darstellung zu diesem Datenpunkt wird aber auch deutlich, dass die Berechneten Abstände tatsächlich sehr nahe beieinander liegen.
@@ -271,6 +286,6 @@ Des Weiteren wurden in den vorangegangenen Abschnitten zwei Themenbereiche anges
 
 Durch diese beiden Anpassungen könnte voraussichtlich die Effizienz des Programmes in der Verarbeitung größerer Datensätze, sowie die Genauigkeit der Klassifikation der Testdaten gesteigert werden. Die Validierung dieser Vermutung wäre, aus Sicht des Autors, eine mögliche Fragestellung für eine weiterführende Arbeit. 
 
-Kompatibilität \cite{dunn_getting_2017-1}auf anderen Plattformen wie IOS IPad, Linux  \citep[][S. 22]{lampe_clean_2020} 
+Kompatibilität \cite{dunn_getting_2017-1}auf anderen Plattformen wie IOS IPad, Linux   
 
 
