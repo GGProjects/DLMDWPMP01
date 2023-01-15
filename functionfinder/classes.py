@@ -96,6 +96,7 @@ class projectdata():
         plt.ylabel(self.ylabel)
         plt.xlabel(self.xlabel)
         plt.title(self.title)
+        plt.legend(loc="upper right")
         plt.savefig(Path(self.fname))
         plt.close()
 
@@ -136,11 +137,12 @@ class idealdata(projectdata):
         for i in self.matched.keys():
             iax.plot(pd.to_numeric(self.data["x"]),
                      pd.to_numeric(self.data[self.matched[i][0]]),
-                     label=i,
+                     label=self.matched[i][0],
                      linewidth=2)
         plt.ylabel(self.ylabel)
         plt.xlabel(self.xlabel)
         plt.title(self.title)
+        plt.legend(loc="upper right")
         plt.savefig(Path(self.fname))
         plt.close()
 

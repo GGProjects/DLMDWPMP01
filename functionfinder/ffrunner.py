@@ -174,7 +174,7 @@ def task():
     # assign object of class testdata (as subclass of projectdata)
     test = cl.testdata(dataname="test",
                        plotfile="test.png",
-                       plottitle="Test Data")
+                       plottitle="Assigned Test Data")
 
     # read test data from sqlite db
     test.getdata()
