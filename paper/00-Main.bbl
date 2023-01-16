@@ -1,0 +1,46 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Croitoru(2022)}]{croitoru_programmieren_2022}
+\textbf{Croitoru, P. D.~C.} (\textbf{2022}): \emph{Programmieren mit {Python}}.
+  IU Internationale Hochschule GmbH, Erfurt.
+
+\bibitem[{Geer(2019)}]{geer_practical_2019}
+\textbf{Geer, R. v.~d.} (\textbf{2019}): \emph{A {Practical} {Guide} to {Using}
+  {Setup}.py}.
+
+\bibitem[{Gosset / Wright(2017)}]{gosset_accessing_2017}
+\textbf{Gosset, J./ Wright, A.} (\textbf{2017}): \emph{Accessing {SQLite}
+  {Databases} {Using} {Python} and {Pandas} – {Data} {Analysis} and
+  {Visualization} in {Python} for {Ecologists}}.
+
+\bibitem[{{Henk Griffioen}(2017)}]{henk_griffioen_how_2017}
+\textbf{{Henk Griffioen}} (\textbf{2017}): \emph{How to {Start} a {Data}
+  {Science} {Project} in {Python}}.
+
+\bibitem[{{Jesuisme}(2021)}]{jesuisme_answer_2021}
+\textbf{{Jesuisme}} (\textbf{2021}): \emph{Answer to "{Call} a python unittest
+  from another script and export all the error messages"}.
+
+\bibitem[{Kofler(2022)}]{kofler_python_2022}
+\textbf{Kofler, M.} (\textbf{2022}): \emph{Python: der {Grundkurs}}. Rheinwerk
+  Computing, Bonn.
+
+\bibitem[{Leedham(2020)}]{leedham_answer_2020}
+\textbf{Leedham, J.} (\textbf{2020}): \emph{Answer to "{Sphinx} autodoc is not
+  automatic enough"}.
+
+\bibitem[{{numpydoc v1.6.0}(n.d.)}]{numpydoc_v160_style_nodate}
+\textbf{{numpydoc v1.6.0}} (\textbf{n.d.}): \emph{Style guide — numpydoc
+  v1.6.0rc1.dev0 {Manual}}.
+
+\bibitem[{{Python Software
+  Foundation}(n.d.)}]{python_software_foundation_csv_nodate-1}
+\textbf{{Python Software Foundation}} (\textbf{n.d.}): \emph{csv — {CSV}
+  {File} {Reading} and {Writing}}.
+
+\bibitem[{Stevens-Haas(2021)}]{stevens-haas_importing_2021}
+\textbf{Stevens-Haas, J.} (\textbf{2021}): \emph{Importing a {CSV} file into a
+  sqlite3 database table using {Python} - {Stack} {Overflow}}.
+
+\end{thebibliography}

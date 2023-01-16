@@ -5,48 +5,50 @@ Reallocating 'name_of_file' (item size: 1) to 18 items.
 A level-1 auxiliary file: 001-Titlepage.aux
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: 020-Body.aux
-I found no \citation commands---while reading file 00-Main.aux
-I found no \bibdata command---while reading file 00-Main.aux
-I found no \bibstyle command---while reading file 00-Main.aux
-You've used 0 entries,
-            0 wiz_defined-function locations,
-            85 strings with 517 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
-int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+The style file: iubh.bst
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+A level-1 auxiliary file: 041-Annexes.aux
+Database file #1: biblio.bib
+You've used 10 entries,
+            2775 wiz_defined-function locations,
+            626 strings with 5738 characters,
+and the built_in function-call counts, 3744 in all, are:
+= -- 316
+> -- 110
+< -- 10
++ -- 45
+- -- 34
+* -- 263
+:= -- 661
+add.period$ -- 12
+call.type$ -- 10
+change.case$ -- 59
+chr.to.int$ -- 11
+cite$ -- 10
+duplicate$ -- 298
+empty$ -- 300
+format.name$ -- 47
+if$ -- 720
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 47
+newline$ -- 34
+num.names$ -- 40
+pop$ -- 104
+preamble$ -- 1
+purify$ -- 51
 quote$ -- 0
-skip$ -- 0
+skip$ -- 118
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 112
+swap$ -- 120
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 84
 warning$ -- 0
-while$ -- 0
+while$ -- 30
 width$ -- 0
-write$ -- 0
-(There were 3 error messages)
+write$ -- 95

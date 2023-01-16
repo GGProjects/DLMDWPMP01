@@ -99,7 +99,7 @@ def task():
     train.draw()
 
 # =============================================================================
-# Load ideal-data in defined class and plot to png
+# Load ideal-data in defined class
 # =============================================================================
     printandlog("Load ideal data.")
 

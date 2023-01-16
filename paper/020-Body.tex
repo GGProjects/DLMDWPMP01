@@ -8,7 +8,7 @@ Anschließend soll das gleiche Programm die Punkte eines Testdatensatzes, anhand
 Fokus der vorliegenden Aufgabenstellung, sowie dieser Arbeit ist primär die Erlernung der Programmiersprache Python und nicht die ausschließliche Erfüllung der beschriebenen mathematischen Aspekte. Diese, isoliert betrachtet, könnten ebenso in Form eines Jupyter-Notebooks erarbeitet werden. Die, in dieser Arbeit getroffenen, Entscheidungen zur Lösung der Aufgabe zielen daher darauf ab, möglichst viele Aspekte einer Entwicklung, sowie die Vorgaben zur Bearbeitung, abzubilden und dienen in erster Linie der Aneignung von Fähigkeiten im Umgang mit Python.
 
 
-\section{Struktur der Hausarbeit}
+\section{Struktur der Arbeit}
 
 Im Hauptteil der vorliegenden Hausarbeit werden zuerst, vom Autor getroffene Entscheidungen, in Bezug auf den strukturellen Aufbau, die Installation und Konfiguration, sowie die Dokumentation des Programmes dargelegt. 
 In weiterer Folge wird auf die bereitgestellten Datensätze eingegangen und wie diese, im Rahmen der Aufgabenstellung, verarbeitet wurden.
@@ -62,14 +62,27 @@ Quelle: Eigene Darstellung.
 \label{fig:structure}
 \end{figure}
 
+Der logische Programmablauf gliedert sich, wie die angeführte Grafik zeigt, im Wesentlichen in drei Abschnitte, die auch im Hauptteil dieser Arbeit behandelt werden.
+
+\begin{figure}[h]
+\centering
+\caption{Darstellung des logischen Programmablaufs}
+\includegraphics[width=15cm]{pics/Flow.png}\\
+Quelle: Eigene Darstellung.
+\label{fig:flow}
+\end{figure}
+
+
+\FloatBarrier
+
 \subsection{Installation}
-\label{sec:installation}
+\label{sub:installation}
 
 Für die Installation bietet es sich an, lokal eine virtuelle Pythonumgebung anzulegen. Anschließend kann nach Wechsel in das Projektverzeichnis, mit dem Befehl
 \begin{center}\emph{pip install -e .}\end{center}
 das Modul \emph{setup.py} ausgeführt und somit das Programm installiert werden. \cite{geer_practical_2019} erläutert zwar in seinem Blog-Post, dass die Verwendung von setup.py mittlerweile eine veraltete Vorgehensweise für die Installation von Projekten darstellt, bietet aber gleichzeitig eine leicht verständliche Anleitung dafür an. Der Autor griff, aus Gründen der Einfachheit, auf diese Beschreibung zurück.  
 
-Mit der Installation werden die Verfügbarkeit der benötigten Dateien überprüft und UnitTests zur Sicherstellung der Funktionalität durchgeführt. Für Letzteres lieferte der Foren-Beitrag von \cite{jesuisme_answer_2021} eine gute Vorlage. Benötigte Pakete werden gegebenenfalls in der virtuellen Umgebung nachinstalliert. Im Rahmen der Installation wird außerdem ein Logfile mit der Bezeichnung \emph{setuplog\_[DATUM]\_[UHRZEIT]} im Verzeichnis \emph{output/logs} angelegt. Nach erfolgreicher Installation, kann das Programm aus der Konsole mit dem einfachen Aufruf \emph{\glqq ff\grqq} ausgeführt werden.
+Mit der Installation werden die Verfügbarkeit der benötigten Dateien überprüft und UnitTests zur Sicherstellung der Funktionalität durchgeführt. Für die Integration der Tests in das Modul setup.py lieferte der Foren-Beitrag von \cite{jesuisme_answer_2021} einen guten Anhalt. Benötigte Pakete werden gegebenenfalls in der virtuellen Umgebung nachinstalliert. Im Rahmen der Installation wird außerdem ein Logfile \emph{setuplog\_[DATUM]\_[UHRZEIT]} im Verzeichnis \emph{output/logs} angelegt. Nach erfolgreicher Installation, kann das Programm aus der Konsole mit dem einfachen Aufruf \emph{\glqq ff\grqq} ausgeführt werden.
 
 Der Konsolenbefehl \emph{python -m unittest -v tests/test\_unit.py} stellt eine detaillierte Ausgabe der Ergebnisse der UnitTests zur Verfügung. 
 
@@ -108,7 +121,7 @@ Im Zuge der Aufgabenstellung wurden dem Autor drei Datensätze in Form unten auf
  \item \emph{test.csv}
 \end{itemize}
 
-Erstere beinhaltet eine Tabelle von vier \glqq verwaschenen\grqq mathematischen Funktionen in den Spalten \emph{y1} bis \emph{y4} mit jeweils 400 Datenpunkten. Die folgende Tabelle zeigt die exemplarische Struktur des Trainingsdatensatzes.
+Erstere beinhaltet eine Tabelle von vier \glqq verwaschenen\grqq\ mathematischen Funktionen in den Spalten \emph{y1} bis \emph{y4} mit jeweils 400 Datenpunkten. Die folgende Tabelle zeigt die exemplarische Struktur des Trainingsdatensatzes.
 
 \begin{table}[H]
 \small
@@ -130,7 +143,7 @@ Quelle: Eigene Darstellung.
 \label{fig:train}
 \end{figure}
 
-Die Datei \emph{ideal.csv} beinhaltet 50, nicht \glqq verwaschene\grqq , idealtypische Funktionen in den Spalten \emph{y1} bis \emph{y50}. Wie im Detail im folgenden Abschnitt beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. 
+Die Datei \emph{ideal.csv} beinhaltet 50, nicht \glqq verwaschene\grqq\ , idealtypische Funktionen in den Spalten \emph{y1} bis \emph{y50}. Wie im Detail im folgenden Abschnitt beschrieben, sollen diese Funktionen durch das Programm mit dem Trainingsdatensatz verglichen werden und daraus die passendsten vier Funktionen gewählt werden. Die Datei weist, bis auf die Anzahl der Spalten, eine ähnliche Struktur wie der Trainingsdatensatz auf und besteht ebenfalls je Spalte aus 400 Datenpunkten. 
 
 \begin{table}[H]
 \small
@@ -152,7 +165,7 @@ Quelle: Eigene Darstellung.
 \label{tab:test.csv}
 \end{table} 
 
-In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener, mit der geringsten Abweichung, zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als \glqq Klassifikation der Testdaten\grqq bezeichnet und im gleichnamigen Abschnitt im Detail behandelt.
+In der weiteren Bearbeitung der Aufgabenstellung sollen diese Datenpunkte mit den ausgewählten idealtypischen Funktionen verglichen und jeweils jener, mit der geringsten Abweichung, zugewiesen werden. Dieser Vorgang wird im Zuge dieser Arbeit als \glqq Klassifikation der Testdaten\grqq\ bezeichnet und im gleichnamigen Abschnitt im Detail behandelt.
 
 Für die interne Verarbeitung der Daten wurde, im Rahmen des Programms, eine eigene Objektklasse geschaffen, die spezifische Methoden sowie die Parameter der Visualisierung bereitstellt. Diese Klasse und deren Unterklassen für die verschiedenen Datensätze sind im Modul \emph{classes.py} definiert.
 
@@ -160,7 +173,7 @@ Für die interne Verarbeitung der Daten wurde, im Rahmen des Programms, eine eig
 
 Gemäß der Vorgabe der Aufgabenstellung sollen sowohl die Trainings- (\emph{train.csv}) als auch die Funktionsdaten (\emph{ideal.csv}) in eine SQLite Datenbank eingelesen werden. Diese wird im Verzeichnis \emph{output/data} bereitgestellt. Der Autor entschied sich hierbei für das Python-Paket \emph{sqlite3} anstelle des, in der Vorgabe vorgeschlagenen, Paketes \emph{sqlalchemy}. Dieses bietet für die gegebene Anwendung eine vereinfachte Möglichkeit Daten mit einer SQLite Datenbank zu verarbeiten \citep{gosset_accessing_2017}.
 
-Über die UnitTests, die im Rahmen der, in Abschnitt ~\ref{sec:installation} beschriebenen, Installation durchgeführt werden, wird unter anderem, das lokale System auf die Möglichkeit eines direkten SQL-Imports hin überprüft. Dies bedeutet, dass versucht wird, die Daten in die SQLite Datenbank zu schreiben, ohne diese zuerst über das Python-Programm einzulesen und erst in einem weiteren Verarbeitungsschritt an die Datenbank zu übergeben. Die Umsetzung hierfür erfolgt nach einem Foren-Beitrag von \cite{stevens-haas_importing_2021} mit dem Paket \emph{subprocess}. Das Ergebnis der Überprüfung wird bei Erfolg im Logfile des Setups angeführt. Auch in der Ausführung des Programms wird vorerst noch einmal der direkte Import versucht und erst im Falle eines Fehlschlages der Umweg über die Methoden des Python-Pakets \emph{pandas} gewählt. Obwohl, aufgrund der geringen Größe, der in dieser Arbeit vorliegenden Datensätze, die Möglichkeit des direkten Imports nur eine untergeordnete Rolle spielt, schont ein solcher, im Falle größerer Datenmengen, die Systemressourcen und spart Zeit in der Programmausführung.
+Über die UnitTests, die im Rahmen der, in Abschnitt ~\ref{sub:installation} beschriebenen, Installation durchgeführt werden, wird unter anderem, das lokale System auf die Möglichkeit eines direkten SQL-Imports hin überprüft. Dies bedeutet, dass versucht wird, die Daten in die SQLite Datenbank zu schreiben, ohne diese zuerst über das Python-Programm einzulesen und erst in einem weiteren Verarbeitungsschritt an die Datenbank zu übergeben. Die Umsetzung hierfür erfolgt nach einem Foren-Beitrag von \cite{stevens-haas_importing_2021} mit dem Paket \emph{subprocess}. Das Ergebnis der Überprüfung wird bei Erfolg im Logfile des Setups angeführt. Auch in der Ausführung des Programms wird vorerst noch einmal der direkte Import versucht und erst im Falle eines Fehlschlages der Umweg über die Methoden des Python-Pakets \emph{pandas} gewählt. Obwohl, aufgrund der geringen Größe, der in dieser Arbeit vorliegenden Datensätze, die Möglichkeit des direkten Imports nur eine untergeordnete Rolle spielt, schont ein solcher, im Falle größerer Datenmengen, die Systemressourcen und spart Zeit in der Programmausführung.
 
 Die Testdaten (\emph{test.csv}) werden, gemäß Vorgabe, in der Programmausführung zeilenweise eingelesen, mit den Daten der gewählten Funktionen verglichen und gemeinsam mit der getroffenen Klassifikation in die SQLite Datenbank geschrieben.
 
@@ -192,17 +205,17 @@ Als Rückgabewert der ersten genannten Funktion, wurde vom Autor der Python-Date
 
 \begin{figure}[h]
 \caption{Darstellung des Rückgabewertes der berechneten Übereinstimmungen}
-\begin{tabular} 
-\begin{lstlisting}[language=python,
-				   label=dictresult]
+\begin{tabular}{l}
+\begin{lstlisting}[language=python,label=dictresult]
 {'y1': ('y36', 33.71178854422821),
  'y2': ('y11', 32.62893138832121),
  'y3': ('y2', 33.11847188090256),
  'y4': ('y33', 31.75243110139478)}
 \end{lstlisting}
 \end{tabular}\\
-\centering
+\begin{center}
 Quelle: Eigene Darstellung.
+\end{center}
 \label{fig:resultdict}
 \end{figure}
 
@@ -248,7 +261,7 @@ Bei der Bearbeitung der zur Aufgabe übergebenen Datensätze waren hierbei zwei 
 
 \begin{figure}[h]
 \caption{Datenpunkte mit überschrittenem Maximalabstand}
-\begin{tabular}
+\begin{tabular}{l}
 \begin{lstlisting}[label=offlimit]
 /  2 entries had a deviation above the set limit:
 
@@ -265,8 +278,9 @@ Bei der Bearbeitung der zur Aufgabe übergebenen Datensätze waren hierbei zwei 
 / 0.3  59.68033  57.424227           y33       True
 \end{lstlisting}
 \end{tabular}\\
-\centering
+\begin{center}
 Quelle: Eigene Darstellung.
+\end{center}
 \label{fig:offlimit}
 \end{figure}
 
@@ -284,7 +298,7 @@ y33: $ \frac{57.424227\ (Punktabweichung)}{31.752431\ (Fehlerwert\ Funktion\ y33
 y36: $ \frac{58.180330\ (Punktabweichung)}{33.711788\ (Fehlerwert\ Funktion\ y36)} = 1.725815 $
 \end{center}
 
-Diese \glqq Normalisierung\grqq der Abweichung und damit eine Klassifikation in Relation zum berechneten Fehlerwert $a$ jeder ausgewählten idealtypischen Funktionen, könnte gerade in Grenzfällen, wie diesem, einen Unterschied in der Zuweisung hervorrufen. Aus Sicht des Autors, zeichnet sich hierbei eine mögliche Weiterentwicklung des Programmes ab, die jedoch zuvor durch einen Vergleichstest evaluiert werden sollte.
+Diese \glqq Normalisierung\grqq\ der Abweichung und damit eine Klassifikation in Relation zum berechneten Fehlerwert $a$ jeder ausgewählten idealtypischen Funktionen, könnte gerade in Grenzfällen, wie diesem, einen Unterschied in der Zuweisung hervorrufen. Aus Sicht des Autors, zeichnet sich hierbei eine mögliche Weiterentwicklung des Programmes ab, die jedoch zuvor durch einen Vergleichstest evaluiert werden sollte.
 
 Wie anhand der Visualisierung jedoch beobachtet werden kann, liefert auch eine Klassifikation, ohne der oben angesprochenen Modifikation, an den Schnittpunkten der Funktionen eine ausreichend gute Zuweisung. Der Verlauf der idealtypischen Funktionen kann hier auch in den Testdaten optisch nachverfolgt werden.
 
@@ -304,8 +318,8 @@ Wie Eingangs erwähnt, wird an dieser Stelle noch einmal betont, dass bei der Be
 Es wurde hierbei versucht, die Vorgaben der Aufgabenstellung weitestgehend zu erfüllen. Wie jedoch bereits in den vorangegangenen Abschnitten erläutert, waren aus Sicht des Autors, zwei Modifikationen der Software bereits in der ersten Umsetzung sinnvoll.
 \begin{enumerate}
  \itemsep0pt
- \item  Der automatisierte Versuch des \emph{direkten} Imports der Daten in die SQLite Datenbank
- \item  Die Erweiterung der verfügbaren Datenspalten des Ergebnisses der klassifizierten Testdaten
+ \item  Der automatisierte Versuch des \emph{direkten} Imports der Daten in die SQLite Datenbank.
+ \item  Die Erweiterung der verfügbaren Datenspalten des Ergebnisses der klassifizierten Testdaten.
 \end{enumerate}
 Die erstgenannte Anpassung begünstigt, bei gegebenen Systemvoraussetzung die Verarbeitung größerer Quelldatensätze.
 Die Zweite lässt eine Ausgabe jener Ergebnisse zu, die den vorgegebenen Maximalabstand zu keiner der ausgewählten idealtypischen Funktionen einhalten konnten.
@@ -315,9 +329,9 @@ Des Weiteren wurden, im Rahmen dieser Arbeit, Themenbereiche angesprochen, die m
 \begin{enumerate}
  \itemsep0pt
  \item Zur Sicherstellung der Lauffähigkeit der Software auf unterschiedlichen Betriebssystemen, gab es im Zuge der Aufgabenstellung keine Vorgaben. Um jedoch das Testen der Software zu erleichtern, wäre eine plattformunabhängige Version des Progammes, aus Sicht des Autors, sinnvoll.
- \item In der Aufgabenstellung wurden exakt zugeschnittene Quelldatensätze zur Verfügung gestellt. In Fällen wo solche \glqq Laborbedingungen\grqq jedoch nicht zutreffen, würde die Schaffung einer Toleranz der Software gegenüber unterschiedlichen Datensatzgrößen der Trainings- und idealtypischen Funktionsdaten die Resilienz des Programmes erhöhen.
+ \item In der Aufgabenstellung wurden exakt zugeschnittene Quelldatensätze zur Verfügung gestellt. In Fällen wo solche \glqq Laborbedingungen\grqq\ jedoch nicht zutreffen, würde die Schaffung einer Toleranz der Software gegenüber unterschiedlichen Datensatzgrößen der Trainings- und idealtypischen Funktionsdaten die Resilienz des Programmes erhöhen.
  \item Bei Vorlage eines größeren Testdatensatzes, wäre eine tabellenweise Verarbeitung, nach Meinung des Autors, performanter als die vorgegebene zeilenweise Kalkulation.
- \item Wie in Abschnitt ~\ref{sec:class} erläutert, könnte eine \glqq Normalisierung\grqq des kalkulierten Abstandswertes zur Klassifikation in Relation zum zuvor berechneten Fehlerwert der idealtypischen Funktion, die Klassifikation in Grenzfällen positiv beeinflussen. Eine solche Modifikation sollte jedoch, aus Sicht des Autors, zuvor getestet und evaluiert werden.
+ \item Wie in Abschnitt ~\ref{sec:class} erläutert, könnte eine \glqq Normalisierung\grqq\ des kalkulierten Abstandswertes zur Klassifikation in Relation zum zuvor berechneten Fehlerwert der idealtypischen Funktion, die Klassifikation in Grenzfällen positiv beeinflussen. Eine solche Modifikation sollte jedoch, aus Sicht des Autors, zuvor getestet und evaluiert werden.
 \end{enumerate}
 
 Oben genannte Anpassungen kämen der Resilienz der Software, der Effizienz des Programmes in der Verarbeitung größerer Datensätze, sowie der Genauigkeit der Klassifikation der Testdaten zugute. Eine Validierung dieser Annahmen wäre, aus Sicht des Autors, eine mögliche Fragestellung für eine weiterführende Arbeit. 

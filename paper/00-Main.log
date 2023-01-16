@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  15 JAN 2023 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.24)  16 JAN 2023 01:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -633,24 +633,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip68
 )
-(00-Main.aux (001-Titlepage.aux) (020-Body.aux))
-Runaway argument?
-{5C3337365C3337375C3030304B5C3030306F5C3030306 
-! File ended while scanning use of \BKM@entry.
-<inserted text> 
-                \par 
-l.75 \begin{document}
-                     
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
-
+(00-Main.aux (001-Titlepage.aux) (020-Body.aux) (041-Annexes.aux))
 \openout1 = `00-Main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 75.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
 75.
+
 (C:\Program Files\MiKTeX\tex/latex/txfonts\omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
@@ -807,7 +796,38 @@ Package pdftex.def Info: pics/logo.pdf  used on input line 7.
 go.pdf>]
 Package tocbasic Info: character protrusion at toc deactivated on input line 92
 .
- (00-Main.toc)
+ (00-Main.toc
+LaTeX Font Info:    Trying to load font information for OT1+txr on input line 5
+.
+ (C:\Program Files\MiKTeX\tex/latex/txfonts\ot1txr.fd
+File: ot1txr.fd 2000/12/15 v3.1
+) (C:\Program Files\MiKTeX\tex/latex/microtype\mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+txmia on input line 5
+.
+
+(C:\Program Files\MiKTeX\tex/latex/txfonts\utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsya on input line 5
+.
+
+(C:\Program Files\MiKTeX\tex/latex/txfonts\utxsya.fd
+File: utxsya.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsyb on input line 5
+.
+
+(C:\Program Files\MiKTeX\tex/latex/txfonts\utxsyb.fd
+File: utxsyb.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsyc on input line 5
+.
+
+(C:\Program Files\MiKTeX\tex/latex/txfonts\utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
+))
 \tf@toc=\write4
 \openout4 = `00-Main.toc'.
 
@@ -874,61 +894,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `txtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OT1+txr on input line 2
-5.
-
-(C:\Program Files\MiKTeX\tex/latex/txfonts\ot1txr.fd
-File: ot1txr.fd 2000/12/15 v3.1
-)
-(C:\Program Files\MiKTeX\tex/latex/microtype\mt-ptm.cfg
-File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
-)
-LaTeX Font Info:    Trying to load font information for U+txmia on input line 2
-5.
-
-(C:\Program Files\MiKTeX\tex/latex/txfonts\utxmia.fd
-File: utxmia.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Trying to load font information for U+txsya on input line 2
-5.
-
-(C:\Program Files\MiKTeX\tex/latex/txfonts\utxsya.fd
-File: utxsya.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Trying to load font information for U+txsyb on input line 2
-5.
-
-(C:\Program Files\MiKTeX\tex/latex/txfonts\utxsyb.fd
-File: utxsyb.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Trying to load font information for U+txsyc on input line 2
-5.
-
-(C:\Program Files\MiKTeX\tex/latex/txfonts\utxsyc.fd
-File: utxsyc.fd 2000/12/15 v3.1
-)
-
-Package natbib Warning: Citation `kofler_python_2022' on page 2 undefined on in
-put line 27.
-
-
-Package natbib Warning: Citation `henk_griffioen_how_2017' on page 2 undefined 
-on input line 27.
-
-
-Package natbib Warning: Citation `croitoru_programmieren_2022' on page 2 undefi
-ned on input line 29.
-
-
-Package natbib Warning: Citation `kofler_python_2022' on page 2 undefined on in
-put line 29.
-
-
-Package natbib Warning: Citation `henk_griffioen_how_2017' on page 2 undefined 
-on input line 29.
-
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 3
 3.
+
 (C:\Program Files\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
@@ -945,119 +913,81 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [2
 
 ]
-
-Package natbib Warning: Citation `geer_practical_2019' on page 3 undefined on i
-nput line 70.
-
-
-Package natbib Warning: Citation `jesuisme_answer_2021' on page 3 undefined on 
-input line 72.
-
-[3]
-
-Package natbib Warning: Citation `numpydoc_v160_style_nodate' on page 4 undefin
-ed on input line 88.
-
-
-Package natbib Warning: Citation `leedham_answer_2020' on page 4 undefined on i
-nput line 88.
-
-[4]
-<../output/figures/train.png, id=88, 433.62pt x 289.08pt>
+<pics/Flow.png, id=106, 965.0454pt x 182.6022pt>
+File: pics/Flow.png Graphic file (type png)
+<use pics/Flow.png>
+Package pdftex.def Info: pics/Flow.png  used on input line 70.
+(pdftex.def)             Requested size: 426.79134pt x 80.75479pt.
+ [3 <./pics/Flow.png>] [4]
+<../output/figures/train.png, id=159, 433.62pt x 289.08pt>
 File: ../output/figures/train.png Graphic file (type png)
 <use ../output/figures/train.png>
-Package pdftex.def Info: ../output/figures/train.png  used on input line 128.
+Package pdftex.def Info: ../output/figures/train.png  used on input line 141.
 (pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
- [5 <../output/figures/train.png>]
+ [5 <../output/figures/train.png>] [6] [7]
+(C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+Underfull \hbox (badness 10000) in paragraph at lines 208--216
 
-Package natbib Warning: Citation `gosset_accessing_2017' on page 6 undefined on
- input line 161.
+ []
 
+<../output/figures/ideal.png, id=190, 433.62pt x 289.08pt>
+File: ../output/figures/ideal.png Graphic file (type png)
+<use ../output/figures/ideal.png>
+Package pdftex.def Info: ../output/figures/ideal.png  used on input line 227.
+(pdftex.def)             Requested size: 369.88582pt x 246.60135pt.
+[8 <../output/figures/ideal.png>] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 264--281
 
-LaTeX Warning: Reference `sec:installation' on page 6 undefined on input line 1
-63.
+ []
 
+[10]
+<../output/figures/test.png, id=229, 528.2937pt x 332.442pt>
+File: ../output/figures/test.png Graphic file (type png)
+<use ../output/figures/test.png>
+Package pdftex.def Info: ../output/figures/test.png  used on input line 308.
+(pdftex.def)             Requested size: 369.88582pt x 232.7636pt.
+ [11 <../output/figures/test.png>]
+chapter 3.
+) [12
 
-Package natbib Warning: Citation `stevens-haas_importing_2021' on page 6 undefi
-ned on input line 163.
-
-[6]
-
-LaTeX Warning: Reference `leastsquare' on page 7 undefined on input line 179.
-
-
-LaTeX Warning: Reference `leastsquare' on page 7 undefined on input line 186.
-
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.196 \begin
-            {lstlisting}[language=python,
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+] (00-Main.bbl) [13
 
 
-! Undefined control sequence.
-\lstlisting ->\def \lstenv@name 
-                                {lstlisting}\begingroup \lst@setcatcodes \ca...
-l.202 \end{lstlisting}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Package Listings Error: Extra \endlstlisting.
+]
+\openout2 = `041-Annexes.aux'.
 
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.202 \end{lstlisting}
-                      
-I'm ignoring this, since I wasn't doing a \def {lstlisting}\begingroup \makeatl
-etter \catcode `\==12\relax \catcode \active =\active \lstlisting@.
+ (041-Annexes.tex
+chapter A.
+) [14
 
 
-! LaTeX Error: \begin{tabular} on input line 195 ended by \end{lstlisting}.
+] (00-Main.aux (001-Titlepage.aux) (020-Body.aux) (041-Annexes.aux))
+Package rerunfilecheck Info: File `00-Main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 21894 strings out of 476406
+ 382085 string characters out of 2799372
+ 1924787 words of memory out of 3000000
+ 41472 multiletter control sequences out of 15000+600000
+ 575655 words of font info for 303 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 108i,16n,106p,10604b,1548s stack positions out of 10000i,1000n,20000p,200000b,80000s
+{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
+/fonts/type1/public/txfonts/rtxmi.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
+ic/txfonts/rtxr.pfb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/t1xtt.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/txfonts/txex.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Program Files/MiKTeX/fonts/ty
+pe1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/u
+hvr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on 00-Main.pdf (18 pages, 285545 bytes).
+PDF statistics:
+ 381 PDF objects out of 1000 (max. 8388607)
+ 116 named destinations out of 1000 (max. 500000)
+ 70314 words of extra memory for PDF output out of 74296 (max. 10000000)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.202 \end{lstlisting}
-                      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.202 \end{lstlisting}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.202 \end{lstlisting}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \cr inserted.
-<inserted text> 
-                \cr 
